@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+Now, here we create a TabLayout which displays and designs
+the tabs and content of this tabs is populated with the help
+of a viewPager.
+
+A viewPager is used to swipe between tabs and populated
+tab-specific contents . Contents for the viewPager is
+populated with the help of a very simple FragmentPageAdapter
+which we will see later.
+
+So, basically here we add a TabLayout with viewPager in a
+LinearLayout with Vertical Orientation.
+
+-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabs"
+        app:tabGravity="fill"
+        app:tabMode="fixed"
+        android:background="@color/colorAccent"
+        app:tabIndicatorColor="@color/colorAccent"
+        app:tabSelectedTextColor="@color/white"
+        app:tabTextColor="@color/colorPrimaryDark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </android.support.design.widget.TabLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v4.view.ViewPager>
+
+</LinearLayout>
