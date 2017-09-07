@@ -112,7 +112,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-
         //This is to not accidentally exit the app
         int backStackEntryCount = getSupportFragmentManager().getBackStackEntryCount();
         if (backStackEntryCount == 0) {
@@ -130,10 +129,6 @@ public class MainActivity extends AppCompatActivity {
         else {
             super.onBackPressed();
         }
-
-        //This is to change name on the app bar with back press
-
-
     }
 }
 
