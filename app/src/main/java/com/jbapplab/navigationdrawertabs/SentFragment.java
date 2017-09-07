@@ -41,6 +41,13 @@ public class SentFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         /**
+         * Set the title bar according to the fragment
+         * I am guessing this can be done with
+         */
+        ((MainActivity) getActivity())
+                .setActionBarTitle("Sent");
+
+        /**
          *Inflate tab_layout and setup Views.
          */
         View x =  inflater.inflate(R.layout.tab_layout,null);

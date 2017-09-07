@@ -41,6 +41,12 @@ public class TabFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         /**
+         * Set the title bar according to the fragment
+         */
+        ((MainActivity) getActivity())
+                .setActionBarTitle("Inbox");
+
+        /**
          *Inflate tab_layout and setup Views.
          */
         View x =  inflater.inflate(R.layout.tab_layout,null);

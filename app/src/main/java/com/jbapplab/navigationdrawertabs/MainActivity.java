@@ -15,15 +15,18 @@ package com.jbapplab.navigationdrawertabs;
     drawer.
     */
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -70,17 +73,18 @@ public class MainActivity extends AppCompatActivity {
 
                 //Can add more according to the buttons I will need
                 //Added the addToBackStack("") bit to use back button
-                if (menuItem.getItemId() == R.id.nav_item_sent) {
-                    FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.containerView,new SentFragment()).addToBackStack("str").commit();
-                    //getSupportActionBar().setTitle("Sent");
-
-                }
-
                 if (menuItem.getItemId() == R.id.nav_item_inbox) {
                     FragmentTransaction xfragmentTransaction = mFragmentManager.beginTransaction();
                     xfragmentTransaction.replace(R.id.containerView,new TabFragment()).addToBackStack("str").commit();
                     //getSupportActionBar().setTitle("Home");
+                }
+
+                if (menuItem.getItemId() == R.id.nav_item_sent) {
+                    FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.containerView,new SentFragment()).addToBackStack("str").commit();
+                    //This is to try and find the id of the item selected
+                    //getSupportActionBar().setTitle("Sent");
+
                 }
 
                 return false;
@@ -99,6 +103,36 @@ public class MainActivity extends AppCompatActivity {
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
         mDrawerToggle.syncState();
+
+    }
+
+    public void setActionBarTitle(String title){
+        getSupportActionBar().setTitle(title);
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        //This is to not accidentally exit the app
+        int backStackEntryCount = getSupportFragmentManager().getBackStackEntryCount();
+        if (backStackEntryCount == 0) {
+            new AlertDialog.Builder(this)
+                    .setTitle("Exit Anekdot?")
+                    .setMessage("Are you sure you want to exit?")
+                    .setNegativeButton(android.R.string.no, null)
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            MainActivity.super.onBackPressed();
+                        }
+                    }).create().show();
+        }
+        else {
+            super.onBackPressed();
+        }
+
+        //This is to change name on the app bar with back press
+
 
     }
 }
