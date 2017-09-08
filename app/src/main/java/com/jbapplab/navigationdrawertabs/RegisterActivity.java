@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -42,13 +43,16 @@ public class RegisterActivity extends AppCompatActivity {
                 //This gets the age. converts it to an int and saves it
                 final int age = Integer.parseInt(etAge.getText().toString());
 
+                //Log.d("REGISTER ACTIVITY", "Value: " + (username));
+
                 Response.Listener<String> responseListener = new Response.Listener<String>(){
 
                     @Override
                     public void onResponse(String response) {
                         /**
-                         * This happens when the response has been executed and volley here gives us the response from register.php
-                         * Now we need to convert this to a JSONObject because we encoded it like that in the PHP file.
+                         * This happens when the response has been executed and volley here gives
+                         * us the response from register.php. Now we need to convert this to a
+                         * JSONObject because we encoded it like that in the PHP file.
                          * It takes the response that volley has given us and converts it into a JSONObject
                          */
                         try {
@@ -68,7 +72,6 @@ public class RegisterActivity extends AppCompatActivity {
                                         .setNegativeButton("Retry", null)
                                         .create()
                                         .show();
-
                             }
 
                         } catch (JSONException e) {
@@ -80,11 +83,12 @@ public class RegisterActivity extends AppCompatActivity {
                 //Now we have to create the request. It needs the 4 fields and a response listener
                 RegisterRequest registerRequest = new RegisterRequest(name, username, age, password, responseListener);
                 /**
-                 * Finally we need to add our request to a request queue. Then we ask to get the queue from volley, because
-                 * volley hold all of the requests
+                 * Finally we need to add our request to a request queue.
+                 * Then we ask to get the queue from volley, because volley hold all of the requests.
                  */
                 RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
                 queue.add(registerRequest);
+                //Log.d("REGISTER ACTIVITY2", "Value: " + (username));
             }
         });
 
