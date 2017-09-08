@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
@@ -91,7 +92,18 @@ public class LoginActivity extends AppCompatActivity {
 
                     }
                 };
-                LoginRequest loginRequest = new LoginRequest(username, password, responseListener);
+                Response.ErrorListener errorListener = new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                        builder.setMessage("Login Failed. There is a problem with the server connection.")
+                                .setNegativeButton("Retry", null)
+                                .create()
+                                .show();
+                    }
+                };
+
+                LoginRequest loginRequest = new LoginRequest(username, password, responseListener, errorListener);
 
                 /**
                  * Finally we need to add our request to a request queue.

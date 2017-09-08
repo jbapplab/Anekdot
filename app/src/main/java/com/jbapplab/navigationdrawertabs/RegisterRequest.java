@@ -25,7 +25,7 @@ public class RegisterRequest extends StringRequest {
     private Map<String, String> params;
 
     //Create a constructor for when the first instance of this class is created
-    public RegisterRequest(String name, String username, int age, String password, Response.Listener<String> listener){
+    public RegisterRequest(String name, String username, int age, String password, Response.Listener<String> listener, Response.ErrorListener errorListener){
         /**
          * We need to pass some data to volley which will allow it to execute our request
          * -First thing we need to pass is the method - POST means we are gonna send some data to register.php and it
@@ -33,9 +33,9 @@ public class RegisterRequest extends StringRequest {
          * -Then we need to give volley the URL
          * -Then we need to give it the listener: when volley has finished with the request it will inform the
          * Response.Listener
-         * -TODO Finally we need to provide an error listener that volley will inform if something goes wrong with the request
+         * Finally we need to provide an error listener that volley will inform if something goes wrong with the request
          */
-        super(Method.POST, REGISTER_REQUEST_URL, listener, null);
+        super(Method.POST, REGISTER_REQUEST_URL, listener, errorListener);
 
         //We use the params for volley to pass the information to register.php
         params = new HashMap<>();

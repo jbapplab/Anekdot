@@ -11,6 +11,7 @@ import android.widget.EditText;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
@@ -80,8 +81,19 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 };
 
+                Response.ErrorListener errorListener = new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                        builder.setMessage("Login Failed. There is a problem with the server connection.")
+                                .setNegativeButton("Retry", null)
+                                .create()
+                                .show();
+                    }
+                };
+
                 //Now we have to create the request. It needs the 4 fields and a response listener
-                RegisterRequest registerRequest = new RegisterRequest(name, username, age, password, responseListener);
+                RegisterRequest registerRequest = new RegisterRequest(name, username, age, password, responseListener, errorListener);
                 /**
                  * Finally we need to add our request to a request queue.
                  * Then we ask to get the queue from volley, because volley hold all of the requests.

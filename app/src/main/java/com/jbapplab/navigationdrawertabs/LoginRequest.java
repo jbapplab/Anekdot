@@ -24,7 +24,7 @@ public class LoginRequest extends StringRequest {
     private Map<String, String> params;
 
     //Create a constructor for when the first instance of this class is created
-    public LoginRequest(String username, String password, Response.Listener<String> listener){
+    public LoginRequest(String username, String password, Response.Listener<String> listener, Response.ErrorListener errorListener){
         /**
          * We need to pass some data to volley which will allow it to execute our request
          * -First thing we need to pass is the method - POST means we are gonna send some data to register.php and it
@@ -34,7 +34,7 @@ public class LoginRequest extends StringRequest {
          * Response.Listener
          * -TODO Finally we need to provide an error listener that volley will inform if something goes wrong with the request
          */
-        super(Request.Method.POST, LOGIN_REQUEST_URL, listener, null);
+        super(Request.Method.POST, LOGIN_REQUEST_URL, listener, errorListener);
 
         //We use the params for volley to pass the information to register.php
         params = new HashMap<>();
