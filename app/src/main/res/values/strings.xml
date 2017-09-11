@@ -1,4 +1,31 @@
 <resources>
     <string name="app_name">Anecdot</string>
     <string name="test">test</string>
+
+    <string name="form_1">Validation test 1</string>
+    <string name="form_2">Validation test 2</string>
+    <string name="form_3">Validation test 3</string>
+    <string name="submit">Submit</string>
+
+    <string name="empty_check">Empty check</string>
+    <string name="email_check">Email check</string>
+    <string name="digit_check">Digit check</string>
+    <string name="value_check">Value check</string>
+    <string name="no_check">No check</string>
+
+    <string name="error_message_empty">Please fill this field</string>
+    <string name="error_message_email">Please input a valid email address</string>
+    <string name="error_message_digit">Please input digits only</string>
+    <string name="error_message_password">Lenght must be at least 6 characters</string>
+
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="email">Email Address</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
