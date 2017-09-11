@@ -93,7 +93,7 @@ public class RegisterActivity extends AppCompatActivity {
                                     } else {
                                         //If not successful we want to display an error and user can select to retry
                                         AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-                                        builder.setMessage("Registration Failed")
+                                        builder.setMessage("Registration Failed: The username already exists.")
                                                 .setNegativeButton("Retry", null)
                                                 .create()
                                                 .show();
@@ -109,7 +109,7 @@ public class RegisterActivity extends AppCompatActivity {
                             @Override
                             public void onErrorResponse(VolleyError error) {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-                                builder.setMessage("Login Failed. There is a problem with the server connection.")
+                                builder.setMessage("Registration Failed: There is a problem with the server connection.")
                                         .setNegativeButton("Retry", null)
                                         .create()
                                         .show();
@@ -130,7 +130,7 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 } else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-                    builder.setMessage("The passwords do not match. Please make sure they are identical.")
+                    builder.setMessage("The passwords do not match, please make sure they are identical.")
                             .setNegativeButton("Retry", null)
                             .create()
                             .show();
