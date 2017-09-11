@@ -1,85 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.emmasuzuki.easyform.EasyForm
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.jbapplab.navigationdrawertabs.RegisterActivity"
+    android:id="@+id/registration_form"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.jbapplab.navigationdrawertabs.RegisterActivity">
+    android:padding="12dp"
+    app:submitButton="@+id/submit_button"
+    app:showErrorOn="unfocus"
+    >
 
-    <EditText
-        android:id="@+id/etName"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:id="@+id/name"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Name"
-        android:inputType="textPersonName"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp" />
+        android:orientation="horizontal">
 
-    <EditText
+        <com.emmasuzuki.easyform.EasyFormEditText
+            android:id="@+id/etFirstName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/first_name"
+            app:errorMessage="@string/error_message_empty"
+            app:errorType="empty"/>
+
+        <com.emmasuzuki.easyform.EasyFormEditText
+            android:id="@+id/etLastName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/last_name"
+            app:errorMessage="@string/error_message_empty"
+            app:errorType="empty"/>
+    </LinearLayout>
+
+    <com.emmasuzuki.easyform.EasyFormEditText
         android:id="@+id/etUsername"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_below="@id/name"
         android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="Username"
-        android:inputType="textPersonName"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etName"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp" />
+        android:hint="@string/username"
+        app:errorMessage="@string/error_message_empty"
+        app:errorType="empty"/>
 
-    <EditText
+    <com.emmasuzuki.easyform.EasyFormEditText
+        android:id="@+id/etEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etUsername"
+        android:layout_marginTop="8dp"
+        android:hint="@string/email"
+        app:errorMessage="@string/error_message_email"
+        app:errorType="pattern"
+        app:regexPattern="[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"/>
+
+    <com.emmasuzuki.easyform.EasyFormEditText
         android:id="@+id/etPassword"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_below="@id/etEmail"
         android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etUsername"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintHorizontal_bias="0.0" />
+        android:hint="@string/password"
+        app:errorMessage="@string/error_message_password"
+        app:errorType="pattern"
+        app:regexPattern="[a-zA-Z0-9]{6,12}" />
 
-    <EditText
-        android:id="@+id/etAge"
-        android:layout_width="0dp"
+    <com.emmasuzuki.easyform.EasyFormEditText
+        android:id="@+id/etPasswordConfirm"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_below="@id/etPassword"
         android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="Age"
-        android:inputType="number"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp" />
+        android:hint="@string/confirm_password"
+        app:errorMessage="@string/error_message_password"
+        app:errorType="pattern"
+        app:regexPattern="[a-zA-Z0-9]{6,12}"
+        />
 
     <Button
         android:id="@+id/bRegister"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Register"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etAge" />
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="20dp"
+        android:background="@color/colorAccent"
+        android:text="@string/submit"
+        android:textColor="@android:color/white"/>
 
-</android.support.constraint.ConstraintLayout>
+</com.emmasuzuki.easyform.EasyForm>

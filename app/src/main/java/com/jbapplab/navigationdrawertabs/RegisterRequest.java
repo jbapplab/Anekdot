@@ -20,12 +20,12 @@ public class RegisterRequest extends StringRequest {
 
     //Need to specify URL of the register.php
     //private static final String REGISTER_REQUEST_URL = "http://anekdot.epizy.com/register.php";
-    private static final String REGISTER_REQUEST_URL = "http://applabjb.000webhostapp.com/register.php";
+    private static final String REGISTER_REQUEST_URL = "http://applabjb.000webhostapp.com/register_new.php";
     //Need to create a map
     private Map<String, String> params;
 
     //Create a constructor for when the first instance of this class is created
-    public RegisterRequest(String name, String username, int age, String password, Response.Listener<String> listener, Response.ErrorListener errorListener){
+    public RegisterRequest(String firstName, String lastName, String username, String email, String password, Response.Listener<String> listener, Response.ErrorListener errorListener){
         /**
          * We need to pass some data to volley which will allow it to execute our request
          * -First thing we need to pass is the method - POST means we are gonna send some data to register.php and it
@@ -40,11 +40,13 @@ public class RegisterRequest extends StringRequest {
         //We use the params for volley to pass the information to register.php
         params = new HashMap<>();
         //Now we need to put the data into the HashMap params.put("nameinPHP", nameinJAVA)
-        params.put("name",name);
+        params.put("first_name",firstName);
+        params.put("last_name",lastName);
         params.put("username",username);
+        params.put("email",email);
         params.put("password",password);
         //age+ '''' basically converts it from an integer to a string
-        params.put("age",age + "");
+        //params.put("age",age + "");
         //Log.d("REGISTER REQUEST", "Value: " + (username));
     }
     //Now that we have put the data in the params volley needs to access them
