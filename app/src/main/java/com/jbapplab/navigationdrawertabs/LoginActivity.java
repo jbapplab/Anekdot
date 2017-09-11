@@ -67,13 +67,20 @@ public class LoginActivity extends AppCompatActivity {
                                  * in the new activity we need to open it.
                                   */
 
-                                String name = jsonResponse.getString("name");
-                                int age = jsonResponse.getInt("age");
+                                String firstName = jsonResponse.getString("firstName");
+                                String lastName = jsonResponse.getString("lastName");
+                                String username = jsonResponse.getString("username");
+                                String password = jsonResponse.getString("password");
+                                String email = jsonResponse.getString("email");
+                                //int age = jsonResponse.getInt("age");
 
                                 Intent intent = new Intent(LoginActivity.this, UserAreaActivity.class);
-                                intent.putExtra("name", name);
+                                intent.putExtra("firstName", firstName);
+                                intent.putExtra("lastName", lastName);
                                 intent.putExtra("username", username);
-                                intent.putExtra("age", age);
+                                intent.putExtra("password", password);
+                                intent.putExtra("email", email);
+                                //intent.putExtra("age", age);
 
                                 LoginActivity.this.startActivity(intent);
 

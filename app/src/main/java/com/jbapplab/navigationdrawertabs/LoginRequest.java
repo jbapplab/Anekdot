@@ -1,5 +1,7 @@
 package com.jbapplab.navigationdrawertabs;
 
+import android.util.Log;
+
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
@@ -19,7 +21,7 @@ public class LoginRequest extends StringRequest {
 
     //Need to specify URL of the register.php
     //private static final String LOGIN_REQUEST_URL = "http://anekdot.epizy.com/login.php";
-    private static final String LOGIN_REQUEST_URL = "http://applabjb.000webhostapp.com/login.php";
+    private static final String LOGIN_REQUEST_URL = "http://applabjb.000webhostapp.com/login_new.php";
     //Need to create a map
     private Map<String, String> params;
 
@@ -41,7 +43,7 @@ public class LoginRequest extends StringRequest {
         //Now we need to put the data into the HashMap params.put("nameinPHP", nameinJAVA)
         params.put("username",username);
         params.put("password",password);
-        //Log.d("REGISTER REQUEST", "Value: " + (username));
+        //Log.d("LOGIN REQUEST", "Value: " + (username));
     }
     //Now that we have put the data in the params volley needs to access them
     @Override
