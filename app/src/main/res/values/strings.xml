@@ -2,9 +2,6 @@
     <string name="app_name">Anecdot</string>
     <string name="test">test</string>
 
-    <string name="form_1">Validation test 1</string>
-    <string name="form_2">Validation test 2</string>
-    <string name="form_3">Validation test 3</string>
     <string name="submit">Submit</string>
 
     <string name="empty_check">Empty check</string>
