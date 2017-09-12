@@ -4,6 +4,7 @@ import android.content.Context;
 import android.widget.ImageView;
 
 import com.jbapplab.navigationdrawertabs.R;
+import com.jbapplab.navigationdrawertabs.m_StoryDetailActivity.StoryDetailActivity;
 import com.squareup.picasso.Picasso;
 
 /**
@@ -21,4 +22,7 @@ public class PicassoClient {
         }
     }
 
+    public static void downloadImage(StoryDetailActivity storyDetailActivity, String imageUrl) {
+
+    }
 }

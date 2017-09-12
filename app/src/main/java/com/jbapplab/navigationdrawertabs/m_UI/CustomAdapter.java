@@ -1,6 +1,7 @@
 package com.jbapplab.navigationdrawertabs.m_UI;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.jbapplab.navigationdrawertabs.R;
 import com.jbapplab.navigationdrawertabs.m_DataObject.Story;
+import com.jbapplab.navigationdrawertabs.m_StoryDetailActivity.StoryDetailActivity;
 
 import java.util.ArrayList;
 
@@ -34,7 +36,7 @@ public class CustomAdapter extends RecyclerView.Adapter<MyViewHolder> {
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
-        Story story = stories.get(position);
+        final Story story = stories.get(position);
 
         holder.storyId.setText(story.getId());
         holder.firstName.setText(story.getFirstName());
@@ -44,11 +46,33 @@ public class CustomAdapter extends RecyclerView.Adapter<MyViewHolder> {
         holder.email.setText(story.getEmail());
         PicassoClient.downloadImage(context, story.getImageUrl(), holder.storyImage);
 
+        holder.setItemClickListener(new StoryItemClickListener() {
+            @Override
+            public void onItemClick() {
+                openStoryDetailActivity(story.getId(), story.getFirstName(), story.getLastName(), story.getUsername(), story.getPassword(), story.getEmail(), story.getImageUrl());
+            }
+        });
+
 
     }
 
     @Override
     public int getItemCount() {
         return stories.size();
+    }
+
+    private void openStoryDetailActivity(String id, String firstName, String lastName, String username, String password, String email, String imageUrl){
+        Intent intent = new Intent(context, StoryDetailActivity.class);
+
+        //PACK DATA
+        intent.putExtra("ID_KEY", id);
+        intent.putExtra("FIRST_NAME_KEY", firstName);
+        intent.putExtra("LAST_NAME_KEY", lastName);
+        intent.putExtra("USERNAME_KEY", username);
+        intent.putExtra("PASSWORD_KEY", password);
+        intent.putExtra("EMAIL_KEY", email);
+        intent.putExtra("IMAGE_URL_KEY", imageUrl);
+
+        context.startActivity(intent);
     }
 }

@@ -2,10 +2,8 @@ package com.jbapplab.navigationdrawertabs.m_MySQL;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.support.annotation.BoolRes;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.jbapplab.navigationdrawertabs.m_DataObject.Story;
@@ -86,8 +84,6 @@ public class DataParser extends AsyncTask<Void, Void, Boolean> {
                 //story.setImageUrl(imageUrl);
 
                 stories.add(story);
-
-                Log.e("MyActivity", "jsonArray length" + i);
             }
 
             return true;

@@ -11,7 +11,7 @@ import com.jbapplab.navigationdrawertabs.R;
  * Created by JohnB on 12/09/2017.
  */
 
-public class MyViewHolder extends RecyclerView.ViewHolder{
+public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
     TextView storyId;
     TextView firstName;
@@ -20,6 +20,7 @@ public class MyViewHolder extends RecyclerView.ViewHolder{
     TextView password;
     TextView email;
     ImageView storyImage;
+    StoryItemClickListener itemClickListener;
 
     public MyViewHolder(View itemView) {
         super(itemView);
@@ -31,5 +32,16 @@ public class MyViewHolder extends RecyclerView.ViewHolder{
         password = itemView.findViewById(R.id.password);
         email = itemView.findViewById(R.id.email);
         storyImage = itemView.findViewById(R.id.storyImage);
+
+        itemView.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        this.itemClickListener.onItemClick();
+    }
+
+    public void setItemClickListener(StoryItemClickListener itemClickListener){
+        this.itemClickListener = itemClickListener;
     }
 }
