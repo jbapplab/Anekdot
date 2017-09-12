@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.support.annotation.BoolRes;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.jbapplab.navigationdrawertabs.m_DataObject.Story;
@@ -62,10 +63,11 @@ public class DataParser extends AsyncTask<Void, Void, Boolean> {
             stories.clear();
             Story story;
 
-            for (int i=0;i<jsonArray.length();i++){
+            //for (int i=0;i<jsonArray.length();i++){
+            for (int i=jsonArray.length()-1;i>-1;i--){
                 jsonObject = jsonArray.getJSONObject(i);
 
-                String id = jsonObject.getString("user_id");
+                String storyId = jsonObject.getString("user_id");
                 String firstName = jsonObject.getString("first_name");
                 String lastName = jsonObject.getString("last_name");
                 String username = jsonObject.getString("username");
@@ -75,7 +77,7 @@ public class DataParser extends AsyncTask<Void, Void, Boolean> {
 
                 story = new Story();
 
-                story.setId(id);
+                story.setId(storyId);
                 story.setFirstName(firstName);
                 story.setLastName(lastName);
                 story.setUsername(username);
@@ -84,6 +86,8 @@ public class DataParser extends AsyncTask<Void, Void, Boolean> {
                 //story.setImageUrl(imageUrl);
 
                 stories.add(story);
+
+                Log.e("MyActivity", "jsonArray length" + i);
             }
 
             return true;

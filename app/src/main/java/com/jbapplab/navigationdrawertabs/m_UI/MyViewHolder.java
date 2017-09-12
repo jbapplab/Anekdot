@@ -13,6 +13,7 @@ import com.jbapplab.navigationdrawertabs.R;
 
 public class MyViewHolder extends RecyclerView.ViewHolder{
 
+    TextView storyId;
     TextView firstName;
     TextView lastName;
     TextView username;
@@ -23,6 +24,7 @@ public class MyViewHolder extends RecyclerView.ViewHolder{
     public MyViewHolder(View itemView) {
         super(itemView);
 
+        storyId = itemView.findViewById(R.id.storyId);
         firstName = itemView.findViewById(R.id.firstName);
         lastName = itemView.findViewById(R.id.lastName);
         username = itemView.findViewById(R.id.username);

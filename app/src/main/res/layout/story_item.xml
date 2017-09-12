@@ -21,6 +21,17 @@
             android:src="@drawable/placeholder"/>
 
         <TextView
+            android:id="@+id/storyId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Name"
+            android:padding="10dp"
+            android:textColor="@color/colorAccent"
+            android:layout_alignParentLeft="true"
+            />
+
+        <TextView
             android:id="@+id/firstName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

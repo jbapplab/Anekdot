@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 
 import com.jbapplab.navigationdrawertabs.R;
 import com.jbapplab.navigationdrawertabs.m_DataObject.Story;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -37,6 +36,7 @@ public class CustomAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
         Story story = stories.get(position);
 
+        holder.storyId.setText(story.getId());
         holder.firstName.setText(story.getFirstName());
         holder.lastName.setText(story.getLastName());
         holder.username.setText(story.getUsername());
