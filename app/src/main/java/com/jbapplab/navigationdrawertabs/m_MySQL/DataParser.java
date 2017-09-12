@@ -65,13 +65,13 @@ public class DataParser extends AsyncTask<Void, Void, Boolean> {
             for (int i=0;i<jsonArray.length();i++){
                 jsonObject = jsonArray.getJSONObject(i);
 
-                int id = jsonObject.getInt("id");
-                String firstName = jsonObject.getString("firstName");
-                String lastName = jsonObject.getString("lastName");
+                String id = jsonObject.getString("user_id");
+                String firstName = jsonObject.getString("first_name");
+                String lastName = jsonObject.getString("last_name");
                 String username = jsonObject.getString("username");
                 String password = jsonObject.getString("password");
                 String email = jsonObject.getString("email");
-                String imageUrl = jsonObject.getString("imageUrl");
+                //String imageUrl = jsonObject.getString("imageUrl");
 
                 story = new Story();
 
@@ -81,7 +81,7 @@ public class DataParser extends AsyncTask<Void, Void, Boolean> {
                 story.setUsername(username);
                 story.setPassword(password);
                 story.setEmail(email);
-                story.setImageUrl(imageUrl);
+                //story.setImageUrl(imageUrl);
 
                 stories.add(story);
             }

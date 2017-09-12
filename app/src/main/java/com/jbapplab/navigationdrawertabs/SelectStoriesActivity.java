@@ -8,6 +8,9 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
 import com.jbapplab.navigationdrawertabs.m_MySQL.Downloader;
+import com.jbapplab.navigationdrawertabs.m_UI.CustomAdapter;
+
+import java.util.ArrayList;
 
 public class SelectStoriesActivity extends AppCompatActivity {
 

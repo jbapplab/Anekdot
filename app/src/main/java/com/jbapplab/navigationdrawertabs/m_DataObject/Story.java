@@ -6,7 +6,7 @@ package com.jbapplab.navigationdrawertabs.m_DataObject;
 
 public class Story {
 
-    int id;
+    String id;
     String firstName;
     String lastName;
     String username;
@@ -14,11 +14,11 @@ public class Story {
     String email;
     String imageUrl;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
