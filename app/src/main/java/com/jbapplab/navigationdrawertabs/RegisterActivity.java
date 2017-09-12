@@ -5,11 +5,8 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -17,15 +14,13 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.emmasuzuki.easyform.EasyForm;
 import com.emmasuzuki.easyform.EasyFormEditText;
-import com.emmasuzuki.easyform.EasyTextInputLayout;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
+//import butterknife.Bind;
+//import butterknife.ButterKnife;
 
-import static com.jbapplab.navigationdrawertabs.R.id.etName;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -67,7 +62,7 @@ public class RegisterActivity extends AppCompatActivity {
                 if (passwordConfirm.equals(password)) {
                     easyForm.validate();
 
-                    if (true/*easyForm.isValid()*/) {
+                    if (easyForm.isValid()) {
                         Log.e(getClass().getSimpleName(), "All values valid");
 
                         Response.Listener<String> responseListener = new Response.Listener<String>() {
