@@ -22,7 +22,8 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".UserAreaActivity" />
-        <activity android:name=".m_StoryDetailActivity.StoryDetailActivity"></activity>
+        <activity android:name=".m_StoryDetailActivity.StoryDetailActivity" />
+        <activity android:name=".SelectCategoryActivity"></activity>
     </application>
 
 </manifest>
