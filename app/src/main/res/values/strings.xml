@@ -31,5 +31,7 @@
     <string name="password_detail">password detail</string>
     <string name="username_detail">username detail</string>
     <string name="placeholder_image">placeholder image</string>
+    <string name="category_name">Category Name</string>
+    <string name="category_image">Category Image</string>
 
 </resources>

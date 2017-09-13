@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SelectStoriesActivity">
+        <activity android:name=".SelectCategoryActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,7 +23,7 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".UserAreaActivity" />
         <activity android:name=".m_StoryDetailActivity.StoryDetailActivity" />
-        <activity android:name=".SelectCategoryActivity"></activity>
+        <activity android:name=".SelectStoriesActivity"></activity>
     </application>
 
 </manifest>
