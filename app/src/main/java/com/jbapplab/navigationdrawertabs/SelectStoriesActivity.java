@@ -9,6 +9,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import com.jbapplab.navigationdrawertabs.m_MySQL.Downloader;
+import com.jbapplab.navigationdrawertabs.m_UI.CustomAdapter;
+
+import java.util.ArrayList;
 import java.util.Collections;
 
 public class SelectStoriesActivity extends AppCompatActivity {
@@ -29,6 +32,11 @@ public class SelectStoriesActivity extends AppCompatActivity {
 
         final RecyclerView recyclerView = findViewById(R.id.recyclerViewStories);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        ArrayList dummyArrayList = new ArrayList<>();
+        CustomAdapter customAdapter = new CustomAdapter(this, dummyArrayList);
+        recyclerView.setAdapter(customAdapter);
+
         final SwipeRefreshLayout swipeRefreshLayout = findViewById(R.id.swipeLayoutStories);
 
         new Downloader(SelectStoriesActivity.this, urlAddress, recyclerView, swipeRefreshLayout).execute();
