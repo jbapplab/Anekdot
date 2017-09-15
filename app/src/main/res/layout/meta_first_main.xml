@@ -9,12 +9,18 @@
 
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+    <Spinner
+        android:id="@+id/categorySpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
     <com.emmasuzuki.easyform.EasyForm
         android:id="@+id/meta_first_form"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:submitButton="@+id/go_to_events_second_button"
         app:showErrorOn="unfocus"
+<<<<<<< HEAD
         android:padding="16dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:context=".MetaFirstActivity"
@@ -25,83 +31,54 @@
             android:id="@+id/categorySpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+=======
+        android:layout_below="@id/categorySpinner">
+>>>>>>> parent of c95f220... Problem with easy form null. Will attempt fix
 
         <com.emmasuzuki.easyform.EasyTextInputLayout
-            android:id="@+id/storyTitle"
+            android:id="@+id/etUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/categorySpinner"
+            android:layout_below="@id/name"
             android:layout_marginTop="8dp"
-            android:hint="Give the title of your story."
+            android:hint="@string/username"
             app:errorMessage="@string/error_message_empty"
             app:errorType="empty"/>
 
         <com.emmasuzuki.easyform.EasyTextInputLayout
-            android:id="@+id/ifOtherSpecify"
+            android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/storyTitle"
+            android:layout_below="@id/etUsername"
             android:layout_marginTop="8dp"
-            android:hint="If 'Other' was selected please give a suggested category."
+            android:hint="@string/email"
             app:errorMessage="@string/error_message_email"
             app:errorType="pattern"
             app:regexPattern="[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"/>
 
         <com.emmasuzuki.easyform.EasyTextInputLayout
-            android:id="@+id/storyDescription"
+            android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/ifOtherSpecify"
+            android:layout_below="@id/etEmail"
             android:layout_marginTop="8dp"
-            android:hint="Give a short description for your story."
+            android:hint="@string/password"
             app:errorMessage="@string/error_message_password"
             app:errorType="pattern"
             app:regexPattern="[a-zA-Z0-9]{6,12}" />
 
         <com.emmasuzuki.easyform.EasyTextInputLayout
-            android:id="@+id/orientation"
+            android:id="@+id/etPasswordConfirm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/storyDescription"
+            android:layout_below="@id/etPassword"
             android:layout_marginTop="8dp"
-            android:hint="Set the setting or context of your story."
+            android:hint="@string/confirm_password"
             app:errorMessage="@string/error_message_password"
             app:errorType="pattern"
             app:regexPattern="[a-zA-Z0-9]{6,12}" />
 
-        <com.emmasuzuki.easyform.EasyTextInputLayout
-            android:id="@+id/complicatedAction"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/orientation"
-            android:layout_marginTop="8dp"
-            android:hint="Describe a issue or problem"
-            app:errorMessage="@string/error_message_password"
-            app:errorType="pattern"
-            app:regexPattern="[a-zA-Z0-9]{6,12}" />
-
-        <com.emmasuzuki.easyform.EasyTextInputLayout
-            android:id="@+id/evaluation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/storyDescription"
-            android:layout_marginTop="8dp"
-            android:hint="Explain why this is important/exciting or the reason for sharing it."
-            app:errorMessage="@string/error_message_password"
-            app:errorType="pattern"
-            app:regexPattern="[a-zA-Z0-9]{6,12}" />
-
-        <com.emmasuzuki.easyform.EasyTextInputLayout
-            android:id="@+id/resolution"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/evaluation"
-            android:layout_marginTop="8dp"
-            android:hint="Describe what happened in the end. Was there something unexpected?"
-            app:errorMessage="@string/error_message_password"
-            app:errorType="pattern"
-            app:regexPattern="[a-zA-Z0-9]{6,12}" />
-
+<<<<<<< HEAD
         <com.emmasuzuki.easyform.EasyTextInputLayout
             android:id="@+id/messgage"
             android:layout_width="match_parent"
@@ -146,14 +123,16 @@
             app:errorType="pattern"
             app:regexPattern="[a-zA-Z0-9]{6,12}" />
 
+=======
+>>>>>>> parent of c95f220... Problem with easy form null. Will attempt fix
         <Button
-            android:id="@+id/addButton"
+            android:id="@+id/bGoToEventsSecond"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginTop="20dp"
             android:background="@color/colorAccent"
-            android:text="Edit in one place"
+            android:text="Now think of what happens in the story"
             android:textColor="@android:color/white"/>
 
     </com.emmasuzuki.easyform.EasyForm>

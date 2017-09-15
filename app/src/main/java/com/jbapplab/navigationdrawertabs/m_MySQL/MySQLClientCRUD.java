@@ -83,10 +83,10 @@ public class MySQLClientCRUD {
                                         EasyTextInputLayout resolution = (EasyTextInputLayout) inputViews[7];
                                         EasyTextInputLayout messgage = (EasyTextInputLayout) inputViews[8];
                                         //EasyTextInputLayout story_meta = (EasyTextInputLayout) inputViews[11];
-                                        EasyTextInputLayout stageRelated = (EasyTextInputLayout) inputViews[9];
-                                        EasyTextInputLayout contextRelated = (EasyTextInputLayout) inputViews[10];
-                                        //EasyTextInputLayout storyFull = (EasyTextInputLayout) inputViews[14];
-                                        EasyTextInputLayout imageUrl = (EasyTextInputLayout) inputViews[11];
+                                        EasyTextInputLayout stage_related = (EasyTextInputLayout) inputViews[9];
+                                        EasyTextInputLayout context_related = (EasyTextInputLayout) inputViews[10];
+                                        //EasyTextInputLayout story_full = (EasyTextInputLayout) inputViews[14];
+                                        EasyTextInputLayout image_url = (EasyTextInputLayout) inputViews[11];
                                         Spinner audienceStage = (Spinner) inputViews[12];
 
 
@@ -100,9 +100,9 @@ public class MySQLClientCRUD {
                                         evaluation.getEditText().setText("");
                                         resolution.getEditText().setText("");
                                         messgage.getEditText().setText("");
-                                        stageRelated.getEditText().setText("");
-                                        contextRelated.getEditText().setText("");
-                                        imageUrl.getEditText().setText("");
+                                        stage_related.getEditText().setText("");
+                                        context_related.getEditText().setText("");
+                                        image_url.getEditText().setText("");
                                         audienceStage.setSelection(0);
                                     } else {
 
