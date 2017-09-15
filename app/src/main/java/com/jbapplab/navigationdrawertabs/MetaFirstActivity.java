@@ -1,9 +1,9 @@
 package com.jbapplab.navigationdrawertabs;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -23,7 +23,7 @@ import org.json.JSONObject;
 //import butterknife.ButterKnife;
 
 
-public class RegisterActivity extends AppCompatActivity {
+public class MetaFirstActivity extends AppCompatActivity {
 
     //@Bind(R.id.registration_form)
     //EasyForm easyForm;
@@ -31,7 +31,7 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_meta_first);
 
         final EasyForm easyForm = findViewById(R.id.registration_form);
         final EasyTextInputLayout etFirstName = findViewById(R.id.etFirstName);
@@ -40,7 +40,7 @@ public class RegisterActivity extends AppCompatActivity {
         final EasyTextInputLayout etEmail = findViewById(R.id.etEmail);
         final EasyTextInputLayout etPassword = findViewById(R.id.etPassword);
         final EasyTextInputLayout etPasswordConfirm = findViewById(R.id.etPasswordConfirm);
-        final Button bRegister = findViewById(R.id.bRegister);
+        final Button bRegister = findViewById(R.id.bGoToEventsSecond);
 
 
         /**
@@ -84,11 +84,11 @@ public class RegisterActivity extends AppCompatActivity {
 
                                     if (success) {
                                         //If successful it will take them to the login page
-                                        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                                        RegisterActivity.this.startActivity(intent);
+                                        Intent intent = new Intent(MetaFirstActivity.this, LoginActivity.class);
+                                        MetaFirstActivity.this.startActivity(intent);
                                     } else {
                                         //If not successful we want to display an error and user can select to retry
-                                        AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                                        AlertDialog.Builder builder = new AlertDialog.Builder(MetaFirstActivity.this);
                                         builder.setMessage("Registration Failed: The username already exists.")
                                                 .setNegativeButton("Retry", null)
                                                 .create()
@@ -104,7 +104,7 @@ public class RegisterActivity extends AppCompatActivity {
                         Response.ErrorListener errorListener = new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
-                                AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                                AlertDialog.Builder builder = new AlertDialog.Builder(MetaFirstActivity.this);
                                 builder.setMessage("Registration Failed: There is a problem with the server connection.")
                                         .setNegativeButton("Retry", null)
                                         .create()
@@ -118,14 +118,14 @@ public class RegisterActivity extends AppCompatActivity {
                          * Finally we need to add our request to a request queue.
                          * Then we ask to get the queue from volley, because volley hold all of the requests.
                          */
-                        RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
+                        RequestQueue queue = Volley.newRequestQueue(MetaFirstActivity.this);
                         queue.add(registerRequest);
                         //Log.d("REGISTER ACTIVITY2", "Value: " + (username));
                     } else {
                     Log.e(getClass().getSimpleName(), "The last input was invalid");
                     }
                 } else {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MetaFirstActivity.this);
                     builder.setMessage("The passwords do not match, please make sure they are identical.")
                             .setNegativeButton("Retry", null)
                             .create()

@@ -9,8 +9,7 @@
     android:layout_height="match_parent"
     android:padding="12dp"
     app:submitButton="@+id/submit_button"
-    app:showErrorOn="unfocus"
-    >
+    app:showErrorOn="unfocus">
 
     <LinearLayout
         android:id="@+id/name"
@@ -18,7 +17,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <com.emmasuzuki.easyform.EasyFormEditText
+        <com.emmasuzuki.easyform.EasyTextInputLayout
             android:id="@+id/etFirstName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -27,7 +26,7 @@
             app:errorMessage="@string/error_message_empty"
             app:errorType="empty"/>
 
-        <com.emmasuzuki.easyform.EasyFormEditText
+        <com.emmasuzuki.easyform.EasyTextInputLayout
             android:id="@+id/etLastName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -37,7 +36,7 @@
             app:errorType="empty"/>
     </LinearLayout>
 
-    <com.emmasuzuki.easyform.EasyFormEditText
+    <com.emmasuzuki.easyform.EasyTextInputLayout
         android:id="@+id/etUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,7 +46,7 @@
         app:errorMessage="@string/error_message_empty"
         app:errorType="empty"/>
 
-    <com.emmasuzuki.easyform.EasyFormEditText
+    <com.emmasuzuki.easyform.EasyTextInputLayout
         android:id="@+id/etEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -58,7 +57,7 @@
         app:errorType="pattern"
         app:regexPattern="[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"/>
 
-    <com.emmasuzuki.easyform.EasyFormEditText
+    <com.emmasuzuki.easyform.EasyTextInputLayout
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -69,7 +68,7 @@
         app:errorType="pattern"
         app:regexPattern="[a-zA-Z0-9]{6,12}" />
 
-    <com.emmasuzuki.easyform.EasyFormEditText
+    <com.emmasuzuki.easyform.EasyTextInputLayout
         android:id="@+id/etPasswordConfirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -13,7 +13,7 @@
     <string name="error_message_empty">Please fill this field</string>
     <string name="error_message_email">Please input a valid email address</string>
     <string name="error_message_digit">Please input digits only</string>
-    <string name="error_message_password">Lenght must be at least 6 characters</string>
+    <string name="error_message_password">Lenght must be at least 6-12 characters. Special characters are not allowed.</string>
 
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
