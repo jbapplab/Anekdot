@@ -1,31 +1,27 @@
 package com.jbapplab.navigationdrawertabs;
+        import android.os.Bundle;
+        import android.support.v7.app.AlertDialog;
+        import android.support.v7.app.AppCompatActivity;
+        import android.support.v7.widget.Toolbar;
+        import android.util.Log;
+        import android.view.View;
+        import android.widget.ArrayAdapter;
+        import android.widget.Button;
+        import android.widget.Spinner;
+        import android.widget.Toast;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.Spinner;
-import android.widget.Toast;
+        import com.android.volley.RequestQueue;
+        import com.android.volley.Response;
+        import com.emmasuzuki.easyform.EasyForm;
+        import com.emmasuzuki.easyform.EasyFormEditText;
+        import com.emmasuzuki.easyform.EasyTextInputLayout;
+        import com.jbapplab.navigationdrawertabs.m_DataObject.StoryCRUD;
+        import com.jbapplab.navigationdrawertabs.m_MySQL.MySQLClientCRUD;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.Volley;
-import com.emmasuzuki.easyform.EasyForm;
-import com.emmasuzuki.easyform.EasyFormEditText;
-import com.emmasuzuki.easyform.EasyTextInputLayout;
-import com.jbapplab.navigationdrawertabs.m_DataObject.StoryCRUD;
-import com.jbapplab.navigationdrawertabs.m_MySQL.MySQLClientCRUD;
+        import org.json.JSONException;
+        import org.json.JSONObject;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
+        import java.util.ArrayList;
 
 
 public class MetaFirstActivity extends AppCompatActivity {
@@ -55,21 +51,22 @@ public class MetaFirstActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meta_first);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        final EasyForm easyForm = findViewById(R.id.meta_first_form);
+                                         Toolbar toolbar = findViewById(R.id.toolbar);
+                                         setSupportActionBar(toolbar);
 
-        //Reference views
+                                         final EasyForm easyForm = findViewById(R.id.meta_first_form);
+
+                                         //Reference views
         this.initialiseViews();
 
-        //This is to populate our spinners
-        populateCategories();
-        populateStages();
+                                         //This is to populate our spinners
+                                         populateCategories();
+                                         populateStages();
 
-        //Handle events
+                                         //Handle events
         this.handleClickEvents(easyForm);
-    }
+                                     }
 
      /*
      Reference views
@@ -139,84 +136,86 @@ public class MetaFirstActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                //Get values
-                String storyCategory = storyCategorySpinner.getSelectedItem().toString();
-                String storyTitle = storyTitleTxt.getEditText().getText().toString();
-                String ifOtherSpecify = ifOtherSpecifyTxt.getEditText().getText().toString();
-                String storyDescription = storyDescriptionTxt.getEditText().getText().toString();
-                String orientation = orientationTxt.getEditText().getText().toString();
-                String complicatedAction = complicatedActionTxt.getEditText().getText().toString();
-                String evaluation = evaluationTxt.getEditText().getText().toString();
-                String resolution = resolutionTxt.getEditText().getText().toString();
-                String message = messgageTxt.getEditText().getText().toString();
-                String stageRelated = stageRelatedTxt.getEditText().getText().toString();
-                String contextRelated = contextRelatedTxt.getEditText().getText().toString();
-                String imageUrl = imageUrlTxt.getEditText().getText().toString();
-                String audienceStage = audienceStageSpinner.getSelectedItem().toString();
+                        //Get values
+                        String storyCategory = storyCategorySpinner.getSelectedItem().toString();
+                        String storyTitle = storyTitleTxt.getEditText().getText().toString();
+                        String ifOtherSpecify = ifOtherSpecifyTxt.getEditText().getText().toString();
+                        String storyDescription = storyDescriptionTxt.getEditText().getText().toString();
+                        String orientation = orientationTxt.getEditText().getText().toString();
+                        String complicatedAction = complicatedActionTxt.getEditText().getText().toString();
+                        String evaluation = evaluationTxt.getEditText().getText().toString();
+                        String resolution = resolutionTxt.getEditText().getText().toString();
+                        String message = messgageTxt.getEditText().getText().toString();
+                        String stageRelated = stageRelatedTxt.getEditText().getText().toString();
+                        String contextRelated = contextRelatedTxt.getEditText().getText().toString();
+                        String imageUrl = imageUrlTxt.getEditText().getText().toString();
+                        String audienceStage = audienceStageSpinner.getSelectedItem().toString();
 
-                //TODO get from user activity
-                int authorId = 1;
-                String storyEvents = orientation + "\n" + complicatedAction + "\n" + evaluation + "\n" + resolution + "\n" + message;
-                String storyMeta = stageRelated + "\n" + contextRelated;
-                String storyFull = storyTitle + "\n" + storyDescription + "\n" + storyEvents + "\n" + storyMeta;
+                        //TODO get from user activity
+                        int authorId = 1;
+                        String storyEvents = orientation + "\n" + complicatedAction + "\n" + evaluation + "\n" + resolution + "\n" + message;
+                        String storyMeta = stageRelated + "\n" + contextRelated;
+                        String storyFull = storyTitle + "\n" + storyDescription + "\n" + storyEvents + "\n" + storyMeta;
 
-                //Client side validation
-                easyForm.validate();
+                        //Client side validation
+                        easyForm.validate();
 
-                if (easyForm.isValid()) {
-                    Toast.makeText(MetaFirstActivity.this, "All the fields are valid.", Toast.LENGTH_SHORT).show();
+                        if (easyForm.isValid()) {
+                            Toast.makeText(MetaFirstActivity.this, "All the fields are valid.", Toast.LENGTH_SHORT).show();
 
-                    //To appoint label from category selected in stages
-                    String stage= "The audience is unaware of the problem of issue you are describing; they don't have intention to change in the forseeable future (e.g. first time smokers)";
-                    switch (audienceStage){
-                        case "The audience is unaware of the problem of issue you are describing; they don't have intention to change in the forseeable future (e.g. first time smokers)":
-                            stage = "Precontemplation";
-                            break;
-                        case "The audience is aware of the problem or issue you are describing; they are seriously considering to change their behaviour in relation to it (e.g. people that have been diagnosed with respitory problems due to smoking":
-                            stage = "Contemplation";
-                            break;
-                        case "The audience is at a stage that they are intending to take action (e.g. people that know about the benefits of exercise but postpone signing up to the gym":
-                            stage = "Preparation";
-                            break;
-                        case "The audience modify their behaviours, experiences and/or environment to overcome the issue or problem. (e.g. people that buy healthy food and throw away snacks while loosing weight":
-                            stage = "Action";
-                            break;
-                        default:
-                            stage = "Precontemplation";
-                            return;
+                            //To appoint label from category selected in stages
+                            String stage= "The audience is unaware of the problem of issue you are describing; they don't have intention to change in the forseeable future (e.g. first time smokers)";
+                            switch (audienceStage){
+                                case "The audience is unaware of the problem of issue you are describing; they don't have intention to change in the forseeable future (e.g. first time smokers)":
+                                    stage = "Precontemplation";
+                                    break;
+                                case "The audience is aware of the problem or issue you are describing; they are seriously considering to change their behaviour in relation to it (e.g. people that have been diagnosed with respitory problems due to smoking":
+                                    stage = "Contemplation";
+                                    break;
+                                case "The audience is at a stage that they are intending to take action (e.g. people that know about the benefits of exercise but postpone signing up to the gym":
+                                    stage = "Preparation";
+                                    break;
+                                case "The audience modify their behaviours, experiences and/or environment to overcome the issue or problem. (e.g. people that buy healthy food and throw away snacks while loosing weight":
+                                    stage = "Action";
+                                    break;
+                                default:
+                                    stage = "Precontemplation";
+                                    return;
+
+                            }
+                            //Save data
+                            StoryCRUD storyCRUD = new StoryCRUD();
+                            storyCRUD.setStoryTitle(storyTitle);
+                            storyCRUD.setStoryCategory(storyCategory);
+                            storyCRUD.setIfOtherSpecify(ifOtherSpecify);
+                            storyCRUD.setAuthorId(authorId);
+                            storyCRUD.setStoryDescription(storyDescription);
+                            storyCRUD.setStoryEvents(storyEvents);
+                            storyCRUD.setOrientation(orientation);
+                            storyCRUD.setComplicatedAction(complicatedAction);
+                            storyCRUD.setEvaluation(evaluation);
+                            storyCRUD.setResolution(resolution);
+                            storyCRUD.setMessage(message);
+                            storyCRUD.setStoryMeta(storyMeta);
+                            storyCRUD.setStageRelated(stageRelated);;
+                            storyCRUD.setContextRelated(contextRelated);
+                            storyCRUD.setStoryFull(storyFull);
+                            storyCRUD.setImageUrl(imageUrl);
+                            storyCRUD.setAudienceStage(stage);
+
+                            new MySQLClientCRUD(MetaFirstActivity.this).add(storyCRUD, storyCategorySpinner, storyTitleTxt, ifOtherSpecifyTxt, storyDescriptionTxt, orientationTxt, complicatedActionTxt, evaluationTxt, resolutionTxt, messgageTxt, stageRelatedTxt, contextRelatedTxt, imageUrlTxt, audienceStageSpinner);
+
+
+
+
+                        } else {
+
+                            Toast.makeText(MetaFirstActivity.this, "The last input was invalid.", Toast.LENGTH_SHORT).show();
+                        }
+
 
                     }
-                    //Save data
-                    StoryCRUD storyCRUD = new StoryCRUD();
-                    storyCRUD.setStoryTitle(storyTitle);
-                    storyCRUD.setStoryCategory(storyCategory);
-                    storyCRUD.setIfOtherSpecify(ifOtherSpecify);
-                    storyCRUD.setAuthorId(authorId);
-                    storyCRUD.setStoryDescription(storyDescription);
-                    storyCRUD.setStoryEvents(storyEvents);
-                    storyCRUD.setOrientation(orientation);
-                    storyCRUD.setComplicatedAction(complicatedAction);
-                    storyCRUD.setEvaluation(evaluation);
-                    storyCRUD.setResolution(resolution);
-                    storyCRUD.setMessage(message);
-                    storyCRUD.setStoryMeta(storyMeta);
-                    storyCRUD.setStageRelated(stageRelated);;
-                    storyCRUD.setContextRelated(contextRelated);
-                    storyCRUD.setStoryFull(storyFull);
-                    storyCRUD.setImageUrl(imageUrl);
-                    storyCRUD.setAudienceStage(stage);
-
-                    new MySQLClientCRUD(MetaFirstActivity.this).add(storyCRUD, storyCategorySpinner, storyTitleTxt, ifOtherSpecifyTxt, storyDescriptionTxt, orientationTxt, complicatedActionTxt, evaluationTxt, resolutionTxt, messgageTxt, stageRelatedTxt, contextRelatedTxt, imageUrlTxt, audienceStageSpinner);
-
-
-
-
-                } else {
-                    Toast.makeText(MetaFirstActivity.this, "The last input was invalid.", Toast.LENGTH_SHORT).show();
-                }
-
+                });
 
             }
-        });
-    }
-}
+        }

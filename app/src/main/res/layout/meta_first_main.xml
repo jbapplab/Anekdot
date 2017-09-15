@@ -3,11 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".MetaFirstActivity"
-    tools:showIn="@layout/activity_meta_first"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <com.emmasuzuki.easyform.EasyForm
@@ -15,7 +14,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:submitButton="@+id/go_to_events_second_button"
-        app:showErrorOn="unfocus">
+        app:showErrorOn="unfocus"
+        android:padding="16dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".MetaFirstActivity"
+        tools:showIn="@layout/activity_meta_first"
+        >
 
         <Spinner
             android:id="@+id/categorySpinner"
@@ -141,12 +145,6 @@
             app:errorMessage="@string/error_message_password"
             app:errorType="pattern"
             app:regexPattern="[a-zA-Z0-9]{6,12}" />
-
-        <Spinner
-            android:id="@+id/stageSpinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/imageUrl"/>
 
         <Button
             android:id="@+id/addButton"
