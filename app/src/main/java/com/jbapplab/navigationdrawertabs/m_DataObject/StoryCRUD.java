@@ -8,7 +8,7 @@ public class StoryCRUD {
     //Instance fields
     private int storyId;
     private String storyTitle;
-    private int storyCategory;
+    private String storyCategory;
     private String ifOtherSpecify;
     private int authorId;
     private String storyDescription;
@@ -42,11 +42,11 @@ public class StoryCRUD {
         this.storyTitle = storyTitle;
     }
 
-    public int getStoryCategory() {
+    public String getStoryCategory() {
         return storyCategory;
     }
 
-    public void setStoryCategory(int storyCategory) {
+    public void setStoryCategory(String storyCategory) {
         this.storyCategory = storyCategory;
     }
 
