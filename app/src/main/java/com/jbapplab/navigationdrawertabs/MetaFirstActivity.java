@@ -34,9 +34,10 @@ public class MetaFirstActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_meta_first);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setContentView(R.layout.meta_first_main);
+
+        //Toolbar toolbar = findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
         final EasyForm easyForm = findViewById(R.id.meta_first_form);
 
@@ -99,7 +100,7 @@ public class MetaFirstActivity extends AppCompatActivity {
 
     private void populateStages()
     {
-        ArrayAdapter<String> stageAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item);
+        ArrayAdapter<String> stageAdapter = new ArrayAdapter<String>(this, R.layout.multiline_spinner);
 
         stageAdapter.add("The audience is unaware of the problem of issue you are describing; they don't have intention to change in the forseeable future (e.g. first time smokers)");
         stageAdapter.add("The audience is aware of the problem or issue you are describing; they are seriously considering to change their behaviour in relation to it (e.g. people that have been diagnosed with respitory problems due to smoking");

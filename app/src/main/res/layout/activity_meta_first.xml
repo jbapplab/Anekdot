@@ -22,5 +22,4 @@
     </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/meta_first_main"/>
-
 </android.support.design.widget.CoordinatorLayout>
