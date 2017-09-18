@@ -150,7 +150,7 @@ public class MySQLClientCRUD {
 
     //Retrieve/Select/Refresh
 
-    public void retrieve(final RecyclerView recyclerView){
+    public void retrieve(final RecyclerView recyclerView, final SwipeRefreshLayout swipeRefreshLayout){
         final ArrayList<StoryCRUD> stories = new ArrayList<>();
 
         AndroidNetworking.get(DATA_RETRIEVE_URL)
@@ -162,6 +162,7 @@ public class MySQLClientCRUD {
                         JSONObject jsonObject;
                         StoryCRUD storyCRUD;
                         try {
+                            //for (int i=0;i<response.length();i++){
                             for (int i=response.length()-1;i>-1;i--){
                                 jsonObject = response.getJSONObject(i);
 
@@ -211,6 +212,9 @@ public class MySQLClientCRUD {
                             customAdapterCRUD = new CustomAdapterCRUD(context, stories);
                             recyclerView.setAdapter(customAdapterCRUD);
 
+                            //stop refreshing
+                            swipeRefreshLayout.setRefreshing(false);
+
 
                         }catch (JSONException e){
 
@@ -227,6 +231,9 @@ public class MySQLClientCRUD {
                         Toast.makeText(context, "Unsuccessful: Error is - "+anError.getMessage(), Toast.LENGTH_LONG).show();
 
                     }
+
+
                 });
     }
+
 }

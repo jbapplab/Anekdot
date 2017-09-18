@@ -34,12 +34,16 @@ public class RetrieveStoriesCRUDActivity extends AppCompatActivity {
         final SwipeRefreshLayout swipeRefreshLayout = findViewById(R.id.swipeLayoutRetrieveStoriesCRUD);
 
         //Retrieve
-        new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView);
+        new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout);
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView);
+
+                if(!swipeRefreshLayout.isRefreshing()){
+                    swipeRefreshLayout.setRefreshing(true);
+                }
+                new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout);
             }
         });
     }
