@@ -23,6 +23,7 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".UserAreaActivity" />
         <activity android:name=".m_StoryDetailActivity.StoryDetailActivity" />
+        <activity android:name=".m_StoryDetailActivity.StoryDetailActivityCRUD" />
         <activity android:name=".SelectStoriesActivity" />
         <activity android:name=".SelectSavedTypeActivity" />
         <activity android:name=".SelectCategoryActivity" />

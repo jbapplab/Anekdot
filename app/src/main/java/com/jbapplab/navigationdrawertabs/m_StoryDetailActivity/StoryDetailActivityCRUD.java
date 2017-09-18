@@ -29,6 +29,7 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
         retrieveIfOtherSpecifyDetail = findViewById(R.id.retrieveIfOtherSpecifyDetail);
         retrieveAuthorIdDetail = findViewById(R.id.retrieveAuthorIdDetail);
         retrieveStoryDescriptionDetail = findViewById(R.id.retrieveStoryDescriptionDetail);
+        retrieveStoryEventsDetail = findViewById(R.id.retrieveStoryEventsDetail);
         retrieveOrientationDetail = findViewById(R.id.retrieveOrientationDetail);
         retrieveComplicatedActionDetail = findViewById(R.id.retrieveComplicatedActionDetail);
         retrieveEvaluationDetail = findViewById(R.id.retrieveEvaluationDetail);
@@ -36,6 +37,7 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
         retrieveMessageDetail = findViewById(R.id.retrieveMessageDetail);
         retrieveStoryMetaDetail = findViewById(R.id.retrieveStoryMetaDetail);
         retrieveContextRelatedDetail = findViewById(R.id.retrieveContextRelatedDetail);
+        retrieveStageRelatedDetail = findViewById(R.id.retrieveStageRelatedDetail);
         retrieveStoryFullDetail = findViewById(R.id.retrieveStoryFullDetail);
         retrieveAudienceStageDetail = findViewById(R.id.retrieveAudienceStageDetail);
         retrieveStoryImageDetail = findViewById(R.id.retrieveStoryImageDetail);

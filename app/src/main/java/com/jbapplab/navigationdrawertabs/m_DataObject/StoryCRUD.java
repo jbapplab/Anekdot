@@ -170,7 +170,7 @@ public class StoryCRUD {
         this.audienceStage = audienceStage;
     }
 
-    //To String - This means that if we cast the object to string we will just get the string value of the title
+    //To String - This means that i
     @Override
     public String toString(){
         return storyTitle;

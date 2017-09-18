@@ -48,7 +48,7 @@ class DBadapter{
 		
 		if($con != null){
 			$retrieved=mysqli_query($con,constants::$SQL_SELECT_ALL);
-			if(retrieved){
+			if($retrieved){
 				while($row=mysqli_fetch_array($retrieved)){
 					
 					//echo $row["story_title"]," \t | ",$row["description"],"</br>"

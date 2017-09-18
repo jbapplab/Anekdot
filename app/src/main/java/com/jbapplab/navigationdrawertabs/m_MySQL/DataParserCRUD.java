@@ -17,6 +17,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import static java.lang.Integer.parseInt;
+
 /**
  * Created by JohnB on 12/09/2017.
  */
@@ -63,15 +65,15 @@ public class DataParserCRUD extends AsyncTask<Void, Void, Boolean> {
             stories.clear();
             StoryCRUD storyCRUD;
 
-            //for (int i=0;i<jsonArray.length();i++){
-            for (int i=jsonArray.length()-1;i>-1;i--){
+            for (int i=0;i<jsonArray.length();i++){
+            //for (int i=jsonArray.length()-1;i>-1;i--){
                 jsonObject = jsonArray.getJSONObject(i);
 
-                int storyId = jsonObject.getInt("story_id");
+                int storyId = (int) parseInt(jsonObject.getString("story_id"));
                 String storyTitle = jsonObject.getString("story_title");
                 String storyCategory = jsonObject.getString("story_category");
                 String ifOtherSpecify = jsonObject.getString("if_other_specify");
-                int authorId = jsonObject.getInt("author_id");
+                int authorId = (int) parseInt(jsonObject.getString("author_id"));
                 String storyDescription = jsonObject.getString("story_description");
                 String storyEvents = jsonObject.getString("story_events");
                 String orientation = jsonObject.getString("orientation");
