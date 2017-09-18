@@ -22,6 +22,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import static java.lang.Integer.parseInt;
+
 /**
  * Created by JohnB on 15/09/2017.
  */
@@ -34,8 +36,7 @@ public class MySQLClientCRUD {
 
     //Instance fields
     private final Context context;
-    RecyclerView recyclerView;
-    SwipeRefreshLayout swipeRefreshLayout;
+    private CustomAdapterCRUD customAdapterCRUD;
 
     public MySQLClientCRUD(Context context){
         this.context = context;
@@ -146,10 +147,10 @@ public class MySQLClientCRUD {
 
     }
 
-    /*
-    * Retrieve/Select/Refresh
-    */
-    public void retrieve(final String storyTitle){
+
+    //Retrieve/Select/Refresh
+
+    public void retrieve(final RecyclerView recyclerView){
         final ArrayList<StoryCRUD> stories = new ArrayList<>();
 
         AndroidNetworking.get(DATA_RETRIEVE_URL)
@@ -164,11 +165,11 @@ public class MySQLClientCRUD {
                             for (int i=response.length()-1;i>-1;i--){
                                 jsonObject = response.getJSONObject(i);
 
-                                int storyId = jsonObject.getInt("story_id");
+                                int storyId = (int) parseInt(jsonObject.getString("story_id"));
                                 String storyTitle = jsonObject.getString("story_title");
                                 String storyCategory = jsonObject.getString("story_category");
                                 String ifOtherSpecify = jsonObject.getString("if_other_specify");
-                                int authorId = jsonObject.getInt("author_id");
+                                int authorId = (int) parseInt(jsonObject.getString("author_id"));
                                 String storyDescription = jsonObject.getString("story_description");
                                 String storyEvents = jsonObject.getString("story_events");
                                 String orientation = jsonObject.getString("orientation");
@@ -206,6 +207,10 @@ public class MySQLClientCRUD {
                                 stories.add(storyCRUD);
                             }
 
+                            //SET TO RECYCLERVIEW
+                            customAdapterCRUD = new CustomAdapterCRUD(context, stories);
+                            recyclerView.setAdapter(customAdapterCRUD);
+
 
                         }catch (JSONException e){
 
@@ -223,7 +228,5 @@ public class MySQLClientCRUD {
 
                     }
                 });
-
     }
-
 }

@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RetrieveStoriesActivity">
+        <activity android:name=".RetrieveStoriesCRUDActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,7 +28,8 @@
         <activity android:name=".SelectSavedTypeActivity" />
         <activity android:name=".SelectCategoryActivity" />
         <activity android:name=".SelectCreateTypeActivity" />
-        <activity android:name=".MetaFirstActivity"></activity>
+        <activity android:name=".MetaFirstActivity" />
+        <activity android:name=".RetrieveStoriesActivity"></activity>
     </application>
 
 </manifest>

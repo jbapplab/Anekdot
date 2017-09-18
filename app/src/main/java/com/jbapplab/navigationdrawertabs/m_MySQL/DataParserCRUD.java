@@ -53,7 +53,7 @@ public class DataParserCRUD extends AsyncTask<Void, Void, Boolean> {
             //BIND
             recyclerView.setAdapter(new CustomAdapterCRUD(context, stories));
         } else {
-            Toast.makeText(context, "Unable to parse. WOO", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Unable to parse.", Toast.LENGTH_SHORT).show();
         }
     }
 
