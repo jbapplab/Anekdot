@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp"
+    card_view:cardCornerRadius="5dp"
+    card_view:cardElevation="5dp">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/retrieveStoryImage"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/placeholder"/>
+
+        <TextView
+            android:id="@+id/retrieveStoryId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="id"
+            android:padding="10dp"
+            android:textColor="@color/colorAccent"
+            android:layout_alignParentLeft="true"
+            />
+
+        <TextView
+            android:id="@+id/retrieveStoryTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="first name"
+            android:padding="10dp"
+            android:textColor="@color/colorAccent"
+            android:layout_alignParentLeft="true"
+            />
+
+        <TextView
+            android:id="@+id/retrieveStoryCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="last name"
+            android:padding="10dp"
+            android:textColor="@color/colorAccent"
+            android:layout_alignParentLeft="true"
+            />
+
+        <TextView
+            android:id="@+id/retrieveIfOtherSpecify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="username"
+            android:padding="10dp"
+            android:textColor="@color/colorAccent"
+            android:layout_alignParentLeft="true"
+            />
+
+        <TextView
+            android:id="@+id/retrieveAuthorId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="password"
+            android:padding="10dp"
+            android:textColor="@color/colorAccent"
+            android:layout_alignParentLeft="true"
+            />
+
+        <TextView
+            android:id="@+id/retrieveStoryDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="email"
+            android:padding="10dp"
+            android:textColor="@color/colorAccent"
+            android:layout_alignParentLeft="true"
+            />
+
+        <TextView
+            android:id="@+id/retrieveStoryEvents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="email"
+            android:padding="10dp"
+            android:textColor="@color/colorAccent"
+            android:layout_alignParentLeft="true"
+            />
+
+        <TextView
+            android:id="@+id/retrieveOrientation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="email"
+            android:padding="10dp"
+            android:textColor="@color/colorAccent"
+            android:layout_alignParentLeft="true"
+            />
+
+        <TextView
+            android:id="@+id/retrieveComplicatedAction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="email"
+            android:padding="10dp"
+            android:textColor="@color/colorAccent"
+            android:layout_alignParentLeft="true"
+            />
+
+        <TextView
+            android:id="@+id/retrieveEvaluation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="email"
+            android:padding="10dp"
+            android:textColor="@color/colorAccent"
+            android:layout_alignParentLeft="true"
+            />
+
+        <TextView
+            android:id="@+id/retrieveResolution"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="email"
+            android:padding="10dp"
+            android:textColor="@color/colorAccent"
+            android:layout_alignParentLeft="true"
+            />
+
+        <TextView
+            android:id="@+id/retrieveMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="email"
+            android:padding="10dp"
+            android:textColor="@color/colorAccent"
+            android:layout_alignParentLeft="true"
+            />
+
+        <TextView
+            android:id="@+id/retrieveStoryMeta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="email"
+            android:padding="10dp"
+            android:textColor="@color/colorAccent"
+            android:layout_alignParentLeft="true"
+            />
+
+        <TextView
+            android:id="@+id/retrieveStageRelated"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="email"
+            android:padding="10dp"
+            android:textColor="@color/colorAccent"
+            android:layout_alignParentLeft="true"
+            />
+
+        <TextView
+            android:id="@+id/retrieveContextRelated"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="email"
+            android:padding="10dp"
+            android:textColor="@color/colorAccent"
+            android:layout_alignParentLeft="true"
+            />
+
+        <TextView
+            android:id="@+id/retrieveStoryFull"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="email"
+            android:padding="10dp"
+            android:textColor="@color/colorAccent"
+            android:layout_alignParentLeft="true"
+            />
+
+        <TextView
+            android:id="@+id/retrieveAudienceStage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="email"
+            android:padding="10dp"
+            android:textColor="@color/colorAccent"
+            android:layout_alignParentLeft="true"
+            />
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

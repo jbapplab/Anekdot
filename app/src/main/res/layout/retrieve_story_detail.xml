@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="@layout/story_detail"
+    tools:context=".m_StoryDetailActivity.StoryDetailActivityCRUD"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        card_view:cardElevation="5dp"
+        card_view:cardCornerRadius="10dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="1">
+
+            <ImageView
+                android:id="@+id/retrieveStoryImageDetail"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:padding="5dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/placeholder"
+                android:contentDescription="@string/placeholder_image" />
+
+            <TextView
+                android:id="@+id/retrieveStoryIdDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/id_detail"
+                android:padding="5dp"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/retrieveStoryTitleDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/first_name_detail"
+                android:padding="5dp"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/retrieveStoryCategoryDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/last_name_detail"
+                android:padding="5dp"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/retrieveIfOtherSpecifyDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/username_detail"
+                android:padding="5dp"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/retrieveAuthorIdDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/password_detail"
+                android:padding="5dp"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/retrieveStoryDescriptionDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/email_detail"
+                android:padding="5dp"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/retrieveStoryEventsDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/email_detail"
+                android:padding="5dp"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/retrieveOrientationDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/email_detail"
+                android:padding="5dp"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/retrieveComplicatedActionDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/email_detail"
+                android:padding="5dp"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/retrieveEvaluationDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/email_detail"
+                android:padding="5dp"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/retrieveResolutionDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/email_detail"
+                android:padding="5dp"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/retrieveMessageDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/email_detail"
+                android:padding="5dp"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/retrieveStoryMetaDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/email_detail"
+                android:padding="5dp"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/retrieveStageRelatedDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/email_detail"
+                android:padding="5dp"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/retrieveContextRelatedDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/email_detail"
+                android:padding="5dp"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/retrieveStoryFullDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/email_detail"
+                android:padding="5dp"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/retrieveAudienceStageDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/email_detail"
+                android:padding="5dp"
+                android:textColor="@color/colorAccent" />
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

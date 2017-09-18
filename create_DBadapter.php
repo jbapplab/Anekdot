@@ -42,7 +42,31 @@ class DBadapter{
 		mysqli_close($con);
 	}
 	
-	//public function select()
+	//1. SELECT FROM DATABASE
+	public function select(){
+		$con=$this->connect();
+		
+		if($con != null){
+			$retrieved=mysqli_query($con,constants::$SQL_SELECT_ALL);
+			if(retrieved){
+				while($row=mysqli_fetch_array($retrieved)){
+					
+					//echo $row["story_title"]," \t | ",$row["description"],"</br>"
+					$stories[]=$row;
+				}
+				print(json_encode($stories));
+			} else {
+				print(json_encode(array("PHP EXCEPTION: Can't retrieve data from the MySQL database.")));
+			}
+		} else {
+			print(json_encode(array("PHP EXCEPTION: Can't connect to MySQL Database. Null connection.")));
+		}
+		
+		mysqli_close($con);
+	}
+	
+	
+
 	
 	//public function update()
 	

@@ -1,18 +1,26 @@
 package com.jbapplab.navigationdrawertabs.m_MySQL;
 
 import android.content.Context;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.emmasuzuki.easyform.EasyTextInputLayout;
 import com.jbapplab.navigationdrawertabs.m_DataObject.StoryCRUD;
+import com.jbapplab.navigationdrawertabs.m_UI.CustomAdapterCRUD;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 /**
  * Created by JohnB on 15/09/2017.
@@ -22,15 +30,20 @@ public class MySQLClientCRUD {
 
     //Save/Retrieve URLS
     private static final String DATA_INSERT_URL = "http://applabjb.000webhostapp.com/create_CRUD.php";
+    private static final String DATA_RETRIEVE_URL = "http://applabjb.000webhostapp.com/create_index.php";
 
     //Instance fields
     private final Context context;
+    RecyclerView recyclerView;
+    SwipeRefreshLayout swipeRefreshLayout;
 
     public MySQLClientCRUD(Context context){
         this.context = context;
     }
 
-    //Save/Insert //The ... is params, like an array we can pass as many view objects as we like
+    /*
+    * Save/Insert //The ... is params, like an array we can pass as many view objects as we like
+    */
     public void add(StoryCRUD storyCRUD, final View...inputViews) {
 
         if(storyCRUD==null){
@@ -130,6 +143,86 @@ public class MySQLClientCRUD {
                     });
 
         }
+
+    }
+
+    /*
+    * Retrieve/Select/Refresh
+    */
+    public void retrieve(final String storyTitle){
+        final ArrayList<StoryCRUD> stories = new ArrayList<>();
+
+        AndroidNetworking.get(DATA_RETRIEVE_URL)
+                .setPriority(Priority.HIGH)
+                .build()
+                .getAsJSONArray(new JSONArrayRequestListener() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        JSONObject jsonObject;
+                        StoryCRUD storyCRUD;
+                        try {
+                            for (int i=response.length()-1;i>-1;i--){
+                                jsonObject = response.getJSONObject(i);
+
+                                int storyId = jsonObject.getInt("story_id");
+                                String storyTitle = jsonObject.getString("story_title");
+                                String storyCategory = jsonObject.getString("story_category");
+                                String ifOtherSpecify = jsonObject.getString("if_other_specify");
+                                int authorId = jsonObject.getInt("author_id");
+                                String storyDescription = jsonObject.getString("story_description");
+                                String storyEvents = jsonObject.getString("story_events");
+                                String orientation = jsonObject.getString("orientation");
+                                String complicatedAction = jsonObject.getString("complicated_action");
+                                String evaluation = jsonObject.getString("evaluation");
+                                String resolution = jsonObject.getString("resolution");
+                                String message = jsonObject.getString("message");
+                                String storyMeta = jsonObject.getString("story_meta");
+                                String stageRelated = jsonObject.getString("stage_related");
+                                String contextRelated = jsonObject.getString("context_related");
+                                String storyFull = jsonObject.getString("story_full");
+                                String imageUrl = jsonObject.getString("image_url");
+                                String audienceStage = jsonObject.getString("audience_stage");
+
+                                storyCRUD = new StoryCRUD();
+                                storyCRUD.setStoryId(storyId);
+                                storyCRUD.setStoryTitle(storyTitle);
+                                storyCRUD.setStoryCategory(storyCategory);
+                                storyCRUD.setIfOtherSpecify(ifOtherSpecify);
+                                storyCRUD.setAuthorId(authorId);
+                                storyCRUD.setStoryDescription(storyDescription);
+                                storyCRUD.setStoryEvents(storyEvents);
+                                storyCRUD.setOrientation(orientation);
+                                storyCRUD.setComplicatedAction(complicatedAction);
+                                storyCRUD.setEvaluation(evaluation);
+                                storyCRUD.setResolution(resolution);
+                                storyCRUD.setMessage(message);
+                                storyCRUD.setStoryMeta(storyMeta);
+                                storyCRUD.setStageRelated(stageRelated);
+                                storyCRUD.setContextRelated(contextRelated);
+                                storyCRUD.setStoryFull(storyFull);
+                                storyCRUD.setImageUrl(imageUrl);
+                                storyCRUD.setAudienceStage(audienceStage);
+
+                                stories.add(storyCRUD);
+                            }
+
+
+                        }catch (JSONException e){
+
+                            Toast.makeText(context, "Good server response but Anecdot can't parse the data (JSON) it received.", Toast.LENGTH_LONG).show();
+
+                        }
+
+                    }
+
+                    //ERROR
+                    @Override
+                    public void onError(ANError anError) {
+                        anError.printStackTrace();
+                        Toast.makeText(context, "Unsuccessful: Error is - "+anError.getMessage(), Toast.LENGTH_LONG).show();
+
+                    }
+                });
 
     }
 

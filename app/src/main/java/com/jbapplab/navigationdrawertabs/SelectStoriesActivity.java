@@ -1,16 +1,16 @@
 package com.jbapplab.navigationdrawertabs;
 
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+        import android.support.v4.widget.SwipeRefreshLayout;
+        import android.support.v7.app.AppCompatActivity;
+        import android.os.Bundle;
+        import android.support.v7.widget.LinearLayoutManager;
+        import android.support.v7.widget.RecyclerView;
+        import android.support.v7.widget.Toolbar;
 
-import com.jbapplab.navigationdrawertabs.m_MySQL.Downloader;
-import com.jbapplab.navigationdrawertabs.m_UI.CustomAdapter;
+        import com.jbapplab.navigationdrawertabs.m_MySQL.Downloader;
+        import com.jbapplab.navigationdrawertabs.m_UI.CustomAdapter;
 
-import java.util.ArrayList;
+        import java.util.ArrayList;
 
 
 public class SelectStoriesActivity extends AppCompatActivity {
