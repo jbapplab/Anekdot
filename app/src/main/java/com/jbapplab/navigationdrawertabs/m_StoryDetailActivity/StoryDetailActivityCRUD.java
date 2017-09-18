@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,6 +15,11 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
 
     TextView retrieveStoryIdDetail, retrieveStoryTitleDetail, retrieveStoryCategoryDetail, retrieveIfOtherSpecifyDetail, retrieveAuthorIdDetail, retrieveStoryDescriptionDetail, retrieveStoryEventsDetail, retrieveOrientationDetail, retrieveComplicatedActionDetail, retrieveEvaluationDetail, retrieveResolutionDetail, retrieveMessageDetail, retrieveStoryMetaDetail, retrieveStageRelatedDetail, retrieveContextRelatedDetail, retrieveStoryFullDetail, retrieveAudienceStageDetail;
     ImageView retrieveStoryImageDetail;
+
+    Button buttonSave, buttonUpdate, buttonDelete;
+
+    //TODO GET IT FROM USER ACTIVITY
+    String userId = "1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +47,11 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
         retrieveStoryFullDetail = findViewById(R.id.retrieveStoryFullDetail);
         retrieveAudienceStageDetail = findViewById(R.id.retrieveAudienceStageDetail);
         retrieveStoryImageDetail = findViewById(R.id.retrieveStoryImageDetail);
+
+        buttonUpdate = findViewById(R.id.buttonUpdate);
+        buttonDelete = findViewById(R.id.buttonDelete);
+        buttonSave = findViewById(R.id.buttonSave);
+
 
         //RECEIVE
         Intent intent = this.getIntent();
@@ -82,5 +93,19 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
         retrieveStoryFullDetail.setText(storyFull);
         retrieveAudienceStageDetail.setText(audienceStage);
         PicassoClient.downloadImage(this, imageUrl, retrieveStoryImageDetail);
+
+        if(authorId.equals(userId)){
+            buttonUpdate.setEnabled(true);
+            buttonDelete.setEnabled(true);
+        } else {
+            buttonSave.setEnabled(true);
+        }
+
+        //TODO HANDLE CLICK EVENTS
+
     }
+
+
+
+
 }

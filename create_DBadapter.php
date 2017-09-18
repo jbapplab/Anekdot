@@ -65,12 +65,56 @@ class DBadapter{
 		mysqli_close($con);
 	}
 	
+	//1. UPDATE IN DATABASE
+	public function update($id, $s){
+		$con=$this->connect();
+		
+		if($con != null){
+			$sql="UPDATE story SET story_title='$s[0]', story_category='$s[1]', if_other_specify='$s[2]', author_id='$s[3]', story_description='$s[4]', story_events='$s[5]', orientation='$s[6]', complicated_action='$s[7]', evaluation='$s[8]', resolution='$s[9]', message='$s[10]', story_meta='$s[11]', stage_related='$s[12]', context_related='$s[13]', story_full='$s[14]', image_url='$s[15]', audience_stage='$s[16]' WHERE story_id='$id'";
+		
+			try
+            {
+                $result=mysqli_query($con,$sql);
+                if($result){
+                    print(json_encode(array("Successfully Updated")));
+                } else {
+                    print(json_encode(array("Update action failed")));
+                }
+            } catch (Exception $e){
+                 print(json_encode(array("PHP EXCEPTION : Can't update entry in MySQL Database. "+$e->getMessage())));
+            }
+        } else {
+            print(json_encode(array("PHP EXCEPTION : Can't connect to MySQL Database. Null connection.")));
+        }
+		
+        mysqli_close($con);
+	}
 	
-
-	
-	//public function update()
-	
-	//public function delete()
+	//1. DELETE FROM DATABASE
+	public function delete($id){
+		$con=$this->connect();
+		
+		if($con != null){
+			
+			$sql="DELETE FROM story WHERE story_id='$id'";
+		}
+		
+		try{
+            $result=mysqli_query($con,$sql);
+                if($result) {
+                    print(json_encode(array("Successfully Deleted")));
+                } else {
+                    print(json_encode(array("Delete action failed.")));
+                }
+            }catch (Exception $e){
+                print(json_encode(array("PHP EXCEPTION : Can't delete entry in MySQL Database. "+$e->getMessage())));
+            }
+        } else {
+            print(json_encode(array("PHP EXCEPTION : Can't connect to MySQL Database. Null connection.")));
+        }
+        mysqli_close($con);
+		
+	}
 	
 }
 
