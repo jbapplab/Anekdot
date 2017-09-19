@@ -49,7 +49,7 @@ if($_POST['action']=="save"){
 	$image_url = $_POST['image_url'];
 	$audience_stage = $_POST['audience_stage'];
 	
-    $dbAdapter->update($id,(array($story_title,$story_category,$if_other_specify,$author_id,$story_description,$story_events,$orientation,$complicated_action,$evaluation,$resolution,$message,$story_meta,$stage_related,$context_related,$story_full,$image_url,$audience_stage));
+    $dbAdapter->update($id,(array($story_title,$story_category,$if_other_specify,$author_id,$story_description,$story_events,$orientation,$complicated_action,$evaluation,$resolution,$message,$story_meta,$stage_related,$context_related,$story_full,$image_url,$audience_stage)));
 	
 }else if ($_POST['action']=="delete"){
 	
@@ -59,6 +59,14 @@ if($_POST['action']=="save"){
         
     $dbAdapter->delete($id);
 	
+} else if ($_POST['action']=="favourite"){
+	
+	$dbAdapter = new DBadapter();
+	
+	$storyId = $_POST['story_id'];
+	$userId = $_POST['user_id'];
+	
+	$dbAdapter->favourite($storyId, $userId);
 }
 
 

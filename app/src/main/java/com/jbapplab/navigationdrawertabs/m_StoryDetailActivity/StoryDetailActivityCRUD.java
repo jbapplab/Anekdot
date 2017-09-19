@@ -2,14 +2,30 @@ package com.jbapplab.navigationdrawertabs.m_StoryDetailActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.Volley;
+import com.jbapplab.navigationdrawertabs.LoginActivity;
+import com.jbapplab.navigationdrawertabs.LoginRequest;
+import com.jbapplab.navigationdrawertabs.MetaFirstActivity;
 import com.jbapplab.navigationdrawertabs.R;
+import com.jbapplab.navigationdrawertabs.RetrieveStoriesCRUDActivity;
+import com.jbapplab.navigationdrawertabs.UserAreaActivity;
+import com.jbapplab.navigationdrawertabs.m_MySQL.MySQLClientCRUD;
 import com.jbapplab.navigationdrawertabs.m_UI.PicassoClient;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class StoryDetailActivityCRUD extends AppCompatActivity {
 
@@ -55,7 +71,7 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
 
         //RECEIVE
         Intent intent = this.getIntent();
-        String storyId = intent.getExtras().getString("STORY_ID_KEY");
+        final String storyId = intent.getExtras().getString("STORY_ID_KEY");
         String storyTitle = intent.getExtras().getString("STORY_TITLE_KEY");
         String storyCategory = intent.getExtras().getString("STORY_CATEGORY_KEY");
         String ifOtherSpecify = intent.getExtras().getString("IF_OTHER_SPECIFY_KEY");
@@ -103,9 +119,17 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
 
         //TODO HANDLE CLICK EVENTS
 
+
+        //We create a listener that will do something when the register link is clicked
+        buttonSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                new MySQLClientCRUD(StoryDetailActivityCRUD.this).favourite(Integer.parseInt(storyId), Integer.parseInt(userId));
+
+                //Toast.makeText(StoryDetailActivityCRUD.this, "Story saved in favourites second?.", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
-
-
-
 
 }

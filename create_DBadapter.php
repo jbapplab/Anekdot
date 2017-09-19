@@ -97,7 +97,6 @@ class DBadapter{
 		if($con != null){
 			
 			$sql="DELETE FROM story WHERE story_id='$id'";
-		}
 		
 		try{
             $result=mysqli_query($con,$sql);
@@ -114,6 +113,48 @@ class DBadapter{
         }
         mysqli_close($con);
 		
+	}
+	
+	//1. SAVE FAVOURITE INTO DATABASE
+	public function favourite($storyId, $userId){
+		//INSERT
+		$con = $this->connect();
+		
+		$statementExists = mysqli_prepare($con, "SELECT * FROM saved_story WHERE story_id = ? AND user_id = ?");
+		mysqli_stmt_bind_param($statementExists, "ss", $storyId, $userId);
+		mysqli_stmt_execute($statementExists);
+		mysqli_stmt_store_result($statementExists);
+		$count = mysqli_stmt_num_rows($statementExists);
+		mysqli_stmt_close($statementExists); 
+        if ($count < 1){
+            $notexist = true; 
+        }else {
+            $notexist = false; 
+        }
+		
+		if ($con != null){
+			If ($notexist == true){
+				$sql = "INSERT INTO saved_story(story_id, user_id) VALUES('$storyId','$userId')";
+				
+				try{
+					$result = mysqli_query($con,$sql);
+					
+					if($result){
+						print(json_encode(array("Success")));
+					} else {
+						print(json_encode(array("Unsuccessful")));
+					}
+				} catch (Exception $e){
+					print(json_encode(array("PHP EXCEPTION: Can't save to MySQL Database. "+$e->getMessage())));
+				}
+			} else {
+				print(json_encode(array("Story is already saved in your favourites.")));
+			}
+		} else {
+			print(json_encode(array("PHP EXCEPTION: Can't connect to MySQL Database. Null connection.")));
+		}
+		
+		mysqli_close($con);
 	}
 	
 }
