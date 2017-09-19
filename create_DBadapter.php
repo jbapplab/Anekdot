@@ -76,7 +76,7 @@ class DBadapter{
             {
                 $result=mysqli_query($con,$sql);
                 if($result){
-                    print(json_encode(array("Successfully Updated")));
+                    print(json_encode(array("Success")));
                 } else {
                     print(json_encode(array("Update action failed")));
                 }
@@ -101,7 +101,7 @@ class DBadapter{
 		try{
             $result=mysqli_query($con,$sql);
                 if($result) {
-                    print(json_encode(array("Successfully Deleted")));
+                    print(json_encode(array("Success")));
                 } else {
                     print(json_encode(array("Delete action failed.")));
                 }

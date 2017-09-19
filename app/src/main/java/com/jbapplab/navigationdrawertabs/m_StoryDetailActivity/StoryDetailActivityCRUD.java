@@ -1,5 +1,6 @@
 package com.jbapplab.navigationdrawertabs.m_StoryDetailActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -17,6 +18,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.jbapplab.navigationdrawertabs.LoginActivity;
 import com.jbapplab.navigationdrawertabs.LoginRequest;
+import com.jbapplab.navigationdrawertabs.MainActivity;
 import com.jbapplab.navigationdrawertabs.MetaFirstActivity;
 import com.jbapplab.navigationdrawertabs.R;
 import com.jbapplab.navigationdrawertabs.RetrieveStoriesCRUDActivity;
@@ -119,8 +121,6 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
 
         //TODO HANDLE CLICK EVENTS
 
-
-        //We create a listener that will do something when the register link is clicked
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -128,6 +128,24 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
                 new MySQLClientCRUD(StoryDetailActivityCRUD.this).favourite(Integer.parseInt(storyId), Integer.parseInt(userId));
 
                 //Toast.makeText(StoryDetailActivityCRUD.this, "Story saved in favourites second?.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                new AlertDialog.Builder(StoryDetailActivityCRUD.this)
+                        .setTitle("Delete your story?")
+                        .setMessage("Are you sure you want to delete your story permanently? \n" +
+                                "Other users will not be able to access it any more!")
+                        .setNegativeButton(android.R.string.no, null)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                new MySQLClientCRUD(StoryDetailActivityCRUD.this).delete(Integer.parseInt(storyId));
+                            }
+                        }).create().show();
             }
         });
     }

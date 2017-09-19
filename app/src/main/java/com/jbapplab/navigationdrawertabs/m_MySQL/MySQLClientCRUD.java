@@ -297,4 +297,61 @@ public class MySQLClientCRUD {
 
     }
 
+    /*
+    * Save/Insert to favourites //The ... is params, like an array we can pass as many view objects as we like
+    */
+    public void delete(int storyId) {
+
+        if(storyId==0){
+            Toast.makeText(context, "No valid story to delete.", Toast.LENGTH_SHORT).show();
+        } else {
+            AndroidNetworking.post(DATA_INSERT_URL)
+                    .addBodyParameter("action","delete")
+                    .addBodyParameter("story_id", String.valueOf(storyId))
+                    .setTag("TAG_ADD")
+                    .build()
+                    .getAsJSONArray(new JSONArrayRequestListener() {
+                        @Override
+                        public void onResponse(JSONArray response) {
+
+                            if(response != null){
+                                try {
+
+                                    //Show response from server
+                                    String responseString = response.get(0).toString();
+                                    Toast.makeText(context, "Server response: " + responseString, Toast.LENGTH_SHORT).show();
+
+                                    if(responseString.equalsIgnoreCase("Success")){
+
+                                        Toast.makeText(context, "Your story has been deleted", Toast.LENGTH_SHORT).show();
+
+                                    } else {
+
+                                        Toast.makeText(context, "Server transaction was not successful.", Toast.LENGTH_SHORT).show();
+
+                                    }
+
+                                } catch (JSONException e){
+
+                                    e.printStackTrace();
+                                    Toast.makeText(context, "Server responded but Anekdot could not parse the data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+
+                                }
+                            }
+
+                        }
+
+                        //Error
+                        @Override
+                        public void onError(ANError anError) {
+
+                            Toast.makeText(context, "Unsuccessful connection to the server: Error - " + anError.getMessage(),Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+
+        }
+
+    }
+
 }
