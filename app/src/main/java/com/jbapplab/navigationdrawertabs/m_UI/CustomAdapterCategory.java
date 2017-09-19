@@ -26,11 +26,13 @@ import java.util.ArrayList;
 public class CustomAdapterCategory extends BaseAdapter {
     Context context;
     ArrayList<Category> categories;
-    Intent intentRetrieveCategory = new Intent(context, RetrieveStoriesCRUDActivity.class);
+    Intent intentRetrieveCategory;
+
 
     public CustomAdapterCategory(Context context, ArrayList<Category> categories) {
         this.context = context;
         this.categories = categories;
+        intentRetrieveCategory = new Intent(this.context, RetrieveStoriesCRUDActivity.class);
     }
 
     @Override
