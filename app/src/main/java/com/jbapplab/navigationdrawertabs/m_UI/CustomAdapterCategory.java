@@ -1,6 +1,7 @@
 package com.jbapplab.navigationdrawertabs.m_UI;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,8 +10,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jbapplab.navigationdrawertabs.MetaFirstActivity;
 import com.jbapplab.navigationdrawertabs.R;
+import com.jbapplab.navigationdrawertabs.RetrieveStoriesCRUDActivity;
+import com.jbapplab.navigationdrawertabs.SelectCategoryActivity;
 import com.jbapplab.navigationdrawertabs.m_DataObject.Category;
+import com.jbapplab.navigationdrawertabs.m_StoryDetailActivity.StoryDetailActivityCRUD;
 
 import java.util.ArrayList;
 
@@ -21,6 +26,7 @@ import java.util.ArrayList;
 public class CustomAdapterCategory extends BaseAdapter {
     Context context;
     ArrayList<Category> categories;
+    Intent intentRetrieveCategory = new Intent(context, RetrieveStoriesCRUDActivity.class);
 
     public CustomAdapterCategory(Context context, ArrayList<Category> categories) {
         this.context = context;
@@ -61,7 +67,53 @@ public class CustomAdapterCategory extends BaseAdapter {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, category.getCategoryName(), Toast.LENGTH_SHORT).show();
+                switch (category.getCategoryName()){
+
+                    case "Art":
+                        intentRetrieveCategory.putExtra("CATEGORY_KEY", "Art");
+                        context.startActivity(intentRetrieveCategory);
+                        break;
+                    case "Causes":
+                        intentRetrieveCategory.putExtra("CATEGORY_KEY", "Causes");
+                        context.startActivity(intentRetrieveCategory);
+                        break;
+                    case "Education":
+                        intentRetrieveCategory.putExtra("CATEGORY_KEY", "Education");
+                        context.startActivity(intentRetrieveCategory);
+                        break;
+                    case "Food":
+                        intentRetrieveCategory.putExtra("CATEGORY_KEY", "Food");
+                        context.startActivity(intentRetrieveCategory);
+                        break;
+                    case "Lifestyle":
+                        intentRetrieveCategory.putExtra("CATEGORY_KEY", "Lifestyle");
+                        context.startActivity(intentRetrieveCategory);
+                        break;
+                    case "Business":
+                        intentRetrieveCategory.putExtra("CATEGORY_KEY", "Business");
+                        context.startActivity(intentRetrieveCategory);
+                        break;
+                    case "Sports":
+                        intentRetrieveCategory.putExtra("CATEGORY_KEY", "Sports");
+                        context.startActivity(intentRetrieveCategory);
+                        break;
+                    case "Travel":
+                        intentRetrieveCategory.putExtra("CATEGORY_KEY", "Travel");
+                        context.startActivity(intentRetrieveCategory);
+                        break;
+                    case "Security":
+                        intentRetrieveCategory.putExtra("CATEGORY_KEY", "Security");
+                        context.startActivity(intentRetrieveCategory);
+                        break;
+                    case "Other":
+                        intentRetrieveCategory.putExtra("CATEGORY_KEY", "Other");
+                        context.startActivity(intentRetrieveCategory);
+                    default:
+                        intentRetrieveCategory.putExtra("CATEGORY_KEY", "All");
+                        context.startActivity(intentRetrieveCategory);
+                }
+
+                //Toast.makeText(context, category.getCategoryName(), Toast.LENGTH_SHORT).show();
             }
         });
 

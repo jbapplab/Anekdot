@@ -152,10 +152,11 @@ public class MySQLClientCRUD {
     / Retrieve/Select/Refresh
     */
 
-    public void retrieve(final RecyclerView recyclerView, final SwipeRefreshLayout swipeRefreshLayout){
+    public void retrieve(final RecyclerView recyclerView, final SwipeRefreshLayout swipeRefreshLayout, final String categoryName){
         final ArrayList<StoryCRUD> stories = new ArrayList<>();
 
         AndroidNetworking.get(DATA_RETRIEVE_URL)
+                .addQueryParameter("category",categoryName)
                 .setPriority(Priority.HIGH)
                 .build()
                 .getAsJSONArray(new JSONArrayRequestListener() {

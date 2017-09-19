@@ -1,5 +1,6 @@
 package com.jbapplab.navigationdrawertabs;
 
+import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -33,18 +34,174 @@ public class RetrieveStoriesCRUDActivity extends AppCompatActivity {
 
         final SwipeRefreshLayout swipeRefreshLayout = findViewById(R.id.swipeLayoutRetrieveStoriesCRUD);
 
-        //Retrieve
-        new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout);
+        //Intent to update
+        Intent intent = this.getIntent();
+        switch (intent.getExtras().getString("CATEGORY_KEY")){
 
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
+            case "Art":
+                //Retrieve
+                new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Art");
 
-                if(!swipeRefreshLayout.isRefreshing()){
-                    swipeRefreshLayout.setRefreshing(true);
-                }
-                new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout);
-            }
-        });
+                swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+
+                        if(!swipeRefreshLayout.isRefreshing()){
+                            swipeRefreshLayout.setRefreshing(true);
+                        }
+                        new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Art");
+                    }
+                });
+                break;
+            case "Causes":
+                //Retrieve
+                new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Causes");
+
+                swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+
+                        if(!swipeRefreshLayout.isRefreshing()){
+                            swipeRefreshLayout.setRefreshing(true);
+                        }
+                        new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Causes");
+                    }
+                });
+                break;
+            case "Education":
+                //Retrieve
+                new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Education");
+
+                swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+
+                        if(!swipeRefreshLayout.isRefreshing()){
+                            swipeRefreshLayout.setRefreshing(true);
+                        }
+                        new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Education");
+                    }
+                });
+                break;
+            case "Food":
+                //Retrieve
+                new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Food");
+
+                swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+
+                        if(!swipeRefreshLayout.isRefreshing()){
+                            swipeRefreshLayout.setRefreshing(true);
+                        }
+                        new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Food");
+                    }
+                });
+                break;
+            case "Lifestyle":
+                //Retrieve
+                new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Lifestyle");
+
+                swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+
+                        if(!swipeRefreshLayout.isRefreshing()){
+                            swipeRefreshLayout.setRefreshing(true);
+                        }
+                        new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Lifestyle");
+                    }
+                });
+                break;
+            case "Business":
+                //Retrieve
+                new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Business");
+
+                swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+
+                        if(!swipeRefreshLayout.isRefreshing()){
+                            swipeRefreshLayout.setRefreshing(true);
+                        }
+                        new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Business");
+                    }
+                });
+                break;
+            case "Sports":
+                //Retrieve
+                new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Sports");
+
+                swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+
+                        if(!swipeRefreshLayout.isRefreshing()){
+                            swipeRefreshLayout.setRefreshing(true);
+                        }
+                        new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Sports");
+                    }
+                });
+                break;
+            case "Travel":
+                //Retrieve
+                new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Travel");
+
+                swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+
+                        if(!swipeRefreshLayout.isRefreshing()){
+                            swipeRefreshLayout.setRefreshing(true);
+                        }
+                        new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Travel");
+                    }
+                });
+                break;
+            case "Security":
+                //Retrieve
+                new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Security");
+
+                swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+
+                        if(!swipeRefreshLayout.isRefreshing()){
+                            swipeRefreshLayout.setRefreshing(true);
+                        }
+                        new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Security");
+                    }
+                });
+                break;
+            case "Other":
+                //Retrieve
+                new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Other");
+
+                swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+
+                        if(!swipeRefreshLayout.isRefreshing()){
+                            swipeRefreshLayout.setRefreshing(true);
+                        }
+                        new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Other");
+                    }
+                });
+                break;
+            default:
+                //Retrieve
+                new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "All");
+
+                swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+
+                        if(!swipeRefreshLayout.isRefreshing()){
+                            swipeRefreshLayout.setRefreshing(true);
+                        }
+                        new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "All");
+                    }
+                });
+        }
     }
 }

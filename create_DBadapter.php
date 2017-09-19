@@ -43,11 +43,36 @@ class DBadapter{
 	}
 	
 	//1. SELECT FROM DATABASE
-	public function select(){
+	public function select($s){
 		$con=$this->connect();
 		
 		if($con != null){
-			$retrieved=mysqli_query($con,constants::$SQL_SELECT_ALL);
+			if ($s == "Art"){
+				$retrieved=mysqli_query($con,constants::$SQL_SELECT_ART);
+			} else if ($s == "Causes"){
+				$retrieved=mysqli_query($con,constants::$SQL_SELECT_CAUSES);
+			} else if ($s == "Education"){
+				$retrieved=mysqli_query($con,constants::$SQL_SELECT_EDUCATION);
+			} else if ($s == "Food"){
+				$retrieved=mysqli_query($con,constants::$SQL_SELECT_FOOD);
+			} else if ($s == "Lifestyle"){
+				$retrieved=mysqli_query($con,constants::$SQL_SELECT_LIFESTYLE);
+			} else if ($s == "Business"){
+				$retrieved=mysqli_query($con,constants::$SQL_SELECT_BUSINESS);
+			} else if ($s == "Sports"){
+				$retrieved=mysqli_query($con,constants::$SQL_SELECT_SPORTS);
+			} else if ($s == "Travel"){
+				$retrieved=mysqli_query($con,constants::$SQL_SELECT_TRAVEL);
+			} else if ($s == "Security"){
+				$retrieved=mysqli_query($con,constants::$SQL_SELECT_SECURITY);
+			} else if ($s == "Other"){
+				$retrieved=mysqli_query($con,constants::$SQL_SELECT_OTHER);
+			} else if ($s == "All"){
+				$retrieved=mysqli_query($con,constants::$SQL_SELECT_ALL);
+			} else {
+				$retrieved=mysqli_query($con,constants::$SQL_SELECT_ALL);
+			}
+			
 			if($retrieved){
 				while($row=mysqli_fetch_array($retrieved)){
 					
