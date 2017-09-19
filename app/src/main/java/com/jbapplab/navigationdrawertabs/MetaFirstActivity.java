@@ -11,6 +11,7 @@ import com.emmasuzuki.easyform.EasyForm;
 import com.emmasuzuki.easyform.EasyTextInputLayout;
 import com.jbapplab.navigationdrawertabs.m_DataObject.StoryCRUD;
 import com.jbapplab.navigationdrawertabs.m_MySQL.MySQLClientCRUD;
+import com.jbapplab.navigationdrawertabs.m_StoryDetailActivity.StoryDetailActivityCRUD;
 
 
 public class MetaFirstActivity extends AppCompatActivity {
@@ -260,6 +261,10 @@ public class MetaFirstActivity extends AppCompatActivity {
 
                         new MySQLClientCRUD(MetaFirstActivity.this).update(storyCRUD, storyCategorySpinner, storyTitleTxt, ifOtherSpecifyTxt, storyDescriptionTxt, orientationTxt, complicatedActionTxt, evaluationTxt, resolutionTxt, messgageTxt, stageRelatedTxt, contextRelatedTxt, imageUrlTxt, audienceStageSpinner);
 
+                        //TODO FIX THIS
+                        Intent intentGoToRetrieveStoriesCRUDActivity = new Intent(MetaFirstActivity.this, RetrieveStoriesCRUDActivity.class);
+                        MetaFirstActivity.this.startActivity(intentGoToRetrieveStoriesCRUDActivity);
+
                     } else {
                         Toast.makeText(MetaFirstActivity.this, "The last input was invalid.", Toast.LENGTH_SHORT).show();
                     }
@@ -341,6 +346,10 @@ public class MetaFirstActivity extends AppCompatActivity {
                         storyCRUD.setAudienceStage(stage);
 
                         new MySQLClientCRUD(MetaFirstActivity.this).add(storyCRUD, storyCategorySpinner, storyTitleTxt, ifOtherSpecifyTxt, storyDescriptionTxt, orientationTxt, complicatedActionTxt, evaluationTxt, resolutionTxt, messgageTxt, stageRelatedTxt, contextRelatedTxt, imageUrlTxt, audienceStageSpinner);
+
+                        //TODO FIX THIS PROPERLY
+                        Intent intentGoToRetrieveStoriesCRUDActivity = new Intent(MetaFirstActivity.this, RetrieveStoriesCRUDActivity.class);
+                        MetaFirstActivity.this.startActivity(intentGoToRetrieveStoriesCRUDActivity);
 
                     } else {
                         Toast.makeText(MetaFirstActivity.this, "The last input was invalid.", Toast.LENGTH_SHORT).show();

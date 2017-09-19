@@ -375,6 +375,9 @@ public class MySQLClientCRUD {
                                         context_related.getEditText().setText("");
                                         image_url.getEditText().setText("");
                                         audienceStage.setSelection(0);
+
+                                        //TODO go to my stories or the tab of the edited story
+
                                     } else {
 
                                         Toast.makeText(context, "Server transaction was not successful.", Toast.LENGTH_SHORT).show();
@@ -432,6 +435,8 @@ public class MySQLClientCRUD {
                                     if(responseString.equalsIgnoreCase("Success")){
 
                                         Toast.makeText(context, "Your story has been deleted", Toast.LENGTH_SHORT).show();
+
+                                        //TODO
 
                                     } else {
 
