@@ -30,7 +30,7 @@ if($_POST['action']=="save"){
 	
 	$dbAdapter = new DBadapter();
 	
-    $id=$_POST['story_id'];
+    $id = $_POST['story_id'];
     $story_title = $_POST['story_title'];
 	$story_category = $_POST['story_category'];
 	$if_other_specify = $_POST['if_other_specify'];

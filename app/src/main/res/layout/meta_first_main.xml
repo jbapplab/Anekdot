@@ -145,8 +145,22 @@
                 android:layout_below="@id/imageUrl"
                 android:layout_marginTop="20dp"
                 android:background="@color/colorAccent"
-                android:text="Now think of what happens in the story"
-                android:textColor="@android:color/white"/>
+                android:text="Save Story"
+                android:textColor="@android:color/white"
+                android:enabled="false"
+                android:alpha="0"/>
+
+            <Button
+                android:id="@+id/updateButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageUrl"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorAccent"
+                android:text="Update Story"
+                android:textColor="@android:color/white"
+                android:enabled="false"
+                android:alpha="0"/>
 
         </com.emmasuzuki.easyform.EasyForm>
 

@@ -37,7 +37,7 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
     Button buttonSave, buttonUpdate, buttonDelete;
 
     //TODO GET IT FROM USER ACTIVITY
-    String userId = "1";
+   final String userId = "1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,23 +74,23 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
         //RECEIVE
         Intent intent = this.getIntent();
         final String storyId = intent.getExtras().getString("STORY_ID_KEY");
-        String storyTitle = intent.getExtras().getString("STORY_TITLE_KEY");
-        String storyCategory = intent.getExtras().getString("STORY_CATEGORY_KEY");
-        String ifOtherSpecify = intent.getExtras().getString("IF_OTHER_SPECIFY_KEY");
-        String authorId = intent.getExtras().getString("AUTHOR_ID_KEY");
-        String storyDescription = intent.getExtras().getString("STORY_DESCRIPTION_KEY");
-        String storyEvents = intent.getExtras().getString("STORY_EVENTS_KEY");
-        String orientation = intent.getExtras().getString("ORIENTATION_KEY");
-        String complicatedAction = intent.getExtras().getString("COMPLICATED_ACTION_KEY");
-        String evaluation = intent.getExtras().getString("EVALUATION_KEY");
-        String resolution = intent.getExtras().getString("RESOLUTION_KEY");
-        String message = intent.getExtras().getString("MESSAGE_KEY");
-        String storyMeta = intent.getExtras().getString("STORY_META_KEY");
-        String stageRelated = intent.getExtras().getString("STAGE_RELATED_KEY");
-        String contextRelated = intent.getExtras().getString("CONTEXT_RELATED_KEY");
-        String storyFull = intent.getExtras().getString("STORY_FULL_KEY");
-        String audienceStage = intent.getExtras().getString("AUDIENCE_STAGE_KEY");
-        String imageUrl = intent.getExtras().getString("IMAGE_URL_KEY");
+        final String storyTitle = intent.getExtras().getString("STORY_TITLE_KEY");
+        final String storyCategory = intent.getExtras().getString("STORY_CATEGORY_KEY");
+        final String ifOtherSpecify = intent.getExtras().getString("IF_OTHER_SPECIFY_KEY");
+        final String authorId = intent.getExtras().getString("AUTHOR_ID_KEY");
+        final String storyDescription = intent.getExtras().getString("STORY_DESCRIPTION_KEY");
+        final String storyEvents = intent.getExtras().getString("STORY_EVENTS_KEY");
+        final String orientation = intent.getExtras().getString("ORIENTATION_KEY");
+        final String complicatedAction = intent.getExtras().getString("COMPLICATED_ACTION_KEY");
+        final String evaluation = intent.getExtras().getString("EVALUATION_KEY");
+        final String resolution = intent.getExtras().getString("RESOLUTION_KEY");
+        final String message = intent.getExtras().getString("MESSAGE_KEY");
+        final String storyMeta = intent.getExtras().getString("STORY_META_KEY");
+        final String stageRelated = intent.getExtras().getString("STAGE_RELATED_KEY");
+        final String contextRelated = intent.getExtras().getString("CONTEXT_RELATED_KEY");
+        final String storyFull = intent.getExtras().getString("STORY_FULL_KEY");
+        final String audienceStage = intent.getExtras().getString("AUDIENCE_STAGE_KEY");
+        final String imageUrl = intent.getExtras().getString("IMAGE_URL_KEY");
 
         //BIND
         retrieveStoryIdDetail.setText(storyId);
@@ -121,6 +121,7 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
 
         //TODO HANDLE CLICK EVENTS
 
+        //SAVE TO FAVOURITES
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -131,6 +132,7 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
             }
         });
 
+        //DELETE OWN STORY
         buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -148,6 +150,39 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
                         }).create().show();
             }
         });
+
+        //UPDATE OWN STORY
+        buttonUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intentSendUpdate = new Intent(StoryDetailActivityCRUD.this, MetaFirstActivity.class);
+
+                //PACK DATA
+                intentSendUpdate.putExtra("UPDATE_KEY", "update");
+                intentSendUpdate.putExtra("STORY_ID_KEY", storyId);
+                intentSendUpdate.putExtra("STORY_TITLE_KEY", storyTitle);
+                intentSendUpdate.putExtra("STORY_CATEGORY_KEY", storyCategory);
+                intentSendUpdate.putExtra("IF_OTHER_SPECIFY_KEY", ifOtherSpecify);
+                intentSendUpdate.putExtra("AUTHOR_ID_KEY", authorId);
+                intentSendUpdate.putExtra("STORY_DESCRIPTION_KEY", storyDescription);
+                //intentSendUpdate.putExtra("STORY_EVENTS_KEY", storyEvents);
+                intentSendUpdate.putExtra("ORIENTATION_KEY", orientation);
+                intentSendUpdate.putExtra("COMPLICATED_ACTION_KEY", complicatedAction);
+                intentSendUpdate.putExtra("EVALUATION_KEY", evaluation);
+                intentSendUpdate.putExtra("RESOLUTION_KEY", resolution);
+                intentSendUpdate.putExtra("MESSAGE_KEY", message);
+                //intentSendUpdate.putExtra("STORY_META_KEY", storyMeta);
+                intentSendUpdate.putExtra("STAGE_RELATED_KEY", stageRelated);
+                intentSendUpdate.putExtra("CONTEXT_RELATED_KEY", contextRelated);
+                //intentSendUpdate.putExtra("STORY_FULL_KEY", storyFull);
+                intentSendUpdate.putExtra("AUDIENCE_STAGE_KEY", audienceStage);
+                intentSendUpdate.putExtra("IMAGE_URL_KEY", imageUrl);
+
+                StoryDetailActivityCRUD.this.startActivity(intentSendUpdate);
+            }
+        });
+
     }
 
 }
