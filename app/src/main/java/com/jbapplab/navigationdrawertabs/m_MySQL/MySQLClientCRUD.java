@@ -4,7 +4,6 @@ import android.content.Context;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -221,7 +220,7 @@ public class MySQLClientCRUD {
 
                         }catch (JSONException e){
 
-                            Toast.makeText(context, "Good server response but Anecdot can't parse the data (JSON) it received.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(context, "There are no stories in this category at the moment. Please go back and select another.", Toast.LENGTH_LONG).show();
 
                         }
 
@@ -232,9 +231,7 @@ public class MySQLClientCRUD {
                     public void onError(ANError anError) {
                         anError.printStackTrace();
                         Toast.makeText(context, "Unsuccessful: Error is - "+anError.getMessage(), Toast.LENGTH_LONG).show();
-
                     }
-
 
                 });
     }

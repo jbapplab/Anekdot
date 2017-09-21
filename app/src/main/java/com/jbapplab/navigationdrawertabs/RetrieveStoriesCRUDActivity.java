@@ -35,8 +35,20 @@ public class RetrieveStoriesCRUDActivity extends AppCompatActivity {
         final SwipeRefreshLayout swipeRefreshLayout = findViewById(R.id.swipeLayoutRetrieveStoriesCRUD);
 
         //Intent to update
+        String categoryName;
         Intent intent = this.getIntent();
-        switch (intent.getExtras().getString("CATEGORY_KEY")){
+        if (intent == null){
+
+            categoryName = "All";
+
+        } else {
+
+            categoryName = intent.getExtras().getString("CATEGORY_KEY");
+
+        }
+
+
+        switch (categoryName){
 
             case "Art":
                 //Retrieve

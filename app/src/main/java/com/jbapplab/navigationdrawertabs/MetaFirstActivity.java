@@ -263,6 +263,7 @@ public class MetaFirstActivity extends AppCompatActivity {
 
                         //TODO FIX THIS
                         Intent intentGoToRetrieveStoriesCRUDActivity = new Intent(MetaFirstActivity.this, RetrieveStoriesCRUDActivity.class);
+                        intentGoToRetrieveStoriesCRUDActivity.putExtra("CATEGORY_KEY", storyCategory);
                         MetaFirstActivity.this.startActivity(intentGoToRetrieveStoriesCRUDActivity);
 
                     } else {

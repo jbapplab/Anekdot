@@ -110,6 +110,7 @@ public class CustomAdapterCategory extends BaseAdapter {
                     case "Other":
                         intentRetrieveCategory.putExtra("CATEGORY_KEY", "Other");
                         context.startActivity(intentRetrieveCategory);
+                        break;
                     default:
                         intentRetrieveCategory.putExtra("CATEGORY_KEY", "All");
                         context.startActivity(intentRetrieveCategory);

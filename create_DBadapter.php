@@ -46,48 +46,82 @@ class DBadapter{
 	public function select($s){
 		$con=$this->connect();
 		
+		$statementStoriesInCategory = mysqli_prepare($con, "SELECT * FROM story WHERE story_category =?");
+		mysqli_stmt_bind_param($statementStoriesInCategory, "s", $s);
+		mysqli_stmt_execute($statementStoriesInCategory);
+		mysqli_stmt_store_result($statementStoriesInCategory);
+		$count = mysqli_stmt_num_rows($statementStoriesInCategory);
+		mysqli_stmt_close($statementStoriesInCategory);
+		
+		if ($count < 1){
+            $storiesAvailable = false; 
+        }else {
+            $storiesAvailable = true; 
+        }
+		
 		if($con != null){
-			if ($s == "Art"){
-				$retrieved=mysqli_query($con,constants::$SQL_SELECT_ART);
-			} else if ($s == "Causes"){
-				$retrieved=mysqli_query($con,constants::$SQL_SELECT_CAUSES);
-			} else if ($s == "Education"){
-				$retrieved=mysqli_query($con,constants::$SQL_SELECT_EDUCATION);
-			} else if ($s == "Food"){
-				$retrieved=mysqli_query($con,constants::$SQL_SELECT_FOOD);
-			} else if ($s == "Lifestyle"){
-				$retrieved=mysqli_query($con,constants::$SQL_SELECT_LIFESTYLE);
-			} else if ($s == "Business"){
-				$retrieved=mysqli_query($con,constants::$SQL_SELECT_BUSINESS);
-			} else if ($s == "Sports"){
-				$retrieved=mysqli_query($con,constants::$SQL_SELECT_SPORTS);
-			} else if ($s == "Travel"){
-				$retrieved=mysqli_query($con,constants::$SQL_SELECT_TRAVEL);
-			} else if ($s == "Security"){
-				$retrieved=mysqli_query($con,constants::$SQL_SELECT_SECURITY);
-			} else if ($s == "Other"){
-				$retrieved=mysqli_query($con,constants::$SQL_SELECT_OTHER);
-			} else if ($s == "All"){
-				$retrieved=mysqli_query($con,constants::$SQL_SELECT_ALL);
-			} else {
-				$retrieved=mysqli_query($con,constants::$SQL_SELECT_ALL);
-			}
-			
-			if($retrieved){
-				while($row=mysqli_fetch_array($retrieved)){
-					
-					//echo $row["story_title"]," \t | ",$row["description"],"</br>"
-					$stories[]=$row;
+			if ($storiesAvailable == true) {
+				if ($s == "Art"){
+					$retrieved=mysqli_query($con,constants::$SQL_SELECT_ART);
+				} else if ($s == "Causes"){
+					$retrieved=mysqli_query($con,constants::$SQL_SELECT_CAUSES);
+				} else if ($s == "Education"){
+					$retrieved=mysqli_query($con,constants::$SQL_SELECT_EDUCATION);
+				} else if ($s == "Food"){
+					$retrieved=mysqli_query($con,constants::$SQL_SELECT_FOOD);
+				} else if ($s == "Lifestyle"){
+					$retrieved=mysqli_query($con,constants::$SQL_SELECT_LIFESTYLE);
+				} else if ($s == "Business"){
+					$retrieved=mysqli_query($con,constants::$SQL_SELECT_BUSINESS);
+				} else if ($s == "Sports"){
+					$retrieved=mysqli_query($con,constants::$SQL_SELECT_SPORTS);
+				} else if ($s == "Travel"){
+					$retrieved=mysqli_query($con,constants::$SQL_SELECT_TRAVEL);
+				} else if ($s == "Security"){
+					$retrieved=mysqli_query($con,constants::$SQL_SELECT_SECURITY);
+				} else if ($s == "Other"){
+					$retrieved=mysqli_query($con,constants::$SQL_SELECT_OTHER);
+				} else if ($s == "All"){
+					$retrieved=mysqli_query($con,constants::$SQL_SELECT_ALL);
 				}
-				print(json_encode($stories));
+				
+				if($retrieved){
+					while($row=mysqli_fetch_array($retrieved)){
+						
+						//echo $row["story_title"]," \t | ",$row["description"],"</br>"
+						$stories[]=$row;
+					}
+					print(json_encode($stories));
+				} else {
+					print(json_encode(array("PHP EXCEPTION: Can't retrieve data from the MySQL database.")));
+				}
+				
 			} else {
-				print(json_encode(array("PHP EXCEPTION: Can't retrieve data from the MySQL database.")));
-			}
+	
+				/*$retrieved=mysqli_query($con,constants::$SQL_SELECT_ALL);
+				
+				if($retrieved){
+					while($row=mysqli_fetch_array($retrieved)){
+						
+						//echo $row["story_title"]," \t | ",$row["description"],"</br>"
+						$allStories[]=$row;
+					}
+					print(json_encode($allStories));
+				} else {
+					print(json_encode(array("PHP EXCEPTION: Can't retrieve data from the MySQL database.")));
+				}*/
+				
+				print(json_encode(array("There are no stories in this category at the moment. Please go back and select another.")));
+			}	
+			
 		} else {
+			
 			print(json_encode(array("PHP EXCEPTION: Can't connect to MySQL Database. Null connection.")));
+		
 		}
 		
 		mysqli_close($con);
+		
 	}
 	
 	//1. UPDATE IN DATABASE
@@ -158,7 +192,7 @@ class DBadapter{
         }
 		
 		if ($con != null){
-			If ($notexist == true){
+			if ($notexist == true){
 				$sql = "INSERT INTO saved_story(story_id, user_id) VALUES('$storyId','$userId')";
 				
 				try{
