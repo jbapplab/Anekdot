@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
          */
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        mNavigationView = (NavigationView) findViewById(R.id.navigation_stuff) ;
+        mNavigationView = (NavigationView) findViewById(R.id.navigation_stuff);
 
         /**
          * Lets inflate the very first fragment

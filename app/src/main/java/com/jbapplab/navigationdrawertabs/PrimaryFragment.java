@@ -15,16 +15,56 @@ package com.jbapplab.navigationdrawertabs;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.TextView;
 
 
 public class PrimaryFragment extends Fragment {
 
+    String userId;
+    String firstName;
+    String lastName;
+    String username;
+    String password;
+    String email;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        /*
+        UNPACK THE DATA FROM THE BUNDLE
+        */
+
+        userId = this.getArguments().getString("userId_KEY").toString();
+        firstName = this.getArguments().getString("firstName_KEY").toString();
+        lastName = this.getArguments().getString("lastName_KEY").toString();
+        username = this.getArguments().getString("username_KEY").toString();
+        password = this.getArguments().getString("password_KEY").toString();
+        email = this.getArguments().getString("email_KEY").toString();
+
         return inflater.inflate(R.layout.primary_layout,null);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+
+        final EditText etEmail = getView().findViewById(R.id.etEmail);
+        final EditText etUsername = getView().findViewById(R.id.etUsername);
+        final TextView tvWelcomeMessage = getView().findViewById(R.id.tvWelcomeMessage);
+
+        Log.i("UserId-UserArea: ", userId);
+
+
+        String message = firstName + lastName + ", welcome to your Anecdot user area" + password;
+        tvWelcomeMessage.setText(message);
+        etUsername.setText(username);
+        etEmail.setText(email);
+        //The empty quote is going to convert the age int to a string because we cannot display an int in a textview directly.
+        //etAge.setText(age+"");
     }
 }

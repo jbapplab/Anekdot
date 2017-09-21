@@ -23,14 +23,38 @@ public class UserAreaActivity extends AppCompatActivity {
     DrawerLayout mDrawerLayout;
     NavigationView mNavigationView;
 
-    /*Fragment utilities declaration
+    //Fragment utilities declaration
     FragmentManager mFragmentManager;
-    FragmentTransaction mFragmentTransaction;*/
+    FragmentTransaction mFragmentTransaction;
+    TabFragment tabFragment = new TabFragment();
+
+    //Variables
+    String userId;
+    String firstName;
+    String lastName;
+    String username;
+    String password;
+    String email;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_area);
+
+
+        /**
+         * Here we need to retrieve the data that we passed through the intent from the LoginActivity
+         */
+        Intent intent = getIntent();
+        userId = intent.getStringExtra("userId_KEY");
+        firstName = intent.getStringExtra("firstName_KEY");
+        lastName = intent.getStringExtra("lastName_KEY");
+        username = intent.getStringExtra("username_KEY");
+        password = intent.getStringExtra("password_KEY");
+        email = intent.getStringExtra("email_KEY");
+        //for int you need a default value in case it was not passed (-1)
+        //int age = intent.getIntExtra("age", -1);
 
         //Set the toolbar as an action bar to later change the label
         Toolbar mainToolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -46,11 +70,13 @@ public class UserAreaActivity extends AppCompatActivity {
         /**
          * Lets inflate the very first fragment
          * Here , we are inflating the TabFragment as the first Fragment
-         *
+         */
 
          mFragmentManager = getSupportFragmentManager();
          mFragmentTransaction = mFragmentManager.beginTransaction();
-         mFragmentTransaction.replace(R.id.containerView,new TabFragment()).commit();*/
+         sendDataTabFragment();
+         mFragmentTransaction.replace(R.id.containerView, tabFragment).commit();
+
 
         /**
          * Setup click events on the Navigation View Items.
@@ -95,34 +121,6 @@ public class UserAreaActivity extends AppCompatActivity {
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
         mDrawerToggle.syncState();
-
-        final EditText etEmail = (EditText) findViewById(R.id.etEmail);
-        final EditText etUsername = (EditText) findViewById(R.id.etUsername);
-        final TextView tvWelcomeMessage = (TextView) findViewById(R.id.tvWelcomeMessage);
-
-        /**
-         * Here we need to retrieve the data that we passed through the intent from the LoginActivity
-         */
-
-        Intent intent = getIntent();
-        String userId = intent.getStringExtra("userId_KEY");
-        String firstName = intent.getStringExtra("firstName_KEY");
-        String lastName = intent.getStringExtra("lastName_KEY");
-        String username = intent.getStringExtra("username_KEY");
-        String password = intent.getStringExtra("password_KEY");
-        String email = intent.getStringExtra("email_KEY");
-        //for int you need a default value in case it was not passed (-1)
-        //int age = intent.getIntExtra("age", -1);
-
-        Log.i("UserId-UserArea: ", userId);
-
-
-        String message = firstName + lastName + ", welcome to your Anecdot user area" + password;
-        tvWelcomeMessage.setText(message);
-        etUsername.setText(username);
-        etEmail.setText(email);
-        //The empty quote is going to convert the age int to a string because we cannot display an int in a textview directly.
-        //etAge.setText(age+"");
     }
 
     public void setActionBarTitle(String title){
@@ -148,5 +146,22 @@ public class UserAreaActivity extends AppCompatActivity {
         else {
             super.onBackPressed();
         }
+    }
+
+    /*
+    SEND DATA TO FRAGMENT
+     */
+    private void sendDataTabFragment() {
+        //PACK DATA IN A BUNDLE
+        Bundle bundle = new Bundle();
+        bundle.putString("userId_KEY", userId);
+        bundle.putString("firstName_KEY", firstName);
+        bundle.putString("lastName_KEY", lastName);
+        bundle.putString("username_KEY", username);
+        bundle.putString("password_KEY", password);
+        bundle.putString("email_KEY", email);
+
+        //PASS OVER THE BUNDLE TO OUR FRAGMENT
+        tabFragment.setArguments(bundle);
     }
 }

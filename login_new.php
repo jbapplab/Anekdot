@@ -17,6 +17,7 @@
     
     while(mysqli_stmt_fetch($statement)){
                 $response["success"] = true;  
+				$response["userId"] = $colUserID;
                 $response["firstName"] = $colFirstName;
 		        $response["lastName"] = $colLastName;
                 $response["username"] = $colUsername;

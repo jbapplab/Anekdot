@@ -37,13 +37,22 @@ public class TabFragment extends Fragment {
     public static ViewPager viewPager;
     public static int int_items = 3 ;
 
+    String userId;
+    String firstName;
+    String lastName;
+    String username;
+    String password;
+    String email;
+
+    PrimaryFragment primaryFragment = new PrimaryFragment();
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         /**
          * Set the title bar according to the fragment
          */
-        ((MainActivity) getActivity())
+        ((UserAreaActivity) getActivity())
                 .setActionBarTitle("Inbox");
 
         /**
@@ -71,8 +80,18 @@ public class TabFragment extends Fragment {
             }
         });
 
-        return x;
+        /*
+        UNPACK THE DATA FROM THE BUNDLE
+        */
 
+        userId = getArguments().getString("userId_KEY").toString();
+        firstName = getArguments().getString("firstName_KEY").toString();
+        lastName = getArguments().getString("lastName_KEY").toString();
+        username = getArguments().getString("username_KEY").toString();
+        password = getArguments().getString("password_KEY").toString();
+        email = getArguments().getString("email_KEY").toString();
+
+        return x;
     }
 
     class MyAdapter extends FragmentPagerAdapter{
@@ -89,11 +108,18 @@ public class TabFragment extends Fragment {
         public Fragment getItem(int position)
         {
             switch (position){
-                case 0 : return new PrimaryFragment();
-                case 1 : return new SocialFragment();
-                case 2 : return new UpdatesFragment();
+                case 0 :
+                    sendDataPrimaryFragment();
+                    return primaryFragment;
+                case 1 :
+
+                    return new SocialFragment();
+                case 2 :
+
+                    return new UpdatesFragment();
             }
-            return null;
+            return
+                    null;
         }
 
         @Override
@@ -119,6 +145,23 @@ public class TabFragment extends Fragment {
                     return "Updates";
             }
             return null;
+        }
+
+        /*
+    SEND DATA TO FRAGMENT
+     */
+        private void sendDataPrimaryFragment() {
+            //PACK DATA IN A BUNDLE
+            Bundle forPrimaryBundle = new Bundle();
+            forPrimaryBundle.putString("userId_KEY", userId);
+            forPrimaryBundle.putString("firstName_KEY", firstName);
+            forPrimaryBundle.putString("lastName_KEY", lastName);
+            forPrimaryBundle.putString("username_KEY", username);
+            forPrimaryBundle.putString("password_KEY", password);
+            forPrimaryBundle.putString("email_KEY", email);
+
+            //PASS OVER THE BUNDLE TO OUR FRAGMENT
+            primaryFragment.setArguments(forPrimaryBundle);
         }
     }
 
