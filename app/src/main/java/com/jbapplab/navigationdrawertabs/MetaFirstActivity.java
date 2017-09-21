@@ -261,7 +261,6 @@ public class MetaFirstActivity extends AppCompatActivity {
 
                         new MySQLClientCRUD(MetaFirstActivity.this).update(storyCRUD, storyCategorySpinner, storyTitleTxt, ifOtherSpecifyTxt, storyDescriptionTxt, orientationTxt, complicatedActionTxt, evaluationTxt, resolutionTxt, messgageTxt, stageRelatedTxt, contextRelatedTxt, imageUrlTxt, audienceStageSpinner);
 
-                        //TODO FIX THIS
                         Intent intentGoToRetrieveStoriesCRUDActivity = new Intent(MetaFirstActivity.this, RetrieveStoriesCRUDActivity.class);
                         intentGoToRetrieveStoriesCRUDActivity.putExtra("CATEGORY_KEY", storyCategory);
                         MetaFirstActivity.this.startActivity(intentGoToRetrieveStoriesCRUDActivity);

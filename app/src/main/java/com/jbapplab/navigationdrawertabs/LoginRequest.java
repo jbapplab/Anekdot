@@ -34,7 +34,7 @@ public class LoginRequest extends StringRequest {
          * -Then we need to give volley the URL
          * -Then we need to give it the listener: when volley has finished with the request it will inform the
          * Response.Listener
-         * -TODO Finally we need to provide an error listener that volley will inform if something goes wrong with the request
+         * -Finally we need to provide an error listener that volley will inform if something goes wrong with the request
          */
         super(Request.Method.POST, LOGIN_REQUEST_URL, listener, errorListener);
 
