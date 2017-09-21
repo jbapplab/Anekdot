@@ -45,8 +45,9 @@ public class MetaFirstActivity extends AppCompatActivity {
         final EasyForm easyForm = findViewById(R.id.meta_first_form);
 
         //Intent to update
-        Intent intent = this.getIntent();
-        if ((intent.getExtras().getString("UPDATE_KEY").equals("update"))){
+        Intent intent;
+        intent = this.getIntent();
+        if ((intent.getExtras() != null) && (intent.getExtras().getString("UPDATE_KEY").equals("update"))){
 
             //Reference views
             this.initialiseViews(0);

@@ -11,10 +11,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class UserAreaActivity extends AppCompatActivity {
@@ -89,19 +86,76 @@ public class UserAreaActivity extends AppCompatActivity {
 
                 //Can add more according to the buttons I will need
                 //Added the addToBackStack("str") bit to use back button
-                if (menuItem.getItemId() == R.id.nav_item_inbox) {
-                    Toast.makeText(UserAreaActivity.this, "INBOX", Toast.LENGTH_LONG).show();
-                    //FragmentTransaction xfragmentTransaction = mFragmentManager.beginTransaction();
-                    //xfragmentTransaction.replace(R.id.containerView, new TabFragment()).addToBackStack("str").commit();
-                    //getSupportActionBar().setTitle("Home");
+                if (menuItem.getItemId() == R.id.nav_item_home) {
+                    //Toast.makeText(UserAreaActivity.this, "Home", Toast.LENGTH_LONG).show();
+                    FragmentTransaction xfragmentTransaction = mFragmentManager.beginTransaction();
+                    sendDataTabFragment();
+                    xfragmentTransaction.replace(R.id.containerView, tabFragment).addToBackStack("str").commit();
                 }
 
-                if (menuItem.getItemId() == R.id.nav_item_sent) {
-                    Toast.makeText(UserAreaActivity.this, "SENT", Toast.LENGTH_LONG).show();
-                    //FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-                    //fragmentTransaction.replace(R.id.containerView, new SentFragment()).addToBackStack("str").commit();
-                    //This is to try and find the id of the item selected
-                    //getSupportActionBar().setTitle("Sent");
+                if (menuItem.getItemId() == R.id.nav_item_logout) {
+                    new AlertDialog.Builder(UserAreaActivity.this)
+                            .setTitle("Log Out?")
+                            .setMessage("Are you sure you want to log out?")
+                            .setNegativeButton(android.R.string.no, null)
+                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                                public void onClick(DialogInterface arg0, int arg1) {
+
+                                    Intent intentGoToLoginActivity = new Intent(UserAreaActivity.this, LoginActivity.class);
+                                    UserAreaActivity.this.startActivity(intentGoToLoginActivity);
+
+                                }
+                            }).create().show();
+                }
+
+                if (menuItem.getItemId() == R.id.nav_item_categories) {
+
+                    Intent intentGoToSelectCategoryActivity = new Intent(UserAreaActivity.this, SelectCategoryActivity.class);
+                    UserAreaActivity.this.startActivity(intentGoToSelectCategoryActivity);
+
+                }
+
+                if (menuItem.getItemId() == R.id.nav_item_mystories) {
+
+                    Intent intentGoToMyStoriesActivity = new Intent(UserAreaActivity.this, MyStoriesActivity.class);
+                    UserAreaActivity.this.startActivity(intentGoToMyStoriesActivity);
+
+                }
+
+                if (menuItem.getItemId() == R.id.nav_item_myfavourites) {
+
+                    Intent intentGoToMyFavouritesActivity = new Intent(UserAreaActivity.this, MyFavouritesActivity.class);
+                    UserAreaActivity.this.startActivity(intentGoToMyFavouritesActivity);
+
+                }
+
+                //TODO REVERSE ORDER OF METAFIRST
+                if (menuItem.getItemId() == R.id.nav_item_eventsfirst) {
+
+                    Intent intentGoToEvensFirstActivity = new Intent(UserAreaActivity.this, MetaFirstActivity.class);
+                    UserAreaActivity.this.startActivity(intentGoToEvensFirstActivity);
+
+                }
+
+                if (menuItem.getItemId() == R.id.nav_item_audiencefirst) {
+
+                    Intent intentGoToMetaFirstActivity = new Intent(UserAreaActivity.this, MetaFirstActivity.class);
+                    UserAreaActivity.this.startActivity(intentGoToMetaFirstActivity);
+
+                }
+
+                if (menuItem.getItemId() == R.id.nav_item_settings) {
+
+                    Intent intentGoToSettingsActivity = new Intent(UserAreaActivity.this, SettingsActivity.class);
+                    UserAreaActivity.this.startActivity(intentGoToSettingsActivity);
+
+                }
+
+                if (menuItem.getItemId() == R.id.nav_item_help) {
+
+                    Intent intentGoToHelpActivity = new Intent(UserAreaActivity.this, HelpActivity.class);
+                    UserAreaActivity.this.startActivity(intentGoToHelpActivity);
 
                 }
 
@@ -133,13 +187,16 @@ public class UserAreaActivity extends AppCompatActivity {
         int backStackEntryCount = getSupportFragmentManager().getBackStackEntryCount();
         if (backStackEntryCount == 0) {
             new AlertDialog.Builder(this)
-                    .setTitle("Exit Anekdot?")
+                    .setTitle("Exit Anecdot?")
                     .setMessage("Are you sure you want to exit?")
                     .setNegativeButton(android.R.string.no, null)
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
                         public void onClick(DialogInterface arg0, int arg1) {
-                            UserAreaActivity.super.onBackPressed();
+                            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            intent.putExtra("EXIT", true);
+                            startActivity(intent);
                         }
                     }).create().show();
         }

@@ -138,11 +138,11 @@ public class TabFragment extends Fragment {
 
             switch (position){
                 case 0 :
-                    return "Primary";
+                    return "Home";
                 case 1 :
-                    return "Social";
+                    return "Home 2";
                 case 2 :
-                    return "Updates";
+                    return "Home 3  ";
             }
             return null;
         }

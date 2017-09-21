@@ -73,13 +73,13 @@ public class MainActivity extends AppCompatActivity {
 
                 //Can add more according to the buttons I will need
                 //Added the addToBackStack("") bit to use back button
-                if (menuItem.getItemId() == R.id.nav_item_inbox) {
+                if (menuItem.getItemId() == R.id.nav_item_home) {
                     FragmentTransaction xfragmentTransaction = mFragmentManager.beginTransaction();
                     xfragmentTransaction.replace(R.id.containerView,new TabFragment()).addToBackStack("str").commit();
                     //getSupportActionBar().setTitle("Home");
                 }
 
-                if (menuItem.getItemId() == R.id.nav_item_sent) {
+                if (menuItem.getItemId() == R.id.nav_item_home) {
                     FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.containerView,new SentFragment()).addToBackStack("str").commit();
                     //This is to try and find the id of the item selected

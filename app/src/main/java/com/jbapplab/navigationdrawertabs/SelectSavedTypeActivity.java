@@ -30,12 +30,12 @@ public class SelectSavedTypeActivity extends AppCompatActivity {
         ArrayList<Category> categories = new ArrayList<>();
 
         Category category = new Category();
-        category.setCategoryName("My Written Archives");
+        category.setCategoryName("My Stories");
         category.setCategoryImage(R.drawable.saved_my);
         categories.add(category);
 
         category = new Category();
-        category.setCategoryName("My Favourite Stories");
+        category.setCategoryName("My Favourites");
         category.setCategoryImage(R.drawable.saved_other);
         categories.add(category);
 

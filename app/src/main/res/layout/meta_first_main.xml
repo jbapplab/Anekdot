@@ -139,6 +139,7 @@
                 app:errorType="empty"/>
 
             <Button
+                style="@style/Base.Widget.AppCompat.Button.Colored"
                 android:id="@+id/addButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -151,12 +152,12 @@
                 android:alpha="0"/>
 
             <Button
+                style="@style/Base.Widget.AppCompat.Button.Colored"
                 android:id="@+id/updateButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/imageUrl"
                 android:layout_marginTop="20dp"
-                android:background="@color/colorAccent"
                 android:text="Update Story"
                 android:textColor="@android:color/white"
                 android:enabled="false"

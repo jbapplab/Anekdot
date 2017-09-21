@@ -1,6 +1,7 @@
 package com.jbapplab.navigationdrawertabs.m_UI;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +10,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jbapplab.navigationdrawertabs.MyFavouritesActivity;
+import com.jbapplab.navigationdrawertabs.MyStoriesActivity;
 import com.jbapplab.navigationdrawertabs.R;
+import com.jbapplab.navigationdrawertabs.SelectCategoryActivity;
+import com.jbapplab.navigationdrawertabs.SelectSavedTypeActivity;
+import com.jbapplab.navigationdrawertabs.UserAreaActivity;
 import com.jbapplab.navigationdrawertabs.m_DataObject.Category;
 
 import java.util.ArrayList;
@@ -61,7 +67,16 @@ public class CustomAdapterSaved extends BaseAdapter {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, category.getCategoryName(), Toast.LENGTH_SHORT).show();
+
+                if ((category.getCategoryName()).equals("My Stories")){
+                    Intent intentGoToMyStoriesActivity = new Intent(context, MyStoriesActivity.class);
+                    context.startActivity(intentGoToMyStoriesActivity);
+                } else {
+                    Intent intentGoToMyFavouritesActivity = new Intent(context, MyFavouritesActivity.class);
+                    context.startActivity(intentGoToMyFavouritesActivity);
+                }
+
+                //Toast.makeText(context, category.getCategoryName(), Toast.LENGTH_SHORT).show();
             }
         });
 

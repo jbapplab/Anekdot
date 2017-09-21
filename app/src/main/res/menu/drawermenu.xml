@@ -16,36 +16,51 @@ use the group tag and give it a unique id.
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Inbox"
-        android:id="@+id/nav_item_inbox"
-        android:icon="@drawable/inbox"/>
+    <item android:title="Home"
+        android:id="@+id/nav_item_home"
+        android:icon="@drawable/home"/>
 
-    <item android:title="Sent"
-        android:id="@+id/nav_item_sent"
-        android:icon="@drawable/sent"/>
+    <item android:title="Log Out"
+        android:id="@+id/nav_item_logout"
+        android:icon="@drawable/logout"/>
 
-    <item android:title="Drafts"
-        android:id="@+id/nav_item_draft"
-        android:icon="@drawable/draft"/>
-
-
-
-    <item android:title="Others">
+    <item android:title="Create">
         <menu>
             <item
-                android:title="Spam"
-                android:icon="@drawable/spam"/>
+                android:title="Events First"
+                android:id="@+id/nav_item_eventsfirst"
+                android:icon="@drawable/create_events"/>
             <item
-                android:title="Bin"
-                android:icon="@drawable/bin"/>
+                android:title="Audience First"
+                android:id="@+id/nav_item_audiencefirst"
+                android:icon="@drawable/create_audience"/>
+        </menu>
+    </item>
+
+    <item android:title="Read">
+        <menu>
+            <item
+                android:title="Categories"
+                android:id="@+id/nav_item_categories"
+                android:icon="@drawable/categories"/>
+            <item
+                android:title="My Stories"
+                android:id="@+id/nav_item_mystories"
+                android:icon="@drawable/saved_my"/>
+            <item
+                android:title="My Favourites"
+                android:id="@+id/nav_item_myfavourites"
+                android:icon="@drawable/saved_other"/>
         </menu>
     </item>
 
     <group android:id="@+id/group_settings_id">
 
         <item android:title="Settings"
+            android:id="@+id/nav_item_settings"
             android:icon="@drawable/settings"/>
         <item android:title="Help"
+            android:id="@+id/nav_item_help"
             android:icon="@drawable/help"/>
     </group>
 
