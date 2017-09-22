@@ -119,7 +119,7 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
             buttonSave.setEnabled(true);
         }
 
-        //HANDLE CLICK EVENTS
+        //TODO HANDLE CLICK EVENT
 
         //SAVE TO FAVOURITES
         buttonSave.setOnClickListener(new View.OnClickListener() {

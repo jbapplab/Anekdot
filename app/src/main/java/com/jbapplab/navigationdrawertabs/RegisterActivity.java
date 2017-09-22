@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -25,8 +26,7 @@ import org.json.JSONObject;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    //@Bind(R.id.registration_form)
-    //EasyForm easyForm;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +42,9 @@ public class RegisterActivity extends AppCompatActivity {
         final EasyTextInputLayout etPasswordConfirm = findViewById(R.id.etPasswordConfirm);
         final Button bRegister = findViewById(R.id.bRegister);
 
+        //This sets the loading progress bar
+        progressBar = findViewById(R.id.progressBar);
+
 
         /**
          * When the user presses the register button we will get information from the fields pass it
@@ -50,6 +53,7 @@ public class RegisterActivity extends AppCompatActivity {
         bRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                progressBar.setAlpha(1);
                 //gets the text from the name field, converts it to a string and saves it to the name variable
                 final String firstName = etFirstName.getEditText().getText().toString();
                 final String lastName = etLastName.getEditText().getText().toString();
@@ -87,6 +91,7 @@ public class RegisterActivity extends AppCompatActivity {
                                         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                                         RegisterActivity.this.startActivity(intent);
                                     } else {
+                                        progressBar.setAlpha(0);
                                         //If not successful we want to display an error and user can select to retry
                                         AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
                                         builder.setMessage("Registration Failed: The username already exists.")
@@ -104,6 +109,7 @@ public class RegisterActivity extends AppCompatActivity {
                         Response.ErrorListener errorListener = new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
+                                progressBar.setAlpha(0);
                                 AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
                                 builder.setMessage("Registration Failed: There is a problem with the server connection.")
                                         .setNegativeButton("Retry", null)
@@ -122,9 +128,11 @@ public class RegisterActivity extends AppCompatActivity {
                         queue.add(registerRequest);
                         //Log.d("REGISTER ACTIVITY2", "Value: " + (username));
                     } else {
-                    Log.e(getClass().getSimpleName(), "The last input was invalid");
+                        progressBar.setAlpha(0);
+                        Log.e(getClass().getSimpleName(), "The last input was invalid");
                     }
                 } else {
+                    progressBar.setAlpha(0);
                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
                     builder.setMessage("The passwords do not match, please make sure they are identical.")
                             .setNegativeButton("Retry", null)

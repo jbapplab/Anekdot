@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 import com.jbapplab.navigationdrawertabs.m_MySQL.DownloaderCRUD;
 import com.jbapplab.navigationdrawertabs.m_MySQL.MySQLClientCRUD;
@@ -18,11 +19,15 @@ import java.util.ArrayList;
 public class RetrieveStoriesCRUDActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_retrieve_stories_crud);
+
+        //This sets the loading progress bar
+        progressBar = findViewById(R.id.progressBarRetrieve);
 
         //REFERENCE VIEWS
         recyclerView = findViewById(R.id.recyclerViewRetrieveStoriesCRUD);
@@ -52,7 +57,7 @@ public class RetrieveStoriesCRUDActivity extends AppCompatActivity {
 
             case "Art":
                 //Retrieve
-                new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Art");
+                new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Art", progressBar);
 
                 swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                     @Override
@@ -61,13 +66,14 @@ public class RetrieveStoriesCRUDActivity extends AppCompatActivity {
                         if(!swipeRefreshLayout.isRefreshing()){
                             swipeRefreshLayout.setRefreshing(true);
                         }
-                        new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Art");
+                        new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Art", progressBar);
                     }
                 });
+
                 break;
             case "Causes":
                 //Retrieve
-                new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Causes");
+                new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Causes", progressBar);
 
                 swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                     @Override
@@ -76,13 +82,13 @@ public class RetrieveStoriesCRUDActivity extends AppCompatActivity {
                         if(!swipeRefreshLayout.isRefreshing()){
                             swipeRefreshLayout.setRefreshing(true);
                         }
-                        new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Causes");
+                        new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Causes", progressBar);
                     }
                 });
                 break;
             case "Education":
                 //Retrieve
-                new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Education");
+                new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Education", progressBar);
 
                 swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                     @Override
@@ -91,13 +97,13 @@ public class RetrieveStoriesCRUDActivity extends AppCompatActivity {
                         if(!swipeRefreshLayout.isRefreshing()){
                             swipeRefreshLayout.setRefreshing(true);
                         }
-                        new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Education");
+                        new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Education", progressBar);
                     }
                 });
                 break;
             case "Food":
                 //Retrieve
-                new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Food");
+                new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Food", progressBar);
 
                 swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                     @Override
@@ -106,13 +112,13 @@ public class RetrieveStoriesCRUDActivity extends AppCompatActivity {
                         if(!swipeRefreshLayout.isRefreshing()){
                             swipeRefreshLayout.setRefreshing(true);
                         }
-                        new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Food");
+                        new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Food", progressBar);
                     }
                 });
                 break;
             case "Lifestyle":
                 //Retrieve
-                new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Lifestyle");
+                new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Lifestyle", progressBar);
 
                 swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                     @Override
@@ -121,13 +127,13 @@ public class RetrieveStoriesCRUDActivity extends AppCompatActivity {
                         if(!swipeRefreshLayout.isRefreshing()){
                             swipeRefreshLayout.setRefreshing(true);
                         }
-                        new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Lifestyle");
+                        new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Lifestyle", progressBar);
                     }
                 });
                 break;
             case "Business":
                 //Retrieve
-                new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Business");
+                new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Business", progressBar);
 
                 swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                     @Override
@@ -136,13 +142,13 @@ public class RetrieveStoriesCRUDActivity extends AppCompatActivity {
                         if(!swipeRefreshLayout.isRefreshing()){
                             swipeRefreshLayout.setRefreshing(true);
                         }
-                        new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Business");
+                        new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Business", progressBar);
                     }
                 });
                 break;
             case "Sports":
                 //Retrieve
-                new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Sports");
+                new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Sports", progressBar);
 
                 swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                     @Override
@@ -151,13 +157,13 @@ public class RetrieveStoriesCRUDActivity extends AppCompatActivity {
                         if(!swipeRefreshLayout.isRefreshing()){
                             swipeRefreshLayout.setRefreshing(true);
                         }
-                        new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Sports");
+                        new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Sports", progressBar);
                     }
                 });
                 break;
             case "Travel":
                 //Retrieve
-                new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Travel");
+                new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Travel", progressBar);
 
                 swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                     @Override
@@ -166,13 +172,13 @@ public class RetrieveStoriesCRUDActivity extends AppCompatActivity {
                         if(!swipeRefreshLayout.isRefreshing()){
                             swipeRefreshLayout.setRefreshing(true);
                         }
-                        new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Travel");
+                        new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Travel", progressBar);
                     }
                 });
                 break;
             case "Security":
                 //Retrieve
-                new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Security");
+                new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Security", progressBar);
 
                 swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                     @Override
@@ -181,13 +187,13 @@ public class RetrieveStoriesCRUDActivity extends AppCompatActivity {
                         if(!swipeRefreshLayout.isRefreshing()){
                             swipeRefreshLayout.setRefreshing(true);
                         }
-                        new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Security");
+                        new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Security", progressBar);
                     }
                 });
                 break;
             case "Other":
                 //Retrieve
-                new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Other");
+                new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Other", progressBar);
 
                 swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                     @Override
@@ -196,13 +202,13 @@ public class RetrieveStoriesCRUDActivity extends AppCompatActivity {
                         if(!swipeRefreshLayout.isRefreshing()){
                             swipeRefreshLayout.setRefreshing(true);
                         }
-                        new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Other");
+                        new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "Other", progressBar);
                     }
                 });
                 break;
             default:
                 //Retrieve
-                new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "All");
+                new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "All", progressBar);
 
                 swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                     @Override
@@ -211,7 +217,7 @@ public class RetrieveStoriesCRUDActivity extends AppCompatActivity {
                         if(!swipeRefreshLayout.isRefreshing()){
                             swipeRefreshLayout.setRefreshing(true);
                         }
-                        new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "All");
+                        new MySQLClientCRUD(RetrieveStoriesCRUDActivity.this).retrieve(recyclerView, swipeRefreshLayout, "All", progressBar);
                     }
                 });
         }

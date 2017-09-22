@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -151,8 +152,9 @@ public class MySQLClientCRUD {
     / Retrieve/Select/Refresh
     */
 
-    public void retrieve(final RecyclerView recyclerView, final SwipeRefreshLayout swipeRefreshLayout, final String categoryName){
+    public void retrieve(final RecyclerView recyclerView, final SwipeRefreshLayout swipeRefreshLayout, final String categoryName, final ProgressBar progressBar){
         final ArrayList<StoryCRUD> stories = new ArrayList<>();
+        progressBar.setAlpha(1);
 
         AndroidNetworking.get(DATA_RETRIEVE_URL)
                 .addQueryParameter("category",categoryName)
@@ -216,11 +218,13 @@ public class MySQLClientCRUD {
 
                             //stop refreshing
                             swipeRefreshLayout.setRefreshing(false);
+                            progressBar.setAlpha(0);
 
 
                         }catch (JSONException e){
 
                             Toast.makeText(context, "There are no stories in this category at the moment. Please go back and select another.", Toast.LENGTH_LONG).show();
+                            progressBar.setAlpha(0);
 
                         }
 
@@ -231,6 +235,7 @@ public class MySQLClientCRUD {
                     public void onError(ANError anError) {
                         anError.printStackTrace();
                         Toast.makeText(context, "Unsuccessful: Error is - "+anError.getMessage(), Toast.LENGTH_LONG).show();
+                        progressBar.setAlpha(0);
                     }
 
                 });
