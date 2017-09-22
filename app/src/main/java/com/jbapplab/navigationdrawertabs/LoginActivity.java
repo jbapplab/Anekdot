@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
@@ -20,10 +21,13 @@ import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
 
         //To exit when back pressed in user area
         if (getIntent().getExtras() != null && getIntent().getExtras().getBoolean("EXIT", false)) {
@@ -34,6 +38,10 @@ public class LoginActivity extends AppCompatActivity {
         final EditText etPassword = (EditText) findViewById(R.id.etPassword);
         final Button bLogin = (Button) findViewById(R.id.bLogin);
         final TextView tvRegisterHere = (TextView) findViewById(R.id.tvRegisterHere);
+
+        //This sets the loading progress bar
+        progressBar = findViewById(R.id.progressBar);
+
 
         //We create a listener that will do something when the register link is clicked
         tvRegisterHere.setOnClickListener(new View.OnClickListener() {
@@ -49,6 +57,7 @@ public class LoginActivity extends AppCompatActivity {
         bLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                progressBar.setAlpha(1);
                 final String username = etUsername.getText().toString();
                 final String password = etPassword.getText().toString();
 
@@ -93,6 +102,7 @@ public class LoginActivity extends AppCompatActivity {
                                 LoginActivity.this.startActivity(intent);
 
                             }else {
+                                progressBar.setAlpha(0);
                                 //If not successful we want to display an error and user can select to retry
                                 AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                                 builder.setMessage("Login Failed")
@@ -110,6 +120,7 @@ public class LoginActivity extends AppCompatActivity {
                 Response.ErrorListener errorListener = new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        progressBar.setAlpha(0);
                         AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                         builder.setMessage("Login Failed. There is a problem with the server connection.")
                                 .setNegativeButton("Retry", null)
@@ -126,6 +137,8 @@ public class LoginActivity extends AppCompatActivity {
                  */
                 RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
                 queue.add(loginRequest);
+
+
             }
         });
     }
