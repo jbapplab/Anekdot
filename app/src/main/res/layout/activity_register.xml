@@ -12,20 +12,48 @@
     app:submitButton="@+id/submit_button"
     app:showErrorOn="unfocus">
 
+    <android.support.v7.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/toolbarRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:elevation="@dimen/actionBarElevation"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:logo="@drawable/logo"
+        app:contentInsetStartWithNavigation="0dp"
+        app:titleMarginStart="15dp"
+        app:title="Anekdot"
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <ProgressBar
         android:id="@+id/progressBar"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:indeterminate="true"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_below="@id/toolbarRegister"
         android:alpha="0"/>
+
+    <TextView
+        android:id="@+id/tvRegistrationMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/progressBar"
+        android:layout_marginBottom="10dp"
+        android:text="Welcome to Anecdot! In order to use the application you will need to register using the form below."
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
 
     <LinearLayout
         android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_below="@id/tvRegistrationMessage">
 
         <com.emmasuzuki.easyform.EasyTextInputLayout
             android:id="@+id/etFirstName"

@@ -11,6 +11,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -220,5 +221,43 @@ public class UserAreaActivity extends AppCompatActivity {
 
         //PASS OVER THE BUNDLE TO OUR FRAGMENT
         tabFragment.setArguments(bundle);
+    }
+
+    /*
+    CREATE THE OPTIONS MENU
+    */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.actionbarmenu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    /*
+    HANDLE CLICK ON MENU ACTIONS
+    */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                // User chose the "Settings" item, show the app settings UI...
+                Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
+                return true;
+
+            case R.id.menu_item_share:
+                //TODO User chose the "Share" action WE PUT CONTEXT SPECIFIC SHARE
+                //Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, "Anecdote user: "+firstName+" "+lastName+" - "+username+" - "+email);
+                sendIntent.setType("text/plain");
+                startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.send_to)));
+                return true;
+
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+
+        }
     }
 }
