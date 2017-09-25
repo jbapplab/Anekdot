@@ -40,10 +40,25 @@ public class StoryCoreFragment extends Fragment {
     String userIdString, actionString, storyIdString, storyTitle, ifOtherSpecify, authorIdString, storyDescription, orientation, complicatedAction, evaluation, resolution, message, stageRelated, contextRelated, imageUrl;
 
     MetaFirstFormFragment metaFirstFormFragment = new MetaFirstFormFragment();
+    CategoryFragment categoryFragment = new CategoryFragment();
+    StageFragment stageFragment = new StageFragment();
+
+    String categorySelection = "4";
+    String stageSelection = "4";
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+         /*
+        UNPACK THE DATA FROM THE BUNDLE
+        */
+        if (getArguments().getString("CATEGORY_KEY") != null){
+            categorySelection = getArguments().getString("CATEGORY_KEY");
+        }
+        if (getArguments().getString("STAGE_KEY") != null){
+            stageSelection = getArguments().getString("STAGE_KEY");
+        }
+
         /**
          * Set the title bar according to the fragment
          */
@@ -79,24 +94,24 @@ public class StoryCoreFragment extends Fragment {
         UNPACK THE DATA FROM THE BUNDLE
         */
 
-        userIdString = getArguments().getString("USERID_KEY").toString();
+        userIdString = getArguments().getString("USERID_KEY");
         if (getArguments().getString("UPDATE_KEY") != null) {
-            actionString = getArguments().getString("UPDATE_KEY").toString();
+            actionString = getArguments().getString("UPDATE_KEY");
         }
         if ((actionString != null) && actionString.equals("update")) {
-            storyIdString = getArguments().getString("STORY_ID_KEY").toString();
-            storyTitle = getArguments().getString("STORY_TITLE_KEY").toString();
-            ifOtherSpecify = getArguments().getString("IF_OTHER_SPECIFY_KEY").toString();
-            authorIdString = getArguments().getString("AUTHOR_ID_KEY").toString();
-            storyDescription = getArguments().getString("STORY_DESCRIPTION_KEY").toString();
-            orientation = getArguments().getString("ORIENTATION_KEY").toString();
-            complicatedAction = getArguments().getString("COMPLICATED_ACTION_KEY").toString();
-            evaluation = getArguments().getString("EVALUATION_KEY").toString();
-            resolution = getArguments().getString("RESOLUTION_KEY").toString();
-            message = getArguments().getString("MESSAGE_KEY").toString();
-            stageRelated = getArguments().getString("STAGE_RELATED_KEY").toString();
-            contextRelated = getArguments().getString("CONTEXT_RELATED_KEY").toString();
-            imageUrl = getArguments().getString("IMAGE_URL_KEY").toString();
+            storyIdString = getArguments().getString("STORY_ID_KEY");
+            storyTitle = getArguments().getString("STORY_TITLE_KEY");
+            ifOtherSpecify = getArguments().getString("IF_OTHER_SPECIFY_KEY");
+            authorIdString = getArguments().getString("AUTHOR_ID_KEY");
+            storyDescription = getArguments().getString("STORY_DESCRIPTION_KEY");
+            orientation = getArguments().getString("ORIENTATION_KEY");
+            complicatedAction = getArguments().getString("COMPLICATED_ACTION_KEY");
+            evaluation = getArguments().getString("EVALUATION_KEY");
+            resolution = getArguments().getString("RESOLUTION_KEY");
+            message = getArguments().getString("MESSAGE_KEY");
+            stageRelated = getArguments().getString("STAGE_RELATED_KEY");
+            contextRelated = getArguments().getString("CONTEXT_RELATED_KEY");
+            imageUrl = getArguments().getString("IMAGE_URL_KEY");
         }
 
         return x;
@@ -118,13 +133,14 @@ public class StoryCoreFragment extends Fragment {
             switch (position){
                 case 0 :
                     sendDataMetaFirstFormFragment();
+                    sendDataToSideFragments();
                     return metaFirstFormFragment;
                 case 1 :
 
-                    return new SocialFragment();
+                    return categoryFragment;
                 case 2 :
 
-                    return new UpdatesFragment();
+                    return stageFragment;
             }
             return
                     null;
@@ -156,8 +172,18 @@ public class StoryCoreFragment extends Fragment {
         }
 
         /*
-    SEND DATA TO FRAGMENT
-     */
+        SEND DATA TO FRAGMENT
+        */
+        private void sendDataToSideFragments() {
+            //PACK DATA IN A BUNDLE
+            Bundle forSideFragments = new Bundle();
+            forSideFragments.putString("CATEGORY_KEY", categorySelection);
+            forSideFragments.putString("STAGE_KEY", stageSelection);
+            //PASS OVER THE BUNDLE TO OUR FRAGMENT
+            categoryFragment.setArguments(forSideFragments);
+            stageFragment.setArguments(forSideFragments);
+        }
+
         private void sendDataMetaFirstFormFragment() {
             //PACK DATA IN A BUNDLE
             Bundle forMetaFirstFormBundle = new Bundle();
@@ -180,7 +206,6 @@ public class StoryCoreFragment extends Fragment {
                 forMetaFirstFormBundle.putString("CONTEXT_RELATED_KEY", contextRelated);
                 forMetaFirstFormBundle.putString("IMAGE_URL_KEY", imageUrl);
             }
-            //PASS OVER THE BUNDLE TO OUR FRAGMENT
             metaFirstFormFragment.setArguments(forMetaFirstFormBundle);
         }
     }

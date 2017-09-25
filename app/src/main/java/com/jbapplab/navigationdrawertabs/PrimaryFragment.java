@@ -40,12 +40,12 @@ public class PrimaryFragment extends Fragment {
         UNPACK THE DATA FROM THE BUNDLE
         */
 
-        userId = this.getArguments().getString("userId_KEY").toString();
-        firstName = this.getArguments().getString("firstName_KEY").toString();
-        lastName = this.getArguments().getString("lastName_KEY").toString();
-        username = this.getArguments().getString("username_KEY").toString();
-        password = this.getArguments().getString("password_KEY").toString();
-        email = this.getArguments().getString("email_KEY").toString();
+        userId = this.getArguments().getString("userId_KEY");
+        firstName = this.getArguments().getString("firstName_KEY");
+        lastName = this.getArguments().getString("lastName_KEY");
+        username = this.getArguments().getString("username_KEY");
+        password = this.getArguments().getString("password_KEY");
+        email = this.getArguments().getString("email_KEY");
 
         return inflater.inflate(R.layout.primary_layout,null);
     }

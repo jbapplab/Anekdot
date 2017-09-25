@@ -17,10 +17,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,6 +40,10 @@ public class MetaFirstFormFragment extends Fragment {
 
     String userIdString, actionString, storyIdString, storyTitle, ifOtherSpecify, authorIdString, storyDescription, orientation, complicatedAction, evaluation, resolution, message, stageRelated, contextRelated, imageUrl;
 
+    CategoryFragment categoryFragment = new CategoryFragment();
+    StageFragment stageFragment = new StageFragment();
+    Spinner storyCategorySpinner, audienceStageSpinner;
+
     //Instance fields
     int storyIdInt, authorIdInt;
 
@@ -48,25 +54,24 @@ public class MetaFirstFormFragment extends Fragment {
         /*
         UNPACK THE DATA FROM THE BUNDLE
         */
-
-        userIdString = getArguments().getString("USERID_KEY").toString();
+        userIdString = getArguments().getString("USERID_KEY");
         if (getArguments().getString("UPDATE_KEY") != null) {
-            actionString = getArguments().getString("UPDATE_KEY").toString();
+            actionString = getArguments().getString("UPDATE_KEY");
         }
         if ((actionString != null) && actionString.equals("update")) {
-            storyIdString = getArguments().getString("STORY_ID_KEY").toString();
-            storyTitle = getArguments().getString("STORY_TITLE_KEY").toString();
-            ifOtherSpecify = getArguments().getString("IF_OTHER_SPECIFY_KEY").toString();
-            authorIdString = getArguments().getString("AUTHOR_ID_KEY").toString();
-            storyDescription = getArguments().getString("STORY_DESCRIPTION_KEY").toString();
-            orientation = getArguments().getString("ORIENTATION_KEY").toString();
-            complicatedAction = getArguments().getString("COMPLICATED_ACTION_KEY").toString();
-            evaluation = getArguments().getString("EVALUATION_KEY").toString();
-            resolution = getArguments().getString("RESOLUTION_KEY").toString();
-            message = getArguments().getString("MESSAGE_KEY").toString();
-            stageRelated = getArguments().getString("STAGE_RELATED_KEY").toString();
-            contextRelated = getArguments().getString("CONTEXT_RELATED_KEY").toString();
-            imageUrl = getArguments().getString("IMAGE_URL_KEY").toString();
+            storyIdString = getArguments().getString("STORY_ID_KEY");
+            storyTitle = getArguments().getString("STORY_TITLE_KEY");
+            ifOtherSpecify = getArguments().getString("IF_OTHER_SPECIFY_KEY");
+            authorIdString = getArguments().getString("AUTHOR_ID_KEY");
+            storyDescription = getArguments().getString("STORY_DESCRIPTION_KEY");
+            orientation = getArguments().getString("ORIENTATION_KEY");
+            complicatedAction = getArguments().getString("COMPLICATED_ACTION_KEY");
+            evaluation = getArguments().getString("EVALUATION_KEY");
+            resolution = getArguments().getString("RESOLUTION_KEY");
+            message = getArguments().getString("MESSAGE_KEY");
+            stageRelated = getArguments().getString("STAGE_RELATED_KEY");
+            contextRelated = getArguments().getString("CONTEXT_RELATED_KEY");
+            imageUrl = getArguments().getString("IMAGE_URL_KEY");
         }
 
         return inflater.inflate(R.layout.meta_first_main,null);
@@ -82,7 +87,7 @@ public class MetaFirstFormFragment extends Fragment {
         if ((actionString != null) && actionString.equals("update")){
 
             //Reference views
-            final Spinner storyCategorySpinner = getView().findViewById(R.id.categorySpinner);
+            storyCategorySpinner = getView().findViewById(R.id.categorySpinner);
             final EasyTextInputLayout storyTitleTxt = getView().findViewById(R.id.storyTitle);
             final EasyTextInputLayout ifOtherSpecifyTxt = getView().findViewById(R.id.ifOtherSpecify);
             final EasyTextInputLayout storyDescriptionTxt = getView().findViewById(R.id.storyDescription);
@@ -94,7 +99,7 @@ public class MetaFirstFormFragment extends Fragment {
             final EasyTextInputLayout stageRelatedTxt = getView().findViewById(R.id.stageRelated);
             final EasyTextInputLayout contextRelatedTxt = getView().findViewById(R.id.contextRelated);
             final EasyTextInputLayout imageUrlTxt = getView().findViewById(R.id.imageUrl);
-            final Spinner audienceStageSpinner = getView().findViewById(R.id.stageSpinner);
+            audienceStageSpinner = getView().findViewById(R.id.stageSpinner);
             final Button buttonUpdate = getView().findViewById(R.id.updateButton);
             buttonUpdate.setEnabled(true);
             buttonUpdate.setAlpha(1);
@@ -142,7 +147,47 @@ public class MetaFirstFormFragment extends Fragment {
             audienceStageSpinner.setSelection(0);
 
             storyIdInt = Integer.parseInt(storyIdString);
-            authorIdInt = Integer.parseInt(authorIdString);;
+            authorIdInt = Integer.parseInt(authorIdString);
+
+            //When the user selects a category
+            storyCategorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    //PACK DATA IN A BUNDLE
+                    Bundle forCategoryFragment = new Bundle();
+                    forCategoryFragment.putString("CATEGORY_KEY", storyCategorySpinner.getSelectedItem().toString());
+                    Toast.makeText(getActivity(), storyCategorySpinner.getSelectedItem().toString(), Toast.LENGTH_LONG).show();
+                    //PASS OVER THE BUNDLE TO OUR FRAGMENT
+                    categoryFragment.setArguments(forCategoryFragment);
+                    //TODO INTERFACE
+                    storyCoreFragment.setArguments(forCategoryFragment);
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+                    //Do nothing
+                }
+            });
+
+            //When the user selects a stage
+            audienceStageSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    //PACK DATA IN A BUNDLE
+                    Bundle forStageFragment = new Bundle();
+                    forStageFragment.putString("STAGE_KEY", audienceStageSpinner.getSelectedItem().toString());
+                    Toast.makeText(getActivity(), audienceStageSpinner.getSelectedItem().toString(), Toast.LENGTH_LONG).show();
+
+                    //PASS OVER THE BUNDLE TO OUR FRAGMENT
+                    stageFragment.setArguments(forStageFragment);
+                    storyCoreFragment.setArguments(forStageFragment);
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+                    //Do nothing
+                }
+            });
 
             //Handle events UPDATE
             buttonUpdate.setOnClickListener(new View.OnClickListener() {
@@ -230,7 +275,7 @@ public class MetaFirstFormFragment extends Fragment {
         } else {
 
             //Reference views
-            final Spinner storyCategorySpinner = getView().findViewById(R.id.categorySpinner);
+            storyCategorySpinner = getView().findViewById(R.id.categorySpinner);
             final EasyTextInputLayout storyTitleTxt = getView().findViewById(R.id.storyTitle);
             final EasyTextInputLayout ifOtherSpecifyTxt = getView().findViewById(R.id.ifOtherSpecify);
             final EasyTextInputLayout storyDescriptionTxt = getView().findViewById(R.id.storyDescription);
@@ -242,7 +287,7 @@ public class MetaFirstFormFragment extends Fragment {
             final EasyTextInputLayout stageRelatedTxt = getView().findViewById(R.id.stageRelated);
             final EasyTextInputLayout contextRelatedTxt = getView().findViewById(R.id.contextRelated);
             final EasyTextInputLayout imageUrlTxt = getView().findViewById(R.id.imageUrl);
-            final Spinner audienceStageSpinner = getView().findViewById(R.id.stageSpinner);
+            audienceStageSpinner = getView().findViewById(R.id.stageSpinner);
             final Button buttonAdd = getView().findViewById(R.id.addButton);
             buttonAdd.setEnabled(true);
             buttonAdd.setAlpha(1);
@@ -273,6 +318,47 @@ public class MetaFirstFormFragment extends Fragment {
 
             audienceStageSpinner.setAdapter(stageAdapter);
             audienceStageSpinner.setSelection(0);
+
+            //When the user selects a category
+            storyCategorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    //PACK DATA IN A BUNDLE
+                    Bundle forCategoryFragment = new Bundle();
+                    forCategoryFragment.putString("CATEGORY_KEY", storyCategorySpinner.getSelectedItem().toString());
+                    Toast.makeText(getActivity(), storyCategorySpinner.getSelectedItem().toString(), Toast.LENGTH_LONG).show();
+
+                    //PASS OVER THE BUNDLE TO OUR FRAGMENT
+                    categoryFragment.setArguments(forCategoryFragment);
+                    storyCoreFragment.setArguments(forCategoryFragment);
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+                    //Do nothing
+                }
+            });
+
+            //When the user selects a stage
+            audienceStageSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    //PACK DATA IN A BUNDLE
+                    Bundle forStageFragment = new Bundle();
+                    forStageFragment.putString("STAGE_KEY", audienceStageSpinner.getSelectedItem().toString());
+                    Toast.makeText(getActivity(), audienceStageSpinner.getSelectedItem().toString(), Toast.LENGTH_LONG).show();
+
+
+                    //PASS OVER THE BUNDLE TO OUR FRAGMENT
+                    stageFragment.setArguments(forStageFragment);
+                    storyCoreFragment.setArguments(forStageFragment);
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+                    //Do nothing
+                }
+            });
 
             //Handle events
             //ADD

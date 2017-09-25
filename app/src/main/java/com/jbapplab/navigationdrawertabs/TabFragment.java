@@ -84,12 +84,12 @@ public class TabFragment extends Fragment {
         UNPACK THE DATA FROM THE BUNDLE
         */
 
-        userId = getArguments().getString("userId_KEY").toString();
-        firstName = getArguments().getString("firstName_KEY").toString();
-        lastName = getArguments().getString("lastName_KEY").toString();
-        username = getArguments().getString("username_KEY").toString();
-        password = getArguments().getString("password_KEY").toString();
-        email = getArguments().getString("email_KEY").toString();
+        userId = getArguments().getString("userId_KEY");
+        firstName = getArguments().getString("firstName_KEY");
+        lastName = getArguments().getString("lastName_KEY");
+        username = getArguments().getString("username_KEY");
+        password = getArguments().getString("password_KEY");
+        email = getArguments().getString("email_KEY");
 
         return x;
     }
