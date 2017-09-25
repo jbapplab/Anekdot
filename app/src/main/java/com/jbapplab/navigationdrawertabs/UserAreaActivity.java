@@ -113,6 +113,7 @@ public class UserAreaActivity extends AppCompatActivity {
                 if (menuItem.getItemId() == R.id.nav_item_categories) {
 
                     Intent intentGoToSelectCategoryActivity = new Intent(UserAreaActivity.this, SelectCategoryActivity.class);
+                    intentGoToSelectCategoryActivity.putExtra("USERID_KEY", userId);
                     UserAreaActivity.this.startActivity(intentGoToSelectCategoryActivity);
 
                 }
@@ -120,6 +121,7 @@ public class UserAreaActivity extends AppCompatActivity {
                 if (menuItem.getItemId() == R.id.nav_item_mystories) {
 
                     Intent intentGoToMyStoriesActivity = new Intent(UserAreaActivity.this, MyStoriesActivity.class);
+                    intentGoToMyStoriesActivity.putExtra("USERID_KEY", userId);
                     UserAreaActivity.this.startActivity(intentGoToMyStoriesActivity);
 
                 }
@@ -127,6 +129,7 @@ public class UserAreaActivity extends AppCompatActivity {
                 if (menuItem.getItemId() == R.id.nav_item_myfavourites) {
 
                     Intent intentGoToMyFavouritesActivity = new Intent(UserAreaActivity.this, MyFavouritesActivity.class);
+                    intentGoToMyFavouritesActivity.putExtra("USERID_KEY", userId);
                     UserAreaActivity.this.startActivity(intentGoToMyFavouritesActivity);
 
                 }
@@ -135,6 +138,7 @@ public class UserAreaActivity extends AppCompatActivity {
                 if (menuItem.getItemId() == R.id.nav_item_eventsfirst) {
 
                     Intent intentGoToEvensFirstActivity = new Intent(UserAreaActivity.this, MetaFirstActivity.class);
+                    intentGoToEvensFirstActivity.putExtra("USERID_KEY", userId);
                     UserAreaActivity.this.startActivity(intentGoToEvensFirstActivity);
 
                 }
@@ -142,6 +146,7 @@ public class UserAreaActivity extends AppCompatActivity {
                 if (menuItem.getItemId() == R.id.nav_item_audiencefirst) {
 
                     Intent intentGoToMetaFirstActivity = new Intent(UserAreaActivity.this, MetaFirstActivity.class);
+                    intentGoToMetaFirstActivity.putExtra("USERID_KEY", userId);
                     UserAreaActivity.this.startActivity(intentGoToMetaFirstActivity);
 
                 }
@@ -149,6 +154,7 @@ public class UserAreaActivity extends AppCompatActivity {
                 if (menuItem.getItemId() == R.id.nav_item_settings) {
 
                     Intent intentGoToSettingsActivity = new Intent(UserAreaActivity.this, SettingsActivity.class);
+                    intentGoToSettingsActivity.putExtra("USERID_KEY", userId);
                     UserAreaActivity.this.startActivity(intentGoToSettingsActivity);
 
                 }
@@ -156,6 +162,7 @@ public class UserAreaActivity extends AppCompatActivity {
                 if (menuItem.getItemId() == R.id.nav_item_help) {
 
                     Intent intentGoToHelpActivity = new Intent(UserAreaActivity.this, HelpActivity.class);
+                    intentGoToHelpActivity.putExtra("USERID_KEY", userId);
                     UserAreaActivity.this.startActivity(intentGoToHelpActivity);
 
                 }

@@ -53,7 +53,7 @@ public class TabFragment extends Fragment {
          * Set the title bar according to the fragment
          */
         ((UserAreaActivity) getActivity())
-                .setActionBarTitle("Inbox");
+                .setActionBarTitle("Home");
 
         /**
          *Inflate tab_layout and setup Views.
@@ -142,7 +142,7 @@ public class TabFragment extends Fragment {
                 case 1 :
                     return "Home 2";
                 case 2 :
-                    return "Home 3  ";
+                    return "Home 3";
             }
             return null;
         }

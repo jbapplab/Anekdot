@@ -1,7 +1,17 @@
 package com.jbapplab.navigationdrawertabs;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -16,347 +26,240 @@ import com.jbapplab.navigationdrawertabs.m_StoryDetailActivity.StoryDetailActivi
 
 public class MetaFirstActivity extends AppCompatActivity {
 
-    //Instance fields
-    private Spinner storyCategorySpinner;
-    private EasyTextInputLayout storyTitleTxt;
-    private EasyTextInputLayout ifOtherSpecifyTxt;
-    private EasyTextInputLayout storyDescriptionTxt;
-    private EasyTextInputLayout orientationTxt;
-    private EasyTextInputLayout complicatedActionTxt;
-    private EasyTextInputLayout evaluationTxt;
-    private EasyTextInputLayout resolutionTxt;
-    private EasyTextInputLayout messgageTxt;
-    private EasyTextInputLayout stageRelatedTxt;
-    private EasyTextInputLayout contextRelatedTxt;
-    private EasyTextInputLayout imageUrlTxt;
-    private Spinner audienceStageSpinner;
-    private Button buttonAdd;
-    private Button buttonUpdate;
-    int storyIdInt, authorIdInt;
+    //Navigation drawer declaration
+    DrawerLayout mDrawerLayout;
+    NavigationView mNavigationView;
+
+    //Fragment utilities declaration
+    FragmentManager mFragmentManager;
+    FragmentTransaction mFragmentTransaction;
+    StoryCoreFragment storyCoreFragment = new StoryCoreFragment();
+
+    String userIdString, actionString, storyIdString, storyTitle, ifOtherSpecify, authorIdString, storyDescription, orientation, complicatedAction, evaluation, resolution, message, stageRelated, contextRelated, imageUrl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.meta_first_main);
+        setContentView(R.layout.activity_meta_first);
 
-        //Toolbar toolbar = findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
-
-        final EasyForm easyForm = findViewById(R.id.meta_first_form);
-
-        //Intent to update
+        /*
+         * Here we need to retrieve the data that we passed through the intent from the UserAreaActivity
+         */
+        //Check if update
         Intent intent;
         intent = this.getIntent();
-        if ((intent.getExtras() != null) && (intent.getExtras().getString("UPDATE_KEY").equals("update"))){
+        userIdString = intent.getStringExtra("USERID_KEY");
+        actionString = intent.getExtras().getString("UPDATE_KEY");
 
-            //Reference views
-            this.initialiseViews(0);
-
-            //This is to populate our spinners
-            populateCategories();
-            populateStages();
-
-            final String storyId = intent.getExtras().getString("STORY_ID_KEY");
-            final String storyTitle = (intent.getExtras().getString("STORY_TITLE_KEY"));
-            //final String storyCategory = intent.getExtras().getString("STORY_CATEGORY_KEY");
-            final String ifOtherSpecify = intent.getExtras().getString("IF_OTHER_SPECIFY_KEY");
-            final String authorId = intent.getExtras().getString("AUTHOR_ID_KEY");
-            final String storyDescription = intent.getExtras().getString("STORY_DESCRIPTION_KEY");
-            //final String storyEvents = intent.getExtras().getString("STORY_EVENTS_KEY");
-            final String orientation = intent.getExtras().getString("ORIENTATION_KEY");
-            final String complicatedAction = intent.getExtras().getString("COMPLICATED_ACTION_KEY");
-            final String evaluation = intent.getExtras().getString("EVALUATION_KEY");
-            final String resolution = intent.getExtras().getString("RESOLUTION_KEY");
-            final String message = intent.getExtras().getString("MESSAGE_KEY");
-            //final String storyMeta = intent.getExtras().getString("STORY_META_KEY");
-            final String stageRelated = intent.getExtras().getString("STAGE_RELATED_KEY");
-            final String contextRelated = intent.getExtras().getString("CONTEXT_RELATED_KEY");
-            //final String storyFull = intent.getExtras().getString("STORY_FULL_KEY");
-            //final String audienceStage = intent.getExtras().getString("AUDIENCE_STAGE_KEY");
-            final String imageUrl = intent.getExtras().getString("IMAGE_URL_KEY");
-
-            storyCategorySpinner.setSelection(0);
-            storyTitleTxt.getEditText().setText(storyTitle);
-            ifOtherSpecifyTxt.getEditText().setText(ifOtherSpecify);
-            storyDescriptionTxt.getEditText().setText(storyDescription);
-            orientationTxt.getEditText().setText(orientation);
-            complicatedActionTxt.getEditText().setText(complicatedAction);
-            evaluationTxt.getEditText().setText(evaluation);
-            resolutionTxt.getEditText().setText(resolution);
-            messgageTxt.getEditText().setText(message);
-            stageRelatedTxt.getEditText().setText(stageRelated);
-            contextRelatedTxt.getEditText().setText(contextRelated);
-            imageUrlTxt.getEditText().setText(imageUrl);
-            audienceStageSpinner.setSelection(0);
-
-            storyIdInt = Integer.parseInt(storyId);
-            authorIdInt = Integer.parseInt(authorId);;
-
-            //Handle events
-            this.handleClickEvents(easyForm, 0);
-
-        } else {
-
-            //Reference views
-            this.initialiseViews(1);
-
-            //This is to populate our spinners
-            populateCategories();
-            populateStages();
-
-            //Handle events
-            this.handleClickEvents(easyForm, 1);
-
-        }
-    }
-
-    /*
-    Reference views
-     */
-    private void initialiseViews(int i){
-
-        storyCategorySpinner = findViewById(R.id.categorySpinner);
-        storyTitleTxt = findViewById(R.id.storyTitle);
-        ifOtherSpecifyTxt = findViewById(R.id.ifOtherSpecify);
-        storyDescriptionTxt = findViewById(R.id.storyDescription);
-        orientationTxt = findViewById(R.id.orientation);
-        complicatedActionTxt = findViewById(R.id.complicatedAction);
-        evaluationTxt = findViewById(R.id.evaluation);
-        resolutionTxt = findViewById(R.id.resolution);
-        messgageTxt = findViewById(R.id.messgage);
-        stageRelatedTxt = findViewById(R.id.stageRelated);
-        contextRelatedTxt = findViewById(R.id.contextRelated);
-        imageUrlTxt = findViewById(R.id.imageUrl);
-        audienceStageSpinner = findViewById(R.id.stageSpinner);
-
-        if (i == 0){
-
-            buttonUpdate = findViewById(R.id.updateButton);
-            buttonUpdate.setEnabled(true);
-            buttonUpdate.setAlpha(1);
-
-        } else {
-
-            buttonAdd = findViewById(R.id.addButton);
-            buttonAdd.setEnabled(true);
-            buttonAdd.setAlpha(1);
+        if ((intent.getExtras() != null) && (intent.getExtras().getString("UPDATE_KEY") != null) &&(actionString.equals("update"))) {
+            storyIdString = intent.getExtras().getString("STORY_ID_KEY");
+            storyTitle = (intent.getExtras().getString("STORY_TITLE_KEY"));
+            ifOtherSpecify = intent.getExtras().getString("IF_OTHER_SPECIFY_KEY");
+            authorIdString = intent.getExtras().getString("AUTHOR_ID_KEY");
+            storyDescription = intent.getExtras().getString("STORY_DESCRIPTION_KEY");
+            orientation = intent.getExtras().getString("ORIENTATION_KEY");
+            complicatedAction = intent.getExtras().getString("COMPLICATED_ACTION_KEY");
+            evaluation = intent.getExtras().getString("EVALUATION_KEY");
+            resolution = intent.getExtras().getString("RESOLUTION_KEY");
+            message = intent.getExtras().getString("MESSAGE_KEY");
+            stageRelated = intent.getExtras().getString("STAGE_RELATED_KEY");
+            contextRelated = intent.getExtras().getString("CONTEXT_RELATED_KEY");
+            imageUrl = intent.getExtras().getString("IMAGE_URL_KEY");
         }
 
 
+        //Set the toolbar as an action bar to later change the label
+        Toolbar mainToolbar = findViewById(R.id.toolbarMetaFirst);
+        setSupportActionBar(mainToolbar);
 
+        /**
+         *Setup the DrawerLayout and NavigationView
+         */
+        mDrawerLayout = findViewById(R.id.drawerLayoutMetaFirst);
+        mNavigationView = findViewById(R.id.navigation_stuffMetaFirst);
+
+        /**
+         * Lets inflate the very first fragment
+         * Here , we are inflating the TabFragment as the first Fragment
+         */
+        mFragmentManager = getSupportFragmentManager();
+        mFragmentTransaction = mFragmentManager.beginTransaction();
+        sendDataStoryCoreFragment();
+        mFragmentTransaction.replace(R.id.containerViewMetaFirst, storyCoreFragment).commit();
+
+        /**
+         * Setup click events on the Navigation View Items.
+         */
+        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem menuItem) {
+                mDrawerLayout.closeDrawers();
+
+                //Can add more according to the buttons I will need
+                //Added the addToBackStack("str") bit to use back button
+                if (menuItem.getItemId() == R.id.nav_item_home) {
+                    Intent intentGoToUserAreaActivity = new Intent(MetaFirstActivity.this, UserAreaActivity.class);
+                    intentGoToUserAreaActivity.putExtra("USERID_KEY", userIdString);
+                    MetaFirstActivity.this.startActivity(intentGoToUserAreaActivity);
+                }
+
+                if (menuItem.getItemId() == R.id.nav_item_logout) {
+                    new AlertDialog.Builder(MetaFirstActivity.this)
+                            .setTitle("Log Out?")
+                            .setMessage("Are you sure you want to log out?")
+                            .setNegativeButton(android.R.string.no, null)
+                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                                public void onClick(DialogInterface arg0, int arg1) {
+
+                                    Intent intentGoToLoginActivity = new Intent(MetaFirstActivity.this, LoginActivity.class);
+                                    MetaFirstActivity.this.startActivity(intentGoToLoginActivity);
+
+                                }
+                            }).create().show();
+                }
+
+                if (menuItem.getItemId() == R.id.nav_item_categories) {
+
+                    Intent intentGoToSelectCategoryActivity = new Intent(MetaFirstActivity.this, SelectCategoryActivity.class);
+                    intentGoToSelectCategoryActivity.putExtra("USERID_KEY", userIdString);
+                    MetaFirstActivity.this.startActivity(intentGoToSelectCategoryActivity);
+
+                }
+
+                if (menuItem.getItemId() == R.id.nav_item_mystories) {
+
+                    Intent intentGoToMyStoriesActivity = new Intent(MetaFirstActivity.this, MyStoriesActivity.class);
+                    intentGoToMyStoriesActivity.putExtra("USERID_KEY", userIdString);
+                    MetaFirstActivity.this.startActivity(intentGoToMyStoriesActivity);
+
+                }
+
+                if (menuItem.getItemId() == R.id.nav_item_myfavourites) {
+
+                    Intent intentGoToMyFavouritesActivity = new Intent(MetaFirstActivity.this, MyFavouritesActivity.class);
+                    intentGoToMyFavouritesActivity.putExtra("USERID_KEY", userIdString);
+                    MetaFirstActivity.this.startActivity(intentGoToMyFavouritesActivity);
+
+                }
+
+                //TODO REVERSE ORDER OF METAFIRST FIX THIS
+                if (menuItem.getItemId() == R.id.nav_item_eventsfirst) {
+
+                    Intent intentGoToEvensFirstActivity = new Intent(MetaFirstActivity.this, UserAreaActivity.class);
+                    intentGoToEvensFirstActivity.putExtra("USERID_KEY", userIdString);
+                    MetaFirstActivity.this.startActivity(intentGoToEvensFirstActivity);
+
+                }
+
+                if (menuItem.getItemId() == R.id.nav_item_audiencefirst) {
+
+                    FragmentTransaction xfragmentTransaction = mFragmentManager.beginTransaction();
+                    sendDataStoryCoreFragment();
+                    xfragmentTransaction.replace(R.id.containerViewMetaFirst, storyCoreFragment).addToBackStack("str").commit();
+
+                }
+
+                if (menuItem.getItemId() == R.id.nav_item_settings) {
+
+                    Intent intentGoToSettingsActivity = new Intent(MetaFirstActivity.this, SettingsActivity.class);
+                    intentGoToSettingsActivity.putExtra("USERID_KEY", userIdString);
+                    MetaFirstActivity.this.startActivity(intentGoToSettingsActivity);
+
+                }
+
+                if (menuItem.getItemId() == R.id.nav_item_help) {
+
+                    Intent intentGoToHelpActivity = new Intent(MetaFirstActivity.this, HelpActivity.class);
+                    intentGoToHelpActivity.putExtra("USERID_KEY", userIdString);
+                    MetaFirstActivity.this.startActivity(intentGoToHelpActivity);
+
+                }
+
+                return false;
+            }
+
+        });
+
+        /**
+         * Setup Drawer Toggle of the Toolbar
+         */
+
+        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
+        ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.app_name,
+                R.string.app_name);
+
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+
+        mDrawerToggle.syncState();
+    }
+
+    public void setActionBarTitle(String title){
+        getSupportActionBar().setTitle(title);
     }
 
     /*
-    Populate our spinners
-     */
-    private void populateCategories()
-    {
-        ArrayAdapter<String> categoryAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item);
+   SEND DATA TO FRAGMENT
+    */
+    private void sendDataStoryCoreFragment() {
+        //PACK DATA IN A BUNDLE
+        Bundle bundle = new Bundle();
+        bundle.putString("USERID_KEY", userIdString);
+        bundle.putString("UPDATE_KEY", actionString);
+        if ((actionString != null) && actionString.equals("update")){
+            bundle.putString("STORY_ID_KEY", storyIdString);
+            bundle.putString("STORY_TITLE_KEY", storyTitle);
+            bundle.putString("IF_OTHER_SPECIFY_KEY", ifOtherSpecify);
+            bundle.putString("AUTHOR_ID_KEY", authorIdString);
+            bundle.putString("STORY_DESCRIPTION_KEY", storyDescription);
+            bundle.putString("ORIENTATION_KEY", orientation);
+            bundle.putString("COMPLICATED_ACTION_KEY", complicatedAction);
+            bundle.putString("EVALUATION_KEY", evaluation);
+            bundle.putString("RESOLUTION_KEY", resolution);
+            bundle.putString("MESSAGE_KEY", message);
+            bundle.putString("STAGE_RELATED_KEY", stageRelated);
+            bundle.putString("CONTEXT_RELATED_KEY", contextRelated);
+            bundle.putString("IMAGE_URL_KEY", imageUrl);
+        }
 
-        categoryAdapter.add("Other");
-        categoryAdapter.add("Art");
-        categoryAdapter.add("Causes");
-        categoryAdapter.add("Education");
-        categoryAdapter.add("Food");
-        categoryAdapter.add("Lifestyle");
-        categoryAdapter.add("Business");
-        categoryAdapter.add("Sports");
-        categoryAdapter.add("Travel");
-        categoryAdapter.add("Security");
-
-        storyCategorySpinner.setAdapter(categoryAdapter);
-        storyCategorySpinner.setSelection(0);
-
-    }
-
-    private void populateStages()
-    {
-        ArrayAdapter<String> stageAdapter = new ArrayAdapter<String>(this, R.layout.multiline_spinner);
-
-        stageAdapter.add("Stage 1: The audience is unaware of the problem of issue you are describing; they don't have intention to change in the forseeable future (e.g. first time smokers)");
-        stageAdapter.add("Stage 2: The audience is aware of the problem or issue you are describing; they are seriously considering to change their behaviour in relation to it (e.g. people that have been diagnosed with respitory problems due to smoking)");
-        stageAdapter.add("Stage 3: The audience is at a stage that they are intending to take action (e.g. people that know about the benefits of exercise but postpone signing up to the gym)");
-        stageAdapter.add("Stage 4: The audience modify their behaviours, experiences and/or environment to overcome the issue or problem. (e.g. people that buy healthy food and throw away snacks while loosing weight)");
-
-        audienceStageSpinner.setAdapter(stageAdapter);
-        audienceStageSpinner.setSelection(0);
+        //PASS OVER THE BUNDLE TO OUR FRAGMENT
+        storyCoreFragment.setArguments(bundle);
     }
 
     /*
-    Handle Click Events
-     */
-    private void handleClickEvents(final EasyForm easyForm, int i){
+    CREATE THE OPTIONS MENU
+    */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.actionbarmenu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
-        if (i==0){
+    /*
+    HANDLE CLICK ON MENU ACTIONS
+    */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                // User chose the "Settings" item, show the app settings UI...
+                Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
+                return true;
 
-            //UPDATE
-            buttonUpdate.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+            case R.id.menu_item_share:
+                //TODO User chose the "Share" action FULL STORY
+                //Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, "THIS SHOULD BE THE FULL STORY");
+                sendIntent.setType("text/plain");
+                startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.send_to)));
+                return true;
 
-                    //Get values
-                    String storyCategory = storyCategorySpinner.getSelectedItem().toString();
-                    String storyTitle = storyTitleTxt.getEditText().getText().toString();
-                    String ifOtherSpecify = ifOtherSpecifyTxt.getEditText().getText().toString();
-                    String storyDescription = storyDescriptionTxt.getEditText().getText().toString();
-                    String orientation = orientationTxt.getEditText().getText().toString();
-                    String complicatedAction = complicatedActionTxt.getEditText().getText().toString();
-                    String evaluation = evaluationTxt.getEditText().getText().toString();
-                    String resolution = resolutionTxt.getEditText().getText().toString();
-                    String message = messgageTxt.getEditText().getText().toString();
-                    String stageRelated = stageRelatedTxt.getEditText().getText().toString();
-                    String contextRelated = contextRelatedTxt.getEditText().getText().toString();
-                    String imageUrl = imageUrlTxt.getEditText().getText().toString();
-                    String audienceStage = audienceStageSpinner.getSelectedItem().toString();
-
-                    String storyEvents = orientation + "\n" + complicatedAction + "\n" + evaluation + "\n" + resolution + "\n" + message;
-                    String storyMeta = stageRelated + "\n" + contextRelated;
-                    String storyFull = storyTitle + "\n" + storyDescription + "\n" + storyEvents + "\n" + storyMeta;
-
-                    //Client side validation
-                    easyForm.validate();
-
-                    if (easyForm.isValid()) {
-                        Toast.makeText(MetaFirstActivity.this, "All the fields are valid.", Toast.LENGTH_SHORT).show();
-
-                        //To appoint label from category selected in stages
-                        String stage= "The audience is unaware of the problem of issue you are describing; they don't have intention to change in the forseeable future (e.g. first time smokers)";
-                        switch (audienceStage){
-                            case "Stage 1: The audience is unaware of the problem of issue you are describing; they don't have intention to change in the forseeable future (e.g. first time smokers)":
-                                stage = "Precontemplation";
-                                break;
-                            case "Stage 2: The audience is aware of the problem or issue you are describing; they are seriously considering to change their behaviour in relation to it (e.g. people that have been diagnosed with respitory problems due to smoking)":
-                                stage = "Contemplation";
-                                break;
-                            case "Stage 3: The audience is at a stage that they are intending to take action (e.g. people that know about the benefits of exercise but postpone signing up to the gym)":
-                                stage = "Preparation";
-                                break;
-                            case "Stage 4: The audience modify their behaviours, experiences and/or environment to overcome the issue or problem. (e.g. people that buy healthy food and throw away snacks while loosing weight)":
-                                stage = "Action";
-                                break;
-                            default:
-                                stage = "Precontemplation";
-                                return;
-
-                        }
-                        //Save data
-                        StoryCRUD storyCRUD = new StoryCRUD();
-                        storyCRUD.setStoryId(storyIdInt);
-                        storyCRUD.setStoryTitle(storyTitle);
-                        storyCRUD.setStoryCategory(storyCategory);
-                        storyCRUD.setIfOtherSpecify(ifOtherSpecify);
-                        storyCRUD.setAuthorId(authorIdInt);
-                        storyCRUD.setStoryDescription(storyDescription);
-                        storyCRUD.setStoryEvents(storyEvents);
-                        storyCRUD.setOrientation(orientation);
-                        storyCRUD.setComplicatedAction(complicatedAction);
-                        storyCRUD.setEvaluation(evaluation);
-                        storyCRUD.setResolution(resolution);
-                        storyCRUD.setMessage(message);
-                        storyCRUD.setStoryMeta(storyMeta);
-                        storyCRUD.setStageRelated(stageRelated);;
-                        storyCRUD.setContextRelated(contextRelated);
-                        storyCRUD.setStoryFull(storyFull);
-                        storyCRUD.setImageUrl(imageUrl);
-                        storyCRUD.setAudienceStage(stage);
-
-                        new MySQLClientCRUD(MetaFirstActivity.this).update(storyCRUD, storyCategorySpinner, storyTitleTxt, ifOtherSpecifyTxt, storyDescriptionTxt, orientationTxt, complicatedActionTxt, evaluationTxt, resolutionTxt, messgageTxt, stageRelatedTxt, contextRelatedTxt, imageUrlTxt, audienceStageSpinner);
-
-                        Intent intentGoToRetrieveStoriesCRUDActivity = new Intent(MetaFirstActivity.this, RetrieveStoriesCRUDActivity.class);
-                        intentGoToRetrieveStoriesCRUDActivity.putExtra("CATEGORY_KEY", storyCategory);
-                        MetaFirstActivity.this.startActivity(intentGoToRetrieveStoriesCRUDActivity);
-
-                    } else {
-                        Toast.makeText(MetaFirstActivity.this, "The last input was invalid.", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-
-        }else{
-
-            //ADD
-            buttonAdd.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    //Get values
-                    String storyCategory = storyCategorySpinner.getSelectedItem().toString();
-                    String storyTitle = storyTitleTxt.getEditText().getText().toString();
-                    String ifOtherSpecify = ifOtherSpecifyTxt.getEditText().getText().toString();
-                    String storyDescription = storyDescriptionTxt.getEditText().getText().toString();
-                    String orientation = orientationTxt.getEditText().getText().toString();
-                    String complicatedAction = complicatedActionTxt.getEditText().getText().toString();
-                    String evaluation = evaluationTxt.getEditText().getText().toString();
-                    String resolution = resolutionTxt.getEditText().getText().toString();
-                    String message = messgageTxt.getEditText().getText().toString();
-                    String stageRelated = stageRelatedTxt.getEditText().getText().toString();
-                    String contextRelated = contextRelatedTxt.getEditText().getText().toString();
-                    String imageUrl = imageUrlTxt.getEditText().getText().toString();
-                    String audienceStage = audienceStageSpinner.getSelectedItem().toString();
-
-                    //TODO get from user activity for create
-                    int authorId = 1;
-                    String storyEvents = orientation + "\n" + complicatedAction + "\n" + evaluation + "\n" + resolution + "\n" + message;
-                    String storyMeta = stageRelated + "\n" + contextRelated;
-                    String storyFull = storyTitle + "\n" + storyDescription + "\n" + storyEvents + "\n" + storyMeta;
-
-                    //Client side validation
-                    easyForm.validate();
-
-                    if (easyForm.isValid()) {
-                        Toast.makeText(MetaFirstActivity.this, "All the fields are valid.", Toast.LENGTH_SHORT).show();
-
-                        //To appoint label from category selected in stages
-                        String stage= "The audience is unaware of the problem of issue you are describing; they don't have intention to change in the forseeable future (e.g. first time smokers)";
-                        switch (audienceStage){
-                            case "Stage 1: The audience is unaware of the problem of issue you are describing; they don't have intention to change in the forseeable future (e.g. first time smokers)":
-                                stage = "Precontemplation";
-                                break;
-                            case "Stage 2: The audience is aware of the problem or issue you are describing; they are seriously considering to change their behaviour in relation to it (e.g. people that have been diagnosed with respitory problems due to smoking)":
-                                stage = "Contemplation";
-                                break;
-                            case "Stage 3: The audience is at a stage that they are intending to take action (e.g. people that know about the benefits of exercise but postpone signing up to the gym)":
-                                stage = "Preparation";
-                                break;
-                            case "Stage 4: The audience modify their behaviours, experiences and/or environment to overcome the issue or problem. (e.g. people that buy healthy food and throw away snacks while loosing weight)":
-                                stage = "Action";
-                                break;
-                            default:
-                                stage = "Precontemplation";
-                                return;
-
-                        }
-                        //Save data
-                        StoryCRUD storyCRUD = new StoryCRUD();
-                        storyCRUD.setStoryTitle(storyTitle);
-                        storyCRUD.setStoryCategory(storyCategory);
-                        storyCRUD.setIfOtherSpecify(ifOtherSpecify);
-                        storyCRUD.setAuthorId(authorId);
-                        storyCRUD.setStoryDescription(storyDescription);
-                        storyCRUD.setStoryEvents(storyEvents);
-                        storyCRUD.setOrientation(orientation);
-                        storyCRUD.setComplicatedAction(complicatedAction);
-                        storyCRUD.setEvaluation(evaluation);
-                        storyCRUD.setResolution(resolution);
-                        storyCRUD.setMessage(message);
-                        storyCRUD.setStoryMeta(storyMeta);
-                        storyCRUD.setStageRelated(stageRelated);;
-                        storyCRUD.setContextRelated(contextRelated);
-                        storyCRUD.setStoryFull(storyFull);
-                        storyCRUD.setImageUrl(imageUrl);
-                        storyCRUD.setAudienceStage(stage);
-
-                        new MySQLClientCRUD(MetaFirstActivity.this).add(storyCRUD, storyCategorySpinner, storyTitleTxt, ifOtherSpecifyTxt, storyDescriptionTxt, orientationTxt, complicatedActionTxt, evaluationTxt, resolutionTxt, messgageTxt, stageRelatedTxt, contextRelatedTxt, imageUrlTxt, audienceStageSpinner);
-
-                        //TODO FIX THIS PROPERLY
-                        Intent intentGoToRetrieveStoriesCRUDActivity = new Intent(MetaFirstActivity.this, RetrieveStoriesCRUDActivity.class);
-                        MetaFirstActivity.this.startActivity(intentGoToRetrieveStoriesCRUDActivity);
-
-                    } else {
-                        Toast.makeText(MetaFirstActivity.this, "The last input was invalid.", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
 
         }
     }
