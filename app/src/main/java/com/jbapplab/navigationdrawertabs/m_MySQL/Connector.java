@@ -17,8 +17,8 @@ public class Connector {
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
             con.setRequestMethod("GET");
-            con.setConnectTimeout(15000);
-            con.setReadTimeout(15000);
+            con.setConnectTimeout(45000);
+            con.setReadTimeout(45000);
             con.setDoInput(true);
 
             return con;

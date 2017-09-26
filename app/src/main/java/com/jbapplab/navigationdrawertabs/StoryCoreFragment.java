@@ -44,6 +44,7 @@ public class StoryCoreFragment extends Fragment {
     public static TabLayout tabLayout;
     public static ViewPager viewPager;
     public static int int_items = 3 ;
+    int savedInstanceStateTest = 0;
 
     String userIdString, actionString, storyIdString, storyTitle, ifOtherSpecify, authorIdString, storyDescription, orientation, complicatedAction, evaluation, resolution, message, stageRelated, contextRelated, imageUrl;
 
@@ -161,6 +162,20 @@ public class StoryCoreFragment extends Fragment {
             forMetaFirstFormBundle.putString("STAGE_RELATED_KEY", stageRelated);
             forMetaFirstFormBundle.putString("CONTEXT_RELATED_KEY", contextRelated);
             forMetaFirstFormBundle.putString("IMAGE_URL_KEY", imageUrl);
+        } else if (savedInstanceStateTest == 1){
+            forMetaFirstFormBundle.putString("STORY_ID_KEY", storyIdString);
+            forMetaFirstFormBundle.putString("STORY_TITLE_KEY", storyTitle);
+            forMetaFirstFormBundle.putString("IF_OTHER_SPECIFY_KEY", ifOtherSpecify);
+            forMetaFirstFormBundle.putString("AUTHOR_ID_KEY", authorIdString);
+            forMetaFirstFormBundle.putString("STORY_DESCRIPTION_KEY", storyDescription);
+            forMetaFirstFormBundle.putString("ORIENTATION_KEY", orientation);
+            forMetaFirstFormBundle.putString("COMPLICATED_ACTION_KEY", complicatedAction);
+            forMetaFirstFormBundle.putString("EVALUATION_KEY", evaluation);
+            forMetaFirstFormBundle.putString("RESOLUTION_KEY", resolution);
+            forMetaFirstFormBundle.putString("MESSAGE_KEY", message);
+            forMetaFirstFormBundle.putString("STAGE_RELATED_KEY", stageRelated);
+            forMetaFirstFormBundle.putString("CONTEXT_RELATED_KEY", contextRelated);
+            forMetaFirstFormBundle.putString("IMAGE_URL_KEY", imageUrl);
         }
         metaFirstFormFragment.setArguments(forMetaFirstFormBundle);
     }
@@ -180,6 +195,29 @@ public class StoryCoreFragment extends Fragment {
         Toast.makeText(getActivity(), stageSelection, Toast.LENGTH_SHORT).show();
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onSavedInstanceStateForm(EventBusOnSavedInstanceStateForm eventBusStageOnSavedInstanceStateForm){
+        userIdString = eventBusStageOnSavedInstanceStateForm.userIdString;
+        actionString = eventBusStageOnSavedInstanceStateForm.actionString;
+        storyIdString = eventBusStageOnSavedInstanceStateForm.storyIdString;
+        storyTitle = eventBusStageOnSavedInstanceStateForm.storyTitle;
+        ifOtherSpecify = eventBusStageOnSavedInstanceStateForm.ifOtherSpecify;
+        authorIdString = eventBusStageOnSavedInstanceStateForm.authorIdString;
+        storyDescription = eventBusStageOnSavedInstanceStateForm.storyDescription;
+        orientation = eventBusStageOnSavedInstanceStateForm.orientation;
+        complicatedAction = eventBusStageOnSavedInstanceStateForm.complicatedAction;
+        evaluation = eventBusStageOnSavedInstanceStateForm.evaluation;
+        resolution = eventBusStageOnSavedInstanceStateForm.resolution;
+        message = eventBusStageOnSavedInstanceStateForm.message;
+        stageRelated = eventBusStageOnSavedInstanceStateForm.stageRelated;
+        contextRelated = eventBusStageOnSavedInstanceStateForm.contextRelated;
+        imageUrl = eventBusStageOnSavedInstanceStateForm.imageUrl;
+        savedInstanceStateTest = 1;
+
+        sendDataMetaFirstFormFragment();
+        //Toast.makeText(getActivity(), stageSelection, Toast.LENGTH_SHORT).show();
+    }
+
     @Override
     public void onStart() {
         super.onStart();
@@ -188,8 +226,8 @@ public class StoryCoreFragment extends Fragment {
 
     @Override
     public void onStop() {
-        EventBus.getDefault().unregister(this);
         super.onStop();
+        EventBus.getDefault().unregister(this);
     }
 
 
