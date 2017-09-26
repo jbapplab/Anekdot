@@ -35,13 +35,15 @@ import com.emmasuzuki.easyform.EasyTextInputLayout;
 import com.jbapplab.navigationdrawertabs.m_DataObject.StoryCRUD;
 import com.jbapplab.navigationdrawertabs.m_MySQL.MySQLClientCRUD;
 
+import org.greenrobot.eventbus.EventBus;
+
 
 public class MetaFirstFormFragment extends Fragment {
 
     String userIdString, actionString, storyIdString, storyTitle, ifOtherSpecify, authorIdString, storyDescription, orientation, complicatedAction, evaluation, resolution, message, stageRelated, contextRelated, imageUrl;
 
-    CategoryFragment categoryFragment = new CategoryFragment();
-    StageFragment stageFragment = new StageFragment();
+    //CategoryFragment categoryFragment = new CategoryFragment();
+    //StageFragment stageFragment = new StageFragment();
     Spinner storyCategorySpinner, audienceStageSpinner;
 
     //Instance fields
@@ -153,14 +155,15 @@ public class MetaFirstFormFragment extends Fragment {
             storyCategorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    //PACK DATA IN A BUNDLE
+                    /*PACK DATA IN A BUNDLE
                     Bundle forCategoryFragment = new Bundle();
                     forCategoryFragment.putString("CATEGORY_KEY", storyCategorySpinner.getSelectedItem().toString());
                     Toast.makeText(getActivity(), storyCategorySpinner.getSelectedItem().toString(), Toast.LENGTH_LONG).show();
                     //PASS OVER THE BUNDLE TO OUR FRAGMENT
-                    categoryFragment.setArguments(forCategoryFragment);
-                    //TODO INTERFACE
-                    storyCoreFragment.setArguments(forCategoryFragment);
+                    categoryFragment.setArguments(forCategoryFragment); */
+                    //TODO EVENTBUS
+                    EventBus.getDefault().post(new EventBusCategorySelected(storyCategorySpinner.getSelectedItem().toString()));
+
                 }
 
                 @Override
@@ -173,14 +176,14 @@ public class MetaFirstFormFragment extends Fragment {
             audienceStageSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    //PACK DATA IN A BUNDLE
+                    /* PACK DATA IN A BUNDLE
                     Bundle forStageFragment = new Bundle();
                     forStageFragment.putString("STAGE_KEY", audienceStageSpinner.getSelectedItem().toString());
-                    Toast.makeText(getActivity(), audienceStageSpinner.getSelectedItem().toString(), Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getActivity(), audienceStageSpinner.getSelectedItem().toString(), Toast.LENGTH_LONG).show();
 
                     //PASS OVER THE BUNDLE TO OUR FRAGMENT
-                    stageFragment.setArguments(forStageFragment);
-                    storyCoreFragment.setArguments(forStageFragment);
+                    stageFragment.setArguments(forStageFragment); */
+                    EventBus.getDefault().post(new EventBusStageSelected(audienceStageSpinner.getSelectedItem().toString()));
                 }
 
                 @Override
@@ -323,14 +326,14 @@ public class MetaFirstFormFragment extends Fragment {
             storyCategorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    //PACK DATA IN A BUNDLE
+                    /*PACK DATA IN A BUNDLE
                     Bundle forCategoryFragment = new Bundle();
                     forCategoryFragment.putString("CATEGORY_KEY", storyCategorySpinner.getSelectedItem().toString());
                     Toast.makeText(getActivity(), storyCategorySpinner.getSelectedItem().toString(), Toast.LENGTH_LONG).show();
 
                     //PASS OVER THE BUNDLE TO OUR FRAGMENT
-                    categoryFragment.setArguments(forCategoryFragment);
-                    storyCoreFragment.setArguments(forCategoryFragment);
+                    categoryFragment.setArguments(forCategoryFragment); */
+                    EventBus.getDefault().post(new EventBusCategorySelected(storyCategorySpinner.getSelectedItem().toString()));
                 }
 
                 @Override
@@ -343,15 +346,15 @@ public class MetaFirstFormFragment extends Fragment {
             audienceStageSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    //PACK DATA IN A BUNDLE
+                    /*PACK DATA IN A BUNDLE
                     Bundle forStageFragment = new Bundle();
                     forStageFragment.putString("STAGE_KEY", audienceStageSpinner.getSelectedItem().toString());
                     Toast.makeText(getActivity(), audienceStageSpinner.getSelectedItem().toString(), Toast.LENGTH_LONG).show();
 
 
                     //PASS OVER THE BUNDLE TO OUR FRAGMENT
-                    stageFragment.setArguments(forStageFragment);
-                    storyCoreFragment.setArguments(forStageFragment);
+                    stageFragment.setArguments(forStageFragment); */
+                    EventBus.getDefault().post(new EventBusStageSelected(audienceStageSpinner.getSelectedItem().toString()));
                 }
 
                 @Override

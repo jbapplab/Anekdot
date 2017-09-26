@@ -160,6 +160,7 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
 
                 //PACK DATA
                 intentSendUpdate.putExtra("UPDATE_KEY", "update");
+                intentSendUpdate.putExtra("USERID_KEY", userId);
                 intentSendUpdate.putExtra("STORY_ID_KEY", storyId);
                 intentSendUpdate.putExtra("STORY_TITLE_KEY", storyTitle);
                 intentSendUpdate.putExtra("STORY_CATEGORY_KEY", storyCategory);

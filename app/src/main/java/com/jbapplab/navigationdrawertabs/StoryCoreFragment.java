@@ -27,9 +27,17 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Toast;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 public class StoryCoreFragment extends Fragment {
 
@@ -43,21 +51,20 @@ public class StoryCoreFragment extends Fragment {
     CategoryFragment categoryFragment = new CategoryFragment();
     StageFragment stageFragment = new StageFragment();
 
-    String categorySelection = "4";
-    String stageSelection = "4";
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
          /*
         UNPACK THE DATA FROM THE BUNDLE
-        */
+
+
         if (getArguments().getString("CATEGORY_KEY") != null){
             categorySelection = getArguments().getString("CATEGORY_KEY");
         }
         if (getArguments().getString("STAGE_KEY") != null){
             stageSelection = getArguments().getString("STAGE_KEY");
         }
+        */
 
         /**
          * Set the title bar according to the fragment
@@ -117,6 +124,75 @@ public class StoryCoreFragment extends Fragment {
         return x;
     }
 
+    String categorySelection = "default";
+    String stageSelection = "default";
+
+    /*
+        SEND DATA TO FRAGMENT
+        */
+    private void sendDataToSideFragments() {
+        //PACK DATA IN A BUNDLE
+        Bundle forSideFragments = new Bundle();
+        forSideFragments.putString("CATEGORY_KEY", categorySelection);
+        forSideFragments.putString("STAGE_KEY", stageSelection);
+        //PASS OVER THE BUNDLE TO OUR FRAGMENT
+        categoryFragment.setArguments(forSideFragments);
+        stageFragment.setArguments(forSideFragments);
+    }
+
+    private void sendDataMetaFirstFormFragment() {
+        //PACK DATA IN A BUNDLE
+        Bundle forMetaFirstFormBundle = new Bundle();
+        forMetaFirstFormBundle.putString("USERID_KEY", userIdString);
+        if (getArguments().getString("UPDATE_KEY") != null) {
+            forMetaFirstFormBundle.putString("UPDATE_KEY", actionString);
+        }
+        if ((actionString != null) && actionString.equals("update")){
+            forMetaFirstFormBundle.putString("STORY_ID_KEY", storyIdString);
+            forMetaFirstFormBundle.putString("STORY_TITLE_KEY", storyTitle);
+            forMetaFirstFormBundle.putString("IF_OTHER_SPECIFY_KEY", ifOtherSpecify);
+            forMetaFirstFormBundle.putString("AUTHOR_ID_KEY", authorIdString);
+            forMetaFirstFormBundle.putString("STORY_DESCRIPTION_KEY", storyDescription);
+            forMetaFirstFormBundle.putString("ORIENTATION_KEY", orientation);
+            forMetaFirstFormBundle.putString("COMPLICATED_ACTION_KEY", complicatedAction);
+            forMetaFirstFormBundle.putString("EVALUATION_KEY", evaluation);
+            forMetaFirstFormBundle.putString("RESOLUTION_KEY", resolution);
+            forMetaFirstFormBundle.putString("MESSAGE_KEY", message);
+            forMetaFirstFormBundle.putString("STAGE_RELATED_KEY", stageRelated);
+            forMetaFirstFormBundle.putString("CONTEXT_RELATED_KEY", contextRelated);
+            forMetaFirstFormBundle.putString("IMAGE_URL_KEY", imageUrl);
+        }
+        metaFirstFormFragment.setArguments(forMetaFirstFormBundle);
+    }
+
+    //Subscribers to the events - The method is called when a EventBus event is posted
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onCategorySelected(EventBusCategorySelected eventBusCategorySelected){
+        categorySelection = eventBusCategorySelected.message;
+        sendDataToSideFragments();
+        Toast.makeText(getActivity(), categorySelection, Toast.LENGTH_SHORT).show();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onStageSelected(EventBusStageSelected eventBusStageSelected){
+        stageSelection = eventBusStageSelected.message;
+        sendDataToSideFragments();
+        Toast.makeText(getActivity(), stageSelection, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        EventBus.getDefault().unregister(this);
+        super.onStop();
+    }
+
+
     class MyAdapter extends FragmentPagerAdapter{
 
         public MyAdapter(FragmentManager fm) {
@@ -136,10 +212,10 @@ public class StoryCoreFragment extends Fragment {
                     sendDataToSideFragments();
                     return metaFirstFormFragment;
                 case 1 :
-
+                    sendDataToSideFragments();
                     return categoryFragment;
                 case 2 :
-
+                    sendDataToSideFragments();
                     return stageFragment;
             }
             return
@@ -169,44 +245,6 @@ public class StoryCoreFragment extends Fragment {
                     return "Stage Tips";
             }
             return null;
-        }
-
-        /*
-        SEND DATA TO FRAGMENT
-        */
-        private void sendDataToSideFragments() {
-            //PACK DATA IN A BUNDLE
-            Bundle forSideFragments = new Bundle();
-            forSideFragments.putString("CATEGORY_KEY", categorySelection);
-            forSideFragments.putString("STAGE_KEY", stageSelection);
-            //PASS OVER THE BUNDLE TO OUR FRAGMENT
-            categoryFragment.setArguments(forSideFragments);
-            stageFragment.setArguments(forSideFragments);
-        }
-
-        private void sendDataMetaFirstFormFragment() {
-            //PACK DATA IN A BUNDLE
-            Bundle forMetaFirstFormBundle = new Bundle();
-            forMetaFirstFormBundle.putString("USERID_KEY", userIdString);
-            if (getArguments().getString("UPDATE_KEY") != null) {
-                forMetaFirstFormBundle.putString("UPDATE_KEY", actionString);
-            }
-            if ((actionString != null) && actionString.equals("update")){
-                forMetaFirstFormBundle.putString("STORY_ID_KEY", storyIdString);
-                forMetaFirstFormBundle.putString("STORY_TITLE_KEY", storyTitle);
-                forMetaFirstFormBundle.putString("IF_OTHER_SPECIFY_KEY", ifOtherSpecify);
-                forMetaFirstFormBundle.putString("AUTHOR_ID_KEY", authorIdString);
-                forMetaFirstFormBundle.putString("STORY_DESCRIPTION_KEY", storyDescription);
-                forMetaFirstFormBundle.putString("ORIENTATION_KEY", orientation);
-                forMetaFirstFormBundle.putString("COMPLICATED_ACTION_KEY", complicatedAction);
-                forMetaFirstFormBundle.putString("EVALUATION_KEY", evaluation);
-                forMetaFirstFormBundle.putString("RESOLUTION_KEY", resolution);
-                forMetaFirstFormBundle.putString("MESSAGE_KEY", message);
-                forMetaFirstFormBundle.putString("STAGE_RELATED_KEY", stageRelated);
-                forMetaFirstFormBundle.putString("CONTEXT_RELATED_KEY", contextRelated);
-                forMetaFirstFormBundle.putString("IMAGE_URL_KEY", imageUrl);
-            }
-            metaFirstFormFragment.setArguments(forMetaFirstFormBundle);
         }
     }
 
