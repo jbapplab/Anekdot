@@ -48,7 +48,6 @@ public class MetaFirstFormFragment extends Fragment {
 
     //Instance fields
     int storyIdInt, authorIdInt;
-    int savedInstanceStateTest = 0;
 
     @Nullable
     @Override
@@ -75,22 +74,7 @@ public class MetaFirstFormFragment extends Fragment {
             stageRelated = getArguments().getString("STAGE_RELATED_KEY");
             contextRelated = getArguments().getString("CONTEXT_RELATED_KEY");
             imageUrl = getArguments().getString("IMAGE_URL_KEY");
-        } else if (savedInstanceStateTest == 1){
-            storyIdString = getArguments().getString("STORY_ID_KEY");
-            storyTitle = getArguments().getString("STORY_TITLE_KEY");
-            ifOtherSpecify = getArguments().getString("IF_OTHER_SPECIFY_KEY");
-            authorIdString = getArguments().getString("AUTHOR_ID_KEY");
-            storyDescription = getArguments().getString("STORY_DESCRIPTION_KEY");
-            orientation = getArguments().getString("ORIENTATION_KEY");
-            complicatedAction = getArguments().getString("COMPLICATED_ACTION_KEY");
-            evaluation = getArguments().getString("EVALUATION_KEY");
-            resolution = getArguments().getString("RESOLUTION_KEY");
-            message = getArguments().getString("MESSAGE_KEY");
-            stageRelated = getArguments().getString("STAGE_RELATED_KEY");
-            contextRelated = getArguments().getString("CONTEXT_RELATED_KEY");
-            imageUrl = getArguments().getString("IMAGE_URL_KEY");
         }
-
         return inflater.inflate(R.layout.meta_first_main,null);
     }
 
@@ -100,6 +84,7 @@ public class MetaFirstFormFragment extends Fragment {
         String userIdStringSIS, actionStringSIS, storyIdStringSIS, storyTitleSIS, ifOtherSpecifySIS, authorIdStringSIS, storyDescriptionSIS, orientationSIS, complicatedActionSIS, evaluationSIS, resolutionSIS, messageSIS, stageRelatedSIS, contextRelatedSIS, imageUrlSIS;
 
         final EasyForm easyForm = getView().findViewById(R.id.meta_first_form);
+        final EditText editText = getView().findViewById(R.id.uniquetest);
 
 
         if ((actionString != null) && actionString.equals("update")){
@@ -149,77 +134,6 @@ public class MetaFirstFormFragment extends Fragment {
             audienceStageSpinner.setAdapter(stageAdapter);
             audienceStageSpinner.setSelection(0);
 
-            /*
-            if (savedInstanceState != null){
-                userIdStringSIS = savedInstanceState.getString("USERID_KEY");
-                actionStringSIS = savedInstanceState.getString("UPDATE_KEY");
-                storyIdStringSIS = savedInstanceState.getString("STORY_ID_KEY");
-                storyTitleSIS = savedInstanceState.getString("STORY_TITLE_KEY");
-                ifOtherSpecifySIS = savedInstanceState.getString("IF_OTHER_SPECIFY_KEY");
-                authorIdStringSIS = savedInstanceState.getString("AUTHOR_ID_KEY");
-                storyDescriptionSIS = savedInstanceState.getString("STORY_DESCRIPTION_KEY");
-                orientationSIS = savedInstanceState.getString("ORIENTATION_KEY");
-                complicatedActionSIS = savedInstanceState.getString("COMPLICATED_ACTION_KEY");
-                evaluationSIS = savedInstanceState.getString("EVALUATION_KEY");
-                resolutionSIS = savedInstanceState.getString("RESOLUTION_KEY");
-                messageSIS = savedInstanceState.getString("MESSAGE_KEY");
-                stageRelatedSIS = savedInstanceState.getString("STAGE_RELATED_KEY");
-                contextRelatedSIS = savedInstanceState.getString("CONTEXT_RELATED_KEY");
-                imageUrlSIS = savedInstanceState.getString("IMAGE_URL_KEY");
-
-                if (storyTitleSIS != null) {
-                    storyTitleTxt.getEditText().setText(storyTitleSIS);
-                }
-                if (ifOtherSpecifySIS != null) {
-                    ifOtherSpecifyTxt.getEditText().setText(ifOtherSpecifySIS);
-                }
-                if (storyDescriptionSIS != null) {
-                    storyDescriptionTxt.getEditText().setText(storyDescriptionSIS);
-                }
-                if (orientationSIS != null) {
-                    orientationTxt.getEditText().setText(orientationSIS);
-                }
-                if (complicatedActionSIS != null) {
-                    complicatedActionTxt.getEditText().setText(complicatedActionSIS);
-                }
-                if (evaluationSIS != null) {
-                    evaluationTxt.getEditText().setText(evaluationSIS);
-                }
-                if (resolutionSIS != null) {
-                    resolutionTxt.getEditText().setText(resolutionSIS);
-                }
-                if (messageSIS != null) {
-                    messgageTxt.getEditText().setText(messageSIS);
-                }
-                if (stageRelatedSIS != null) {
-                    stageRelatedTxt.getEditText().setText(stageRelatedSIS);
-                }
-                if (contextRelatedSIS != null) {
-                    contextRelatedTxt.getEditText().setText(contextRelatedSIS);
-                }
-                if (imageUrlSIS != null) {
-                    imageUrlTxt.getEditText().setText(imageUrlSIS);
-                }*/
-            if (savedInstanceStateTest==1){
-                //storyCategorySpinner.setSelection(0);
-                storyTitleTxt.getEditText().setText(storyTitle);
-                ifOtherSpecifyTxt.getEditText().setText(ifOtherSpecify);
-                storyDescriptionTxt.getEditText().setText(storyDescription);
-                orientationTxt.getEditText().setText(orientation);
-                complicatedActionTxt.getEditText().setText(complicatedAction);
-                evaluationTxt.getEditText().setText(evaluation);
-                resolutionTxt.getEditText().setText(resolution);
-                messgageTxt.getEditText().setText(message);
-                stageRelatedTxt.getEditText().setText(stageRelated);
-                contextRelatedTxt.getEditText().setText(contextRelated);
-                imageUrlTxt.getEditText().setText(imageUrl);
-                //audienceStageSpinner.setSelection(0);
-
-                storyIdInt = Integer.parseInt(storyIdString);
-                authorIdInt = Integer.parseInt(authorIdString);
-
-            } else {
-
                 //Put the data from the update
                 storyCategorySpinner.setSelection(0);
                 storyTitleTxt.getEditText().setText(storyTitle);
@@ -237,7 +151,6 @@ public class MetaFirstFormFragment extends Fragment {
 
                 storyIdInt = Integer.parseInt(storyIdString);
                 authorIdInt = Integer.parseInt(authorIdString);
-            }
 
             //When the user selects a category
             storyCategorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -410,75 +323,6 @@ public class MetaFirstFormFragment extends Fragment {
             audienceStageSpinner.setAdapter(stageAdapter);
             audienceStageSpinner.setSelection(0);
 
-                /*
-            if (savedInstanceState != null){
-                userIdStringSIS = savedInstanceState.getString("USERID_KEY");
-                actionStringSIS = savedInstanceState.getString("UPDATE_KEY");
-                storyIdStringSIS = savedInstanceState.getString("STORY_ID_KEY");
-                storyTitleSIS = savedInstanceState.getString("STORY_TITLE_KEY");
-                ifOtherSpecifySIS = savedInstanceState.getString("IF_OTHER_SPECIFY_KEY");
-                authorIdStringSIS = savedInstanceState.getString("AUTHOR_ID_KEY");
-                storyDescriptionSIS = savedInstanceState.getString("STORY_DESCRIPTION_KEY");
-                orientationSIS = savedInstanceState.getString("ORIENTATION_KEY");
-                complicatedActionSIS = savedInstanceState.getString("COMPLICATED_ACTION_KEY");
-                evaluationSIS = savedInstanceState.getString("EVALUATION_KEY");
-                resolutionSIS = savedInstanceState.getString("RESOLUTION_KEY");
-                messageSIS = savedInstanceState.getString("MESSAGE_KEY");
-                stageRelatedSIS = savedInstanceState.getString("STAGE_RELATED_KEY");
-                contextRelatedSIS = savedInstanceState.getString("CONTEXT_RELATED_KEY");
-                imageUrlSIS = savedInstanceState.getString("IMAGE_URL_KEY");
-
-                if (storyTitleSIS != null) {
-                    storyTitleTxt.getEditText().setText(storyTitleSIS);
-                }
-                if (ifOtherSpecifySIS != null) {
-                    ifOtherSpecifyTxt.getEditText().setText(ifOtherSpecifySIS);
-                }
-                if (storyDescriptionSIS != null) {
-                    storyDescriptionTxt.getEditText().setText(storyDescriptionSIS);
-                }
-                if (orientationSIS != null) {
-                    orientationTxt.getEditText().setText(orientationSIS);
-                }
-                if (complicatedActionSIS != null) {
-                    complicatedActionTxt.getEditText().setText(complicatedActionSIS);
-                }
-                if (evaluationSIS != null) {
-                    evaluationTxt.getEditText().setText(evaluationSIS);
-                }
-                if (resolutionSIS != null) {
-                    resolutionTxt.getEditText().setText(resolutionSIS);
-                }
-                if (messageSIS != null) {
-                    messgageTxt.getEditText().setText(messageSIS);
-                }
-                if (stageRelatedSIS != null) {
-                    stageRelatedTxt.getEditText().setText(stageRelatedSIS);
-                }
-                if (contextRelatedSIS != null) {
-                    contextRelatedTxt.getEditText().setText(contextRelatedSIS);
-                }
-                if (imageUrlSIS != null) {
-                    imageUrlTxt.getEditText().setText(imageUrlSIS);
-                }
-            }
-            */
-            if (savedInstanceStateTest==1){
-                //storyCategorySpinner.setSelection(0);
-                storyTitleTxt.getEditText().setText(storyTitle);
-                ifOtherSpecifyTxt.getEditText().setText(ifOtherSpecify);
-                storyDescriptionTxt.getEditText().setText(storyDescription);
-                orientationTxt.getEditText().setText(orientation);
-                complicatedActionTxt.getEditText().setText(complicatedAction);
-                evaluationTxt.getEditText().setText(evaluation);
-                resolutionTxt.getEditText().setText(resolution);
-                messgageTxt.getEditText().setText(message);
-                stageRelatedTxt.getEditText().setText(stageRelated);
-                contextRelatedTxt.getEditText().setText(contextRelated);
-                imageUrlTxt.getEditText().setText(imageUrl);
-                //audienceStageSpinner.setSelection(0);
-            }
-
             //When the user selects a category
             storyCategorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
@@ -606,39 +450,5 @@ public class MetaFirstFormFragment extends Fragment {
                 }
             });
         }
-    }
-
-    /*@Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-
-
-        outState.putString("USER_ID", userIdString);
-        outState.putString("UPDATE_KEY", actionString);
-        outState.putString("STORY_ID_KEY", storyIdString);
-        outState.putString("STORY_TITLE_KEY", storyTitle);
-        outState.putString("IF_OTHER_SPECIFY_KEY", ifOtherSpecify);
-        outState.putString("AUTHOR_ID_KEY", authorIdString);
-        outState.putString("STORY_DESCRIPTION_KEY", storyDescription);
-        outState.putString("ORIENTATION_KEY", orientation);
-        outState.putString("COMPLICATED_ACTION_KEY", complicatedAction);
-        outState.putString("EVALUATION_KEY", evaluation);
-        outState.putString("RESOLUTION_KEY", resolution);
-        outState.putString("MESSAGE_KEY", message);
-        outState.putString("STAGE_RELATED_KEY", stageRelated);
-        outState.putString("CONTEXT_RELATED_KEY", contextRelated);
-        outState.putString("IMAGE_URL_KEY", imageUrl);
-        savedInstanceStateTest = 1;
-
-
-        EventBus.getDefault().post(new EventBusOnSavedInstanceStateForm(userIdString, actionString, storyIdString, storyTitle, ifOtherSpecify, authorIdString, storyDescription, orientation, complicatedAction, evaluation, resolution, message, stageRelated, contextRelated, imageUrl));
-    }*/
-
-    @Override
-    public void on() {
-        super.onPause();
-        savedInstanceStateTest = 1;
-
-        EventBus.getDefault().post(new EventBusOnSavedInstanceStateForm(userIdString, actionString, storyIdString, storyTitle, ifOtherSpecify, authorIdString, storyDescription, orientation, complicatedAction, evaluation, resolution, message, stageRelated, contextRelated, imageUrl));
     }
 }

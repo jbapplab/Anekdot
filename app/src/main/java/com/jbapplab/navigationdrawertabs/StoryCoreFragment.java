@@ -44,7 +44,6 @@ public class StoryCoreFragment extends Fragment {
     public static TabLayout tabLayout;
     public static ViewPager viewPager;
     public static int int_items = 3 ;
-    int savedInstanceStateTest = 0;
 
     String userIdString, actionString, storyIdString, storyTitle, ifOtherSpecify, authorIdString, storyDescription, orientation, complicatedAction, evaluation, resolution, message, stageRelated, contextRelated, imageUrl;
 
@@ -55,17 +54,6 @@ public class StoryCoreFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-         /*
-        UNPACK THE DATA FROM THE BUNDLE
-
-
-        if (getArguments().getString("CATEGORY_KEY") != null){
-            categorySelection = getArguments().getString("CATEGORY_KEY");
-        }
-        if (getArguments().getString("STAGE_KEY") != null){
-            stageSelection = getArguments().getString("STAGE_KEY");
-        }
-        */
 
         /**
          * Set the title bar according to the fragment
@@ -162,20 +150,6 @@ public class StoryCoreFragment extends Fragment {
             forMetaFirstFormBundle.putString("STAGE_RELATED_KEY", stageRelated);
             forMetaFirstFormBundle.putString("CONTEXT_RELATED_KEY", contextRelated);
             forMetaFirstFormBundle.putString("IMAGE_URL_KEY", imageUrl);
-        } else if (savedInstanceStateTest == 1){
-            forMetaFirstFormBundle.putString("STORY_ID_KEY", storyIdString);
-            forMetaFirstFormBundle.putString("STORY_TITLE_KEY", storyTitle);
-            forMetaFirstFormBundle.putString("IF_OTHER_SPECIFY_KEY", ifOtherSpecify);
-            forMetaFirstFormBundle.putString("AUTHOR_ID_KEY", authorIdString);
-            forMetaFirstFormBundle.putString("STORY_DESCRIPTION_KEY", storyDescription);
-            forMetaFirstFormBundle.putString("ORIENTATION_KEY", orientation);
-            forMetaFirstFormBundle.putString("COMPLICATED_ACTION_KEY", complicatedAction);
-            forMetaFirstFormBundle.putString("EVALUATION_KEY", evaluation);
-            forMetaFirstFormBundle.putString("RESOLUTION_KEY", resolution);
-            forMetaFirstFormBundle.putString("MESSAGE_KEY", message);
-            forMetaFirstFormBundle.putString("STAGE_RELATED_KEY", stageRelated);
-            forMetaFirstFormBundle.putString("CONTEXT_RELATED_KEY", contextRelated);
-            forMetaFirstFormBundle.putString("IMAGE_URL_KEY", imageUrl);
         }
         metaFirstFormFragment.setArguments(forMetaFirstFormBundle);
     }
@@ -212,7 +186,6 @@ public class StoryCoreFragment extends Fragment {
         stageRelated = eventBusStageOnSavedInstanceStateForm.stageRelated;
         contextRelated = eventBusStageOnSavedInstanceStateForm.contextRelated;
         imageUrl = eventBusStageOnSavedInstanceStateForm.imageUrl;
-        savedInstanceStateTest = 1;
 
         sendDataMetaFirstFormFragment();
         //Toast.makeText(getActivity(), stageSelection, Toast.LENGTH_SHORT).show();
