@@ -20,6 +20,8 @@ package com.jbapplab.navigationdrawertabs;
  setupWithViewPager(viewPager) method of the TabLayout.
  */
 
+import android.content.Context;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -28,6 +30,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,21 +53,36 @@ public class StoryCoreFragment extends Fragment {
     String userIdString, actionString, storyIdString, storyTitle, ifOtherSpecify, authorIdString, storyDescription, orientation, complicatedAction, evaluation, resolution, message, stageRelated, contextRelated, imageUrl;
 
     FragmentManager mFragmentManager;
-    FragmentTransaction mFragmentTransaction;
     Fragment metaFirstFormFragment = new MetaFirstFormFragment();
     Fragment categoryFragment = new CategoryFragment();
     Fragment stageFragment = new StageFragment();
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.i("onSaveInstanceState", ": CONTAINER");
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        Log.i("onAttach", ": CONTAINER");
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setRetainInstance(true);
+        Log.i("onCreate", ": CONTAINER");
+
+        if (savedInstanceState != null){
+            Log.i("On Create CONTAINER: ", "SAVEDINSTANCE");
+        }
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
+        Log.i("onCreateView", ": CONTAINER");
         /**
          * Set the title bar according to the fragment
          */
@@ -78,6 +96,7 @@ public class StoryCoreFragment extends Fragment {
         //Set up viewPager
         ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewpagerStoryCore);
         setupViewPager(viewPager);
+        viewPager.setOffscreenPageLimit(2);
         TabLayout tabs = (TabLayout) view.findViewById(R.id.tabsStoryCore);
         tabs.setupWithViewPager(viewPager);
 
@@ -129,9 +148,30 @@ public class StoryCoreFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Log.i("onViewCreated", ": CONTAINER");
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        Log.i("onActivityCreated", ": CONTAINER");
+    }
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        Log.i("onViewStateRestored", ": CONTAINER");
+    }
+
+
     //ADD FRAGMENTS TO Tabs
     private void setupViewPager(ViewPager viewPager){
-        Adapter adapter = new Adapter(getChildFragmentManager());
+        mFragmentManager = getChildFragmentManager();
+        //mFragmentTransaction = mFragmentManager.beginTransaction();
+        Adapter adapter = new Adapter(mFragmentManager);
         adapter.addFragment(metaFirstFormFragment,"Story Form");
         adapter.addFragment(categoryFragment,"Topic Tips");
         adapter.addFragment(stageFragment,"Stage Tips");
@@ -149,9 +189,18 @@ public class StoryCoreFragment extends Fragment {
 
         @Override
         public Fragment getItem(int position){
-            //TEST TODO
+            /*TEST TODO
+            if(position==0){
+                sendDataMetaFirstFormFragment();
+            } else if (position==1){
+                sendDataToCategoryFragment();
+            } else if (position==2){
+                sendDataToStageFragment();
+            }
+            */
             sendDataMetaFirstFormFragment();
-            sendDataToSideFragments();
+            sendDataToStageFragment();
+            sendDataToCategoryFragment();
             return mFragmentList.get(position);
         }
 
@@ -177,14 +226,20 @@ public class StoryCoreFragment extends Fragment {
     /*
         SEND DATA TO FRAGMENT
         */
-    private void sendDataToSideFragments() {
+    private void sendDataToStageFragment() {
         //PACK DATA IN A BUNDLE
-        Bundle forSideFragments = new Bundle();
-        forSideFragments.putString("CATEGORY_KEY", categorySelection);
-        forSideFragments.putString("STAGE_KEY", stageSelection);
+        Bundle forStageFragment = new Bundle();
+        forStageFragment.putString("STAGE_KEY", stageSelection);
         //PASS OVER THE BUNDLE TO OUR FRAGMENT
-        categoryFragment.setArguments(forSideFragments);
-        stageFragment.setArguments(forSideFragments);
+        stageFragment.setArguments(forStageFragment);
+    }
+
+    private void sendDataToCategoryFragment(){
+        //PACK DATA IN A BUNDLE
+        Bundle forCategoryFragment = new Bundle();
+        forCategoryFragment.putString("CATEGORY_KEY", categorySelection);
+        //PASS OVER THE BUNDLE TO OUR FRAGMENT
+        categoryFragment.setArguments(forCategoryFragment);
     }
 
     private void sendDataMetaFirstFormFragment() {
@@ -216,14 +271,14 @@ public class StoryCoreFragment extends Fragment {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onCategorySelected(EventBusCategorySelected eventBusCategorySelected){
         categorySelection = eventBusCategorySelected.message;
-        sendDataToSideFragments();
+        sendDataToCategoryFragment();
         Toast.makeText(getActivity(), categorySelection, Toast.LENGTH_SHORT).show();
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onStageSelected(EventBusStageSelected eventBusStageSelected){
         stageSelection = eventBusStageSelected.message;
-        sendDataToSideFragments();
+        sendDataToStageFragment();
         Toast.makeText(getActivity(), stageSelection, Toast.LENGTH_SHORT).show();
     }
 
@@ -245,6 +300,8 @@ public class StoryCoreFragment extends Fragment {
         contextRelated = eventBusStageOnSavedInstanceStateForm.contextRelated;
         imageUrl = eventBusStageOnSavedInstanceStateForm.imageUrl;
 
+        sendDataToCategoryFragment();
+        sendDataToStageFragment();
         sendDataMetaFirstFormFragment();
         //Toast.makeText(getActivity(), stageSelection, Toast.LENGTH_SHORT).show();
     }
@@ -253,12 +310,44 @@ public class StoryCoreFragment extends Fragment {
     public void onStart() {
         super.onStart();
         EventBus.getDefault().register(this);
+        Log.i("onStart", ": CONTAINER");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.i("onResume", ": CONTAINER");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.i("onPause", ": CONTAINER");
     }
 
     @Override
     public void onStop() {
         super.onStop();
         EventBus.getDefault().unregister(this);
+        Log.i("onStop", ": CONTAINER");
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        Log.i("onDestroyView", ": CONTAINER");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.i("onDestroy", ": CONTAINER");
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        Log.i("onDetach", ": CONTAINER");
     }
 
 

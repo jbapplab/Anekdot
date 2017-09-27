@@ -76,6 +76,11 @@ public class MetaFirstActivity extends AppCompatActivity {
          * Lets inflate the very first fragment
          * Here , we are inflating the TabFragment as the first Fragment
          */
+        mFragmentManager = getSupportFragmentManager();
+        mFragmentTransaction = mFragmentManager.beginTransaction();
+        sendDataStoryCoreFragment();
+        mFragmentTransaction.replace(R.id.containerViewMetaFirst, storyCoreFragment, "STORYCORE_TAG").commit();
+        /*
         if (savedInstanceState == null) {
             mFragmentManager = getSupportFragmentManager();
             mFragmentTransaction = mFragmentManager.beginTransaction();
@@ -85,6 +90,7 @@ public class MetaFirstActivity extends AppCompatActivity {
             storyCoreFragment = getSupportFragmentManager().findFragmentByTag("STORYCORE_TAG");
             Log.i("METAFIRSTACTIVITY", "Found the old fragment");
         }
+        */
         /**
          * Setup click events on the Navigation View Items.
          */

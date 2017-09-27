@@ -12,6 +12,7 @@ package com.jbapplab.navigationdrawertabs;
  holding it.
  */
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -27,12 +28,34 @@ import android.widget.TextView;
 public class StageFragment extends Fragment {
 
     String stageSelection;
-    String stage= "default";
+    String stage = "default";
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.i("onSaveInstanceState", ": STAGE");
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        Log.i("onAttach", ": STAGE");
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Log.i("onCreate", ": STAGE");
+
+        if (savedInstanceState != null){
+            Log.i("On Create STAGE: ", "SAVEDINSTANCE");
+        }
+    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
+        Log.i("onCreateView", ": STAGE");
         /*
         UNPACK THE DATA FROM THE BUNDLE
         */
@@ -64,7 +87,7 @@ public class StageFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-
+        Log.i("onViewCreated", ": STAGE");
         switch (stage){
             case "0":
                 RelativeLayout relativeLayout0 = view.findViewById(R.id.stage0);
@@ -87,5 +110,60 @@ public class StageFragment extends Fragment {
                 relativeLayoutDefault.setVisibility(View.VISIBLE);
 
         }
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        Log.i("onActivityCreated", ": STAGE");
+    }
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        Log.i("onViewStateRestored", ": STAGE");
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.i("onStart", ": STAGE");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.i("onResume", ": STAGE");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.i("onPause", ": STAGE");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        Log.i("onStop", ": STAGE");
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        Log.i("onDestroyView", ": STAGE");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.i("onDestroy", ": STAGE");
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        Log.i("onDetach", ": STAGE");
     }
 }

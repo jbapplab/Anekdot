@@ -73,7 +73,7 @@
                 android:hint="What is your goal with this story? What do you want your audience to do?"
                 app:errorMessage="@string/error_message_empty"
                 app:errorType="empty"
-                android:inputType="textMultiLine" />
+                android:inputType="textMultiLine"/>
 
             <com.emmasuzuki.easyform.EasyTextInputLayout
                 android:id="@+id/contextRelated"

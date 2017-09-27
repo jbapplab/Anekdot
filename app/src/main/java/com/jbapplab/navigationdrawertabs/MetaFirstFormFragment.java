@@ -56,30 +56,30 @@ public class MetaFirstFormFragment extends Fragment {
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt("currentThis", Integer.parseInt(userIdString));
-        Log.i("onSaveInstanceState", ": reached!");
+        Log.i("onSaveInstanceState", ": FORM");
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        Log.i("onAttach", ": reached!");
+        Log.i("onAttach", ": FORM");
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.i("onCreate", ": reached!");
+        Log.i("onCreate", ": FORM");
 
         if (savedInstanceState != null){
             thisVariable = savedInstanceState.getInt("currentThis", 0);
-            Log.i("On Create This variable", Integer.toString(thisVariable));
+            Log.i("On Create FORM: ", Integer.toString(thisVariable));
         }
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Log.i("onCreateView", ": reached!");
+        Log.i("onCreateView", ": FORM");
 
         /*
         UNPACK THE DATA FROM THE BUNDLE
@@ -108,7 +108,7 @@ public class MetaFirstFormFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-
+        Log.i("onViewCreated", ": FORM");
         String userIdStringSIS, actionStringSIS, storyIdStringSIS, storyTitleSIS, ifOtherSpecifySIS, authorIdStringSIS, storyDescriptionSIS, orientationSIS, complicatedActionSIS, evaluationSIS, resolutionSIS, messageSIS, stageRelatedSIS, contextRelatedSIS, imageUrlSIS;
 
         final EasyForm easyForm = getView().findViewById(R.id.meta_first_form);
@@ -483,55 +483,55 @@ public class MetaFirstFormFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Log.i("onActivityCreated", ": reached!");
+        Log.i("onActivityCreated", ": FORM");
     }
 
     @Override
     public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
-        Log.i("onViewStateRestored", ": reached!");
+        Log.i("onViewStateRestored", ": FORM");
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        Log.i("onStart", ": reached!");
+        Log.i("onStart", ": FORM");
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        Log.i("onResume", ": reached!");
+        Log.i("onResume", ": FORM");
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        Log.i("onPause", ": reached!");
+        Log.i("onPause", ": FORM");
     }
 
     @Override
     public void onStop() {
         super.onStop();
 
-        Log.i("onStop", ": reached!");
+        Log.i("onStop", ": FORM");
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        Log.i("onDestroyView", ": reached!");
+        Log.i("onDestroyView", ": FORM");
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.i("onDestroy", ": reached!");
+        Log.i("onDestroy", ": FORM");
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        Log.i("onDetach", ": reached!");
+        Log.i("onDetach", ": FORM");
     }
 }

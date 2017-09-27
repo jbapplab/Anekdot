@@ -1,29 +1,334 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:textSize="30sp"
-        android:gravity="center"
-        android:id="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:textColor="@android:color/holo_blue_dark"
-        android:text="Social\nFragment"/>
+        android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:autoLink="web"
-        android:textSize="15sp"
-        android:layout_marginTop="10dp"
-        android:layout_centerHorizontal="true"
-        android:text="androidbelieve.com"
-        android:textColor="#000"
-        android:layout_below="@+id/textView"
-        android:textStyle="italic"/>
+        <RelativeLayout
+            android:id="@+id/topicDefault"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
 
-</RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:textSize="30sp"
+                android:gravity="center"
+                android:id="@+id/topicInfoDefault"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/colorAccent"
+                android:text="Default Topic"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp"
+                android:layout_centerHorizontal="true"
+                android:text="Here are some default information about the topic. Something was not properly selected, please go back and select a stage in the relevant spinner."
+                android:textColor="@color/colorPrimary"
+                android:layout_below="@+id/topicInfoDefault"/>
+
+            <!-- TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autoLink="web"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp"
+                android:layout_centerHorizontal="true"
+                android:text="androidbelieve.com"
+                android:textColor="#000"
+                android:layout_below="@+id/textView"
+                android:textStyle="italic"/ -->
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/Other"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:textSize="30sp"
+                android:gravity="center"
+                android:id="@+id/textViewOther"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/colorAccent"
+                android:text="Other"/>
+
+            <TextView
+                android:id="@+id/textViewOtherExplanation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_marginTop="5dp"
+                android:text="Other information"
+                android:textColor="@color/colorPrimary"
+                android:layout_below="@id/textViewOther"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/Art"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:textSize="30sp"
+                android:gravity="center"
+                android:id="@+id/textViewArt"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/colorAccent"
+                android:text="Other"/>
+
+            <TextView
+                android:id="@+id/textViewArtExplanation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_marginTop="5dp"
+                android:text="Art information"
+                android:textColor="@color/colorPrimary"
+                android:layout_below="@id/textViewArt"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/Causes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:textSize="30sp"
+                android:gravity="center"
+                android:id="@+id/textViewCauses"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/colorAccent"
+                android:text="Causes"/>
+
+            <TextView
+                android:id="@+id/textViewCausesExplanation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_marginTop="5dp"
+                android:text="Causes information"
+                android:textColor="@color/colorPrimary"
+                android:layout_below="@id/textViewCauses"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/Education"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:textSize="30sp"
+                android:gravity="center"
+                android:id="@+id/textViewEducation"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/colorAccent"
+                android:text="Education"/>
+
+            <TextView
+                android:id="@+id/textViewEducationExplanation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_marginTop="5dp"
+                android:text="Education information"
+                android:textColor="@color/colorPrimary"
+                android:layout_below="@id/textViewEducation"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/Food"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:textSize="30sp"
+                android:gravity="center"
+                android:id="@+id/textViewFood"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/colorAccent"
+                android:text="Food"/>
+
+            <TextView
+                android:id="@+id/textViewFoodExplanation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_marginTop="5dp"
+                android:text="Food information"
+                android:textColor="@color/colorPrimary"
+                android:layout_below="@id/textViewFood"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/Lifestyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:textSize="30sp"
+                android:gravity="center"
+                android:id="@+id/textViewLifestyle"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/colorAccent"
+                android:text="Lifestyle"/>
+
+            <TextView
+                android:id="@+id/textViewLifestyleExplanation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_marginTop="5dp"
+                android:text="Lifestyle information"
+                android:textColor="@color/colorPrimary"
+                android:layout_below="@id/textViewLifestyle"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/Business"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:textSize="30sp"
+                android:gravity="center"
+                android:id="@+id/textViewBusiness"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/colorAccent"
+                android:text="Business"/>
+
+            <TextView
+                android:id="@+id/textViewBusinessExplanation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_marginTop="5dp"
+                android:text="Business information"
+                android:textColor="@color/colorPrimary"
+                android:layout_below="@id/textViewBusiness"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/Sports"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:textSize="30sp"
+                android:gravity="center"
+                android:id="@+id/textViewSports"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/colorAccent"
+                android:text="Sports"/>
+
+            <TextView
+                android:id="@+id/textViewSportsExplanation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_marginTop="5dp"
+                android:text="Sports information"
+                android:textColor="@color/colorPrimary"
+                android:layout_below="@id/textViewSports"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/Travel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:textSize="30sp"
+                android:gravity="center"
+                android:id="@+id/textViewTravel"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/colorAccent"
+                android:text="Travel"/>
+
+            <TextView
+                android:id="@+id/textViewTravelExplanation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_marginTop="5dp"
+                android:text="Travel information"
+                android:textColor="@color/colorPrimary"
+                android:layout_below="@id/textViewTravel"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/Security"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:textSize="30sp"
+                android:gravity="center"
+                android:id="@+id/textViewSecurity"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/colorAccent"
+                android:text="Security"/>
+
+            <TextView
+                android:id="@+id/textViewSecurityExplanation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_marginTop="5dp"
+                android:text="Security information"
+                android:textColor="@color/colorPrimary"
+                android:layout_below="@id/textViewSecurity"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</ScrollView>
