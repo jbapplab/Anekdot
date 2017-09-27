@@ -23,12 +23,22 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 
 public class StageFragment extends Fragment {
 
     String stageSelection;
     String stage = "default";
+    RelativeLayout relativeLayout0;
+    RelativeLayout relativeLayout1;
+    RelativeLayout relativeLayout2;
+    RelativeLayout relativeLayout3;
+    RelativeLayout relativeLayoutDefault;
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
@@ -52,15 +62,11 @@ public class StageFragment extends Fragment {
         }
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Log.i("onCreateView", ": STAGE");
-        /*
-        UNPACK THE DATA FROM THE BUNDLE
-        */
-        stageSelection = getArguments().getString("STAGE_KEY");
-        //Log.i("stageSelection", stageSelection);
+    //Subscribers to the events - The method is called when a EventBus event is posted
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onStageSelected(EventBusStageSelected eventBusStageSelected){
+        stageSelection = eventBusStageSelected.message;
+        Toast.makeText(getActivity(), stageSelection, Toast.LENGTH_SHORT).show();
 
         switch (stageSelection){
             case "Stage 1: The audience is unaware of the problem of issue you are describing; they don't have intention to change in the forseeable future (e.g. first time smokers)":
@@ -78,6 +84,18 @@ public class StageFragment extends Fragment {
             default:
                 stage = "default";
         }
+        showStage(stage);
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Log.i("onCreateView", ": STAGE");
+        /*
+        UNPACK THE DATA FROM THE BUNDLE
+        */
+        //stageSelection = getArguments().getString("STAGE_KEY");
+        //Log.i("stageSelection", stageSelection);
 
         LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
         View view = layoutInflater.inflate(R.layout.stage_fragment_layout, null);
@@ -88,29 +106,52 @@ public class StageFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         Log.i("onViewCreated", ": STAGE");
-        switch (stage){
-            case "0":
-                RelativeLayout relativeLayout0 = view.findViewById(R.id.stage0);
-                relativeLayout0.setVisibility(View.VISIBLE);
-                break;
-            case "1":
-                RelativeLayout relativeLayout1 = view.findViewById(R.id.stage1);
-                relativeLayout1.setVisibility(View.VISIBLE);
-                break;
-            case "2":
-                RelativeLayout relativeLayout2 = view.findViewById(R.id.stage2);
-                relativeLayout2.setVisibility(View.VISIBLE);
-                break;
-            case "3":
-                RelativeLayout relativeLayout3 = view.findViewById(R.id.stage3);
-                relativeLayout3.setVisibility(View.VISIBLE);
-                break;
-            default:
-                RelativeLayout relativeLayoutDefault = view.findViewById(R.id.stageDefault);
-                relativeLayoutDefault.setVisibility(View.VISIBLE);
-
-        }
+                relativeLayout0 = view.findViewById(R.id.stage0);
+                relativeLayout1 = view.findViewById(R.id.stage1);
+                relativeLayout2 = view.findViewById(R.id.stage2);
+                relativeLayout3 = view.findViewById(R.id.stage3);
+                relativeLayoutDefault = view.findViewById(R.id.stageDefault);
+        showStage(stage);
     }
+
+   public void showStage(String stage){
+       switch (stage){
+           case "0":
+               relativeLayout0.setVisibility(View.VISIBLE);
+               relativeLayout1.setVisibility(View.GONE);
+               relativeLayout2.setVisibility(View.GONE);
+               relativeLayout3.setVisibility(View.GONE);
+               relativeLayoutDefault.setVisibility(View.GONE);
+               break;
+           case "1":
+               relativeLayout0.setVisibility(View.GONE);
+               relativeLayout1.setVisibility(View.VISIBLE);
+               relativeLayout2.setVisibility(View.GONE);
+               relativeLayout3.setVisibility(View.GONE);
+               relativeLayoutDefault.setVisibility(View.GONE);
+               break;
+           case "2":
+               relativeLayout0.setVisibility(View.GONE);
+               relativeLayout1.setVisibility(View.GONE);
+               relativeLayout2.setVisibility(View.VISIBLE);
+               relativeLayout3.setVisibility(View.GONE);
+               relativeLayoutDefault.setVisibility(View.GONE);
+               break;
+           case "3":
+               relativeLayout0.setVisibility(View.GONE);
+               relativeLayout1.setVisibility(View.GONE);
+               relativeLayout2.setVisibility(View.GONE);
+               relativeLayout3.setVisibility(View.VISIBLE);
+               relativeLayoutDefault.setVisibility(View.GONE);
+               break;
+           default:
+               relativeLayout0.setVisibility(View.GONE);
+               relativeLayout1.setVisibility(View.GONE);
+               relativeLayout2.setVisibility(View.GONE);
+               relativeLayout3.setVisibility(View.GONE);
+               relativeLayoutDefault.setVisibility(View.VISIBLE);
+       }
+   }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -127,6 +168,7 @@ public class StageFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        EventBus.getDefault().register(this);
         Log.i("onStart", ": STAGE");
     }
 
@@ -145,7 +187,7 @@ public class StageFragment extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
-
+        EventBus.getDefault().unregister(this);
         Log.i("onStop", ": STAGE");
     }
 

@@ -267,7 +267,7 @@ public class StoryCoreFragment extends Fragment {
         metaFirstFormFragment.setArguments(forMetaFirstFormBundle);
     }
 
-    //Subscribers to the events - The method is called when a EventBus event is posted
+    /*Subscribers to the events - The method is called when a EventBus event is posted
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onCategorySelected(EventBusCategorySelected eventBusCategorySelected){
         categorySelection = eventBusCategorySelected.message;
@@ -305,11 +305,12 @@ public class StoryCoreFragment extends Fragment {
         sendDataMetaFirstFormFragment();
         //Toast.makeText(getActivity(), stageSelection, Toast.LENGTH_SHORT).show();
     }
+    */
 
     @Override
     public void onStart() {
         super.onStart();
-        EventBus.getDefault().register(this);
+        //EventBus.getDefault().register(this);
         Log.i("onStart", ": CONTAINER");
     }
 
@@ -328,7 +329,7 @@ public class StoryCoreFragment extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
-        EventBus.getDefault().unregister(this);
+        //EventBus.getDefault().unregister(this);
         Log.i("onStop", ": CONTAINER");
     }
 
