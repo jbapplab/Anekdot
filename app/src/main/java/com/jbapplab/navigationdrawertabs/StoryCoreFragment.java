@@ -31,17 +31,21 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TableLayout;
 import android.widget.Toast;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class StoryCoreFragment extends Fragment {
 
-    public static TabLayout tabLayout;
-    public static ViewPager viewPager;
-    public static int int_items = 3;
+    //public static TabLayout tabLayout;
+    //public static ViewPager viewPager;
+    //public static int int_items = 3;
 
     String userIdString, actionString, storyIdString, storyTitle, ifOtherSpecify, authorIdString, storyDescription, orientation, complicatedAction, evaluation, resolution, message, stageRelated, contextRelated, imageUrl;
 
@@ -51,6 +55,11 @@ public class StoryCoreFragment extends Fragment {
     Fragment categoryFragment = new CategoryFragment();
     Fragment stageFragment = new StageFragment();
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //setRetainInstance(true);
+    }
 
     @Nullable
     @Override
@@ -65,14 +74,17 @@ public class StoryCoreFragment extends Fragment {
         /**
          *Inflate tab_layout and setup Views.
          */
-        View view =  inflater.inflate(R.layout.story_core_layout,null);
-        viewPager = (ViewPager) view.findViewById(R.id.viewpagerStoryCore);
-        tabLayout = (TabLayout) view.findViewById(R.id.tabsStoryCore);
+        View view = inflater.inflate(R.layout.story_core_layout,null);
+        //Set up viewPager
+        ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewpagerStoryCore);
+        setupViewPager(viewPager);
+        TabLayout tabs = (TabLayout) view.findViewById(R.id.tabsStoryCore);
+        tabs.setupWithViewPager(viewPager);
 
 
-        /**
+        /*
          *Set an Apater for the View Pager
-         */
+         *
         mFragmentManager = getChildFragmentManager();
         viewPager.setAdapter(new MyAdapter(mFragmentManager));
 
@@ -80,7 +92,7 @@ public class StoryCoreFragment extends Fragment {
          * Now , this is a workaround ,
          * The setupWithViewPager dose't works without the runnable .
          * Maybe a Support Library Bug .
-         */
+         *
 
         tabLayout.post(new Runnable() {
             @Override
@@ -88,6 +100,7 @@ public class StoryCoreFragment extends Fragment {
                 tabLayout.setupWithViewPager(viewPager);
             }
         });
+         */
 
         /*
         UNPACK THE DATA FROM THE BUNDLE
@@ -114,6 +127,48 @@ public class StoryCoreFragment extends Fragment {
         }
 
         return view;
+    }
+
+    //ADD FRAGMENTS TO Tabs
+    private void setupViewPager(ViewPager viewPager){
+        Adapter adapter = new Adapter(getChildFragmentManager());
+        adapter.addFragment(metaFirstFormFragment,"Story Form");
+        adapter.addFragment(categoryFragment,"Topic Tips");
+        adapter.addFragment(stageFragment,"Stage Tips");
+        viewPager.setAdapter(adapter);
+    }
+
+    //Custom Adapter
+    class Adapter extends FragmentPagerAdapter{
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
+
+        public Adapter(FragmentManager manager){
+            super (manager);
+        }
+
+        @Override
+        public Fragment getItem(int position){
+            //TEST TODO
+            sendDataMetaFirstFormFragment();
+            sendDataToSideFragments();
+            return mFragmentList.get(position);
+        }
+
+        @Override
+        public int getCount(){
+            return  mFragmentList.size();
+        }
+
+        public void addFragment(Fragment fragment, String title){
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position){
+            return mFragmentTitleList.get(position);
+        }
     }
 
     String categorySelection = "default";
@@ -207,6 +262,7 @@ public class StoryCoreFragment extends Fragment {
     }
 
 
+    /*
     class MyAdapter extends FragmentPagerAdapter{
 
         public MyAdapter(FragmentManager fm) {
@@ -215,7 +271,7 @@ public class StoryCoreFragment extends Fragment {
 
         /**
          * Return fragment with respect to Position .
-         */
+         *
 
         @Override
         public Fragment getItem(int position)
@@ -244,7 +300,7 @@ public class StoryCoreFragment extends Fragment {
 
         /**
          * This method returns the title of the tab according to the position.
-         */
+         *
 
         @Override
         public CharSequence getPageTitle(int position) {
@@ -259,6 +315,6 @@ public class StoryCoreFragment extends Fragment {
             }
             return null;
         }
-    }
+    }*/
 
 }
