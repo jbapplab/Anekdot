@@ -49,9 +49,37 @@ public class MetaFirstFormFragment extends Fragment {
     //Instance fields
     int storyIdInt, authorIdInt;
 
+    //TEST
+    int thisVariable = 0;
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("currentThis", Integer.parseInt(userIdString));
+        Log.i("onSaveInstanceState", ": reached!");
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        Log.i("onAttach", ": reached!");
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Log.i("onCreate", ": reached!");
+
+        if (savedInstanceState != null){
+            thisVariable = savedInstanceState.getInt("currentThis", 0);
+            Log.i("On Create This variable", Integer.toString(thisVariable));
+        }
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Log.i("onCreateView", ": reached!");
 
         /*
         UNPACK THE DATA FROM THE BUNDLE
@@ -134,23 +162,23 @@ public class MetaFirstFormFragment extends Fragment {
             audienceStageSpinner.setAdapter(stageAdapter);
             audienceStageSpinner.setSelection(0);
 
-                //Put the data from the update
-                storyCategorySpinner.setSelection(0);
-                storyTitleTxt.getEditText().setText(storyTitle);
-                ifOtherSpecifyTxt.getEditText().setText(ifOtherSpecify);
-                storyDescriptionTxt.getEditText().setText(storyDescription);
-                orientationTxt.getEditText().setText(orientation);
-                complicatedActionTxt.getEditText().setText(complicatedAction);
-                evaluationTxt.getEditText().setText(evaluation);
-                resolutionTxt.getEditText().setText(resolution);
-                messgageTxt.getEditText().setText(message);
-                stageRelatedTxt.getEditText().setText(stageRelated);
-                contextRelatedTxt.getEditText().setText(contextRelated);
-                imageUrlTxt.getEditText().setText(imageUrl);
-                audienceStageSpinner.setSelection(0);
+            //Put the data from the update
+            storyCategorySpinner.setSelection(0);
+            storyTitleTxt.getEditText().setText(storyTitle);
+            ifOtherSpecifyTxt.getEditText().setText(ifOtherSpecify);
+            storyDescriptionTxt.getEditText().setText(storyDescription);
+            orientationTxt.getEditText().setText(orientation);
+            complicatedActionTxt.getEditText().setText(complicatedAction);
+            evaluationTxt.getEditText().setText(evaluation);
+            resolutionTxt.getEditText().setText(resolution);
+            messgageTxt.getEditText().setText(message);
+            stageRelatedTxt.getEditText().setText(stageRelated);
+            contextRelatedTxt.getEditText().setText(contextRelated);
+            imageUrlTxt.getEditText().setText(imageUrl);
+            audienceStageSpinner.setSelection(0);
 
-                storyIdInt = Integer.parseInt(storyIdString);
-                authorIdInt = Integer.parseInt(authorIdString);
+            storyIdInt = Integer.parseInt(storyIdString);
+            authorIdInt = Integer.parseInt(authorIdString);
 
             //When the user selects a category
             storyCategorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -450,5 +478,60 @@ public class MetaFirstFormFragment extends Fragment {
                 }
             });
         }
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        Log.i("onActivityCreated", ": reached!");
+    }
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        Log.i("onViewStateRestored", ": reached!");
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.i("onStart", ": reached!");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.i("onResume", ": reached!");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.i("onPause", ": reached!");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        Log.i("onStop", ": reached!");
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        Log.i("onDestroyView", ": reached!");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.i("onDestroy", ": reached!");
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        Log.i("onDetach", ": reached!");
     }
 }

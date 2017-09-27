@@ -3,6 +3,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
@@ -10,18 +11,11 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.Spinner;
 import android.widget.Toast;
-import com.emmasuzuki.easyform.EasyForm;
-import com.emmasuzuki.easyform.EasyTextInputLayout;
-import com.jbapplab.navigationdrawertabs.m_DataObject.StoryCRUD;
-import com.jbapplab.navigationdrawertabs.m_MySQL.MySQLClientCRUD;
-import com.jbapplab.navigationdrawertabs.m_StoryDetailActivity.StoryDetailActivityCRUD;
+
 
 
 public class MetaFirstActivity extends AppCompatActivity {
@@ -33,7 +27,7 @@ public class MetaFirstActivity extends AppCompatActivity {
     //Fragment utilities declaration
     FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction;
-    StoryCoreFragment storyCoreFragment = new StoryCoreFragment();
+    Fragment storyCoreFragment = new StoryCoreFragment();
 
     String userIdString, actionString, storyIdString, storyTitle, ifOtherSpecify, authorIdString, storyDescription, orientation, complicatedAction, evaluation, resolution, message, stageRelated, contextRelated, imageUrl;
 
@@ -82,11 +76,15 @@ public class MetaFirstActivity extends AppCompatActivity {
          * Lets inflate the very first fragment
          * Here , we are inflating the TabFragment as the first Fragment
          */
-        mFragmentManager = getSupportFragmentManager();
-        mFragmentTransaction = mFragmentManager.beginTransaction();
-        sendDataStoryCoreFragment();
-        mFragmentTransaction.replace(R.id.containerViewMetaFirst, storyCoreFragment).commit();
-
+        if (savedInstanceState == null) {
+            mFragmentManager = getSupportFragmentManager();
+            mFragmentTransaction = mFragmentManager.beginTransaction();
+            sendDataStoryCoreFragment();
+            mFragmentTransaction.replace(R.id.containerViewMetaFirst, storyCoreFragment, "STORYCORE_TAG").addToBackStack("fragmentStack").commit();
+        } else {
+            storyCoreFragment = getSupportFragmentManager().findFragmentByTag("STORYCORE_TAG");
+            Log.i("METAFIRSTACTIVITY", "Found the old fragment");
+        }
         /**
          * Setup click events on the Navigation View Items.
          */
@@ -185,7 +183,7 @@ public class MetaFirstActivity extends AppCompatActivity {
          * Setup Drawer Toggle of the Toolbar
          */
 
-        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
+        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbarMetaFirst);
         ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.app_name,
                 R.string.app_name);
 

@@ -26,13 +26,11 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import org.greenrobot.eventbus.EventBus;
@@ -43,13 +41,16 @@ public class StoryCoreFragment extends Fragment {
 
     public static TabLayout tabLayout;
     public static ViewPager viewPager;
-    public static int int_items = 3 ;
+    public static int int_items = 3;
 
     String userIdString, actionString, storyIdString, storyTitle, ifOtherSpecify, authorIdString, storyDescription, orientation, complicatedAction, evaluation, resolution, message, stageRelated, contextRelated, imageUrl;
 
-    MetaFirstFormFragment metaFirstFormFragment = new MetaFirstFormFragment();
-    CategoryFragment categoryFragment = new CategoryFragment();
-    StageFragment stageFragment = new StageFragment();
+    FragmentManager mFragmentManager;
+    FragmentTransaction mFragmentTransaction;
+    Fragment metaFirstFormFragment = new MetaFirstFormFragment();
+    Fragment categoryFragment = new CategoryFragment();
+    Fragment stageFragment = new StageFragment();
+
 
     @Nullable
     @Override
@@ -64,14 +65,16 @@ public class StoryCoreFragment extends Fragment {
         /**
          *Inflate tab_layout and setup Views.
          */
-        View x =  inflater.inflate(R.layout.story_core_layout,null);
-        tabLayout = (TabLayout) x.findViewById(R.id.tabsStoryCore);
-        viewPager = (ViewPager) x.findViewById(R.id.viewpagerStoryCore);
+        View view =  inflater.inflate(R.layout.story_core_layout,null);
+        viewPager = (ViewPager) view.findViewById(R.id.viewpagerStoryCore);
+        tabLayout = (TabLayout) view.findViewById(R.id.tabsStoryCore);
+
 
         /**
          *Set an Apater for the View Pager
          */
-        viewPager.setAdapter(new MyAdapter(getChildFragmentManager()));
+        mFragmentManager = getChildFragmentManager();
+        viewPager.setAdapter(new MyAdapter(mFragmentManager));
 
         /**
          * Now , this is a workaround ,
@@ -110,7 +113,7 @@ public class StoryCoreFragment extends Fragment {
             imageUrl = getArguments().getString("IMAGE_URL_KEY");
         }
 
-        return x;
+        return view;
     }
 
     String categorySelection = "default";
@@ -229,8 +232,7 @@ public class StoryCoreFragment extends Fragment {
                     sendDataToSideFragments();
                     return stageFragment;
             }
-            return
-                    null;
+            return null;
         }
 
         @Override

@@ -57,6 +57,7 @@ public class PrimaryFragment extends Fragment {
         final EditText etUsername = getView().findViewById(R.id.etUsername);
         final TextView tvWelcomeMessage = getView().findViewById(R.id.tvWelcomeMessage);
 
+        //TODO SEND THIS BACK AND FORTH TO ALL
         Log.i("UserId-UserArea: ", userId);
 
 
