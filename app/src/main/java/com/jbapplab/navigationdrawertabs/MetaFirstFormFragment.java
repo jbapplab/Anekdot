@@ -17,7 +17,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.view.ActionMode;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -287,11 +289,30 @@ public class MetaFirstFormFragment extends Fragment {
                                 return;
                         }
 
-                        //TODO POPUP WINDOW
-                        layoutInflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                        ViewGroup container = (ViewGroup) layoutInflater.inflate(R.layout.popup_window, null);
+                        //TODO DIALOG FRAGMENT
+                        FragmentManager manager = getFragmentManager();
+                        Fragment fragment = manager.findFragmentByTag("fragment_edit_story");
+                        if (fragment != null){
+                            manager.beginTransaction().remove(fragment).commit();
+                        }
+
+                        PopupAlertDialogFragment popupAlertDialogFragment = new PopupAlertDialogFragment();
+                        popupAlertDialogFragment.show(manager, "fragment_edit_name");
+
+
+                        /*/TODO POPUP WINDOW
+
 
                         popupWindow = new PopupWindow(container, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+
+                        popupWindow.setFocusable(true);
+                        popupWindow.showAtLocation(view, Gravity.NO_GRAVITY, 300, 300);
+                        //popupWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+
+                        */
+
+                        layoutInflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                        ViewGroup container = (ViewGroup) layoutInflater.inflate(R.layout.popup_window, null);
 
                         final EditText editTextPopup;
                         editTextPopup = (EditText) container.findViewById(R.id.popup_edit_text);
@@ -300,11 +321,8 @@ public class MetaFirstFormFragment extends Fragment {
                         buttonBack = (Button) container.findViewById(R.id.popup_button_back);
                         buttonConfirm = (Button) container.findViewById(R.id.popup_button_confirm);
 
-                        popupWindow.setFocusable(true);
-                        popupWindow.showAtLocation(view, Gravity.NO_GRAVITY, 300, 300);
-                        //popupWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-
                         editTextPopup.setText(storyFull);
+
 
                         //WHEN BACK IS PRESSED ON POPUP
                         buttonBack.setOnClickListener(new View.OnClickListener() {
