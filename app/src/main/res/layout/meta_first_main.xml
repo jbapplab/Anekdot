@@ -20,13 +20,13 @@
             android:id="@+id/tvWelcomeMessageMetaFirst"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="It is time to create a story. Lets think of the intended audience first."/>
+            android:text="@string/it_is_time_to_create_a_story_lets_think_of_the_intended_audience_first"/>
 
         <TextView
             android:id="@+id/tvCategory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="To begin with select the topic in which your story fits. This will give you some specific suggestions later on."/>
+            android:text="@string/to_begin_with_select_the_topic_in_which_your_story_fits_this_will_give_you_some_specific_suggestions_later_on"/>
 
         <Spinner
             android:id="@+id/categorySpinner"
@@ -37,7 +37,7 @@
             android:id="@+id/tvStage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Now briefly think of the problem or issue your story is based on. In which stage is your intended audience in regard to the issue?"/>
+            android:text="@string/now_briefly_think_of_the_problem_or_issue_your_story_is_based_on_in_which_stage_is_your_intended_audience_in_regard_to_the_issue"/>
 
         <Spinner
             android:id="@+id/stageSpinner"
@@ -49,7 +49,7 @@
             android:id="@+id/tvSwipeRight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="According to your selections so far tailored suggestions have been generated for you. You can swipe right and get extra information on how to make your story more persuasive in terms of the topic and stage that your audience is in."/>
+            android:text="@string/according_to_your_selections_so_far_tailored_suggestions_have_been_generated_for_you_you_can_swipe_right_and_get_extra_information_on_how_to_make_your_story_more_persuasive_in_terms_of_the_topic_and_stage_that_your_audience_is_in"/>
 
         <com.emmasuzuki.easyform.EasyForm
             android:id="@+id/meta_first_form"
@@ -62,7 +62,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_toStartOf="@id/meta_first_form"
-                android:text="Think about the your audience in relation to the story. How can you make the story more specific to them? Swipe right for more tips."/>
+                android:text="@string/think_about_the_your_audience_in_relation_to_the_story_how_can_you_make_the_story_more_specific_to_them_swipe_right_for_more_tips"/>
 
             <com.emmasuzuki.easyform.EasyTextInputLayout
                 android:id="@+id/stageRelated"
@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tvStageRelated"
                 android:layout_marginTop="8dp"
-                android:hint="What is your goal with this story? What do you want your audience to do?"
+                android:hint="@string/what_is_your_goal_with_this_story_what_do_you_want_your_audience_to_do"
                 app:errorMessage="@string/error_message_empty"
                 app:errorType="empty"
                 android:inputType="textMultiLine"/>
@@ -81,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/stageRelated"
                 android:layout_marginTop="8dp"
-                android:hint="Think about the environment of your story. The time, setting, actors; are they relatable to your intended audience? Swipe right for more tips."
+                android:hint="@string/think_about_the_environment_of_your_story_the_time_setting_actors_are_they_relatable_to_your_intended_audience_swipe_right_for_more_tips"
                 app:errorMessage="@string/error_message_empty"
                 app:errorType="empty"
                 android:inputType="textMultiLine"/>
@@ -92,7 +92,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/contextRelated"
                 android:layout_marginTop="8dp"
-                android:hint="Give the title of your story."
+                android:hint="@string/give_the_title_of_your_story"
                 app:errorMessage="@string/error_message_empty"
                 app:errorType="empty"
                 android:inputType="textMultiLine"/>
@@ -103,7 +103,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/storyTitle"
                 android:layout_marginTop="8dp"
-                android:hint="If 'Other' was selected please give a suggested category or give an extra keyword for your topic." />
+                android:hint="@string/if_other_was_selected_please_give_a_suggested_category_or_give_an_extra_keyword_for_your_topic" />
 
             <com.emmasuzuki.easyform.EasyTextInputLayout
                 android:id="@+id/storyDescription"
@@ -111,7 +111,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/ifOtherSpecify"
                 android:layout_marginTop="8dp"
-                android:hint="Give a short description for your story."
+                android:hint="@string/give_a_short_description_for_your_story"
                 app:errorMessage="@string/error_message_empty"
                 app:errorType="empty"
                 android:inputType="textMultiLine"/>
@@ -122,7 +122,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/storyDescription"
                 android:layout_marginTop="8dp"
-                android:hint="Set the setting or context of your story."
+                android:hint="@string/set_the_setting_or_context_of_your_story"
                 app:errorMessage="@string/error_message_empty"
                 app:errorType="empty"
                 android:inputType="textMultiLine"/>
@@ -133,7 +133,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/orientation"
                 android:layout_marginTop="8dp"
-                android:hint="Describe an issue or problem. What happens in the story?"
+                android:hint="@string/describe_an_issue_or_problem_what_happens_in_the_story"
                 app:errorMessage="@string/error_message_empty"
                 app:errorType="empty"
                 android:inputType="textMultiLine"/>
@@ -144,7 +144,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/complicatedAction"
                 android:layout_marginTop="8dp"
-                android:hint="Explain why this is important/exciting or the reason for sharing it."
+                android:hint="@string/explain_why_this_is_important_exciting_or_the_reason_for_sharing_it"
                 app:errorMessage="@string/error_message_empty"
                 app:errorType="empty"
                 android:inputType="textMultiLine"/>
@@ -155,7 +155,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/evaluation"
                 android:layout_marginTop="8dp"
-                android:hint="Describe what happened in the end. Was there something unexpected?"
+                android:hint="@string/describe_what_happened_in_the_end_was_there_something_unexpected"
                 app:errorMessage="@string/error_message_empty"
                 app:errorType="empty"
                 android:inputType="textMultiLine"/>
@@ -166,7 +166,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/resolution"
                 android:layout_marginTop="8dp"
-                android:hint="Leave your audience with the meaning or significance of what happened. How did this experience change the actors?"
+                android:hint="@string/leave_your_audience_with_the_meaning_or_significance_of_what_happened_how_did_this_experience_change_the_actors"
                 app:errorMessage="@string/error_message_empty"
                 app:errorType="empty"
                 android:inputType="textMultiLine"/>
@@ -178,7 +178,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/messgage"
                 android:layout_marginTop="8dp"
-                android:hint="Enter a URL of a photo that represents your story."
+                android:hint="@string/enter_a_url_of_a_photo_that_represents_your_story"
                 app:errorMessage="@string/error_message_empty"
                 app:errorType="empty"
                 android:inputType="textMultiLine"/>
@@ -191,7 +191,7 @@
                 android:layout_below="@id/imageUrl"
                 android:layout_marginTop="20dp"
                 android:background="@color/colorAccent"
-                android:text="Save Story"
+                android:text="@string/save_story"
                 android:textColor="@android:color/white"
                 android:enabled="false"
                 android:alpha="0"/>
@@ -203,7 +203,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/imageUrl"
                 android:layout_marginTop="20dp"
-                android:text="Update Story"
+                android:text="@string/update_story"
                 android:textColor="@android:color/white"
                 android:enabled="false"
                 android:alpha="0"/>

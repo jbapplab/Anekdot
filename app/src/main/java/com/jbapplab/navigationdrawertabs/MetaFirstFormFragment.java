@@ -19,13 +19,16 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.PopupWindow;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,7 +43,9 @@ import org.greenrobot.eventbus.EventBus;
 
 public class MetaFirstFormFragment extends Fragment {
 
-    String userIdString, actionString, storyIdString, storyTitle, ifOtherSpecify, authorIdString, storyDescription, orientation, complicatedAction, evaluation, resolution, message, stageRelated, contextRelated, imageUrl;
+    String userIdString, actionString, storyIdString, storyTitle, ifOtherSpecify, authorIdString, storyDescription, orientation, complicatedAction, evaluation, resolution, message, stageRelated, contextRelated, imageUrl, storyCategory, audienceStage, storyEvents, storyMeta, storyFull, stage, storyFullEdited;
+    int authorId;
+    int editCounter = 0;
 
     //CategoryFragment categoryFragment = new CategoryFragment();
     //StageFragment stageFragment = new StageFragment();
@@ -51,6 +56,10 @@ public class MetaFirstFormFragment extends Fragment {
 
     //TEST
     int thisVariable = 0;
+
+    //POPUP WINDOW STUFF
+    private PopupWindow popupWindow;
+    private LayoutInflater layoutInflater;
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
@@ -132,6 +141,7 @@ public class MetaFirstFormFragment extends Fragment {
             final EasyTextInputLayout imageUrlTxt = getView().findViewById(R.id.imageUrl);
             audienceStageSpinner = getView().findViewById(R.id.stageSpinner);
             final Button buttonUpdate = getView().findViewById(R.id.updateButton);
+
             buttonUpdate.setEnabled(true);
             buttonUpdate.setAlpha(1);
 
@@ -221,29 +231,35 @@ public class MetaFirstFormFragment extends Fragment {
                 }
             });
 
-            //Handle events UPDATE
+            //Handle events UPDATE //TODO POPUP
             buttonUpdate.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
                     //Get values
-                    String storyCategory = storyCategorySpinner.getSelectedItem().toString();
-                    String storyTitle = storyTitleTxt.getEditText().getText().toString();
-                    String ifOtherSpecify = ifOtherSpecifyTxt.getEditText().getText().toString();
-                    String storyDescription = storyDescriptionTxt.getEditText().getText().toString();
-                    String orientation = orientationTxt.getEditText().getText().toString();
-                    String complicatedAction = complicatedActionTxt.getEditText().getText().toString();
-                    String evaluation = evaluationTxt.getEditText().getText().toString();
-                    String resolution = resolutionTxt.getEditText().getText().toString();
-                    String message = messgageTxt.getEditText().getText().toString();
-                    String stageRelated = stageRelatedTxt.getEditText().getText().toString();
-                    String contextRelated = contextRelatedTxt.getEditText().getText().toString();
-                    String imageUrl = imageUrlTxt.getEditText().getText().toString();
-                    String audienceStage = audienceStageSpinner.getSelectedItem().toString();
+                    storyCategory = storyCategorySpinner.getSelectedItem().toString();
+                    storyTitle = storyTitleTxt.getEditText().getText().toString();
+                    ifOtherSpecify = ifOtherSpecifyTxt.getEditText().getText().toString();
+                    storyDescription = storyDescriptionTxt.getEditText().getText().toString();
+                    orientation = orientationTxt.getEditText().getText().toString();
+                    complicatedAction = complicatedActionTxt.getEditText().getText().toString();
+                    evaluation = evaluationTxt.getEditText().getText().toString();
+                    resolution = resolutionTxt.getEditText().getText().toString();
+                    message = messgageTxt.getEditText().getText().toString();
+                    stageRelated = stageRelatedTxt.getEditText().getText().toString();
+                    contextRelated = contextRelatedTxt.getEditText().getText().toString();
+                    imageUrl = imageUrlTxt.getEditText().getText().toString();
+                    audienceStage = audienceStageSpinner.getSelectedItem().toString();
 
-                    String storyEvents = orientation + "\n" + complicatedAction + "\n" + evaluation + "\n" + resolution + "\n" + message;
-                    String storyMeta = stageRelated + "\n" + contextRelated;
-                    String storyFull = storyTitle + "\n" + storyDescription + "\n" + storyEvents + "\n" + storyMeta;
+                    storyEvents = orientation + "\n" + complicatedAction + "\n" + evaluation + "\n" + resolution + "\n" + message;
+                    storyMeta = stageRelated + "\n" + contextRelated;
+
+                    if (editCounter==0){
+                        storyFull = storyTitle + "\n" + storyDescription + "\n" + storyEvents + "\n" + storyMeta;
+                    } else {
+                        storyFull = storyFullEdited;
+                    }
+
 
                     //Client side validation
                     easyForm.validate();
@@ -252,7 +268,7 @@ public class MetaFirstFormFragment extends Fragment {
                         Toast.makeText(getActivity(), "All the fields are valid.", Toast.LENGTH_SHORT).show();
 
                         //To appoint label from category selected in stages
-                        String stage= "The audience is unaware of the problem of issue you are describing; they don't have intention to change in the forseeable future (e.g. first time smokers)";
+                        stage= "The audience is unaware of the problem of issue you are describing; they don't have intention to change in the forseeable future (e.g. first time smokers)";
                         switch (audienceStage){
                             case "Stage 1: The audience is unaware of the problem of issue you are describing; they don't have intention to change in the forseeable future (e.g. first time smokers)":
                                 stage = "Precontemplation";
@@ -269,34 +285,104 @@ public class MetaFirstFormFragment extends Fragment {
                             default:
                                 stage = "Precontemplation";
                                 return;
-
                         }
-                        //Save data
-                        StoryCRUD storyCRUD = new StoryCRUD();
-                        storyCRUD.setStoryId(storyIdInt);
-                        storyCRUD.setStoryTitle(storyTitle);
-                        storyCRUD.setStoryCategory(storyCategory);
-                        storyCRUD.setIfOtherSpecify(ifOtherSpecify);
-                        storyCRUD.setAuthorId(authorIdInt);
-                        storyCRUD.setStoryDescription(storyDescription);
-                        storyCRUD.setStoryEvents(storyEvents);
-                        storyCRUD.setOrientation(orientation);
-                        storyCRUD.setComplicatedAction(complicatedAction);
-                        storyCRUD.setEvaluation(evaluation);
-                        storyCRUD.setResolution(resolution);
-                        storyCRUD.setMessage(message);
-                        storyCRUD.setStoryMeta(storyMeta);
-                        storyCRUD.setStageRelated(stageRelated);;
-                        storyCRUD.setContextRelated(contextRelated);
-                        storyCRUD.setStoryFull(storyFull);
-                        storyCRUD.setImageUrl(imageUrl);
-                        storyCRUD.setAudienceStage(stage);
 
-                        new MySQLClientCRUD(getActivity()).update(storyCRUD, storyCategorySpinner, storyTitleTxt, ifOtherSpecifyTxt, storyDescriptionTxt, orientationTxt, complicatedActionTxt, evaluationTxt, resolutionTxt, messgageTxt, stageRelatedTxt, contextRelatedTxt, imageUrlTxt, audienceStageSpinner);
+                        //TODO POPUP WINDOW
+                        layoutInflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                        ViewGroup container = (ViewGroup) layoutInflater.inflate(R.layout.popup_window, null);
 
-                        Intent intentGoToRetrieveStoriesCRUDActivity = new Intent(getActivity(), RetrieveStoriesCRUDActivity.class);
-                        intentGoToRetrieveStoriesCRUDActivity.putExtra("CATEGORY_KEY", storyCategory);
-                        getActivity().startActivity(intentGoToRetrieveStoriesCRUDActivity);
+                        popupWindow = new PopupWindow(container, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+
+                        final EditText editTextPopup;
+                        editTextPopup = (EditText) container.findViewById(R.id.popup_edit_text);
+
+                        final Button buttonBack, buttonConfirm;
+                        buttonBack = (Button) container.findViewById(R.id.popup_button_back);
+                        buttonConfirm = (Button) container.findViewById(R.id.popup_button_confirm);
+
+                        popupWindow.setFocusable(true);
+                        popupWindow.showAtLocation(view, Gravity.NO_GRAVITY, 300, 300);
+                        //popupWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+
+                        editTextPopup.setText(storyFull);
+
+                        //WHEN BACK IS PRESSED ON POPUP
+                        buttonBack.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                storyFullEdited = editTextPopup.getText().toString();
+                                editCounter = 1;
+                                popupWindow.dismiss();
+                            }
+                        });
+
+                        //WHEN CONFIRM IS PRESSED ON POPUP
+                        buttonConfirm.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+
+                                if ((actionString != null) && actionString.equals("update")){
+
+                                    //Save data
+                                    StoryCRUD storyCRUD = new StoryCRUD();
+                                    storyCRUD.setStoryId(storyIdInt);
+                                    storyCRUD.setStoryTitle(storyTitle);
+                                    storyCRUD.setStoryCategory(storyCategory);
+                                    storyCRUD.setIfOtherSpecify(ifOtherSpecify);
+                                    storyCRUD.setAuthorId(authorIdInt);
+                                    storyCRUD.setStoryDescription(storyDescription);
+                                    storyCRUD.setStoryEvents(storyEvents);
+                                    storyCRUD.setOrientation(orientation);
+                                    storyCRUD.setComplicatedAction(complicatedAction);
+                                    storyCRUD.setEvaluation(evaluation);
+                                    storyCRUD.setResolution(resolution);
+                                    storyCRUD.setMessage(message);
+                                    storyCRUD.setStoryMeta(storyMeta);
+                                    storyCRUD.setStageRelated(stageRelated);;
+                                    storyCRUD.setContextRelated(contextRelated);
+                                    storyCRUD.setStoryFull(editTextPopup.getText().toString());
+                                    storyCRUD.setImageUrl(imageUrl);
+                                    storyCRUD.setAudienceStage(stage);
+
+                                    new MySQLClientCRUD(getActivity()).update(storyCRUD, storyCategorySpinner, storyTitleTxt, ifOtherSpecifyTxt, storyDescriptionTxt, orientationTxt, complicatedActionTxt, evaluationTxt, resolutionTxt, messgageTxt, stageRelatedTxt, contextRelatedTxt, imageUrlTxt, audienceStageSpinner);
+
+                                    Intent intentGoToRetrieveStoriesCRUDActivity = new Intent(getActivity(), RetrieveStoriesCRUDActivity.class);
+                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("CATEGORY_KEY", storyCategory);
+                                    getActivity().startActivity(intentGoToRetrieveStoriesCRUDActivity);
+
+                                } else {
+
+                                    //Save data
+                                    StoryCRUD storyCRUD = new StoryCRUD();
+                                    storyCRUD.setStoryTitle(storyTitle);
+                                    storyCRUD.setStoryCategory(storyCategory);
+                                    storyCRUD.setIfOtherSpecify(ifOtherSpecify);
+                                    storyCRUD.setAuthorId(authorId);
+                                    storyCRUD.setStoryDescription(storyDescription);
+                                    storyCRUD.setStoryEvents(storyEvents);
+                                    storyCRUD.setOrientation(orientation);
+                                    storyCRUD.setComplicatedAction(complicatedAction);
+                                    storyCRUD.setEvaluation(evaluation);
+                                    storyCRUD.setResolution(resolution);
+                                    storyCRUD.setMessage(message);
+                                    storyCRUD.setStoryMeta(storyMeta);
+                                    storyCRUD.setStageRelated(stageRelated);;
+                                    storyCRUD.setContextRelated(contextRelated);
+                                    storyCRUD.setStoryFull(storyFull);
+                                    storyCRUD.setImageUrl(imageUrl);
+                                    storyCRUD.setAudienceStage(stage);
+
+                                    new MySQLClientCRUD(getActivity()).add(storyCRUD, storyCategorySpinner, storyTitleTxt, ifOtherSpecifyTxt, storyDescriptionTxt, orientationTxt, complicatedActionTxt, evaluationTxt, resolutionTxt, messgageTxt, stageRelatedTxt, contextRelatedTxt, imageUrlTxt, audienceStageSpinner);
+
+                                    //TODO CHECK IF CORRECT
+                                    Intent intentGoToRetrieveStoriesCRUDActivity = new Intent(getActivity(), RetrieveStoriesCRUDActivity.class);
+                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("CATEGORY_KEY", storyCategory);
+                                    getActivity().startActivity(intentGoToRetrieveStoriesCRUDActivity);
+
+                                }
+
+                            }
+                        });
 
                     } else {
                         Toast.makeText(getActivity(), "The last input was invalid.", Toast.LENGTH_SHORT).show();
@@ -321,6 +407,7 @@ public class MetaFirstFormFragment extends Fragment {
             final EasyTextInputLayout imageUrlTxt = getView().findViewById(R.id.imageUrl);
             audienceStageSpinner = getView().findViewById(R.id.stageSpinner);
             final Button buttonAdd = getView().findViewById(R.id.addButton);
+
             buttonAdd.setEnabled(true);
             buttonAdd.setAlpha(1);
 
@@ -399,25 +486,30 @@ public class MetaFirstFormFragment extends Fragment {
                 public void onClick(View view) {
 
                     //Get values
-                    String storyCategory = storyCategorySpinner.getSelectedItem().toString();
-                    String storyTitle = storyTitleTxt.getEditText().getText().toString();
-                    String ifOtherSpecify = ifOtherSpecifyTxt.getEditText().getText().toString();
-                    String storyDescription = storyDescriptionTxt.getEditText().getText().toString();
-                    String orientation = orientationTxt.getEditText().getText().toString();
-                    String complicatedAction = complicatedActionTxt.getEditText().getText().toString();
-                    String evaluation = evaluationTxt.getEditText().getText().toString();
-                    String resolution = resolutionTxt.getEditText().getText().toString();
-                    String message = messgageTxt.getEditText().getText().toString();
-                    String stageRelated = stageRelatedTxt.getEditText().getText().toString();
-                    String contextRelated = contextRelatedTxt.getEditText().getText().toString();
-                    String imageUrl = imageUrlTxt.getEditText().getText().toString();
-                    String audienceStage = audienceStageSpinner.getSelectedItem().toString();
+                    storyCategory = storyCategorySpinner.getSelectedItem().toString();
+                    storyTitle = storyTitleTxt.getEditText().getText().toString();
+                    ifOtherSpecify = ifOtherSpecifyTxt.getEditText().getText().toString();
+                    storyDescription = storyDescriptionTxt.getEditText().getText().toString();
+                    orientation = orientationTxt.getEditText().getText().toString();
+                    complicatedAction = complicatedActionTxt.getEditText().getText().toString();
+                    evaluation = evaluationTxt.getEditText().getText().toString();
+                    resolution = resolutionTxt.getEditText().getText().toString();
+                    message = messgageTxt.getEditText().getText().toString();
+                    stageRelated = stageRelatedTxt.getEditText().getText().toString();
+                    contextRelated = contextRelatedTxt.getEditText().getText().toString();
+                    imageUrl = imageUrlTxt.getEditText().getText().toString();
+                    audienceStage = audienceStageSpinner.getSelectedItem().toString();
 
                     //TODO get from user activity for create
-                    int authorId = Integer.parseInt(userIdString);
-                    String storyEvents = orientation + "\n" + complicatedAction + "\n" + evaluation + "\n" + resolution + "\n" + message;
-                    String storyMeta = stageRelated + "\n" + contextRelated;
-                    String storyFull = storyTitle + "\n" + storyDescription + "\n" + storyEvents + "\n" + storyMeta;
+                    authorId = Integer.parseInt(userIdString);
+                    storyEvents = orientation + "\n" + complicatedAction + "\n" + evaluation + "\n" + resolution + "\n" + message;
+                    storyMeta = stageRelated + "\n" + contextRelated;
+
+                    if (editCounter==0){
+                        storyFull = storyTitle + "\n" + storyDescription + "\n" + storyEvents + "\n" + storyMeta;
+                    } else {
+                        storyFull = storyFullEdited;
+                    }
 
                     //Client side validation
                     easyForm.validate();
@@ -426,7 +518,7 @@ public class MetaFirstFormFragment extends Fragment {
                         Toast.makeText(getActivity(), "All the fields are valid.", Toast.LENGTH_SHORT).show();
 
                         //To appoint label from category selected in stages
-                        String stage= "The audience is unaware of the problem of issue you are describing; they don't have intention to change in the forseeable future (e.g. first time smokers)";
+                        stage= "The audience is unaware of the problem of issue you are describing; they don't have intention to change in the forseeable future (e.g. first time smokers)";
                         switch (audienceStage){
                             case "Stage 1: The audience is unaware of the problem of issue you are describing; they don't have intention to change in the forseeable future (e.g. first time smokers)":
                                 stage = "Precontemplation";
@@ -443,34 +535,104 @@ public class MetaFirstFormFragment extends Fragment {
                             default:
                                 stage = "Precontemplation";
                                 return;
-
                         }
-                        //Save data
-                        StoryCRUD storyCRUD = new StoryCRUD();
-                        storyCRUD.setStoryTitle(storyTitle);
-                        storyCRUD.setStoryCategory(storyCategory);
-                        storyCRUD.setIfOtherSpecify(ifOtherSpecify);
-                        storyCRUD.setAuthorId(authorId);
-                        storyCRUD.setStoryDescription(storyDescription);
-                        storyCRUD.setStoryEvents(storyEvents);
-                        storyCRUD.setOrientation(orientation);
-                        storyCRUD.setComplicatedAction(complicatedAction);
-                        storyCRUD.setEvaluation(evaluation);
-                        storyCRUD.setResolution(resolution);
-                        storyCRUD.setMessage(message);
-                        storyCRUD.setStoryMeta(storyMeta);
-                        storyCRUD.setStageRelated(stageRelated);;
-                        storyCRUD.setContextRelated(contextRelated);
-                        storyCRUD.setStoryFull(storyFull);
-                        storyCRUD.setImageUrl(imageUrl);
-                        storyCRUD.setAudienceStage(stage);
 
-                        new MySQLClientCRUD(getActivity()).add(storyCRUD, storyCategorySpinner, storyTitleTxt, ifOtherSpecifyTxt, storyDescriptionTxt, orientationTxt, complicatedActionTxt, evaluationTxt, resolutionTxt, messgageTxt, stageRelatedTxt, contextRelatedTxt, imageUrlTxt, audienceStageSpinner);
+                        //TODO POPUP WINDOW
+                        layoutInflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                        ViewGroup container = (ViewGroup) layoutInflater.inflate(R.layout.popup_window, null);
 
-                        //TODO CHECK IF CORRECT
-                        Intent intentGoToRetrieveStoriesCRUDActivity = new Intent(getActivity(), RetrieveStoriesCRUDActivity.class);
-                        intentGoToRetrieveStoriesCRUDActivity.putExtra("CATEGORY_KEY", storyCategory);
-                        getActivity().startActivity(intentGoToRetrieveStoriesCRUDActivity);
+                        popupWindow = new PopupWindow(container, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+
+                        final EditText editTextPopup;
+                        editTextPopup = (EditText) container.findViewById(R.id.popup_edit_text);
+
+                        final Button buttonBack, buttonConfirm;
+                        buttonBack = (Button) container.findViewById(R.id.popup_button_back);
+                        buttonConfirm = (Button) container.findViewById(R.id.popup_button_confirm);
+
+                        popupWindow.setFocusable(true);
+                        popupWindow.showAtLocation(view, Gravity.NO_GRAVITY, 300, 300);
+                        //popupWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+
+                        editTextPopup.setText(storyFull);
+
+                        //WHEN BACK IS PRESSED ON POPUP
+                        buttonBack.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                storyFullEdited = editTextPopup.getText().toString();
+                                editCounter = 1;
+                                popupWindow.dismiss();
+                            }
+                        });
+
+                        //WHEN CONFIRM IS PRESSED ON POPUP
+                        buttonConfirm.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+
+                                if ((actionString != null) && actionString.equals("update")){
+
+                                    //Save data
+                                    StoryCRUD storyCRUD = new StoryCRUD();
+                                    storyCRUD.setStoryId(storyIdInt);
+                                    storyCRUD.setStoryTitle(storyTitle);
+                                    storyCRUD.setStoryCategory(storyCategory);
+                                    storyCRUD.setIfOtherSpecify(ifOtherSpecify);
+                                    storyCRUD.setAuthorId(authorIdInt);
+                                    storyCRUD.setStoryDescription(storyDescription);
+                                    storyCRUD.setStoryEvents(storyEvents);
+                                    storyCRUD.setOrientation(orientation);
+                                    storyCRUD.setComplicatedAction(complicatedAction);
+                                    storyCRUD.setEvaluation(evaluation);
+                                    storyCRUD.setResolution(resolution);
+                                    storyCRUD.setMessage(message);
+                                    storyCRUD.setStoryMeta(storyMeta);
+                                    storyCRUD.setStageRelated(stageRelated);;
+                                    storyCRUD.setContextRelated(contextRelated);
+                                    storyCRUD.setStoryFull(editTextPopup.getText().toString());
+                                    storyCRUD.setImageUrl(imageUrl);
+                                    storyCRUD.setAudienceStage(stage);
+
+                                    new MySQLClientCRUD(getActivity()).update(storyCRUD, storyCategorySpinner, storyTitleTxt, ifOtherSpecifyTxt, storyDescriptionTxt, orientationTxt, complicatedActionTxt, evaluationTxt, resolutionTxt, messgageTxt, stageRelatedTxt, contextRelatedTxt, imageUrlTxt, audienceStageSpinner);
+
+                                    Intent intentGoToRetrieveStoriesCRUDActivity = new Intent(getActivity(), RetrieveStoriesCRUDActivity.class);
+                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("CATEGORY_KEY", storyCategory);
+                                    getActivity().startActivity(intentGoToRetrieveStoriesCRUDActivity);
+
+                                } else {
+
+                                    //Save data
+                                    StoryCRUD storyCRUD = new StoryCRUD();
+                                    storyCRUD.setStoryTitle(storyTitle);
+                                    storyCRUD.setStoryCategory(storyCategory);
+                                    storyCRUD.setIfOtherSpecify(ifOtherSpecify);
+                                    storyCRUD.setAuthorId(authorId);
+                                    storyCRUD.setStoryDescription(storyDescription);
+                                    storyCRUD.setStoryEvents(storyEvents);
+                                    storyCRUD.setOrientation(orientation);
+                                    storyCRUD.setComplicatedAction(complicatedAction);
+                                    storyCRUD.setEvaluation(evaluation);
+                                    storyCRUD.setResolution(resolution);
+                                    storyCRUD.setMessage(message);
+                                    storyCRUD.setStoryMeta(storyMeta);
+                                    storyCRUD.setStageRelated(stageRelated);;
+                                    storyCRUD.setContextRelated(contextRelated);
+                                    storyCRUD.setStoryFull(storyFull);
+                                    storyCRUD.setImageUrl(imageUrl);
+                                    storyCRUD.setAudienceStage(stage);
+
+                                    new MySQLClientCRUD(getActivity()).add(storyCRUD, storyCategorySpinner, storyTitleTxt, ifOtherSpecifyTxt, storyDescriptionTxt, orientationTxt, complicatedActionTxt, evaluationTxt, resolutionTxt, messgageTxt, stageRelatedTxt, contextRelatedTxt, imageUrlTxt, audienceStageSpinner);
+
+                                    //TODO CHECK IF CORRECT
+                                    Intent intentGoToRetrieveStoriesCRUDActivity = new Intent(getActivity(), RetrieveStoriesCRUDActivity.class);
+                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("CATEGORY_KEY", storyCategory);
+                                    getActivity().startActivity(intentGoToRetrieveStoriesCRUDActivity);
+
+                                }
+
+                            }
+                        });
 
                     } else {
                         Toast.makeText(getActivity(), "The last input was invalid.", Toast.LENGTH_SHORT).show();
