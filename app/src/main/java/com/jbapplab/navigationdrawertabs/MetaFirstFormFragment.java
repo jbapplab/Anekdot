@@ -13,13 +13,16 @@ package com.jbapplab.navigationdrawertabs;
  */
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.view.ActionMode;
+import android.text.InputType;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -30,6 +33,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -289,7 +293,7 @@ public class MetaFirstFormFragment extends Fragment {
                                 return;
                         }
 
-                        //TODO DIALOG FRAGMENT
+                        /* TRY FRAGMENT?
                         FragmentManager manager = getFragmentManager();
                         Fragment fragment = manager.findFragmentByTag("fragment_edit_story");
                         if (fragment != null){
@@ -298,21 +302,119 @@ public class MetaFirstFormFragment extends Fragment {
 
                         PopupAlertDialogFragment popupAlertDialogFragment = new PopupAlertDialogFragment();
                         popupAlertDialogFragment.show(manager, "fragment_edit_name");
-
-
-                        /*/TODO POPUP WINDOW
-
-
-                        popupWindow = new PopupWindow(container, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-
-                        popupWindow.setFocusable(true);
-                        popupWindow.showAtLocation(view, Gravity.NO_GRAVITY, 300, 300);
-                        //popupWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-
                         */
 
+                        //TODO ALERT DIALOG
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                        builder.setTitle("Update: Review Story");
+
+                        final EditText editTextPopup = new EditText(getActivity());
+                        editTextPopup.setText(storyFull);
+                        editTextPopup.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+                        editTextPopup.setSingleLine(false);
+                        editTextPopup.setLines(20);
+                        editTextPopup.setGravity(Gravity.LEFT | Gravity.TOP);
+                        editTextPopup.setHorizontalScrollBarEnabled(false);
+                        editTextPopup.setBackgroundColor(getResources().getColor(R.color.white));
+                        editTextPopup.setPadding(10, 10, 10, 10);
+
+                        builder.setView(editTextPopup);
+
+                        builder.setNegativeButton("Back (Saves progress)", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                storyFullEdited = editTextPopup.getText().toString();
+                                editCounter = 1;
+                                dialogInterface.dismiss();
+                            }
+                        });
+
+                        builder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                                if ((actionString != null) && actionString.equals("update")){
+
+                                    //Save data
+                                    StoryCRUD storyCRUD = new StoryCRUD();
+                                    storyCRUD.setStoryId(storyIdInt);
+                                    storyCRUD.setStoryTitle(storyTitle);
+                                    storyCRUD.setStoryCategory(storyCategory);
+                                    storyCRUD.setIfOtherSpecify(ifOtherSpecify);
+                                    storyCRUD.setAuthorId(authorIdInt);
+                                    storyCRUD.setStoryDescription(storyDescription);
+                                    storyCRUD.setStoryEvents(storyEvents);
+                                    storyCRUD.setOrientation(orientation);
+                                    storyCRUD.setComplicatedAction(complicatedAction);
+                                    storyCRUD.setEvaluation(evaluation);
+                                    storyCRUD.setResolution(resolution);
+                                    storyCRUD.setMessage(message);
+                                    storyCRUD.setStoryMeta(storyMeta);
+                                    storyCRUD.setStageRelated(stageRelated);;
+                                    storyCRUD.setContextRelated(contextRelated);
+                                    storyCRUD.setStoryFull(editTextPopup.getText().toString());
+                                    storyCRUD.setImageUrl(imageUrl);
+                                    storyCRUD.setAudienceStage(stage);
+
+                                    new MySQLClientCRUD(getActivity()).update(storyCRUD, storyCategorySpinner, storyTitleTxt, ifOtherSpecifyTxt, storyDescriptionTxt, orientationTxt, complicatedActionTxt, evaluationTxt, resolutionTxt, messgageTxt, stageRelatedTxt, contextRelatedTxt, imageUrlTxt, audienceStageSpinner);
+
+                                    Intent intentGoToRetrieveStoriesCRUDActivity = new Intent(getActivity(), RetrieveStoriesCRUDActivity.class);
+                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("CATEGORY_KEY", storyCategory);
+                                    getActivity().startActivity(intentGoToRetrieveStoriesCRUDActivity);
+
+                                } else {
+
+                                    //Save data
+                                    StoryCRUD storyCRUD = new StoryCRUD();
+                                    storyCRUD.setStoryTitle(storyTitle);
+                                    storyCRUD.setStoryCategory(storyCategory);
+                                    storyCRUD.setIfOtherSpecify(ifOtherSpecify);
+                                    storyCRUD.setAuthorId(authorId);
+                                    storyCRUD.setStoryDescription(storyDescription);
+                                    storyCRUD.setStoryEvents(storyEvents);
+                                    storyCRUD.setOrientation(orientation);
+                                    storyCRUD.setComplicatedAction(complicatedAction);
+                                    storyCRUD.setEvaluation(evaluation);
+                                    storyCRUD.setResolution(resolution);
+                                    storyCRUD.setMessage(message);
+                                    storyCRUD.setStoryMeta(storyMeta);
+                                    storyCRUD.setStageRelated(stageRelated);;
+                                    storyCRUD.setContextRelated(contextRelated);
+                                    storyCRUD.setStoryFull(storyFull);
+                                    storyCRUD.setImageUrl(imageUrl);
+                                    storyCRUD.setAudienceStage(stage);
+
+                                    new MySQLClientCRUD(getActivity()).add(storyCRUD, storyCategorySpinner, storyTitleTxt, ifOtherSpecifyTxt, storyDescriptionTxt, orientationTxt, complicatedActionTxt, evaluationTxt, resolutionTxt, messgageTxt, stageRelatedTxt, contextRelatedTxt, imageUrlTxt, audienceStageSpinner);
+
+                                    //TODO CHECK IF CORRECT
+                                    Intent intentGoToRetrieveStoriesCRUDActivity = new Intent(getActivity(), RetrieveStoriesCRUDActivity.class);
+                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("CATEGORY_KEY", storyCategory);
+                                    getActivity().startActivity(intentGoToRetrieveStoriesCRUDActivity);
+
+                                }
+
+                            }
+                        });
+
+                        AlertDialog alertDialog = builder.create();
+                        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+                        layoutParams.copyFrom(alertDialog.getWindow().getAttributes());
+                        layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
+                        layoutParams.height = WindowManager.LayoutParams.MATCH_PARENT;
+                        alertDialog.show();
+                        alertDialog.getWindow().setAttributes(layoutParams);
+
+                        final Button positiveButton = alertDialog.getButton(AlertDialog.BUTTON_POSITIVE);
+                        final Button negativeButton = alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+
+
+
+                        /*
+                        //TODO POPUP WINDOW
                         layoutInflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                         ViewGroup container = (ViewGroup) layoutInflater.inflate(R.layout.popup_window, null);
+
+                        popupWindow = new PopupWindow(container, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 
                         final EditText editTextPopup;
                         editTextPopup = (EditText) container.findViewById(R.id.popup_edit_text);
@@ -321,7 +423,12 @@ public class MetaFirstFormFragment extends Fragment {
                         buttonBack = (Button) container.findViewById(R.id.popup_button_back);
                         buttonConfirm = (Button) container.findViewById(R.id.popup_button_confirm);
 
+                        popupWindow.setFocusable(true);
+                        popupWindow.showAtLocation(view, Gravity.NO_GRAVITY, 300, 300);
+                        //popupWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+
                         editTextPopup.setText(storyFull);
+
 
 
                         //WHEN BACK IS PRESSED ON POPUP
@@ -401,6 +508,7 @@ public class MetaFirstFormFragment extends Fragment {
 
                             }
                         });
+                        */
 
                     } else {
                         Toast.makeText(getActivity(), "The last input was invalid.", Toast.LENGTH_SHORT).show();
