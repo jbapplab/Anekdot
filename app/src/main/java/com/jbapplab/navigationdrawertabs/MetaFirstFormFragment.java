@@ -18,10 +18,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.view.ActionMode;
+import android.text.Html;
 import android.text.InputType;
 import android.util.Log;
 import android.view.Gravity;
@@ -34,9 +32,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.emmasuzuki.easyform.EasyForm;
@@ -61,11 +57,7 @@ public class MetaFirstFormFragment extends Fragment {
     int storyIdInt, authorIdInt;
 
     //TEST
-    int thisVariable = 0;
-
-    //POPUP WINDOW STUFF
-    private PopupWindow popupWindow;
-    private LayoutInflater layoutInflater;
+    //int thisVariable = 0;
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
@@ -74,27 +66,22 @@ public class MetaFirstFormFragment extends Fragment {
         Log.i("onSaveInstanceState", ": FORM");
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        Log.i("onAttach", ": FORM");
-    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.i("onCreate", ": FORM");
+        //Log.i("onCreate", ": FORM");
 
         if (savedInstanceState != null){
-            thisVariable = savedInstanceState.getInt("currentThis", 0);
-            Log.i("On Create FORM: ", Integer.toString(thisVariable));
+            //thisVariable = savedInstanceState.getInt("currentThis", 0);
+            //Log.i("On Create FORM: ", Integer.toString(thisVariable));
         }
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Log.i("onCreateView", ": FORM");
+        //Log.i("onCreateView", ": FORM");
 
         /*
         UNPACK THE DATA FROM THE BUNDLE
@@ -123,7 +110,7 @@ public class MetaFirstFormFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        Log.i("onViewCreated", ": FORM");
+        //Log.i("onViewCreated", ": FORM");
         String userIdStringSIS, actionStringSIS, storyIdStringSIS, storyTitleSIS, ifOtherSpecifySIS, authorIdStringSIS, storyDescriptionSIS, orientationSIS, complicatedActionSIS, evaluationSIS, resolutionSIS, messageSIS, stageRelatedSIS, contextRelatedSIS, imageUrlSIS;
 
         final EasyForm easyForm = getView().findViewById(R.id.meta_first_form);
@@ -200,13 +187,8 @@ public class MetaFirstFormFragment extends Fragment {
             storyCategorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    /*PACK DATA IN A BUNDLE
-                    Bundle forCategoryFragment = new Bundle();
-                    forCategoryFragment.putString("CATEGORY_KEY", storyCategorySpinner.getSelectedItem().toString());
-                    Toast.makeText(getActivity(), storyCategorySpinner.getSelectedItem().toString(), Toast.LENGTH_LONG).show();
-                    //PASS OVER THE BUNDLE TO OUR FRAGMENT
-                    categoryFragment.setArguments(forCategoryFragment); */
-                    //TODO EVENTBUS
+
+                    //EVENTBUS
                     EventBus.getDefault().post(new EventBusCategorySelected(storyCategorySpinner.getSelectedItem().toString()));
 
                 }
@@ -221,13 +203,8 @@ public class MetaFirstFormFragment extends Fragment {
             audienceStageSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    /* PACK DATA IN A BUNDLE
-                    Bundle forStageFragment = new Bundle();
-                    forStageFragment.putString("STAGE_KEY", audienceStageSpinner.getSelectedItem().toString());
-                    //Toast.makeText(getActivity(), audienceStageSpinner.getSelectedItem().toString(), Toast.LENGTH_LONG).show();
 
                     //PASS OVER THE BUNDLE TO OUR FRAGMENT
-                    stageFragment.setArguments(forStageFragment); */
                     EventBus.getDefault().post(new EventBusStageSelected(audienceStageSpinner.getSelectedItem().toString()));
                 }
 
@@ -237,7 +214,7 @@ public class MetaFirstFormFragment extends Fragment {
                 }
             });
 
-            //Handle events UPDATE //TODO POPUP
+            //Handle events UPDATE POPUP
             buttonUpdate.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -261,7 +238,7 @@ public class MetaFirstFormFragment extends Fragment {
                     storyMeta = stageRelated + "\n" + contextRelated;
 
                     if (editCounter==0){
-                        storyFull = storyTitle + "\n" + storyDescription + "\n" + storyEvents + "\n" + storyMeta;
+                        storyFull =  "<b>" + storyTitle  + "</b>" + "<BR>" + storyDescription + "<BR>" + "<font color=\"#128E4A\">" + storyEvents + "</font>" + "<BR>" + "<font color=\"#B2182D\">" + storyMeta + "</font>";
                     } else {
                         storyFull = storyFullEdited;
                     }
@@ -293,30 +270,23 @@ public class MetaFirstFormFragment extends Fragment {
                                 return;
                         }
 
-                        /* TRY FRAGMENT?
-                        FragmentManager manager = getFragmentManager();
-                        Fragment fragment = manager.findFragmentByTag("fragment_edit_story");
-                        if (fragment != null){
-                            manager.beginTransaction().remove(fragment).commit();
-                        }
-
-                        PopupAlertDialogFragment popupAlertDialogFragment = new PopupAlertDialogFragment();
-                        popupAlertDialogFragment.show(manager, "fragment_edit_name");
-                        */
-
                         //TODO ALERT DIALOG
                         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                         builder.setTitle("Update: Review Story");
 
                         final EditText editTextPopup = new EditText(getActivity());
-                        editTextPopup.setText(storyFull);
+                        if (editCounter==0){
+                            editTextPopup.setText(Html.fromHtml(storyFull));
+                        } else {
+                            editTextPopup.setText(storyFull);
+                        }
                         editTextPopup.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
                         editTextPopup.setSingleLine(false);
                         editTextPopup.setLines(20);
                         editTextPopup.setGravity(Gravity.LEFT | Gravity.TOP);
                         editTextPopup.setHorizontalScrollBarEnabled(false);
                         editTextPopup.setBackgroundColor(getResources().getColor(R.color.white));
-                        editTextPopup.setPadding(10, 10, 10, 10);
+                        editTextPopup.setPadding(30, 30, 30, 30);
 
                         builder.setView(editTextPopup);
 
@@ -380,7 +350,11 @@ public class MetaFirstFormFragment extends Fragment {
                                     storyCRUD.setStoryMeta(storyMeta);
                                     storyCRUD.setStageRelated(stageRelated);;
                                     storyCRUD.setContextRelated(contextRelated);
-                                    storyCRUD.setStoryFull(storyFull);
+                                    if (editCounter==0){
+                                        storyCRUD.setStoryFull(Html.fromHtml(editTextPopup.getText().toString()).toString());
+                                    } else {
+                                        storyCRUD.setStoryFull(editTextPopup.getText().toString());
+                                    }
                                     storyCRUD.setImageUrl(imageUrl);
                                     storyCRUD.setAudienceStage(stage);
 
@@ -405,110 +379,10 @@ public class MetaFirstFormFragment extends Fragment {
                         alertDialog.getWindow().setAttributes(layoutParams);
 
                         final Button positiveButton = alertDialog.getButton(AlertDialog.BUTTON_POSITIVE);
-                        final Button negativeButton = alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE);
-
-
-
-                        /*
-                        //TODO POPUP WINDOW
-                        layoutInflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                        ViewGroup container = (ViewGroup) layoutInflater.inflate(R.layout.popup_window, null);
-
-                        popupWindow = new PopupWindow(container, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-
-                        final EditText editTextPopup;
-                        editTextPopup = (EditText) container.findViewById(R.id.popup_edit_text);
-
-                        final Button buttonBack, buttonConfirm;
-                        buttonBack = (Button) container.findViewById(R.id.popup_button_back);
-                        buttonConfirm = (Button) container.findViewById(R.id.popup_button_confirm);
-
-                        popupWindow.setFocusable(true);
-                        popupWindow.showAtLocation(view, Gravity.NO_GRAVITY, 300, 300);
-                        //popupWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-
-                        editTextPopup.setText(storyFull);
-
-
-
-                        //WHEN BACK IS PRESSED ON POPUP
-                        buttonBack.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                storyFullEdited = editTextPopup.getText().toString();
-                                editCounter = 1;
-                                popupWindow.dismiss();
-                            }
-                        });
-
-                        //WHEN CONFIRM IS PRESSED ON POPUP
-                        buttonConfirm.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-
-                                if ((actionString != null) && actionString.equals("update")){
-
-                                    //Save data
-                                    StoryCRUD storyCRUD = new StoryCRUD();
-                                    storyCRUD.setStoryId(storyIdInt);
-                                    storyCRUD.setStoryTitle(storyTitle);
-                                    storyCRUD.setStoryCategory(storyCategory);
-                                    storyCRUD.setIfOtherSpecify(ifOtherSpecify);
-                                    storyCRUD.setAuthorId(authorIdInt);
-                                    storyCRUD.setStoryDescription(storyDescription);
-                                    storyCRUD.setStoryEvents(storyEvents);
-                                    storyCRUD.setOrientation(orientation);
-                                    storyCRUD.setComplicatedAction(complicatedAction);
-                                    storyCRUD.setEvaluation(evaluation);
-                                    storyCRUD.setResolution(resolution);
-                                    storyCRUD.setMessage(message);
-                                    storyCRUD.setStoryMeta(storyMeta);
-                                    storyCRUD.setStageRelated(stageRelated);;
-                                    storyCRUD.setContextRelated(contextRelated);
-                                    storyCRUD.setStoryFull(editTextPopup.getText().toString());
-                                    storyCRUD.setImageUrl(imageUrl);
-                                    storyCRUD.setAudienceStage(stage);
-
-                                    new MySQLClientCRUD(getActivity()).update(storyCRUD, storyCategorySpinner, storyTitleTxt, ifOtherSpecifyTxt, storyDescriptionTxt, orientationTxt, complicatedActionTxt, evaluationTxt, resolutionTxt, messgageTxt, stageRelatedTxt, contextRelatedTxt, imageUrlTxt, audienceStageSpinner);
-
-                                    Intent intentGoToRetrieveStoriesCRUDActivity = new Intent(getActivity(), RetrieveStoriesCRUDActivity.class);
-                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("CATEGORY_KEY", storyCategory);
-                                    getActivity().startActivity(intentGoToRetrieveStoriesCRUDActivity);
-
-                                } else {
-
-                                    //Save data
-                                    StoryCRUD storyCRUD = new StoryCRUD();
-                                    storyCRUD.setStoryTitle(storyTitle);
-                                    storyCRUD.setStoryCategory(storyCategory);
-                                    storyCRUD.setIfOtherSpecify(ifOtherSpecify);
-                                    storyCRUD.setAuthorId(authorId);
-                                    storyCRUD.setStoryDescription(storyDescription);
-                                    storyCRUD.setStoryEvents(storyEvents);
-                                    storyCRUD.setOrientation(orientation);
-                                    storyCRUD.setComplicatedAction(complicatedAction);
-                                    storyCRUD.setEvaluation(evaluation);
-                                    storyCRUD.setResolution(resolution);
-                                    storyCRUD.setMessage(message);
-                                    storyCRUD.setStoryMeta(storyMeta);
-                                    storyCRUD.setStageRelated(stageRelated);;
-                                    storyCRUD.setContextRelated(contextRelated);
-                                    storyCRUD.setStoryFull(storyFull);
-                                    storyCRUD.setImageUrl(imageUrl);
-                                    storyCRUD.setAudienceStage(stage);
-
-                                    new MySQLClientCRUD(getActivity()).add(storyCRUD, storyCategorySpinner, storyTitleTxt, ifOtherSpecifyTxt, storyDescriptionTxt, orientationTxt, complicatedActionTxt, evaluationTxt, resolutionTxt, messgageTxt, stageRelatedTxt, contextRelatedTxt, imageUrlTxt, audienceStageSpinner);
-
-                                    //TODO CHECK IF CORRECT
-                                    Intent intentGoToRetrieveStoriesCRUDActivity = new Intent(getActivity(), RetrieveStoriesCRUDActivity.class);
-                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("CATEGORY_KEY", storyCategory);
-                                    getActivity().startActivity(intentGoToRetrieveStoriesCRUDActivity);
-
-                                }
-
-                            }
-                        });
-                        */
+                        LinearLayout parent = (LinearLayout) positiveButton.getParent();
+                        parent.setGravity(Gravity.CENTER_HORIZONTAL);
+                        View leftSpacer = parent.getChildAt(1);
+                        leftSpacer.setVisibility(View.GONE);
 
                     } else {
                         Toast.makeText(getActivity(), "The last input was invalid.", Toast.LENGTH_SHORT).show();
@@ -568,13 +442,8 @@ public class MetaFirstFormFragment extends Fragment {
             storyCategorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    /*PACK DATA IN A BUNDLE
-                    Bundle forCategoryFragment = new Bundle();
-                    forCategoryFragment.putString("CATEGORY_KEY", storyCategorySpinner.getSelectedItem().toString());
-                    Toast.makeText(getActivity(), storyCategorySpinner.getSelectedItem().toString(), Toast.LENGTH_LONG).show();
 
                     //PASS OVER THE BUNDLE TO OUR FRAGMENT
-                    categoryFragment.setArguments(forCategoryFragment); */
                     EventBus.getDefault().post(new EventBusCategorySelected(storyCategorySpinner.getSelectedItem().toString()));
                 }
 
@@ -588,14 +457,8 @@ public class MetaFirstFormFragment extends Fragment {
             audienceStageSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    /*PACK DATA IN A BUNDLE
-                    Bundle forStageFragment = new Bundle();
-                    forStageFragment.putString("STAGE_KEY", audienceStageSpinner.getSelectedItem().toString());
-                    Toast.makeText(getActivity(), audienceStageSpinner.getSelectedItem().toString(), Toast.LENGTH_LONG).show();
-
 
                     //PASS OVER THE BUNDLE TO OUR FRAGMENT
-                    stageFragment.setArguments(forStageFragment); */
                     EventBus.getDefault().post(new EventBusStageSelected(audienceStageSpinner.getSelectedItem().toString()));
                 }
 
@@ -605,8 +468,7 @@ public class MetaFirstFormFragment extends Fragment {
                 }
             });
 
-            //Handle events
-            //ADD
+            //Handle events ADD POPUP
             buttonAdd.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -632,7 +494,7 @@ public class MetaFirstFormFragment extends Fragment {
                     storyMeta = stageRelated + "\n" + contextRelated;
 
                     if (editCounter==0){
-                        storyFull = storyTitle + "\n" + storyDescription + "\n" + storyEvents + "\n" + storyMeta;
+                        storyFull =  "<b>" + storyTitle  + "</b>" + "<BR>" + storyDescription + "<BR>" + "<font color=\"#128E4A\">" + storyEvents + "</font>" + "<BR>" + "<font color=\"#B2182D\">" + storyMeta + "</font>";
                     } else {
                         storyFull = storyFullEdited;
                     }
@@ -663,39 +525,38 @@ public class MetaFirstFormFragment extends Fragment {
                                 return;
                         }
 
-                        //TODO POPUP WINDOW
-                        layoutInflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                        ViewGroup container = (ViewGroup) layoutInflater.inflate(R.layout.popup_window, null);
+                        //TODO ALERT DIALOG
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                        builder.setTitle("Create: Review Story");
 
-                        popupWindow = new PopupWindow(container, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+                        final EditText editTextPopup = new EditText(getActivity());
+                        if (editCounter==0){
+                            editTextPopup.setText(Html.fromHtml(storyFull));
+                        } else {
+                            editTextPopup.setText(storyFull);
+                        }
+                        editTextPopup.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+                        editTextPopup.setSingleLine(false);
+                        editTextPopup.setLines(20);
+                        editTextPopup.setGravity(Gravity.LEFT | Gravity.TOP);
+                        editTextPopup.setHorizontalScrollBarEnabled(false);
+                        editTextPopup.setBackgroundColor(getResources().getColor(R.color.white));
+                        editTextPopup.setPadding(30, 30, 30, 30);
 
-                        final EditText editTextPopup;
-                        editTextPopup = (EditText) container.findViewById(R.id.popup_edit_text);
+                        builder.setView(editTextPopup);
 
-                        final Button buttonBack, buttonConfirm;
-                        buttonBack = (Button) container.findViewById(R.id.popup_button_back);
-                        buttonConfirm = (Button) container.findViewById(R.id.popup_button_confirm);
-
-                        popupWindow.setFocusable(true);
-                        popupWindow.showAtLocation(view, Gravity.NO_GRAVITY, 300, 300);
-                        //popupWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-
-                        editTextPopup.setText(storyFull);
-
-                        //WHEN BACK IS PRESSED ON POPUP
-                        buttonBack.setOnClickListener(new View.OnClickListener() {
+                        builder.setNegativeButton("Back (Saves progress)", new DialogInterface.OnClickListener() {
                             @Override
-                            public void onClick(View view) {
+                            public void onClick(DialogInterface dialogInterface, int i) {
                                 storyFullEdited = editTextPopup.getText().toString();
                                 editCounter = 1;
-                                popupWindow.dismiss();
+                                dialogInterface.dismiss();
                             }
                         });
 
-                        //WHEN CONFIRM IS PRESSED ON POPUP
-                        buttonConfirm.setOnClickListener(new View.OnClickListener() {
+                        builder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
                             @Override
-                            public void onClick(View view) {
+                            public void onClick(DialogInterface dialogInterface, int i) {
 
                                 if ((actionString != null) && actionString.equals("update")){
 
@@ -716,7 +577,11 @@ public class MetaFirstFormFragment extends Fragment {
                                     storyCRUD.setStoryMeta(storyMeta);
                                     storyCRUD.setStageRelated(stageRelated);;
                                     storyCRUD.setContextRelated(contextRelated);
-                                    storyCRUD.setStoryFull(editTextPopup.getText().toString());
+                                    if (editCounter==0){
+                                        storyCRUD.setStoryFull(Html.fromHtml(editTextPopup.getText().toString()).toString());
+                                    } else {
+                                        storyCRUD.setStoryFull(editTextPopup.getText().toString());
+                                    }
                                     storyCRUD.setImageUrl(imageUrl);
                                     storyCRUD.setAudienceStage(stage);
 
@@ -760,6 +625,20 @@ public class MetaFirstFormFragment extends Fragment {
                             }
                         });
 
+                        AlertDialog alertDialog = builder.create();
+                        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+                        layoutParams.copyFrom(alertDialog.getWindow().getAttributes());
+                        layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
+                        layoutParams.height = WindowManager.LayoutParams.MATCH_PARENT;
+                        alertDialog.show();
+                        alertDialog.getWindow().setAttributes(layoutParams);
+
+                        final Button positiveButton = alertDialog.getButton(AlertDialog.BUTTON_POSITIVE);
+                        LinearLayout parent = (LinearLayout) positiveButton.getParent();
+                        parent.setGravity(Gravity.CENTER_HORIZONTAL);
+                        View leftSpacer = parent.getChildAt(1);
+                        leftSpacer.setVisibility(View.GONE);
+
                     } else {
                         Toast.makeText(getActivity(), "The last input was invalid.", Toast.LENGTH_SHORT).show();
                     }
@@ -771,55 +650,13 @@ public class MetaFirstFormFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Log.i("onActivityCreated", ": FORM");
+        //Log.i("onActivityCreated", ": FORM");
     }
 
     @Override
     public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
-        Log.i("onViewStateRestored", ": FORM");
+        //Log.i("onViewStateRestored", ": FORM");
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        Log.i("onStart", ": FORM");
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        Log.i("onResume", ": FORM");
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        Log.i("onPause", ": FORM");
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-
-        Log.i("onStop", ": FORM");
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        Log.i("onDestroyView", ": FORM");
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        Log.i("onDestroy", ": FORM");
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        Log.i("onDetach", ": FORM");
-    }
 }
