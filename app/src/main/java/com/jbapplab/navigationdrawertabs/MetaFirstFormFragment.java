@@ -114,7 +114,7 @@ public class MetaFirstFormFragment extends Fragment {
         String userIdStringSIS, actionStringSIS, storyIdStringSIS, storyTitleSIS, ifOtherSpecifySIS, authorIdStringSIS, storyDescriptionSIS, orientationSIS, complicatedActionSIS, evaluationSIS, resolutionSIS, messageSIS, stageRelatedSIS, contextRelatedSIS, imageUrlSIS;
 
         final EasyForm easyForm = getView().findViewById(R.id.meta_first_form);
-        final EditText editText = getView().findViewById(R.id.uniquetest);
+        //final EditText editText = getView().findViewById(R.id.uniquetest);
 
 
         if ((actionString != null) && actionString.equals("update")){

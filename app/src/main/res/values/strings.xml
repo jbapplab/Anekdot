@@ -52,5 +52,6 @@
     <string name="enter_a_url_of_a_photo_that_represents_your_story">Enter a URL of a photo that represents your story.</string>
     <string name="save_story">Save Story</string>
     <string name="update_story">Update Story</string>
+    <string name="register">register</string>
 
 </resources>

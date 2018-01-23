@@ -18,7 +18,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.jbapplab.navigationdrawertabs.LoginActivity;
 import com.jbapplab.navigationdrawertabs.LoginRequest;
-import com.jbapplab.navigationdrawertabs.MainActivity;
 import com.jbapplab.navigationdrawertabs.MetaFirstActivity;
 import com.jbapplab.navigationdrawertabs.R;
 import com.jbapplab.navigationdrawertabs.RetrieveStoriesCRUDActivity;
