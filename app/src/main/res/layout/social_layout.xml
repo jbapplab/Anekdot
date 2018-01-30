@@ -1,29 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/tvIntroTipOTD"
+        android:text="@string/intro_TipOTD"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:textSize="30sp"
+        android:textSize="18sp"
+        android:padding="10dp"
         android:gravity="center"
-        android:id="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:textColor="@android:color/holo_blue_dark"
-        android:text="Social\nFragment"/>
+        android:layout_gravity="center"/>
 
     <TextView
+        android:id="@+id/tvTipOTD"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:autoLink="web"
-        android:textSize="15sp"
-        android:layout_marginTop="10dp"
-        android:layout_centerHorizontal="true"
-        android:text="androidbelieve.com"
-        android:textColor="#000"
-        android:layout_below="@+id/textView"
-        android:textStyle="italic"/>
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textStyle="italic" />
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/btnNewTip"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
+        android:textColor="@android:color/white"
+        android:text="@string/generate_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="10dp"
+        />
+</LinearLayout>

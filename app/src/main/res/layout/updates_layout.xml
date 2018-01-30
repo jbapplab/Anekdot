@@ -1,29 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/tvIntroLinksTutorials"
+        android:text="@string/intro_links_tutorials"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:textSize="30sp"
+        android:textSize="18sp"
+        android:padding="10dp"
         android:gravity="center"
-        android:id="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:textColor="@android:color/holo_blue_dark"
-        android:text="Updates\nFragment"/>
+        android:layout_gravity="center"/>
 
     <TextView
+        android:id="@+id/tvLink1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:autoLink="web"
         android:textSize="15sp"
-        android:layout_marginTop="10dp"
-        android:layout_centerHorizontal="true"
-        android:text="androidbelieve.com"
-        android:textColor="#000"
-        android:layout_below="@+id/textView"
-        android:textStyle="italic"/>
+        android:text="@string/link1"
+        android:textStyle="italic"
+        android:padding="10dp"/>
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/tvLink2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="@string/link2"
+        android:textStyle="italic"
+        android:padding="10dp"/>
+
+    <TextView
+        android:id="@+id/tvLink3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="@string/link3"
+        android:textStyle="italic"
+        android:padding="10dp"/>
+
+    <!--
+    <TextView
+        android:id="@+id/tvLink4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="@string/link4"
+        android:textStyle="italic"
+        android:padding="10dp"/>
+
+    <TextView
+        android:id="@+id/tvLink5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="@string/link5"
+        android:textStyle="italic"
+        android:padding="10dp"/>
+    -->
+</LinearLayout>

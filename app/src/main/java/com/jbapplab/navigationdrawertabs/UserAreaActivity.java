@@ -257,7 +257,7 @@ public class UserAreaActivity extends AppCompatActivity {
                 sendIntent.setAction(Intent.ACTION_SEND);
                 sendIntent.putExtra(Intent.EXTRA_TEXT, "Anecdote user: "+firstName+" "+lastName+" - "+username+" - "+email);
                 sendIntent.setType("text/plain");
-                startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.send_to)));
+                startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.send_user_details)));
                 return true;
 
             default:

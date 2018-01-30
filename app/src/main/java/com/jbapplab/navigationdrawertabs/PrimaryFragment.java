@@ -12,6 +12,7 @@ package com.jbapplab.navigationdrawertabs;
  holding it.
  */
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -19,7 +20,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 
@@ -42,10 +45,10 @@ public class PrimaryFragment extends Fragment {
 
         userId = this.getArguments().getString("userId_KEY");
         firstName = this.getArguments().getString("firstName_KEY");
-        lastName = this.getArguments().getString("lastName_KEY");
+        lastName = this.getArguments().getString("lastName_KEY"); //not immediately used
         username = this.getArguments().getString("username_KEY");
-        password = this.getArguments().getString("password_KEY");
-        email = this.getArguments().getString("email_KEY");
+        password = this.getArguments().getString("password_KEY"); //not immediately used
+        email = this.getArguments().getString("email_KEY"); //not immediately used
 
         return inflater.inflate(R.layout.primary_layout,null);
     }
@@ -53,18 +56,54 @@ public class PrimaryFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
-        final EditText etEmail = getView().findViewById(R.id.etEmail);
-        final EditText etUsername = getView().findViewById(R.id.etUsername);
         final TextView tvWelcomeMessage = getView().findViewById(R.id.tvWelcomeMessage);
 
         //TODO SEND THIS BACK AND FORTH TO ALL
         Log.i("UserId-UserArea: ", userId);
 
 
-        String message = firstName + lastName + ", welcome to your Anecdot user area" + password;
+        String message = "Hi "+ firstName + ", how are you going to influence the word today?";
         tvWelcomeMessage.setText(message);
-        etUsername.setText(username);
-        etEmail.setText(email);
+
+        ImageButton create_story = getView().findViewById(R.id.imageButtonCreate);
+        ImageButton categories = getView().findViewById(R.id.imageButtonCategories);
+        ImageButton my_favourites = getView().findViewById(R.id.imageButtonFavourites);
+
+        create_story.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Created an intent that opens the Activity
+                Intent createIntent = new Intent(getActivity(), MetaFirstActivity.class);
+                createIntent.putExtra("USERID_KEY", userId);
+                //Then we told the current activity to perform that intent
+                getActivity().startActivity(createIntent);
+            }
+        });
+
+        categories.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Created an intent that opens the Activity
+                Intent categoriesIntent = new Intent(getActivity(), SelectCategoryActivity.class);
+                categoriesIntent.putExtra("USERID_KEY", userId);
+                //Then we told the current activity to perform that intent
+                getActivity().startActivity(categoriesIntent);
+            }
+        });
+
+        my_favourites.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Created an intent that opens the Activity
+                Intent favouritesIntent = new Intent(getActivity(), MyFavouritesActivity.class);
+                favouritesIntent.putExtra("USERID_KEY", userId);
+                //Then we told the current activity to perform that intent
+                getActivity().startActivity(favouritesIntent);
+            }
+        });
+
+        //etUsername.setText(username);
+        //etEmail.setText(email);
         //The empty quote is going to convert the age int to a string because we cannot display an int in a textview directly.
         //etAge.setText(age+"");
     }

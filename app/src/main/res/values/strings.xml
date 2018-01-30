@@ -54,4 +54,58 @@
     <string name="update_story">Update Story</string>
     <string name="register">register</string>
 
+    <!-- User area strings -->
+    <string name="send_user_details">Send user details:</string>
+    <string name="scroll_right_tip_links_tutorials">Remember to scroll right to get your story tip of the day and access to useful links and tutorials.</string>
+    <string name="dashboard_intro_text">Jump straight into the story!</string>
+    <string name="create_story">Create a Story</string>
+    <string name="read_story">Read a Story</string>
+    <string name="my_favourites">My Favourites</string>
+    <string name="story_categories">Story Categories</string>
+    <string name="intro_TipOTD">Here is today\'s tip for more impactful and influential stories!</string>
+    <string name="generate_tip">I want another tip!</string>
+    <string name="intro_links_tutorials">Here you can find useful links and video tutorials for persuasive writing.</string>
+
+    <string-array
+        name="string_array_TipOTD">
+        <item>Take a stance. What do you think about the issue? What side will you take? Be aware of any prejudices you might have that could color your argument. What resolution will you suggest?</item>
+        <item>Know your audience. Determine if your audience will agree with your position and why they may not. You must be able to understand both sides of the issue in order to successfully argue your point of view.</item>
+        <item>Thoroughly research your topic. The point of a persuasive essay is to provide detailed and compelling evidence—you should be able to disprove the opposing argument. It will likely be necessary to undertake library-based research in order to accomplish this.</item>
+        <item>Think about the structure of your essay. Determine what evidence you will include and the order in which you will present it. Remember, it must be logical.</item>
+        <item>Support your argument. Use hard facts. You can gather these from your research, observations, or personal experiences. But be careful! In order to avoid plagiarism, you must cite your sources. You should always use verifiable statistics. It is important to be able to back up your argument with data. In order to further strengthen the argument in your persuasive essay, try using one or two direct quotes from experts on the topic. Finally, provide meaningful examples to enhance and clearly illustrate your argument.</item>
+        <item>Create rapport with the person you are trying to influence – it may sound like common sense but if they like and trust you there is a greater possibility that you will be able to persuade them.</item>
+        <item>Focus On Your Best Audience. Writers tend to cast a wide net, hoping to influence everyone. However, focusing on the people who are most likely to benefit from the content and writing for them will bring better results.</item>
+        <item>Tell Them Why. Readers are constantly bombarded with messages on a daily basis. If you want their attention, justify it with a good reason up front, preferably something that will benefit them.</item>
+        <item>Be Authoritative. Establish yourself as an authority up front and be consistent in backing up that authority with proof, statistics and examples. Be honest and transparent, don’t waver, and pretty soon your audience will believe you.</item>
+        <item>Take The Reader’s Point of View. If you were the reader, what would grab your attention? When you are writing persuasive copy, you have to become the reader to understand what appeals to them.</item>
+        <item>Show That You Understand. Before you can persuade your reader, you must establish that you are just like them in some way. Perhaps you share the same problem or have similar desires. Find a mutual connection and state it early on.</item>
+        <item>Tell Both Sides of the Story. There is always another side of the story. Unlike addressing objections, telling the other side of the story allows you to paint a compelling picture of what life would be like without your product or service. It would be awful. Tell them.</item>
+        <item>Use Influential Words. To write persuasive copy, use persuasive “action” words like miracle, discovery, discount, and bargain. Use uplifting words like vitality, grace, wisdom, and confidence. Finally, make sure your copy has ‘Free’, ’How’, ’New’ and ‘You’ in abundance.</item>
+        <item>Simplify and Amplify. Simplify your core ideas into hard-hitting individual thoughts, then amplify them with the help of things that are important to the reader. Use words that help empower your readers. Get! Learn! Results! Now!</item>
+        <item>Be Repetitive. If you’ve said it once, you can say it again. Repetition is a time-honored tactic for remembering anything. Use it to your advantage.</item>
+        <item>Address Objections. Even the most agreeable readers will likely have objections, and you are much better off addressing them up front than waiting for your potential customer to voice them. This is another means of establishing authority, and also tells your reader that you have thought the matter through.</item>
+        <item>Show Proof. As previously mentioned, showing proof helps establish you as an authority on the subject, and shows your reader that you respect them.</item>
+        <item>Focus on Headline Psychology. Headlines matter. If the headline is not catchy enough for a click, the rest of the content will fall flat. Make sure that the headline is psychologically stimulating and interesting to your readers. However, don’t sacrifice clarity for the sake of flash. Your headlines should be catchy but concise.</item>
+        <item>Be Consistent. State your position up front, then proceed to be unfailingly consistent in backing it up with facts, stats and proof. Essentially, you want your readers to trust you. A reader who trusts you will tend to agree with you, and nothing builds trust more effectively than being consistent.</item>
+        <item>Use Simple Language. Don’t overload your content. Write as simply as possible. Make your message accessible to every reader. Don’t use complex terminology unless you need to. If you do need to, explain it in simple words.</item>
+        <item>Be Precise. People love details. Using detail in your writing shows that you’re a person who really knows what you’re writing about – a person to be trusted. Be as specific as you can. Visibility and accessibility should be your main principles.</item>
+        <item>“Sir! Yes, Sir!” Use all of your imagination to create a situation in which the reader will agree with you. It’s very easy to do. Make some general statements or ask questions that are difficult to challenge. Ask questions where the only possible answer is YES.</item>
+        <item>Predict Your Reader. Anticipate the questions of the reader, and answer them before they’re even asked – before they’ve even thought about. Neutralize possible questions before they even appear. Comprehensive information is exactly what your reader is looking for.</item>
+        <item>Prove it! It’s easy to write persuasive text if you can back up your claims with facts and studies. Numbers and percentages have the best effect. They’re your strongest tools for convincing readers.</item>
+        <item>Be Specific. Use real-life examples. We believe in examples we can relate to. It’s easy to say: “Do this, do that.” But how can you apply it in real life? Examples from the real world make material understandable. They make readers think, “If someone else achieved this, why can't I?”</item>
+        <item>Touch the Emotions. Evoke emotion in the reader. As we know, emotions are the main motivation behind making a purchases or sealing a business deal. Emotions awaken desire. As Napoleon Hill said: “The starting point of all achievement is desire.”</item>
+        <item>Use Greatness. Cite great wisdom. Well-chosen quotes from successful people will elevate your text to the next level. A couple of good quotes from well-known experts in the field will help you to make your material more compelling.</item>
+        <item>Use Structure. Divide your articles into paragraphs, headings, subheadings and lists. These increase the visual appeal of the text. Paragraphs should contain between 2 and 5 sentences, and no more. That will make it much easier for your reader to digest your material.</item>
+        <item>Make it Right. The web is littered with low-quality content. No matter how interesting and useful your text is, grammatical errors will spoil the impression of your content – and give a bad impression of the author. Text with grammatical errors is like a road with potholes. In order to write well, read a lot. Use your dictionary, spell check and grammar check. Brush up on your school rules. Have someone proofread your article. And keep writing.</item>
+        <item>Draw Your Text. If you can express your idea in a few pictures, rather than 10 paragraphs of text, use the pictures! What would you rather share on social networks – a picture or a link to text? Infographics are a great way to get your ideas across. Modern readers are reluctant to spend a lot of time reading, but they’re quick to register and interpret visual information.</item>
+        <item>Use Your Imagination. Writing that tells a story makes is so much more special than that which is only informative. Story-telling awakens our imagination and makes your message relatable to the reader. It’s also far more interesting to read. Use words such as “imagine”, “see” and “remember”.</item>
+    </string-array>
+
+    <!-- LINKS -->
+    <string name="link1">Guide: <a href="https://problogger.com/th-science-of-storytelling-6-ways-to-write-more-persuasive-stories/">6 Ways to Write More Persuasive Stories</a></string>
+    <string name="link2">Article: <a href="https://hbr.org/2011/03/using-stories-as-a-tool-of-per" >Using Stories to Persuade</a></string>
+    <string name="link3">Article: <a href="https://www.hrzone.com/talent/retention/how-to-use-storytelling-to-influence-people" >How to use storytelling to influence people</a></string>
+    <string name="link4"><a href="http://www.www.com" >ForGet Password</a></string>
+    <string name="link5"><a href="http://www.www.com" >ForGet Password</a></string>
+
 </resources>
