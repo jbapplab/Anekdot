@@ -62,8 +62,8 @@ public class MetaFirstFormFragment extends Fragment {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt("currentThis", Integer.parseInt(userIdString));
-        Log.i("onSaveInstanceState", ": FORM");
+        //outState.putInt("currentThis", Integer.parseInt(userIdString));
+        //Log.i("onSaveInstanceState", ": FORM");
     }
 
 

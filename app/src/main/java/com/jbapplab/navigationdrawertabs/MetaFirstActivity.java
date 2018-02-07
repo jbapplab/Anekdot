@@ -30,6 +30,11 @@ public class MetaFirstActivity extends AppCompatActivity {
     Fragment storyCoreFragment = new StoryCoreFragment();
 
     String userIdString, actionString, storyIdString, storyTitle, ifOtherSpecify, authorIdString, storyDescription, orientation, complicatedAction, evaluation, resolution, message, stageRelated, contextRelated, imageUrl;
+    String firstName;
+    String lastName;
+    String username;
+    String password;
+    String email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +47,12 @@ public class MetaFirstActivity extends AppCompatActivity {
         //Check if update
         Intent intent;
         intent = this.getIntent();
-        userIdString = intent.getStringExtra("USERID_KEY");
+        userIdString = intent.getStringExtra("userId_KEY");
+        firstName = intent.getStringExtra("firstName_KEY");
+        lastName = intent.getStringExtra("lastName_KEY");
+        username = intent.getStringExtra("username_KEY");
+        password = intent.getStringExtra("password_KEY");
+        email = intent.getStringExtra("email_KEY");
         actionString = intent.getExtras().getString("UPDATE_KEY");
 
         if ((intent.getExtras() != null) && (intent.getExtras().getString("UPDATE_KEY") != null) &&(actionString.equals("update"))) {
@@ -103,7 +113,12 @@ public class MetaFirstActivity extends AppCompatActivity {
                 //Added the addToBackStack("str") bit to use back button
                 if (menuItem.getItemId() == R.id.nav_item_home) {
                     Intent intentGoToUserAreaActivity = new Intent(MetaFirstActivity.this, UserAreaActivity.class);
-                    intentGoToUserAreaActivity.putExtra("USERID_KEY", userIdString);
+                    intentGoToUserAreaActivity.putExtra("userId_KEY", userIdString);
+                    intentGoToUserAreaActivity.putExtra("firstName_KEY", firstName);
+                    intentGoToUserAreaActivity.putExtra("lastName_KEY", lastName);
+                    intentGoToUserAreaActivity.putExtra("username_KEY", username);
+                    intentGoToUserAreaActivity.putExtra("password_KEY", password);
+                    intentGoToUserAreaActivity.putExtra("email_KEY", email);
                     MetaFirstActivity.this.startActivity(intentGoToUserAreaActivity);
                 }
 
@@ -126,7 +141,12 @@ public class MetaFirstActivity extends AppCompatActivity {
                 if (menuItem.getItemId() == R.id.nav_item_categories) {
 
                     Intent intentGoToSelectCategoryActivity = new Intent(MetaFirstActivity.this, SelectCategoryActivity.class);
-                    intentGoToSelectCategoryActivity.putExtra("USERID_KEY", userIdString);
+                    intentGoToSelectCategoryActivity.putExtra("userId_KEY", userIdString);
+                    intentGoToSelectCategoryActivity.putExtra("firstName_KEY", firstName);
+                    intentGoToSelectCategoryActivity.putExtra("lastName_KEY", lastName);
+                    intentGoToSelectCategoryActivity.putExtra("username_KEY", username);
+                    intentGoToSelectCategoryActivity.putExtra("password_KEY", password);
+                    intentGoToSelectCategoryActivity.putExtra("email_KEY", email);
                     MetaFirstActivity.this.startActivity(intentGoToSelectCategoryActivity);
 
                 }
@@ -134,7 +154,12 @@ public class MetaFirstActivity extends AppCompatActivity {
                 if (menuItem.getItemId() == R.id.nav_item_mystories) {
 
                     Intent intentGoToMyStoriesActivity = new Intent(MetaFirstActivity.this, MyStoriesActivity.class);
-                    intentGoToMyStoriesActivity.putExtra("USERID_KEY", userIdString);
+                    intentGoToMyStoriesActivity.putExtra("userId_KEY", userIdString);
+                    intentGoToMyStoriesActivity.putExtra("firstName_KEY", firstName);
+                    intentGoToMyStoriesActivity.putExtra("lastName_KEY", lastName);
+                    intentGoToMyStoriesActivity.putExtra("username_KEY", username);
+                    intentGoToMyStoriesActivity.putExtra("password_KEY", password);
+                    intentGoToMyStoriesActivity.putExtra("email_KEY", email);
                     MetaFirstActivity.this.startActivity(intentGoToMyStoriesActivity);
 
                 }
@@ -142,7 +167,12 @@ public class MetaFirstActivity extends AppCompatActivity {
                 if (menuItem.getItemId() == R.id.nav_item_myfavourites) {
 
                     Intent intentGoToMyFavouritesActivity = new Intent(MetaFirstActivity.this, MyFavouritesActivity.class);
-                    intentGoToMyFavouritesActivity.putExtra("USERID_KEY", userIdString);
+                    intentGoToMyFavouritesActivity.putExtra("userId_KEY", userIdString);
+                    intentGoToMyFavouritesActivity.putExtra("firstName_KEY", firstName);
+                    intentGoToMyFavouritesActivity.putExtra("lastName_KEY", lastName);
+                    intentGoToMyFavouritesActivity.putExtra("username_KEY", username);
+                    intentGoToMyFavouritesActivity.putExtra("password_KEY", password);
+                    intentGoToMyFavouritesActivity.putExtra("email_KEY", email);
                     MetaFirstActivity.this.startActivity(intentGoToMyFavouritesActivity);
 
                 }
@@ -151,7 +181,12 @@ public class MetaFirstActivity extends AppCompatActivity {
                 if (menuItem.getItemId() == R.id.nav_item_eventsfirst) {
 
                     Intent intentGoToEvensFirstActivity = new Intent(MetaFirstActivity.this, UserAreaActivity.class);
-                    intentGoToEvensFirstActivity.putExtra("USERID_KEY", userIdString);
+                    intentGoToEvensFirstActivity.putExtra("userId_KEY", userIdString);
+                    intentGoToEvensFirstActivity.putExtra("firstName_KEY", firstName);
+                    intentGoToEvensFirstActivity.putExtra("lastName_KEY", lastName);
+                    intentGoToEvensFirstActivity.putExtra("username_KEY", username);
+                    intentGoToEvensFirstActivity.putExtra("password_KEY", password);
+                    intentGoToEvensFirstActivity.putExtra("email_KEY", email);
                     MetaFirstActivity.this.startActivity(intentGoToEvensFirstActivity);
 
                 }
@@ -167,7 +202,12 @@ public class MetaFirstActivity extends AppCompatActivity {
                 if (menuItem.getItemId() == R.id.nav_item_settings) {
 
                     Intent intentGoToSettingsActivity = new Intent(MetaFirstActivity.this, SettingsActivity.class);
-                    intentGoToSettingsActivity.putExtra("USERID_KEY", userIdString);
+                    intentGoToSettingsActivity.putExtra("userId_KEY", userIdString);
+                    intentGoToSettingsActivity.putExtra("firstName_KEY", firstName);
+                    intentGoToSettingsActivity.putExtra("lastName_KEY", lastName);
+                    intentGoToSettingsActivity.putExtra("username_KEY", username);
+                    intentGoToSettingsActivity.putExtra("password_KEY", password);
+                    intentGoToSettingsActivity.putExtra("email_KEY", email);
                     MetaFirstActivity.this.startActivity(intentGoToSettingsActivity);
 
                 }
@@ -175,7 +215,12 @@ public class MetaFirstActivity extends AppCompatActivity {
                 if (menuItem.getItemId() == R.id.nav_item_help) {
 
                     Intent intentGoToHelpActivity = new Intent(MetaFirstActivity.this, HelpActivity.class);
-                    intentGoToHelpActivity.putExtra("USERID_KEY", userIdString);
+                    intentGoToHelpActivity.putExtra("userId_KEY", userIdString);
+                    intentGoToHelpActivity.putExtra("firstName_KEY", firstName);
+                    intentGoToHelpActivity.putExtra("lastName_KEY", lastName);
+                    intentGoToHelpActivity.putExtra("username_KEY", username);
+                    intentGoToHelpActivity.putExtra("password_KEY", password);
+                    intentGoToHelpActivity.putExtra("email_KEY", email);
                     MetaFirstActivity.this.startActivity(intentGoToHelpActivity);
 
                 }
@@ -193,7 +238,7 @@ public class MetaFirstActivity extends AppCompatActivity {
         ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.app_name,
                 R.string.app_name);
 
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        mDrawerLayout.addDrawerListener(mDrawerToggle);
 
         mDrawerToggle.syncState();
     }

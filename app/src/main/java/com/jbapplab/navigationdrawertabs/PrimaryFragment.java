@@ -74,7 +74,7 @@ public class PrimaryFragment extends Fragment {
             public void onClick(View view) {
                 //Created an intent that opens the Activity
                 Intent createIntent = new Intent(getActivity(), MetaFirstActivity.class);
-                createIntent.putExtra("USERID_KEY", userId);
+                createIntent.putExtra("userId_KEY", userId);
                 //Then we told the current activity to perform that intent
                 getActivity().startActivity(createIntent);
             }
@@ -85,7 +85,7 @@ public class PrimaryFragment extends Fragment {
             public void onClick(View view) {
                 //Created an intent that opens the Activity
                 Intent categoriesIntent = new Intent(getActivity(), SelectCategoryActivity.class);
-                categoriesIntent.putExtra("USERID_KEY", userId);
+                categoriesIntent.putExtra("userId_KEY", userId);
                 //Then we told the current activity to perform that intent
                 getActivity().startActivity(categoriesIntent);
             }
@@ -96,7 +96,7 @@ public class PrimaryFragment extends Fragment {
             public void onClick(View view) {
                 //Created an intent that opens the Activity
                 Intent favouritesIntent = new Intent(getActivity(), MyFavouritesActivity.class);
-                favouritesIntent.putExtra("USERID_KEY", userId);
+                favouritesIntent.putExtra("userId_KEY", userId);
                 //Then we told the current activity to perform that intent
                 getActivity().startActivity(favouritesIntent);
             }

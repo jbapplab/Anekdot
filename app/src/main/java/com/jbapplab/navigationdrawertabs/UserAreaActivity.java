@@ -61,7 +61,6 @@ public class UserAreaActivity extends AppCompatActivity {
         /**
          *Setup the DrawerLayout and NavigationView
          */
-
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
         mNavigationView = (NavigationView) findViewById(R.id.navigation_stuff);
 
@@ -69,7 +68,6 @@ public class UserAreaActivity extends AppCompatActivity {
          * Lets inflate the very first fragment
          * Here , we are inflating the TabFragment as the first Fragment
          */
-
          mFragmentManager = getSupportFragmentManager();
          mFragmentTransaction = mFragmentManager.beginTransaction();
          sendDataTabFragment();
@@ -79,7 +77,6 @@ public class UserAreaActivity extends AppCompatActivity {
         /**
          * Setup click events on the Navigation View Items.
          */
-
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
@@ -113,7 +110,12 @@ public class UserAreaActivity extends AppCompatActivity {
                 if (menuItem.getItemId() == R.id.nav_item_categories) {
 
                     Intent intentGoToSelectCategoryActivity = new Intent(UserAreaActivity.this, SelectCategoryActivity.class);
-                    intentGoToSelectCategoryActivity.putExtra("USERID_KEY", userId);
+                    intentGoToSelectCategoryActivity.putExtra("userId_KEY", userId);
+                    intentGoToSelectCategoryActivity.putExtra("firstName_KEY", firstName);
+                    intentGoToSelectCategoryActivity.putExtra("lastName_KEY", lastName);
+                    intentGoToSelectCategoryActivity.putExtra("username_KEY", username);
+                    intentGoToSelectCategoryActivity.putExtra("password_KEY", password);
+                    intentGoToSelectCategoryActivity.putExtra("email_KEY", email);
                     UserAreaActivity.this.startActivity(intentGoToSelectCategoryActivity);
 
                 }
@@ -121,7 +123,12 @@ public class UserAreaActivity extends AppCompatActivity {
                 if (menuItem.getItemId() == R.id.nav_item_mystories) {
 
                     Intent intentGoToMyStoriesActivity = new Intent(UserAreaActivity.this, MyStoriesActivity.class);
-                    intentGoToMyStoriesActivity.putExtra("USERID_KEY", userId);
+                    intentGoToMyStoriesActivity.putExtra("userId_KEY", userId);
+                    intentGoToMyStoriesActivity.putExtra("firstName_KEY", firstName);
+                    intentGoToMyStoriesActivity.putExtra("lastName_KEY", lastName);
+                    intentGoToMyStoriesActivity.putExtra("username_KEY", username);
+                    intentGoToMyStoriesActivity.putExtra("password_KEY", password);
+                    intentGoToMyStoriesActivity.putExtra("email_KEY", email);
                     UserAreaActivity.this.startActivity(intentGoToMyStoriesActivity);
 
                 }
@@ -129,7 +136,12 @@ public class UserAreaActivity extends AppCompatActivity {
                 if (menuItem.getItemId() == R.id.nav_item_myfavourites) {
 
                     Intent intentGoToMyFavouritesActivity = new Intent(UserAreaActivity.this, MyFavouritesActivity.class);
-                    intentGoToMyFavouritesActivity.putExtra("USERID_KEY", userId);
+                    intentGoToMyFavouritesActivity.putExtra("userId_KEY", userId);
+                    intentGoToMyFavouritesActivity.putExtra("firstName_KEY", firstName);
+                    intentGoToMyFavouritesActivity.putExtra("lastName_KEY", lastName);
+                    intentGoToMyFavouritesActivity.putExtra("username_KEY", username);
+                    intentGoToMyFavouritesActivity.putExtra("password_KEY", password);
+                    intentGoToMyFavouritesActivity.putExtra("email_KEY", email);
                     UserAreaActivity.this.startActivity(intentGoToMyFavouritesActivity);
 
                 }
@@ -138,7 +150,12 @@ public class UserAreaActivity extends AppCompatActivity {
                 if (menuItem.getItemId() == R.id.nav_item_eventsfirst) {
 
                     Intent intentGoToEvensFirstActivity = new Intent(UserAreaActivity.this, MetaFirstActivity.class);
-                    intentGoToEvensFirstActivity.putExtra("USERID_KEY", userId);
+                    intentGoToEvensFirstActivity.putExtra("userId_KEY", userId);
+                    intentGoToEvensFirstActivity.putExtra("firstName_KEY", firstName);
+                    intentGoToEvensFirstActivity.putExtra("lastName_KEY", lastName);
+                    intentGoToEvensFirstActivity.putExtra("username_KEY", username);
+                    intentGoToEvensFirstActivity.putExtra("password_KEY", password);
+                    intentGoToEvensFirstActivity.putExtra("email_KEY", email);
                     UserAreaActivity.this.startActivity(intentGoToEvensFirstActivity);
 
                 }
@@ -146,7 +163,12 @@ public class UserAreaActivity extends AppCompatActivity {
                 if (menuItem.getItemId() == R.id.nav_item_audiencefirst) {
 
                     Intent intentGoToMetaFirstActivity = new Intent(UserAreaActivity.this, MetaFirstActivity.class);
-                    intentGoToMetaFirstActivity.putExtra("USERID_KEY", userId);
+                    intentGoToMetaFirstActivity.putExtra("userId_KEY", userId);
+                    intentGoToMetaFirstActivity.putExtra("firstName_KEY", firstName);
+                    intentGoToMetaFirstActivity.putExtra("lastName_KEY", lastName);
+                    intentGoToMetaFirstActivity.putExtra("username_KEY", username);
+                    intentGoToMetaFirstActivity.putExtra("password_KEY", password);
+                    intentGoToMetaFirstActivity.putExtra("email_KEY", email);
                     UserAreaActivity.this.startActivity(intentGoToMetaFirstActivity);
 
                 }
@@ -154,7 +176,12 @@ public class UserAreaActivity extends AppCompatActivity {
                 if (menuItem.getItemId() == R.id.nav_item_settings) {
 
                     Intent intentGoToSettingsActivity = new Intent(UserAreaActivity.this, SettingsActivity.class);
-                    intentGoToSettingsActivity.putExtra("USERID_KEY", userId);
+                    intentGoToSettingsActivity.putExtra("userId_KEY", userId);
+                    intentGoToSettingsActivity.putExtra("firstName_KEY", firstName);
+                    intentGoToSettingsActivity.putExtra("lastName_KEY", lastName);
+                    intentGoToSettingsActivity.putExtra("username_KEY", username);
+                    intentGoToSettingsActivity.putExtra("password_KEY", password);
+                    intentGoToSettingsActivity.putExtra("email_KEY", email);
                     UserAreaActivity.this.startActivity(intentGoToSettingsActivity);
 
                 }
@@ -162,7 +189,12 @@ public class UserAreaActivity extends AppCompatActivity {
                 if (menuItem.getItemId() == R.id.nav_item_help) {
 
                     Intent intentGoToHelpActivity = new Intent(UserAreaActivity.this, HelpActivity.class);
-                    intentGoToHelpActivity.putExtra("USERID_KEY", userId);
+                    intentGoToHelpActivity.putExtra("userId_KEY", userId);
+                    intentGoToHelpActivity.putExtra("firstName_KEY", firstName);
+                    intentGoToHelpActivity.putExtra("lastName_KEY", lastName);
+                    intentGoToHelpActivity.putExtra("username_KEY", username);
+                    intentGoToHelpActivity.putExtra("password_KEY", password);
+                    intentGoToHelpActivity.putExtra("email_KEY", email);
                     UserAreaActivity.this.startActivity(intentGoToHelpActivity);
 
                 }
@@ -180,7 +212,7 @@ public class UserAreaActivity extends AppCompatActivity {
         ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.app_name,
                 R.string.app_name);
 
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        mDrawerLayout.addDrawerListener(mDrawerToggle);
 
         mDrawerToggle.syncState();
     }
