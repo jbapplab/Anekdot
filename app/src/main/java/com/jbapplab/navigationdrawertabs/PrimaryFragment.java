@@ -75,6 +75,11 @@ public class PrimaryFragment extends Fragment {
                 //Created an intent that opens the Activity
                 Intent createIntent = new Intent(getActivity(), MetaFirstActivity.class);
                 createIntent.putExtra("userId_KEY", userId);
+                createIntent.putExtra("firstName_KEY", firstName);
+                createIntent.putExtra("lastName_KEY", lastName);
+                createIntent.putExtra("username_KEY", username);
+                createIntent.putExtra("password_KEY", password);
+                createIntent.putExtra("email_KEY", email);
                 //Then we told the current activity to perform that intent
                 getActivity().startActivity(createIntent);
             }
@@ -86,6 +91,11 @@ public class PrimaryFragment extends Fragment {
                 //Created an intent that opens the Activity
                 Intent categoriesIntent = new Intent(getActivity(), SelectCategoryActivity.class);
                 categoriesIntent.putExtra("userId_KEY", userId);
+                categoriesIntent.putExtra("firstName_KEY", firstName);
+                categoriesIntent.putExtra("lastName_KEY", lastName);
+                categoriesIntent.putExtra("username_KEY", username);
+                categoriesIntent.putExtra("password_KEY", password);
+                categoriesIntent.putExtra("email_KEY", email);
                 //Then we told the current activity to perform that intent
                 getActivity().startActivity(categoriesIntent);
             }
@@ -97,6 +107,11 @@ public class PrimaryFragment extends Fragment {
                 //Created an intent that opens the Activity
                 Intent favouritesIntent = new Intent(getActivity(), MyFavouritesActivity.class);
                 favouritesIntent.putExtra("userId_KEY", userId);
+                favouritesIntent.putExtra("firstName_KEY", firstName);
+                favouritesIntent.putExtra("lastName_KEY", lastName);
+                favouritesIntent.putExtra("username_KEY", username);
+                favouritesIntent.putExtra("password_KEY", password);
+                favouritesIntent.putExtra("email_KEY", email);
                 //Then we told the current activity to perform that intent
                 getActivity().startActivity(favouritesIntent);
             }
