@@ -298,8 +298,11 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
         retrieveAudienceStageDetail.setText(audienceStage);
         PicassoClient.downloadImage(this, imageUrl, retrieveStoryImageDetail);
 
-        Log.i("USER_ID", userId);
-        Log.i("AUTHOR_ID", authorId);
+        //Rename title
+        mainToolbar.setTitle(storyTitle);
+
+        //Log.i("USER_ID", userId);
+        //Log.i("AUTHOR_ID", authorId);
         if(authorId.equals(userId)){
             buttonUpdate.setEnabled(true);
             buttonDelete.setEnabled(true);

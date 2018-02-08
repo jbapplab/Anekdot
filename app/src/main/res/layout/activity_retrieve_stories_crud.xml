@@ -10,7 +10,8 @@
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
         <android.support.v7.widget.Toolbar
             xmlns:android="http://schemas.android.com/apk/res/android"
@@ -23,7 +24,7 @@
             app:logo="@drawable/logo"
             app:contentInsetStartWithNavigation="0dp"
             app:titleMarginStart="15dp"
-            app:title="Anecdot" />
+            app:title="Anecdote" />
 
     </android.support.design.widget.AppBarLayout>
 
@@ -34,7 +35,7 @@
         android:layout_width="match_parent"
         android:id="@+id/drawerLayout">
 
-        <include layout="@layout/retrieve_stories_crud_main"/>
+    <include layout="@layout/retrieve_stories_crud_main"/>
 
         <android.support.design.widget.NavigationView
             xmlns:android="http://schemas.android.com/apk/res/android"
@@ -46,7 +47,7 @@
             app:itemIconTint="@color/colorPrimaryDark"
             app:tabSelectedTextColor="@color/colorAccent"
             app:menu="@menu/drawermenu"
-            android:layout_marginTop="0dp"
+            android:layout_marginTop="30dp"
             />
         <!--app:headerLayout="@layout/drawer_header"-->
 
