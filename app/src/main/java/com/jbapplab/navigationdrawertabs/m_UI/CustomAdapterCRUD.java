@@ -24,9 +24,24 @@ public class CustomAdapterCRUD extends RecyclerView.Adapter<MyViewHolderCRUD> {
     Context context;
     ArrayList<StoryCRUD> stories;
 
-    public CustomAdapterCRUD(Context context, ArrayList<StoryCRUD> stories) {
+    //Variables
+    String userId;
+    String firstName;
+    String lastName;
+    String username;
+    String password;
+    String email;
+
+    public CustomAdapterCRUD(Context context, ArrayList<StoryCRUD> stories, String userIdAdapter, String firstNameAdapter, String lastNameAdapter, String usernameAdapter, String passwordAdapter, String emailAdapter) {
         this.context = context;
         this.stories = stories;
+
+        userId = userIdAdapter;
+        firstName = firstNameAdapter;
+        lastName = lastNameAdapter;
+        username = usernameAdapter;
+        password = passwordAdapter;
+        email = emailAdapter;
     }
 
     @Override
@@ -36,7 +51,7 @@ public class CustomAdapterCRUD extends RecyclerView.Adapter<MyViewHolderCRUD> {
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolderCRUD holder, int position) {
+    public void onBindViewHolder(MyViewHolderCRUD holder, final int position) {
 
         final StoryCRUD story = stories.get(position);
 
@@ -63,7 +78,7 @@ public class CustomAdapterCRUD extends RecyclerView.Adapter<MyViewHolderCRUD> {
         holder.setItemClickListener(new StoryItemClickListener() {
             @Override
             public void onItemClick() {
-                openStoryDetailActivityCRUD(Integer.toString(story.getStoryId()), story.getStoryTitle(), story.getStoryCategory(), story.getIfOtherSpecify(), Integer.toString(story.getAuthorId()), story.getStoryDescription(), story.getStoryEvents(), story.getOrientation(), story.getComplicatedAction(), story.getEvaluation(), story.getResolution(), story.getMessage(), story.getStoryMeta(), story.getStageRelated(), story.getContextRelated(), story.getStoryFull(), story.getAudienceStage(), story.getImageUrl());
+                openStoryDetailActivityCRUD(Integer.toString(story.getStoryId()), story.getStoryTitle(), story.getStoryCategory(), story.getIfOtherSpecify(), Integer.toString(story.getAuthorId()), story.getStoryDescription(), story.getStoryEvents(), story.getOrientation(), story.getComplicatedAction(), story.getEvaluation(), story.getResolution(), story.getMessage(), story.getStoryMeta(), story.getStageRelated(), story.getContextRelated(), story.getStoryFull(), story.getAudienceStage(), story.getImageUrl(), userId, firstName, lastName, username, password, email);
             }
         });
 
@@ -75,10 +90,16 @@ public class CustomAdapterCRUD extends RecyclerView.Adapter<MyViewHolderCRUD> {
         return stories.size();
     }
 
-    private void openStoryDetailActivityCRUD(String storyId, String storyTitle, String storyCategory, String ifOtherSpecify, String authorId, String storyDescription, String storyEvents, String orientation, String complicatedAction, String evaluation, String resolution, String message, String storyMeta, String stageRelated, String contextRelated, String storyFull, String audienceStage, String imageUrl){
+    private void openStoryDetailActivityCRUD(String storyId, String storyTitle, String storyCategory, String ifOtherSpecify, String authorId, String storyDescription, String storyEvents, String orientation, String complicatedAction, String evaluation, String resolution, String message, String storyMeta, String stageRelated, String contextRelated, String storyFull, String audienceStage, String imageUrl, String userId, String firstName, String lastName, String username, String password, String email){
         Intent intent = new Intent(context, StoryDetailActivityCRUD.class);
 
         //PACK DATA
+        intent.putExtra("userId_KEY", userId);
+        intent.putExtra("firstName_KEY", firstName);
+        intent.putExtra("lastName_KEY", lastName);
+        intent.putExtra("username_KEY", username);
+        intent.putExtra("password_KEY", password);
+        intent.putExtra("email_KEY", email);
         intent.putExtra("STORY_ID_KEY", storyId);
         intent.putExtra("STORY_TITLE_KEY", storyTitle);
         intent.putExtra("STORY_CATEGORY_KEY", storyCategory);

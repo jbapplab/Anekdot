@@ -29,6 +29,14 @@ public class DataParserCRUD extends AsyncTask<Void, Void, Boolean> {
     RecyclerView recyclerView;
     SwipeRefreshLayout swipeRefreshLayout;
 
+    //Variables
+    String userId;
+    String firstName;
+    String lastName;
+    String username;
+    String password;
+    String email;
+
     ArrayList<StoryCRUD> stories = new ArrayList<>();
 
     public DataParserCRUD(Context context, String jsonData, RecyclerView recyclerView, SwipeRefreshLayout swipeRefreshLayout) {
@@ -51,7 +59,7 @@ public class DataParserCRUD extends AsyncTask<Void, Void, Boolean> {
 
         if(isParsed){
             //BIND
-            recyclerView.setAdapter(new CustomAdapterCRUD(context, stories));
+            recyclerView.setAdapter(new CustomAdapterCRUD(context, stories, userId, firstName, lastName, username, password, email));
         } else {
             Toast.makeText(context, "Unable to parse.", Toast.LENGTH_SHORT).show();
         }

@@ -29,10 +29,16 @@ public class CustomAdapterCategory extends BaseAdapter {
     Intent intentRetrieveCategory;
 
 
-    public CustomAdapterCategory(Context context, ArrayList<Category> categories) {
+    public CustomAdapterCategory(Context context, ArrayList<Category> categories,  String userId, String firstName, String lastName, String username, String password, String email) {
         this.context = context;
         this.categories = categories;
         intentRetrieveCategory = new Intent(this.context, RetrieveStoriesCRUDActivity.class);
+        intentRetrieveCategory.putExtra("userId_KEY", userId);
+        intentRetrieveCategory.putExtra("firstName_KEY", firstName);
+        intentRetrieveCategory.putExtra("lastName_KEY", lastName);
+        intentRetrieveCategory.putExtra("username_KEY", username);
+        intentRetrieveCategory.putExtra("password_KEY", password);
+        intentRetrieveCategory.putExtra("email_KEY", email);
     }
 
     @Override

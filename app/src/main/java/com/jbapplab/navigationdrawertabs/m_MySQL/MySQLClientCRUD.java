@@ -1,6 +1,7 @@
 package com.jbapplab.navigationdrawertabs.m_MySQL;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -30,6 +31,14 @@ import static java.lang.Integer.parseInt;
 
 public class MySQLClientCRUD {
 
+    //Variables
+    String userId;
+    String firstName;
+    String lastName;
+    String username;
+    String password;
+    String email;
+
     //Save/Retrieve URLS
     private static final String DATA_INSERT_URL = "http://applabjb.000webhostapp.com/create_CRUD.php";
     private static final String DATA_RETRIEVE_URL = "http://applabjb.000webhostapp.com/create_index.php";
@@ -38,8 +47,14 @@ public class MySQLClientCRUD {
     private final Context context;
     private CustomAdapterCRUD customAdapterCRUD;
 
-    public MySQLClientCRUD(Context context){
+    public MySQLClientCRUD(Context context, String userIdClient, String firstNameClient, String lastNameClient, String usernameClient, String passwordClient, String emailClient){
         this.context = context;
+        userId = userIdClient;
+        firstName = firstNameClient;
+        lastName = lastNameClient;
+        username = usernameClient;
+        password = passwordClient;
+        email = emailClient;
     }
 
     /*
@@ -213,7 +228,7 @@ public class MySQLClientCRUD {
                             }
 
                             //SET TO RECYCLERVIEW
-                            customAdapterCRUD = new CustomAdapterCRUD(context, stories);
+                            customAdapterCRUD = new CustomAdapterCRUD(context, stories, userId, firstName, lastName, username, password, email);
                             recyclerView.setAdapter(customAdapterCRUD);
 
                             //stop refreshing

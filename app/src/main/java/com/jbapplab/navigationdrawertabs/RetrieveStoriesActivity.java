@@ -18,6 +18,14 @@ public class RetrieveStoriesActivity extends AppCompatActivity {
 
     static String urlAddress = "http://applabjb.000webhostapp.com/create_index.php";
 
+    //Variables
+    String userId;
+    String firstName;
+    String lastName;
+    String username;
+    String password;
+    String email;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +38,7 @@ public class RetrieveStoriesActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         ArrayList dummyArrayList = new ArrayList<>();
-        CustomAdapterCRUD customAdapterCRUD = new CustomAdapterCRUD(this, dummyArrayList);
+        CustomAdapterCRUD customAdapterCRUD = new CustomAdapterCRUD(this, dummyArrayList, userId, firstName, lastName, username, password, email);
         recyclerView.setAdapter(customAdapterCRUD);
 
         final SwipeRefreshLayout swipeRefreshLayout = findViewById(R.id.swipeLayoutRetrieveStories);

@@ -254,6 +254,11 @@ public class MetaFirstActivity extends AppCompatActivity {
         //PACK DATA IN A BUNDLE
         Bundle bundle = new Bundle();
         bundle.putString("USERID_KEY", userIdString);
+        bundle.putString("FIRSTNAME_KEY", firstName);
+        bundle.putString("LASTNAME_KEY", lastName);
+        bundle.putString("USERNAME_KEY", username);
+        bundle.putString("PASSWORD_KEY", password);
+        bundle.putString("EMAIL_KEY", email);
         bundle.putString("UPDATE_KEY", actionString);
         if ((actionString != null) && actionString.equals("update")){
             bundle.putString("STORY_ID_KEY", storyIdString);
@@ -291,8 +296,14 @@ public class MetaFirstActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_settings:
-                // User chose the "Settings" item, show the app settings UI...
-                Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
+                Intent intentGoToSettingsActivity = new Intent(MetaFirstActivity.this, SettingsActivity.class);
+                intentGoToSettingsActivity.putExtra("userId_KEY", userIdString);
+                intentGoToSettingsActivity.putExtra("firstName_KEY", firstName);
+                intentGoToSettingsActivity.putExtra("lastName_KEY", lastName);
+                intentGoToSettingsActivity.putExtra("username_KEY", username);
+                intentGoToSettingsActivity.putExtra("password_KEY", password);
+                intentGoToSettingsActivity.putExtra("email_KEY", email);
+                MetaFirstActivity.this.startActivity(intentGoToSettingsActivity);
                 return true;
 
             case R.id.menu_item_share:

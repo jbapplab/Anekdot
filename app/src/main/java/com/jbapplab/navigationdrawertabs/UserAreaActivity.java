@@ -278,8 +278,14 @@ public class UserAreaActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_settings:
-                // User chose the "Settings" item, show the app settings UI...
-                Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
+                Intent intentGoToSettingsActivity = new Intent(UserAreaActivity.this, SettingsActivity.class);
+                intentGoToSettingsActivity.putExtra("userId_KEY", userId);
+                intentGoToSettingsActivity.putExtra("firstName_KEY", firstName);
+                intentGoToSettingsActivity.putExtra("lastName_KEY", lastName);
+                intentGoToSettingsActivity.putExtra("username_KEY", username);
+                intentGoToSettingsActivity.putExtra("password_KEY", password);
+                intentGoToSettingsActivity.putExtra("email_KEY", email);
+                UserAreaActivity.this.startActivity(intentGoToSettingsActivity);
                 return true;
 
             case R.id.menu_item_share:

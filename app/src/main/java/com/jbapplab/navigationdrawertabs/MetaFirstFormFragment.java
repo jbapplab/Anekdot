@@ -45,7 +45,8 @@ import org.greenrobot.eventbus.EventBus;
 
 public class MetaFirstFormFragment extends Fragment {
 
-    String userIdString, actionString, storyIdString, storyTitle, ifOtherSpecify, authorIdString, storyDescription, orientation, complicatedAction, evaluation, resolution, message, stageRelated, contextRelated, imageUrl, storyCategory, audienceStage, storyEvents, storyMeta, storyFull, stage, storyFullEdited;
+    String userIdString, firstNameString, lastNameString, usernameString, passwordString, emailString;
+    String actionString, storyIdString, storyTitle, ifOtherSpecify, authorIdString, storyDescription, orientation, complicatedAction, evaluation, resolution, message, stageRelated, contextRelated, imageUrl, storyCategory, audienceStage, storyEvents, storyMeta, storyFull, stage, storyFullEdited;
     int authorId;
     int editCounter = 0;
 
@@ -87,6 +88,11 @@ public class MetaFirstFormFragment extends Fragment {
         UNPACK THE DATA FROM THE BUNDLE
         */
         userIdString = getArguments().getString("USERID_KEY");
+        firstNameString = getArguments().getString("FIRSTNAME_KEY");
+        lastNameString = getArguments().getString("LASTNAME_KEY");
+        usernameString = getArguments().getString("USERNAME_KEY");
+        passwordString = getArguments().getString("PASSWORD_KEY");
+        emailString = getArguments().getString("EMAIL_KEY");
         if (getArguments().getString("UPDATE_KEY") != null) {
             actionString = getArguments().getString("UPDATE_KEY");
         }
@@ -111,7 +117,7 @@ public class MetaFirstFormFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         //Log.i("onViewCreated", ": FORM");
-        String userIdStringSIS, actionStringSIS, storyIdStringSIS, storyTitleSIS, ifOtherSpecifySIS, authorIdStringSIS, storyDescriptionSIS, orientationSIS, complicatedActionSIS, evaluationSIS, resolutionSIS, messageSIS, stageRelatedSIS, contextRelatedSIS, imageUrlSIS;
+        final String userIdStringSIS, actionStringSIS, storyIdStringSIS, storyTitleSIS, ifOtherSpecifySIS, authorIdStringSIS, storyDescriptionSIS, orientationSIS, complicatedActionSIS, evaluationSIS, resolutionSIS, messageSIS, stageRelatedSIS, contextRelatedSIS, imageUrlSIS;
 
         final EasyForm easyForm = getView().findViewById(R.id.meta_first_form);
         //final EditText editText = getView().findViewById(R.id.uniquetest);
@@ -326,10 +332,16 @@ public class MetaFirstFormFragment extends Fragment {
                                     storyCRUD.setImageUrl(imageUrl);
                                     storyCRUD.setAudienceStage(stage);
 
-                                    new MySQLClientCRUD(getActivity()).update(storyCRUD, storyCategorySpinner, storyTitleTxt, ifOtherSpecifyTxt, storyDescriptionTxt, orientationTxt, complicatedActionTxt, evaluationTxt, resolutionTxt, messgageTxt, stageRelatedTxt, contextRelatedTxt, imageUrlTxt, audienceStageSpinner);
+                                    new MySQLClientCRUD(getActivity(), userIdString, firstNameString, lastNameString, usernameString, passwordString, emailString).update(storyCRUD, storyCategorySpinner, storyTitleTxt, ifOtherSpecifyTxt, storyDescriptionTxt, orientationTxt, complicatedActionTxt, evaluationTxt, resolutionTxt, messgageTxt, stageRelatedTxt, contextRelatedTxt, imageUrlTxt, audienceStageSpinner);
 
                                     Intent intentGoToRetrieveStoriesCRUDActivity = new Intent(getActivity(), RetrieveStoriesCRUDActivity.class);
                                     intentGoToRetrieveStoriesCRUDActivity.putExtra("CATEGORY_KEY", storyCategory);
+                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("userId_KEY", userIdString);
+                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("firstName_KEY", firstNameString);
+                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("lastName_KEY", lastNameString);
+                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("username_KEY", usernameString);
+                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("password_KEY", passwordString);
+                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("email_KEY", emailString);
                                     getActivity().startActivity(intentGoToRetrieveStoriesCRUDActivity);
 
                                 } else {
@@ -358,11 +370,17 @@ public class MetaFirstFormFragment extends Fragment {
                                     storyCRUD.setImageUrl(imageUrl);
                                     storyCRUD.setAudienceStage(stage);
 
-                                    new MySQLClientCRUD(getActivity()).add(storyCRUD, storyCategorySpinner, storyTitleTxt, ifOtherSpecifyTxt, storyDescriptionTxt, orientationTxt, complicatedActionTxt, evaluationTxt, resolutionTxt, messgageTxt, stageRelatedTxt, contextRelatedTxt, imageUrlTxt, audienceStageSpinner);
+                                    new MySQLClientCRUD(getActivity(), userIdString, firstNameString, lastNameString, usernameString, passwordString, emailString).add(storyCRUD, storyCategorySpinner, storyTitleTxt, ifOtherSpecifyTxt, storyDescriptionTxt, orientationTxt, complicatedActionTxt, evaluationTxt, resolutionTxt, messgageTxt, stageRelatedTxt, contextRelatedTxt, imageUrlTxt, audienceStageSpinner);
 
                                     //TODO CHECK IF CORRECT
                                     Intent intentGoToRetrieveStoriesCRUDActivity = new Intent(getActivity(), RetrieveStoriesCRUDActivity.class);
                                     intentGoToRetrieveStoriesCRUDActivity.putExtra("CATEGORY_KEY", storyCategory);
+                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("userId_KEY", userIdString);
+                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("firstName_KEY", firstNameString);
+                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("lastName_KEY", lastNameString);
+                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("username_KEY", usernameString);
+                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("password_KEY", passwordString);
+                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("email_KEY", emailString);
                                     getActivity().startActivity(intentGoToRetrieveStoriesCRUDActivity);
 
                                 }
@@ -585,10 +603,16 @@ public class MetaFirstFormFragment extends Fragment {
                                     storyCRUD.setImageUrl(imageUrl);
                                     storyCRUD.setAudienceStage(stage);
 
-                                    new MySQLClientCRUD(getActivity()).update(storyCRUD, storyCategorySpinner, storyTitleTxt, ifOtherSpecifyTxt, storyDescriptionTxt, orientationTxt, complicatedActionTxt, evaluationTxt, resolutionTxt, messgageTxt, stageRelatedTxt, contextRelatedTxt, imageUrlTxt, audienceStageSpinner);
+                                    new MySQLClientCRUD(getActivity(), userIdString, firstNameString, lastNameString, usernameString, passwordString, emailString).update(storyCRUD, storyCategorySpinner, storyTitleTxt, ifOtherSpecifyTxt, storyDescriptionTxt, orientationTxt, complicatedActionTxt, evaluationTxt, resolutionTxt, messgageTxt, stageRelatedTxt, contextRelatedTxt, imageUrlTxt, audienceStageSpinner);
 
                                     Intent intentGoToRetrieveStoriesCRUDActivity = new Intent(getActivity(), RetrieveStoriesCRUDActivity.class);
                                     intentGoToRetrieveStoriesCRUDActivity.putExtra("CATEGORY_KEY", storyCategory);
+                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("userId_KEY", userIdString);
+                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("firstName_KEY", firstNameString);
+                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("lastName_KEY", lastNameString);
+                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("username_KEY", usernameString);
+                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("password_KEY", passwordString);
+                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("email_KEY", emailString);
                                     getActivity().startActivity(intentGoToRetrieveStoriesCRUDActivity);
 
                                 } else {
@@ -613,11 +637,17 @@ public class MetaFirstFormFragment extends Fragment {
                                     storyCRUD.setImageUrl(imageUrl);
                                     storyCRUD.setAudienceStage(stage);
 
-                                    new MySQLClientCRUD(getActivity()).add(storyCRUD, storyCategorySpinner, storyTitleTxt, ifOtherSpecifyTxt, storyDescriptionTxt, orientationTxt, complicatedActionTxt, evaluationTxt, resolutionTxt, messgageTxt, stageRelatedTxt, contextRelatedTxt, imageUrlTxt, audienceStageSpinner);
+                                    new MySQLClientCRUD(getActivity(), userIdString, firstNameString, lastNameString, usernameString, passwordString, emailString).add(storyCRUD, storyCategorySpinner, storyTitleTxt, ifOtherSpecifyTxt, storyDescriptionTxt, orientationTxt, complicatedActionTxt, evaluationTxt, resolutionTxt, messgageTxt, stageRelatedTxt, contextRelatedTxt, imageUrlTxt, audienceStageSpinner);
 
                                     //TODO CHECK IF CORRECT
                                     Intent intentGoToRetrieveStoriesCRUDActivity = new Intent(getActivity(), RetrieveStoriesCRUDActivity.class);
                                     intentGoToRetrieveStoriesCRUDActivity.putExtra("CATEGORY_KEY", storyCategory);
+                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("userId_KEY", userIdString);
+                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("firstName_KEY", firstNameString);
+                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("lastName_KEY", lastNameString);
+                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("username_KEY", usernameString);
+                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("password_KEY", passwordString);
+                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("email_KEY", emailString);
                                     getActivity().startActivity(intentGoToRetrieveStoriesCRUDActivity);
 
                                 }

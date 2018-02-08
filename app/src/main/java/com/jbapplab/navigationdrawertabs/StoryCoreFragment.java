@@ -50,7 +50,8 @@ public class StoryCoreFragment extends Fragment {
     //public static ViewPager viewPager;
     //public static int int_items = 3;
 
-    String userIdString, actionString, storyIdString, storyTitle, ifOtherSpecify, authorIdString, storyDescription, orientation, complicatedAction, evaluation, resolution, message, stageRelated, contextRelated, imageUrl;
+    String userIdString, firstNameString, lastNameString, usernameString, passwordString, emailString;
+    String actionString, storyIdString, storyTitle, ifOtherSpecify, authorIdString, storyDescription, orientation, complicatedAction, evaluation, resolution, message, stageRelated, contextRelated, imageUrl;
 
     FragmentManager mFragmentManager;
     Fragment metaFirstFormFragment = new MetaFirstFormFragment();
@@ -126,6 +127,11 @@ public class StoryCoreFragment extends Fragment {
         */
 
         userIdString = getArguments().getString("USERID_KEY");
+        firstNameString = getArguments().getString("FIRSTNAME_KEY");
+        lastNameString = getArguments().getString("LASTNAME_KEY");
+        usernameString = getArguments().getString("USERNAME_KEY");
+        passwordString = getArguments().getString("PASSWORD_KEY");
+        emailString = getArguments().getString("EMAIL_KEY");
         if (getArguments().getString("UPDATE_KEY") != null) {
             actionString = getArguments().getString("UPDATE_KEY");
         }
@@ -246,6 +252,12 @@ public class StoryCoreFragment extends Fragment {
         //PACK DATA IN A BUNDLE
         Bundle forMetaFirstFormBundle = new Bundle();
         forMetaFirstFormBundle.putString("USERID_KEY", userIdString);
+        forMetaFirstFormBundle.putString("FIRSTNAME_KEY", userIdString);
+        forMetaFirstFormBundle.putString("LASTNAME_KEY", userIdString);
+        forMetaFirstFormBundle.putString("USERNAME_KEY", userIdString);
+        forMetaFirstFormBundle.putString("PASSWORD_KEY", userIdString);
+        forMetaFirstFormBundle.putString("EMAIL_KEY", userIdString);
+
         if (getArguments().getString("UPDATE_KEY") != null) {
             forMetaFirstFormBundle.putString("UPDATE_KEY", actionString);
         }

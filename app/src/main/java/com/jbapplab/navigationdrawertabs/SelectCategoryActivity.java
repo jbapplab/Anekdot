@@ -212,7 +212,7 @@ public class SelectCategoryActivity extends AppCompatActivity {
 
         //This is to create the list of topics
         gridView = findViewById(R.id.gridViewCategories);
-        customAdapterCategory = new CustomAdapterCategory(this, getData());
+        customAdapterCategory = new CustomAdapterCategory(this, getData(), userId, firstName, lastName, username, password, email);
         gridView.setAdapter(customAdapterCategory);
     }
 
@@ -232,13 +232,20 @@ public class SelectCategoryActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_settings:
-                // User chose the "Settings" item, show the app settings UI...
-                Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
+                Intent intentGoToSettingsActivity = new Intent(SelectCategoryActivity.this, SettingsActivity.class);
+                intentGoToSettingsActivity.putExtra("userId_KEY", userId);
+                intentGoToSettingsActivity.putExtra("firstName_KEY", firstName);
+                intentGoToSettingsActivity.putExtra("lastName_KEY", lastName);
+                intentGoToSettingsActivity.putExtra("username_KEY", username);
+                intentGoToSettingsActivity.putExtra("password_KEY", password);
+                intentGoToSettingsActivity.putExtra("email_KEY", email);
+                SelectCategoryActivity.this.startActivity(intentGoToSettingsActivity);
                 return true;
 
             case R.id.menu_item_share:
                 //TODO User chose the "Share" action WE PUT CONTEXT SPECIFIC SHARE
                 Toast.makeText(SelectCategoryActivity.this, "There is nothing but category names here, move along!", Toast.LENGTH_SHORT).show();
+                return true;
 
             default:
                 // If we got here, the user's action was not recognized.
