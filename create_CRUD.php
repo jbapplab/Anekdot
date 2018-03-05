@@ -69,6 +69,23 @@ if (isset($_POST['action'])){
 		$userId = $_POST['user_id'];
 		
 		$dbAdapter->favourite($storyId, $userId);
+		
+	} else if ($_POST['action']=="retrieveMyFavourites"){
+		
+		$dbAdapter = new DBadapter();
+		
+		$userId = $_POST['user_id'];
+		
+		$dbAdapter->retrieveMyFavourites($userId);
+		
+	} else if ($_POST['action']=="retrieveMyStories"){
+		
+		$dbAdapter = new DBadapter();
+		
+		$authorId = $_POST['author_id'];
+		$userId = $_POST['user_id'];
+		
+		$dbAdapter->retrieveMyFavourites($authorId, $userId);
 	}
 	
 } else {

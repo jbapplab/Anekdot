@@ -68,7 +68,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="fill"
-                app:srcCompat="@drawable/saved_my"
+                app:srcCompat="@drawable/saved_other"
                 android:contentDescription="@string/my_favourites"
                 android:scaleType="fitCenter"/>
 

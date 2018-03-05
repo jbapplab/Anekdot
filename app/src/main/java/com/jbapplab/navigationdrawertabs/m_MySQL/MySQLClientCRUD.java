@@ -480,9 +480,195 @@ public class MySQLClientCRUD {
 
                         }
                     });
-
         }
 
     }
 
+    /*
+    * Retrieve MyStories
+    */
+    public void retrieveMyStories(final RecyclerView recyclerView, final SwipeRefreshLayout swipeRefreshLayout, final int userIdRetrieve, final ProgressBar progressBar){
+        final ArrayList<StoryCRUD> stories = new ArrayList<>();
+        progressBar.setAlpha(1);
+
+        AndroidNetworking.post(DATA_INSERT_URL)
+                .addBodyParameter("action","retrieveMyStories")
+                .addBodyParameter("user_id", String.valueOf(userIdRetrieve))
+                .setTag("TAG_ADD")
+                .setPriority(Priority.HIGH)
+                .build()
+                .getAsJSONArray(new JSONArrayRequestListener() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        JSONObject jsonObject;
+                        StoryCRUD storyCRUD;
+                        try {
+                            //for (int i=0;i<response.length();i++){
+                            for (int i=response.length()-1;i>-1;i--){
+                                jsonObject = response.getJSONObject(i);
+
+                                int storyId = (int) parseInt(jsonObject.getString("story_id"));
+                                String storyTitle = jsonObject.getString("story_title");
+                                String storyCategory = jsonObject.getString("story_category");
+                                String ifOtherSpecify = jsonObject.getString("if_other_specify");
+                                int authorId = (int) parseInt(jsonObject.getString("author_id"));
+                                String storyDescription = jsonObject.getString("story_description");
+                                String storyEvents = jsonObject.getString("story_events");
+                                String orientation = jsonObject.getString("orientation");
+                                String complicatedAction = jsonObject.getString("complicated_action");
+                                String evaluation = jsonObject.getString("evaluation");
+                                String resolution = jsonObject.getString("resolution");
+                                String message = jsonObject.getString("message");
+                                String storyMeta = jsonObject.getString("story_meta");
+                                String stageRelated = jsonObject.getString("stage_related");
+                                String contextRelated = jsonObject.getString("context_related");
+                                String storyFull = jsonObject.getString("story_full");
+                                String imageUrl = jsonObject.getString("image_url");
+                                String audienceStage = jsonObject.getString("audience_stage");
+
+                                storyCRUD = new StoryCRUD();
+                                storyCRUD.setStoryId(storyId);
+                                storyCRUD.setStoryTitle(storyTitle);
+                                storyCRUD.setStoryCategory(storyCategory);
+                                storyCRUD.setIfOtherSpecify(ifOtherSpecify);
+                                storyCRUD.setAuthorId(authorId);
+                                storyCRUD.setStoryDescription(storyDescription);
+                                storyCRUD.setStoryEvents(storyEvents);
+                                storyCRUD.setOrientation(orientation);
+                                storyCRUD.setComplicatedAction(complicatedAction);
+                                storyCRUD.setEvaluation(evaluation);
+                                storyCRUD.setResolution(resolution);
+                                storyCRUD.setMessage(message);
+                                storyCRUD.setStoryMeta(storyMeta);
+                                storyCRUD.setStageRelated(stageRelated);
+                                storyCRUD.setContextRelated(contextRelated);
+                                storyCRUD.setStoryFull(storyFull);
+                                storyCRUD.setImageUrl(imageUrl);
+                                storyCRUD.setAudienceStage(audienceStage);
+
+                                stories.add(storyCRUD);
+                            }
+
+                            //SET TO RECYCLERVIEW
+                            customAdapterCRUD = new CustomAdapterCRUD(context, stories, userId, firstName, lastName, username, password, email);
+                            recyclerView.setAdapter(customAdapterCRUD);
+
+                            //stop refreshing
+                            swipeRefreshLayout.setRefreshing(false);
+                            progressBar.setAlpha(0);
+
+
+                        }catch (JSONException e){
+
+                            Toast.makeText(context, "You have not created any stories yet.", Toast.LENGTH_LONG).show();
+                            progressBar.setAlpha(0);
+
+                        }
+
+                    }
+
+                    //ERROR
+                    @Override
+                    public void onError(ANError anError) {
+                        anError.printStackTrace();
+                        Toast.makeText(context, "Unsuccessful: Error is - "+anError.getMessage(), Toast.LENGTH_LONG).show();
+                        progressBar.setAlpha(0);
+                    }
+                });
+    }
+
+
+    /*
+    * Retrieve MyFavourites
+    */
+    public void retrieveMyFavourites(final RecyclerView recyclerView, final SwipeRefreshLayout swipeRefreshLayout, final int userIdRetrieve, final ProgressBar progressBar){
+        final ArrayList<StoryCRUD> stories = new ArrayList<>();
+        progressBar.setAlpha(1);
+
+        AndroidNetworking.post(DATA_INSERT_URL)
+                .addBodyParameter("action","retrieveMyFavourites")
+                .addBodyParameter("user_id", String.valueOf(userIdRetrieve))
+                .setTag("TAG_ADD")
+                .setPriority(Priority.HIGH)
+                .build()
+                .getAsJSONArray(new JSONArrayRequestListener() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        JSONObject jsonObject;
+                        StoryCRUD storyCRUD;
+                        try {
+                            //for (int i=0;i<response.length();i++){
+                            for (int i=response.length()-1;i>-1;i--){
+                                jsonObject = response.getJSONObject(i);
+
+                                int storyId = (int) parseInt(jsonObject.getString("story_id"));
+                                String storyTitle = jsonObject.getString("story_title");
+                                String storyCategory = jsonObject.getString("story_category");
+                                String ifOtherSpecify = jsonObject.getString("if_other_specify");
+                                int authorId = (int) parseInt(jsonObject.getString("author_id"));
+                                String storyDescription = jsonObject.getString("story_description");
+                                String storyEvents = jsonObject.getString("story_events");
+                                String orientation = jsonObject.getString("orientation");
+                                String complicatedAction = jsonObject.getString("complicated_action");
+                                String evaluation = jsonObject.getString("evaluation");
+                                String resolution = jsonObject.getString("resolution");
+                                String message = jsonObject.getString("message");
+                                String storyMeta = jsonObject.getString("story_meta");
+                                String stageRelated = jsonObject.getString("stage_related");
+                                String contextRelated = jsonObject.getString("context_related");
+                                String storyFull = jsonObject.getString("story_full");
+                                String imageUrl = jsonObject.getString("image_url");
+                                String audienceStage = jsonObject.getString("audience_stage");
+
+                                storyCRUD = new StoryCRUD();
+                                storyCRUD.setStoryId(storyId);
+                                storyCRUD.setStoryTitle(storyTitle);
+                                storyCRUD.setStoryCategory(storyCategory);
+                                storyCRUD.setIfOtherSpecify(ifOtherSpecify);
+                                storyCRUD.setAuthorId(authorId);
+                                storyCRUD.setStoryDescription(storyDescription);
+                                storyCRUD.setStoryEvents(storyEvents);
+                                storyCRUD.setOrientation(orientation);
+                                storyCRUD.setComplicatedAction(complicatedAction);
+                                storyCRUD.setEvaluation(evaluation);
+                                storyCRUD.setResolution(resolution);
+                                storyCRUD.setMessage(message);
+                                storyCRUD.setStoryMeta(storyMeta);
+                                storyCRUD.setStageRelated(stageRelated);
+                                storyCRUD.setContextRelated(contextRelated);
+                                storyCRUD.setStoryFull(storyFull);
+                                storyCRUD.setImageUrl(imageUrl);
+                                storyCRUD.setAudienceStage(audienceStage);
+
+                                stories.add(storyCRUD);
+                            }
+
+                            //SET TO RECYCLERVIEW
+                            customAdapterCRUD = new CustomAdapterCRUD(context, stories, userId, firstName, lastName, username, password, email);
+                            recyclerView.setAdapter(customAdapterCRUD);
+
+                            //stop refreshing
+                            swipeRefreshLayout.setRefreshing(false);
+                            progressBar.setAlpha(0);
+
+
+                        }catch (JSONException e){
+
+                            Toast.makeText(context, "You have not saved any favourite stories yet", Toast.LENGTH_LONG).show();
+                            progressBar.setAlpha(0);
+
+                        }
+                    }
+
+                    //ERROR
+                    @Override
+                    public void onError(ANError anError) {
+                        anError.printStackTrace();
+                        Toast.makeText(context, "Unsuccessful: Error is - "+anError.getMessage(), Toast.LENGTH_LONG).show();
+                        progressBar.setAlpha(0);
+                    }
+        });
+    }
 }
+
+

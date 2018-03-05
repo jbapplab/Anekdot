@@ -180,7 +180,7 @@ public class MetaFirstActivity extends AppCompatActivity {
                 //TODO REVERSE ORDER OF METAFIRST FIX THIS
                 if (menuItem.getItemId() == R.id.nav_item_eventsfirst) {
 
-                    Intent intentGoToEvensFirstActivity = new Intent(MetaFirstActivity.this, UserAreaActivity.class);
+                    Intent intentGoToEvensFirstActivity = new Intent(MetaFirstActivity.this, MetaFirstActivity.class);
                     intentGoToEvensFirstActivity.putExtra("userId_KEY", userIdString);
                     intentGoToEvensFirstActivity.putExtra("firstName_KEY", firstName);
                     intentGoToEvensFirstActivity.putExtra("lastName_KEY", lastName);
