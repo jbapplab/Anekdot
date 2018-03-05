@@ -487,13 +487,13 @@ public class MySQLClientCRUD {
     /*
     * Retrieve MyStories
     */
-    public void retrieveMyStories(final RecyclerView recyclerView, final SwipeRefreshLayout swipeRefreshLayout, final int userIdRetrieve, final ProgressBar progressBar){
-        final ArrayList<StoryCRUD> stories = new ArrayList<>();
+    public void retrieveMyStories(final RecyclerView recyclerView, final SwipeRefreshLayout swipeRefreshLayout, final ProgressBar progressBar){
+        final ArrayList<StoryCRUD> storiesMy = new ArrayList<>();
         progressBar.setAlpha(1);
 
         AndroidNetworking.post(DATA_INSERT_URL)
                 .addBodyParameter("action","retrieveMyStories")
-                .addBodyParameter("user_id", String.valueOf(userIdRetrieve))
+                .addBodyParameter("user_id", userId)
                 .setTag("TAG_ADD")
                 .setPriority(Priority.HIGH)
                 .build()
@@ -546,11 +546,11 @@ public class MySQLClientCRUD {
                                 storyCRUD.setImageUrl(imageUrl);
                                 storyCRUD.setAudienceStage(audienceStage);
 
-                                stories.add(storyCRUD);
+                                storiesMy.add(storyCRUD);
                             }
 
                             //SET TO RECYCLERVIEW
-                            customAdapterCRUD = new CustomAdapterCRUD(context, stories, userId, firstName, lastName, username, password, email);
+                            customAdapterCRUD = new CustomAdapterCRUD(context, storiesMy, userId, firstName, lastName, username, password, email);
                             recyclerView.setAdapter(customAdapterCRUD);
 
                             //stop refreshing
@@ -582,7 +582,7 @@ public class MySQLClientCRUD {
     * Retrieve MyFavourites
     */
     public void retrieveMyFavourites(final RecyclerView recyclerView, final SwipeRefreshLayout swipeRefreshLayout, final int userIdRetrieve, final ProgressBar progressBar){
-        final ArrayList<StoryCRUD> stories = new ArrayList<>();
+        final ArrayList<StoryCRUD> storiesFav = new ArrayList<>();
         progressBar.setAlpha(1);
 
         AndroidNetworking.post(DATA_INSERT_URL)
@@ -640,11 +640,11 @@ public class MySQLClientCRUD {
                                 storyCRUD.setImageUrl(imageUrl);
                                 storyCRUD.setAudienceStage(audienceStage);
 
-                                stories.add(storyCRUD);
+                                storiesFav.add(storyCRUD);
                             }
 
                             //SET TO RECYCLERVIEW
-                            customAdapterCRUD = new CustomAdapterCRUD(context, stories, userId, firstName, lastName, username, password, email);
+                            customAdapterCRUD = new CustomAdapterCRUD(context, storiesFav, userId, firstName, lastName, username, password, email);
                             recyclerView.setAdapter(customAdapterCRUD);
 
                             //stop refreshing

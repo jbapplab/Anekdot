@@ -213,31 +213,29 @@ public class MyStoriesActivity extends AppCompatActivity {
         mDrawerToggle.syncState();
 
         //This sets the loading progress bar
-        progressBar = findViewById(R.id.progressBarRetrieve);
+        progressBar = findViewById(R.id.progressBarRetrieveMy);
 
         //REFERENCE VIEWS
-        recyclerView = findViewById(R.id.recyclerViewRetrieveStoriesCRUD);
+        recyclerView = findViewById(R.id.recyclerViewRetrieveMyStoriesCRUD);
         recyclerView.setLayoutManager(new LinearLayoutManager(MyStoriesActivity.this));
 
         ArrayList dummyArrayList = new ArrayList<>();
         CustomAdapterCRUD customAdapterCRUD = new CustomAdapterCRUD(this, dummyArrayList, userId, firstName, lastName, username, password, email);
         recyclerView.setAdapter(customAdapterCRUD);
 
-        final SwipeRefreshLayout swipeRefreshLayout = findViewById(R.id.swipeLayoutRetrieveStoriesCRUD);
+        final SwipeRefreshLayout swipeRefreshLayout = findViewById(R.id.swipeLayoutRetrieveMyStoriesCRUD);
 
         //Retrieve
         mainToolbar.setTitle("My Stories");
-        Log.i("UserID", userId);
-        new MySQLClientCRUD(MyStoriesActivity.this, userId, firstName, lastName, username, password, email).retrieveMyStories(recyclerView, swipeRefreshLayout, Integer.parseInt(userId), progressBar);
+        new MySQLClientCRUD(MyStoriesActivity.this, userId, firstName, lastName, username, password, email).retrieveMyStories(recyclerView, swipeRefreshLayout, progressBar);
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-
                 if(!swipeRefreshLayout.isRefreshing()){
                     swipeRefreshLayout.setRefreshing(true);
                 }
-                new MySQLClientCRUD(MyStoriesActivity.this, userId, firstName, lastName, username, password, email).retrieveMyStories(recyclerView, swipeRefreshLayout, Integer.parseInt(userId), progressBar);
+                new MySQLClientCRUD(MyStoriesActivity.this, userId, firstName, lastName, username, password, email).retrieveMyStories(recyclerView, swipeRefreshLayout, progressBar);
             }
         });
     }

@@ -216,6 +216,127 @@ class DBadapter{
 		mysqli_close($con);
 	}
 	
+	//1. SELECT MYFAVOURITES FROM DATABASE
+	public function retrieveMyFavourites($userId){
+		$con=$this->connect();
+		
+		$statementMyFavourites = mysqli_prepare($con, "SELECT * FROM story WHERE story_id = saved_story.story_id AND saved_story.user_id = ?");
+		mysqli_stmt_bind_param($statementMyFavourites, "s", $userId);
+		mysqli_stmt_execute($statementMyFavourites);
+		mysqli_stmt_store_result($statementMyFavourites);
+		$count = mysqli_stmt_num_rows($statementMyFavourites);
+		mysqli_stmt_close($statementMyFavourites);
+		
+		if ($count < 1){
+            $storiesAvailable = false; 
+        }else {
+            $storiesAvailable = true; 
+        }
+		
+		if($con != null){
+			if ($storiesAvailable == true) {
+			    
+				$retrieved=mysqli_query($con, "SELECT * FROM story WHERE story_id = saved_story.story_id AND saved_story.user_id = $userId");
+				
+				if($retrieved){
+					while($row=mysqli_fetch_array($retrieved)){
+						
+						//echo $row["story_title"]," \t | ",$row["description"],"</br>"
+						$stories[]=$row;
+					}
+					print(json_encode($stories));
+				} else {
+					print(json_encode(array("PHP EXCEPTION: Can't retrieve data from the MySQL database.")));
+				}
+				
+			} else {
+	
+				/*$retrieved=mysqli_query($con,constants::$SQL_SELECT_ALL);
+				
+				if($retrieved){
+					while($row=mysqli_fetch_array($retrieved)){
+						
+						//echo $row["story_title"]," \t | ",$row["description"],"</br>"
+						$allStories[]=$row;
+					}
+					print(json_encode($allStories));
+				} else {
+					print(json_encode(array("PHP EXCEPTION: Can't retrieve data from the MySQL database.")));
+				}*/
+				
+				print(json_encode(array("You have not yet saved stories as favourites. Save some stories and return again to this section.")));
+			}	
+			
+		} else {
+			
+			print(json_encode(array("PHP EXCEPTION: Can't connect to MySQL Database. Null connection.")));
+		
+		}
+		
+		mysqli_close($con);
+		
+	}
+	
+	//1. SELECT MYSTORIES FROM DATABASE
+	public function retrieveMyStories($userId){
+		$con=$this->connect();
+		
+		$statementMyStories = mysqli_prepare($con, "SELECT * FROM story WHERE author_id =?");
+		mysqli_stmt_bind_param($statementMyStories, "s", $userId);
+		mysqli_stmt_execute($statementMyStories);
+		mysqli_stmt_store_result($statementMyStories);
+		$count = mysqli_stmt_num_rows($statementMyStories);
+		mysqli_stmt_close($statementMyStories);
+		
+		if ($count < 1){
+            $storiesAvailable = false; 
+        }else {
+            $storiesAvailable = true; 
+        }
+		
+		if($con != null){
+			if ($storiesAvailable == true) {
+				$retrieved=mysqli_query($con, "SELECT * FROM story WHERE author_id = $userId");
+				
+				if($retrieved){
+					while($row=mysqli_fetch_array($retrieved)){
+						
+						//echo $row["story_title"]," \t | ",$row["description"],"</br>"
+						$stories[]=$row;
+					}
+					print(json_encode($stories));
+				} else {
+					print(json_encode(array("PHP EXCEPTION: Can't retrieve data from the MySQL database.")));
+				}
+				
+			} else {
+	
+				/*$retrieved=mysqli_query($con,constants::$SQL_SELECT_ALL);
+				
+				if($retrieved){
+					while($row=mysqli_fetch_array($retrieved)){
+						
+						//echo $row["story_title"]," \t | ",$row["description"],"</br>"
+						$allStories[]=$row;
+					}
+					print(json_encode($allStories));
+				} else {
+					print(json_encode(array("PHP EXCEPTION: Can't retrieve data from the MySQL database.")));
+				}*/
+				
+				print(json_encode(array("You have not yet created any stories. Create some and return again to this section.")));
+			}	
+			
+		} else {
+			
+			print(json_encode(array("PHP EXCEPTION: Can't connect to MySQL Database. Null connection.")));
+		
+		}
+		
+		mysqli_close($con);
+		
+	}
+	
 }
 
 ?>

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".MyStoriesActivity"
+    android:fitsSystemWindows="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    tools:context="com.jbapplab.navigationdrawertabs.MyStoriesActivity">
 
     <android.support.v7.widget.Toolbar
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -27,7 +28,7 @@
         android:layout_width="match_parent"
         android:id="@+id/drawerLayout">
 
-        <include layout="@layout/retrieve_stories_crud_main"/>
+        <include layout="@layout/retrieve_stories_crud_my"/>
 
         <android.support.design.widget.NavigationView
             xmlns:android="http://schemas.android.com/apk/res/android"
@@ -46,7 +47,7 @@
     </android.support.v4.widget.DrawerLayout>
 
     <ProgressBar
-        android:id="@+id/progressBarRetrieve"
+        android:id="@+id/progressBarRetrieveMy"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -55,4 +56,4 @@
         android:alpha="0"
         android:indeterminate="true" />
 
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>
