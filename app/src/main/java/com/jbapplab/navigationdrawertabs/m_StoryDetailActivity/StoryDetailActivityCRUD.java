@@ -317,9 +317,29 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                new MySQLClientCRUD(StoryDetailActivityCRUD.this, userId, firstName, lastName, username, password, email).favourite(Integer.parseInt(storyId), Integer.parseInt(userId));
+                new AlertDialog.Builder(StoryDetailActivityCRUD.this)
+                        .setTitle("Save this story to your Favourites?")
+                        .setMessage("Are you sure you want to save this story in your favourites?")
+                        .setNegativeButton(android.R.string.no, null)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
+                            public void onClick(DialogInterface arg0, int arg1) {
+                            new MySQLClientCRUD(StoryDetailActivityCRUD.this, userId, firstName, lastName, username, password, email).favourite(Integer.parseInt(storyId), Integer.parseInt(userId));
+
+                                Intent intentFavouriteStory = new Intent(StoryDetailActivityCRUD.this, MyFavouritesActivity.class);
+                                intentFavouriteStory.putExtra("userId_KEY", userId);
+                                intentFavouriteStory.putExtra("firstName_KEY", firstName);
+                                intentFavouriteStory.putExtra("lastName_KEY", lastName);
+                                intentFavouriteStory.putExtra("username_KEY", username);
+                                intentFavouriteStory.putExtra("password_KEY", password);
+                                intentFavouriteStory.putExtra("email_KEY", email);
+                                StoryDetailActivityCRUD.this.startActivity(intentFavouriteStory);
+
+                            }
+                        }).create().show();
                 //Toast.makeText(StoryDetailActivityCRUD.this, "Story saved in favourites second?.", Toast.LENGTH_SHORT).show();
+
+
             }
         });
 
@@ -337,6 +357,16 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
 
                             public void onClick(DialogInterface arg0, int arg1) {
                                 new MySQLClientCRUD(StoryDetailActivityCRUD.this, userId, firstName, lastName, username, password, email).delete(Integer.parseInt(storyId));
+
+                                Intent intentDeleteStory = new Intent(StoryDetailActivityCRUD.this, MyStoriesActivity.class);
+                                intentDeleteStory.putExtra("userId_KEY", userId);
+                                intentDeleteStory.putExtra("firstName_KEY", firstName);
+                                intentDeleteStory.putExtra("lastName_KEY", lastName);
+                                intentDeleteStory.putExtra("username_KEY", username);
+                                intentDeleteStory.putExtra("password_KEY", password);
+                                intentDeleteStory.putExtra("email_KEY", email);
+                                StoryDetailActivityCRUD.this.startActivity(intentDeleteStory);
+
                             }
                         }).create().show();
             }

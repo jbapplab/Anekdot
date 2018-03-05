@@ -8,6 +8,7 @@
     android:layout_height="match_parent"
     tools:context="com.jbapplab.navigationdrawertabs.MyStoriesActivity">
 
+
     <android.support.v7.widget.Toolbar
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/toolbar"
@@ -40,7 +41,7 @@
             app:itemIconTint="@color/colorPrimaryDark"
             app:tabSelectedTextColor="@color/colorAccent"
             app:menu="@menu/drawermenu"
-            android:layout_marginTop="0dp"
+            android:layout_marginTop="30dp"
             />
         <!--app:headerLayout="@layout/drawer_header"-->
 

@@ -581,13 +581,13 @@ public class MySQLClientCRUD {
     /*
     * Retrieve MyFavourites
     */
-    public void retrieveMyFavourites(final RecyclerView recyclerView, final SwipeRefreshLayout swipeRefreshLayout, final int userIdRetrieve, final ProgressBar progressBar){
+    public void retrieveMyFavourites(final RecyclerView recyclerView, final SwipeRefreshLayout swipeRefreshLayout, final ProgressBar progressBar){
         final ArrayList<StoryCRUD> storiesFav = new ArrayList<>();
         progressBar.setAlpha(1);
 
         AndroidNetworking.post(DATA_INSERT_URL)
                 .addBodyParameter("action","retrieveMyFavourites")
-                .addBodyParameter("user_id", String.valueOf(userIdRetrieve))
+                .addBodyParameter("user_id", userId)
                 .setTag("TAG_ADD")
                 .setPriority(Priority.HIGH)
                 .build()

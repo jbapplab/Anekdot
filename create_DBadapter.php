@@ -216,16 +216,17 @@ class DBadapter{
 		mysqli_close($con);
 	}
 	
+	
 	//1. SELECT MYFAVOURITES FROM DATABASE
 	public function retrieveMyFavourites($userId){
 		$con=$this->connect();
 		
-		$statementMyFavourites = mysqli_prepare($con, "SELECT * FROM story WHERE story_id = saved_story.story_id AND saved_story.user_id = ?");
-		mysqli_stmt_bind_param($statementMyFavourites, "s", $userId);
-		mysqli_stmt_execute($statementMyFavourites);
-		mysqli_stmt_store_result($statementMyFavourites);
-		$count = mysqli_stmt_num_rows($statementMyFavourites);
-		mysqli_stmt_close($statementMyFavourites);
+		$statementMyStories = mysqli_prepare($con, "SELECT * FROM story INNER JOIN saved_story ON story.story_id = saved_story.story_id AND saved_story.user_id = ?");
+		mysqli_stmt_bind_param($statementMyStories, "s", $userId);
+		mysqli_stmt_execute($statementMyStories);
+		mysqli_stmt_store_result($statementMyStories);
+		$count = mysqli_stmt_num_rows($statementMyStories);
+		mysqli_stmt_close($statementMyStories);
 		
 		if ($count < 1){
             $storiesAvailable = false; 
@@ -235,8 +236,7 @@ class DBadapter{
 		
 		if($con != null){
 			if ($storiesAvailable == true) {
-			    
-				$retrieved=mysqli_query($con, "SELECT * FROM story WHERE story_id = saved_story.story_id AND saved_story.user_id = $userId");
+				$retrieved=mysqli_query($con, "SELECT * FROM story INNER JOIN saved_story ON story.story_id = saved_story.story_id AND saved_story.user_id = $userId");
 				
 				if($retrieved){
 					while($row=mysqli_fetch_array($retrieved)){
@@ -264,7 +264,7 @@ class DBadapter{
 					print(json_encode(array("PHP EXCEPTION: Can't retrieve data from the MySQL database.")));
 				}*/
 				
-				print(json_encode(array("You have not yet saved stories as favourites. Save some stories and return again to this section.")));
+				print(json_encode(array("You have not yet created any stories. Create some and return again to this section.")));
 			}	
 			
 		} else {

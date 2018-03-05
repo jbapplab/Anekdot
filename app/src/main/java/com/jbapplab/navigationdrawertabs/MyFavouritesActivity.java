@@ -4,14 +4,23 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import com.jbapplab.navigationdrawertabs.m_MySQL.MySQLClientCRUD;
+import com.jbapplab.navigationdrawertabs.m_UI.CustomAdapterCRUD;
+
+import java.util.ArrayList;
 
 public class MyFavouritesActivity extends AppCompatActivity {
 
@@ -26,6 +35,9 @@ public class MyFavouritesActivity extends AppCompatActivity {
     String username;
     String password;
     String email;
+
+    private RecyclerView recyclerView;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -198,6 +210,33 @@ public class MyFavouritesActivity extends AppCompatActivity {
         mDrawerLayout.addDrawerListener(mDrawerToggle);
 
         mDrawerToggle.syncState();
+
+        //This sets the loading progress bar
+        progressBar = findViewById(R.id.progressBarRetrieveFavourites);
+
+        //REFERENCE VIEWS
+        recyclerView = findViewById(R.id.recyclerViewRetrieveFavouritesStoriesCRUD);
+        recyclerView.setLayoutManager(new LinearLayoutManager(MyFavouritesActivity.this));
+
+        ArrayList dummyArrayList = new ArrayList<>();
+        CustomAdapterCRUD customAdapterCRUD = new CustomAdapterCRUD(this, dummyArrayList, userId, firstName, lastName, username, password, email);
+        recyclerView.setAdapter(customAdapterCRUD);
+
+        final SwipeRefreshLayout swipeRefreshLayout = findViewById(R.id.swipeLayoutRetrieveFavouritesStoriesCRUD);
+
+        //Retrieve
+        mainToolbar.setTitle("My Favourites");
+        new MySQLClientCRUD(MyFavouritesActivity.this, userId, firstName, lastName, username, password, email).retrieveMyFavourites(recyclerView, swipeRefreshLayout, progressBar);
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                if(!swipeRefreshLayout.isRefreshing()){
+                    swipeRefreshLayout.setRefreshing(true);
+                }
+                new MySQLClientCRUD(MyFavouritesActivity.this, userId, firstName, lastName, username, password, email).retrieveMyFavourites(recyclerView, swipeRefreshLayout, progressBar);
+            }
+        });
     }
 
     /*
