@@ -34,18 +34,21 @@
     <string name="category_name">Category Name</string>
     <string name="category_image">Category Image</string>
     <string name="send_to">Send text to:</string>
-    <string name="it_is_time_to_create_a_story_lets_think_of_the_intended_audience_first">It is time to create a story. Lets think of the intended audience first.</string>
+    <string name="welcomeMessageMetaFirst">OK! It is time to create a story. With this approach we will think of the <b>intended audience first</b>.</string>
     <string name="give_the_title_of_your_story">Give the title of your story.</string>
-    <string name="to_begin_with_select_the_topic_in_which_your_story_fits_this_will_give_you_some_specific_suggestions_later_on">To begin with select the topic in which your story fits. This will give you some specific suggestions later on.</string>
+    <string name="categoryMetaFirst">To begin with, select the <b>topic</b> in which your story fits. This will give you some specific suggestions later on.</string>
     <string name="set_the_setting_or_context_of_your_story">Set the setting or context of your story.</string>
     <string name="give_a_short_description_for_your_story">Give a short description for your story.</string>
-    <string name="if_other_was_selected_please_give_a_suggested_category_or_give_an_extra_keyword_for_your_topic">If \'Other\' was selected please give a suggested category or give an extra keyword for your topic.</string>
+    <string name="guidance3MetaFirst">If \'Other\' was selected please give a suggested topic or give an extra keyword for your story.</string>
+    <string name="ifOtherSpecifyMetaFirst">Suggested topic or extra keyword</string>
     <string name="describe_an_issue_or_problem_what_happens_in_the_story">Describe an issue or problem. What happens in the story?</string>
-    <string name="what_is_your_goal_with_this_story_what_do_you_want_your_audience_to_do">What is your goal with this story? What do you want your audience to do?</string>
-    <string name="think_about_the_your_audience_in_relation_to_the_story_how_can_you_make_the_story_more_specific_to_them_swipe_right_for_more_tips">Think about the your audience in relation to the story. How can you make the story more specific to them? Swipe right for more tips.</string>
-    <string name="according_to_your_selections_so_far_tailored_suggestions_have_been_generated_for_you_you_can_swipe_right_and_get_extra_information_on_how_to_make_your_story_more_persuasive_in_terms_of_the_topic_and_stage_that_your_audience_is_in">According to your selections so far tailored suggestions have been generated for you. You can swipe right and get extra information on how to make your story more persuasive in terms of the topic and stage that your audience is in.</string>
-    <string name="now_briefly_think_of_the_problem_or_issue_your_story_is_based_on_in_which_stage_is_your_intended_audience_in_regard_to_the_issue">Now briefly think of the problem or issue your story is based on. In which stage is your intended audience in regard to the issue?</string>
-    <string name="think_about_the_environment_of_your_story_the_time_setting_actors_are_they_relatable_to_your_intended_audience_swipe_right_for_more_tips">Think about the environment of your story. The time, setting, actors; are they relatable to your intended audience? Swipe right for more tips.</string>
+    <string name="stageRelatedHint">Capture stage-related ideas for change</string>
+    <string name="guidanceMetaFirst">Now think about your audience in relation to the <b>stage</b> they are in. How can you make the <b>goal</b> relevant to them? Which <b>strategies</b> will more likely work for them?\nUse the field below to capture these. You will be able to rearrange them later when editing your story.</string>
+    <string name="swipeRightMetaFirst">According to what you have selected, tailored suggestions have been generated for you. You can <b>swipe right</b> and get extra information on how to make your story more relatable and thus more persuasive for your audience. Specific <b>goals and strategies</b> are available according to your selections.</string>
+    <string name="stageMetaFirst">The audience typically moves through <b>4 main stages</b> in order to change their behaviour. While thinking of the problem or issue your story will be about, select the <b>stage</b> in which your intended audience would most likely belong in regard to the issue?</string>
+    <string name="guidance2MetaFirst">Think about the <b>topic/theme/area</b> of your story. Is it relatable to your intended audience? How does this affect the setting and actors of the story?\nUse the field below to capture any related ideas. You will be able to rearrange them later when editing your story.</string>
+    <string name="contextRelatedHint">Capture topic/theme-related ideas for change</string>
+    <string name="beforeTitleMetaFirst">Next we will start thinking of the content of the story. First give a captivating <b>title</b> and a <b>short description</b> so your readers have an idea of what your story is about.</string>
     <string name="explain_why_this_is_important_exciting_or_the_reason_for_sharing_it">Explain why this is important/exciting or the reason for sharing it.</string>
     <string name="describe_what_happened_in_the_end_was_there_something_unexpected">Describe what happened in the end. Was there something unexpected?</string>
     <string name="leave_your_audience_with_the_meaning_or_significance_of_what_happened_how_did_this_experience_change_the_actors">Leave your audience with the meaning or significance of what happened. How did this experience change the actors?</string>
@@ -55,7 +58,7 @@
     <string name="register">register</string>
 
     <!-- User area strings -->
-    <string name="send_user_details">Send user details:</string>
+    <string name="send_user_details">Share user details:</string>
     <string name="scroll_right_tip_links_tutorials">Remember to scroll right to get your story tip of the day and access to useful links and tutorials.</string>
     <string name="dashboard_intro_text">Jump straight into the story!</string>
     <string name="create_story">Create a Story</string>
@@ -107,5 +110,6 @@
     <string name="link3">Article: <a href="https://www.hrzone.com/talent/retention/how-to-use-storytelling-to-influence-people" >How to use storytelling to influence people</a></string>
     <string name="link4"><a href="http://www.www.com" >ForGet Password</a></string>
     <string name="link5"><a href="http://www.www.com" >ForGet Password</a></string>
+    <string name="storyCreateMetaFirst">Create a New Story:\nThink the Audience First</string>
 
 </resources>

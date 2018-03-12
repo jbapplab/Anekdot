@@ -6,7 +6,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:gravity="center">
 
         <RelativeLayout
             android:id="@+id/stageDefault"
@@ -17,7 +19,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:textSize="30sp"
                 android:gravity="center"
                 android:id="@+id/textViewDefault"
@@ -29,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:layout_centerHorizontal="true"
                 android:text="Here are some default information about a persuasive story. Something was not properly selected, please go back and select a stage in the relevant spinner."
                 android:textColor="@color/colorPrimary"
@@ -58,7 +60,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:textSize="30sp"
                 android:gravity="center"
                 android:id="@+id/textView0"
@@ -177,7 +179,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:textSize="30sp"
                 android:gravity="center"
                 android:id="@+id/textView1"
@@ -256,7 +258,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:textSize="30sp"
                 android:gravity="center"
                 android:id="@+id/textView2"
@@ -375,7 +377,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:textSize="30sp"
                 android:gravity="center"
                 android:id="@+id/textView3"

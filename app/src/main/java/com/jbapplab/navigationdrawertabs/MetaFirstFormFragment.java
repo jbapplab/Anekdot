@@ -257,18 +257,18 @@ public class MetaFirstFormFragment extends Fragment {
                         Toast.makeText(getActivity(), "All the fields are valid.", Toast.LENGTH_SHORT).show();
 
                         //To appoint label from category selected in stages
-                        stage= "The audience is unaware of the problem of issue you are describing; they don't have intention to change in the forseeable future (e.g. first time smokers)";
+                        stage= "Stage 1: The audience is unaware of the problem or issue you are describing.";
                         switch (audienceStage){
-                            case "Stage 1: The audience is unaware of the problem of issue you are describing; they don't have intention to change in the forseeable future (e.g. first time smokers)":
+                            case "Stage 1: The audience is unaware of the problem or issue you are describing.":
                                 stage = "Precontemplation";
                                 break;
-                            case "Stage 2: The audience is aware of the problem or issue you are describing; they are seriously considering to change their behaviour in relation to it (e.g. people that have been diagnosed with respitory problems due to smoking)":
+                            case "Stage 2: The audience is aware of the problem or issue you are describing.":
                                 stage = "Contemplation";
                                 break;
-                            case "Stage 3: The audience is at a stage that they are intending to take action (e.g. people that know about the benefits of exercise but postpone signing up to the gym)":
+                            case "Stage 3: The audience wants to take action soon in regard to the problem or issue.":
                                 stage = "Preparation";
                                 break;
-                            case "Stage 4: The audience modify their behaviours, experiences and/or environment to overcome the issue or problem. (e.g. people that buy healthy food and throw away snacks while loosing weight)":
+                            case "Stage 4: The audience is already taking action to overcome the problem or issue.":
                                 stage = "Action";
                                 break;
                             default:
@@ -448,10 +448,10 @@ public class MetaFirstFormFragment extends Fragment {
 
             ArrayAdapter<String> stageAdapter = new ArrayAdapter<String>(getActivity(), R.layout.multiline_spinner);
 
-            stageAdapter.add("Stage 1: The audience is unaware of the problem of issue you are describing; they don't have intention to change in the forseeable future (e.g. first time smokers)");
-            stageAdapter.add("Stage 2: The audience is aware of the problem or issue you are describing; they are seriously considering to change their behaviour in relation to it (e.g. people that have been diagnosed with respitory problems due to smoking)");
-            stageAdapter.add("Stage 3: The audience is at a stage that they are intending to take action (e.g. people that know about the benefits of exercise but postpone signing up to the gym)");
-            stageAdapter.add("Stage 4: The audience modify their behaviours, experiences and/or environment to overcome the issue or problem. (e.g. people that buy healthy food and throw away snacks while loosing weight)");
+            stageAdapter.add("Stage 1: The audience is unaware of the problem or issue you are describing.");
+            stageAdapter.add("Stage 2: The audience is aware of the problem or issue you are describing.");
+            stageAdapter.add("Stage 3: The audience wants to take action soon in regard to the problem or issue.");
+            stageAdapter.add("Stage 4: The audience is already taking action to overcome the problem or issue.");
 
             audienceStageSpinner.setAdapter(stageAdapter);
             audienceStageSpinner.setSelection(0);
