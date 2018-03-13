@@ -37,69 +37,86 @@
 
     <!-- START STORY FORM -->
     <string name="storyCreateMetaFirst">Create a New Story:\nThink the Audience First</string>
-    <string name="welcomeMessageMetaFirst">OK! It is time to create a <b>persuasive</b> story. A persuasive story is a story that aims to <b>influence</b>.
-        In most cases the audience is more persuaded from stories that describe an <b>issue</b> and its <b>potential resolution</b>.
+    <string name="welcomeMessageMetaFirst">OK! It is time to create a <b>persuasive</b> story.
+        \nA persuasive story is a story that aims to <b>influence</b>.
+        \n\nIn most cases the audience is more persuaded from stories that describe an <b>issue</b> and its <b>potential resolution</b>.
         So when writing your story you should have in mind your <b>audience</b> so you can make the story <b>relatable</b> to them as much as possible.
-        This makes the story more influential to them. And talking about influence you should be aiming to <b>change</b> some aspect of your audience\'s personality. This could be
+        This makes the story more influential to them.
+        \n\nTalking about influence you should be aiming to <b>change</b> some aspect of your audience\'s personality. This could be
         their <b>knowledge/understanding</b> regarding an issue, their <b>attitude</b> towards it, their <b>intention</b> to do something about it and ultimately a potential positive <b>behaviour</b> relevant to it.
-        \nIn order for you to make your story more relatable Anecdot will guide you through a series of steps that will help you to tailor your story according to your audience.
+        \n\nIn order for you to make your story more relatable Anecdot will guide you through a series of steps that will help you to tailor your story according to your audience.
     </string>
 
     <string name="categoryMetaFirst">To begin with, select the <b>topic</b> in which your story fits. By selecting one of the topics provided (or by suggesting your own), you are directly
         targeting people that are interested to read a relevant story. This will also give you some specific tips later on.</string>
     <string name="stageMetaFirst">Secondly, the state that your audience is in greatly affects their perception of your story in general and of your intended message.
-        \nThe audience typically moves through <b>4 main stages</b> in order to change.  While thinking of the problem or issue your story will be about, select the <b>stage</b>
+        \n\nThe audience typically moves through <b>4 main stages</b> in order to change.  While thinking of the problem or issue your story will be about, select the <b>stage</b>
         in which your intended audience would most likely belong in regard to the issue.</string>
     <string name="swipeRightMetaFirst">According to what you have selected, tailored suggestions have been generated for you. You can <b>swipe right</b>
         and get extra information on how to make your story more relatable and thus more persuasive for your audience. Specific <b>goals and strategies</b>
         are available according to your selections. Your persuasive story will be a combination of these persuasive factors and a narrative that will be structured within them to
         help deliver your message.
-        \nYou could try to <b>promote an idea</b> to create change and move your audience to action or you can just <b>describe something important to you</b> and why is should matter to them as well.
+        \n\nYou could try to <b>promote an idea</b> to create change and move your audience to action or you can just <b>describe something important to you</b> and why is should matter to them as well.
         Anything goes, from a <b>hero\'s journey</b>, to a story of <b>personal growth</b> that have changed your worldview.
     </string>
 
-    <string name="guidanceMetaFirst">Now think about your audience in relation to the <b>stage</b> they are in. How can you make the <b>stage goal</b> relevant to them?
-        Which <b>strategies</b> will more likely work for them?\nUse the field below to capture these. You will be able to rearrange them later when editing your story.</string>
+    <string name="guidanceMetaFirst">Now think about your audience in relation to the <b>stage</b> they are in.
+        \n- How can you make the <b>stage goal</b> suggested in the tips section relevant to them?
+        \n- Which <b>strategies</b> will more likely work for them?
+        \n\nUse the field below to capture your ideas. You will be able to rearrange these later when editing your story.</string>
     <string name="stageRelatedHint">Making the story relatable: stage.</string>
 
-    <string name="guidance2MetaFirst">Think about the <b>topic/theme/area</b> of your story. Is it relatable to your intended audience? How does this affect the setting
-        and actors of the story?\nUse the field below to capture any related ideas. You will be able to rearrange them later when editing your story.</string>
+    <string name="guidance2MetaFirst">Think about the <b>topic/theme/area</b> of your story.
+        \n- Is it relatable to your intended audience?
+        \n- How does this affect the setting
+        and actors of the story?
+        \n\nUse the field below to capture any related ideas. You will be able to rearrange them later when editing your story.</string>
     <string name="contextRelatedHint">Making the story relatable: topic.</string>
 
-    <string name="guidance3MetaFirst">If \'Other\' was selected please give a suggested topic or give an extra keyword for your story.</string>
-    <string name="ifOtherSpecifyMetaFirst">Suggested topic or extra keyword.</string>
+    <string name="guidance3MetaFirst">If \'Other\' was selected please give a suggested topic or give extra keywords for your story.</string>
+    <string name="ifOtherSpecifyMetaFirst">Suggested topic or extra keywords.</string>
 
-    <string name="beforeTitleMetaFirst">Next we will start thinking of the content of the story. Each compelling story needs to start somewhere. Give a <b>title</b>
-        and a <b>short description</b>for your story/idea. You can always change it later.</string>
+    <string name="beforeTitleMetaFirst">Next we will start thinking of the content of the narrative around which our persuasive story is constructed. Each compelling story needs to start somewhere.
+        \nGive a <b>title</b> and a <b>short description</b>for your story/idea. You can always change it later.</string>
     <string name="titleMetaFirst">Give the title of your story</string>
     <string name="storyDescriptionMetaFirst">Quickly summarise your story in one line.</string>
 
     <string name="beforeOrientationMetaFirst">Now it is time for you to <b>set the scene</b> and give the background for your story. It should be written in a way
-        that the audience might find relevant and relatable.\n<b>Who</b> is involved in the story?\n<b>When</b> did the events take place? <b>Where</b>?\n<b>How</b>
-        were the actors/people of the story feeling/acting?\n<b>Why</b> the situation was like that? This information will be used to bring your audience close to
-        what you are describing.</string>
+        that the audience might find relevant and relatable.
+        \n- <b>Who</b> is involved in the story?
+        \n- <b>When</b> did the events take place? - <b>Where</b>?
+        \n- <b>How</b> were the actors/people in the story feeling and acting?
+        \n- <b>Why</b> the situation was like that?
+        \n\nThis information will be used to bring your audience close to what you are describing.</string>
     <string name="orientationMetaFirst">Set the scene/background.</string>
 
 
-    <string name="beforeComplicatedActionMetaFirst">In the next part you will describe what actually happens in the story. In most cases the audience is more
-        persuaded from stories that describe an <b>issue</b> and its <b>potential resolution</b> through the story. You could describe a <b>problem/challenge/obstacle/issue</b>
+    <string name="beforeComplicatedActionMetaFirst">In the next part you will describe what actually happens in the story. As mentioned before the audience is more likely to be influenced
+        by stories that describe an <b>issue</b> and its <b>potential resolution</b> through the story.
+        \n- You could describe a <b>problem/challenge/obstacle/issue</b>
         that your audience, you or someone else you are trying to influence struggles with now or in the past.</string>
     <string name="complicatedActionMetaFirst">What happens in the story? What is the issue?</string>
 
     <string name="beforeEvaluationMetaFirst">The next part is used for you to describe <b>why you chose to share</b> the story.
-        Why do you think it is <b>important/interesting</b>? Why are you <b>excited/passionate</b> about it? You could describe how the people in the story felt.
-        You could also describe a better world where the issue does not exist. You could talk about what was difficult, or the steps taken to tackle the issue.</string>
+        \n- Why do you think it is <b>important/interesting</b>?
+        \n- Why are you <b>excited/passionate</b> about it?
+        \n- You could describe how the people in the story felt.
+        \n- You could also describe a better world where the issue does not exist.
+        \n- You could talk about what was difficult, or the steps taken to tackle the issue.</string>
     <string name="evaluationMetaFirst">Why is this interesting/important/exciting?</string>
 
-    <string name="beforeResolutionMetaFirst">Now it is time to describe <b>what finally happened</b> in the story. You can write about how the issue was <b>resolved</b>
-        or how the people in their story accomplished their goals. Did they succeed or fail? Was there a twist or something unexpected?</string>
+    <string name="beforeResolutionMetaFirst">Now it is time to describe <b>what finally happened</b> in the story.
+        \n- You can write about how the issue was <b>resolved</b> or how the people in their story accomplished their goals.
+        \n- Did they succeed or fail? Was there a twist or something unexpected?</string>
     <string name="resolutionMetaFirst">Describe what happened in the end.</string>
 
     <string name="beforeMessageMetaFirst">The next part is very important for your story to be persuasive. It gives you the opportunity to leave your audience with the
-        <b>meaning or significance</b> of what happened. You can describe how after the issue has been resolved the world is a better place for the people in the story.
-        You could share <b>strategies</b> and give <b>suggestions</b> to your audience and reinforce of <b>why these are relevant</b> to them.
-        You could write about how the audience\'s life will improve after following your suggestions along perhaps with how this experience changed you.
-        You could <b>give a key takeaway lesson</b> and connect it to your audience\'s lives. You could also share <b>scenarios or examples</b> that would nudge your audience
+        <b>meaning or significance</b> of what happened.
+        \n- You can describe how after the issue has been resolved the world is a better place for the people in the story.
+        \n- You could share <b>strategies</b> and give <b>suggestions</b> to your audience and reinforce of <b>why these are relevant</b> to them.
+        \n- You could write about how the audience\'s life will improve after following your suggestions along perhaps with how this experience changed you.
+        \n- You could <b>give a key takeaway lesson</b> and connect it to your audience\'s lives.
+        \n- You could also share <b>scenarios or examples</b> that would nudge your audience
         to apply what they have learned.</string>
     <string name="messageMetaFirst">What should the audience take away?</string>
 
