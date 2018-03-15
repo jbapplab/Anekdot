@@ -78,7 +78,7 @@
 
     <string name="beforeTitleMetaFirst">Next we will start thinking of the content of the narrative around which our persuasive story is constructed. Each compelling story needs to start somewhere.
         \nGive a <b>title</b> and a <b>short description</b>for your story/idea. You can always change it later.</string>
-    <string name="titleMetaFirst">Give the title of your story</string>
+    <string name="titleMetaFirst">Give the title of your story.</string>
     <string name="storyDescriptionMetaFirst">Quickly summarise your story in one line.</string>
 
     <string name="beforeOrientationMetaFirst">Now it is time for you to <b>set the scene</b> and give the background for your story. It should be written in a way
@@ -120,11 +120,10 @@
         to apply what they have learned.</string>
     <string name="messageMetaFirst">What should the audience take away?</string>
 
-    <string name="beforeUrlMetaFirst">Here you have the opportunity to enter the URL of a photo that would be relevant to your story. If you don\'t want to do so simply
-        enter a dash \"-\".</string>
-    <string name="urlMetaFirst">Enter a URL of a photo or \"-\"</string>
+    <string name="beforeUrlMetaFirst">In case you want to see your <b>narrative</b> so far you can use the button below to generate it. You can also edit your narrative in the field provided to make it more coherent and fluent.</string>
+    <string name="urlMetaFirst">Generate and edit your narrative.</string>
 
-    <string name="review_story">Review and Edit Story</string>
+    <string name="review_story">Review and Edit Persuasive Story</string>
     <string name="save_story">Save Story</string>
     <string name="update_story">Update Story</string>
     <!-- END STORY FORM -->

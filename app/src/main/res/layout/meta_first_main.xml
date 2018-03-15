@@ -14,7 +14,7 @@
         android:gravity="center">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:textSize="30sp"
@@ -76,12 +76,21 @@
             app:showErrorOn="unfocus">
 
             <TextView
+                android:layout_toStartOf="@id/meta_first_form"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:textSize="20sp"
+                android:id="@+id/contextTitleMetaFirst"
+                android:textColor="@color/colorAccent"
+                android:text="Topic"/>
+            <TextView
                 android:id="@+id/tvContextRelated"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/guidance2MetaFirst"
                 android:paddingTop="10dp"
-                android:layout_toStartOf="@id/meta_first_form"/>
+                android:layout_below="@id/contextTitleMetaFirst"/>
             <com.emmasuzuki.easyform.EasyTextInputLayout
                 android:id="@+id/contextRelated"
                 android:layout_width="match_parent"
@@ -119,10 +128,19 @@
                 android:layout_below="@id/ifOtherSpecify"/>
 
             <TextView
+                android:layout_below="@id/horizontal_divider_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:textSize="20sp"
+                android:id="@+id/stageTitleMetaFirst"
+                android:textColor="@color/colorAccent"
+                android:text="Stage"/>
+            <TextView
                 android:id="@+id/tvStageRelated"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/horizontal_divider_2"
+                android:layout_below="@id/stageTitleMetaFirst"
                 android:text="@string/guidanceMetaFirst"
                 android:paddingTop="10dp"/>
             <com.emmasuzuki.easyform.EasyTextInputLayout
@@ -145,12 +163,21 @@
                 android:layout_below="@id/stageRelated"/>
 
             <TextView
+                android:layout_below="@id/horizontal_divider_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:textSize="20sp"
+                android:id="@+id/ideaTitleMetaFirst"
+                android:textColor="@color/colorAccent"
+                android:text="The idea"/>
+            <TextView
                 android:id="@+id/tvBeforeTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/beforeTitleMetaFirst"
                 android:paddingTop="10dp"
-                android:layout_below="@id/horizontal_divider_3"/>
+                android:layout_below="@id/ideaTitleMetaFirst"/>
             <com.emmasuzuki.easyform.EasyTextInputLayout
                 android:id="@+id/storyTitle"
                 android:layout_width="match_parent"
@@ -182,12 +209,21 @@
                 android:layout_below="@id/storyDescription"/>
 
             <TextView
+                android:layout_below="@id/horizontal_divider_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:textSize="20sp"
+                android:id="@+id/narrativeTitleMetaFirst"
+                android:textColor="@color/colorAccent"
+                android:text="The narrative"/>
+            <TextView
                 android:id="@+id/tvBeforeOrientation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/beforeOrientationMetaFirst"
                 android:paddingTop="10dp"
-                android:layout_below="@id/horizontal_divider_4"/>
+                android:layout_below="@id/narrativeTitleMetaFirst"/>
             <com.emmasuzuki.easyform.EasyTextInputLayout
                 android:id="@+id/orientation"
                 android:layout_width="match_parent"
@@ -255,21 +291,73 @@
                 android:paddingBottom="10dp"/>
 
             <TextView
-                android:id="@+id/horizontal_divider_5"
+                android:id="@+id/horizontal_divider_6"
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
                 android:background="@color/colorAccent"
                 android:layout_below="@id/resolution"/>
 
             <TextView
+                android:layout_below="@id/horizontal_divider_6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:textSize="20sp"
+                android:id="@+id/fullStoryTitleMetaFirst"
+                android:textColor="@color/colorAccent"
+                android:text="The narrative so far"/>
+            <TextView
+                android:id="@+id/tvBeforeURL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/beforeUrlMetaFirst"
+                android:paddingTop="10dp"
+                android:layout_below="@id/fullStoryTitleMetaFirst"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Base.Widget.AppCompat.Button.Colored"
+                android:id="@+id/generateButton"
+                android:layout_below="@id/tvBeforeURL"
+                android:layout_marginTop="20dp"
+                android:text="Generate Narrative"
+                android:textColor="@android:color/white"/>
+            <com.emmasuzuki.easyform.EasyTextInputLayout
+                android:id="@+id/imageUrl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/generateButton"
+                android:layout_marginTop="8dp"
+                android:hint="@string/urlMetaFirst"
+                app:errorMessage="@string/error_message_empty"
+                app:errorType="empty"
+                android:inputType="textMultiLine"/>
+
+            <TextView
+                android:id="@+id/horizontal_divider_5"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="@color/colorAccent"
+                android:layout_below="@id/imageUrl"/>
+
+            <TextView
+                android:layout_below="@id/horizontal_divider_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:textSize="20sp"
+                android:id="@+id/messageTitleMetaFirst"
+                android:textColor="@color/colorAccent"
+                android:text="The takeaway message"/>
+            <TextView
                 android:id="@+id/tvBeforeMessage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/beforeMessageMetaFirst"
                 android:paddingTop="10dp"
-                android:layout_below="@id/horizontal_divider_5"/>
+                android:layout_below="@id/messageTitleMetaFirst"/>
             <com.emmasuzuki.easyform.EasyTextInputLayout
-                android:id="@+id/messgage"
+                android:id="@+id/message"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tvBeforeMessage"
@@ -281,36 +369,23 @@
                 android:paddingBottom="10dp"/>
 
             <TextView
-                android:id="@+id/horizontal_divider_6"
-                android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:background="@color/colorAccent"
-                android:layout_below="@id/messgage"/>
-
-            <TextView
-                android:id="@+id/tvBeforeURL"
+                android:layout_below="@id/message"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/beforeUrlMetaFirst"
                 android:paddingTop="10dp"
-                android:layout_below="@id/horizontal_divider_6"/>
-            <com.emmasuzuki.easyform.EasyTextInputLayout
-                android:id="@+id/imageUrl"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvBeforeURL"
-                android:layout_marginTop="8dp"
-                android:hint="@string/urlMetaFirst"
-                app:errorMessage="@string/error_message_empty"
-                app:errorType="empty"
-                android:inputType="textMultiLine"/>
+                android:textSize="18sp"
+                android:id="@+id/beforeReview"
+                android:textColor="@color/colorAccent"
+                android:text="Ok! Now we are ready to put all the elements of your persuasive story together.
+                \nYou will be able to see the persuasive factors you wrote as well as your narrative and intended message. You can click the
+button to review and edit your persuasive story as a whole. You can always come back to this screen to get tips but"/>
 
             <Button
                 style="@style/Base.Widget.AppCompat.Button.Colored"
                 android:id="@+id/addButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/imageUrl"
+                android:layout_below="@id/beforeReview"
                 android:layout_marginTop="20dp"
                 android:background="@color/colorAccent"
                 android:text="@string/review_story"
@@ -323,7 +398,7 @@
                 android:id="@+id/updateButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/imageUrl"
+                android:layout_below="@id/beforeReview"
                 android:layout_marginTop="20dp"
                 android:text="@string/update_story"
                 android:textColor="@android:color/white"

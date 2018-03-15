@@ -134,7 +134,7 @@ public class MetaFirstFormFragment extends Fragment {
             final EasyTextInputLayout complicatedActionTxt = getView().findViewById(R.id.complicatedAction);
             final EasyTextInputLayout evaluationTxt = getView().findViewById(R.id.evaluation);
             final EasyTextInputLayout resolutionTxt = getView().findViewById(R.id.resolution);
-            final EasyTextInputLayout messgageTxt = getView().findViewById(R.id.messgage);
+            final EasyTextInputLayout messgageTxt = getView().findViewById(R.id.message);
             final EasyTextInputLayout stageRelatedTxt = getView().findViewById(R.id.stageRelated);
             final EasyTextInputLayout contextRelatedTxt = getView().findViewById(R.id.contextRelated);
             final EasyTextInputLayout imageUrlTxt = getView().findViewById(R.id.imageUrl);
@@ -419,12 +419,13 @@ public class MetaFirstFormFragment extends Fragment {
             final EasyTextInputLayout complicatedActionTxt = getView().findViewById(R.id.complicatedAction);
             final EasyTextInputLayout evaluationTxt = getView().findViewById(R.id.evaluation);
             final EasyTextInputLayout resolutionTxt = getView().findViewById(R.id.resolution);
-            final EasyTextInputLayout messgageTxt = getView().findViewById(R.id.messgage);
+            final EasyTextInputLayout messgageTxt = getView().findViewById(R.id.message);
             final EasyTextInputLayout stageRelatedTxt = getView().findViewById(R.id.stageRelated);
             final EasyTextInputLayout contextRelatedTxt = getView().findViewById(R.id.contextRelated);
             final EasyTextInputLayout imageUrlTxt = getView().findViewById(R.id.imageUrl);
             audienceStageSpinner = getView().findViewById(R.id.stageSpinner);
             final Button buttonAdd = getView().findViewById(R.id.addButton);
+            final Button buttonGenerate = getView().findViewById(R.id.generateButton);
 
             buttonAdd.setEnabled(true);
             buttonAdd.setAlpha(1);
@@ -486,6 +487,44 @@ public class MetaFirstFormFragment extends Fragment {
                 }
             });
 
+
+            buttonGenerate.setOnClickListener(new View.OnClickListener(){
+                int generated = 0;
+                @Override
+                public void onClick(View view){
+                    if (generated == 0){
+                        imageUrlTxt.getEditText().setText(orientationTxt.getEditText().getText().toString()+"\n"
+                                +complicatedActionTxt.getEditText().getText().toString()+"\n"
+                                +evaluationTxt.getEditText().getText().toString()+"\n"
+                                +resolutionTxt.getEditText().getText().toString());
+                        generated = 1;
+                    } else {
+                        AlertDialog.Builder generatePopUp = new AlertDialog.Builder(getActivity());
+                        generatePopUp.setTitle("Are you sure you want to generate again?");
+                        generatePopUp.setMessage("This button gives you the narrative so far based on the fields you have completed before. You can edit the narrative here to make it more fluent.\n\nIf you have made changes it is best NOT to generate again since any changes will be lost!");
+                        generatePopUp.setNegativeButton("Oops! Not really", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.dismiss();
+                            }
+                        });
+                        generatePopUp.setPositiveButton("          Yes           ", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                imageUrlTxt.getEditText().setText(orientationTxt.getEditText().getText().toString()+"\n"
+                                        +complicatedActionTxt.getEditText().getText().toString()+"\n"
+                                        +evaluationTxt.getEditText().getText().toString()+"\n"
+                                        +resolutionTxt.getEditText().getText().toString());
+                                dialogInterface.dismiss();
+                            }
+                        });
+                        AlertDialog alertDialogGenerate = generatePopUp.create();
+                        alertDialogGenerate.show();
+                    }
+
+                }
+            });
+
             //Handle events ADD POPUP
             buttonAdd.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -524,18 +563,18 @@ public class MetaFirstFormFragment extends Fragment {
                         Toast.makeText(getActivity(), "All the fields are valid.", Toast.LENGTH_SHORT).show();
 
                         //To appoint label from category selected in stages
-                        stage= "The audience is unaware of the problem of issue you are describing; they don't have intention to change in the forseeable future (e.g. first time smokers)";
+                        stage= "Stage 1: The audience is unaware of the problem or issue you are describing.";
                         switch (audienceStage){
-                            case "Stage 1: The audience is unaware of the problem of issue you are describing; they don't have intention to change in the forseeable future (e.g. first time smokers)":
+                            case "Stage 1: The audience is unaware of the problem or issue you are describing.":
                                 stage = "Precontemplation";
                                 break;
-                            case "Stage 2: The audience is aware of the problem or issue you are describing; they are seriously considering to change their behaviour in relation to it (e.g. people that have been diagnosed with respitory problems due to smoking)":
+                            case "Stage 2: The audience is aware of the problem or issue you are describing.":
                                 stage = "Contemplation";
                                 break;
-                            case "Stage 3: The audience is at a stage that they are intending to take action (e.g. people that know about the benefits of exercise but postpone signing up to the gym)":
+                            case "Stage 3: The audience wants to take action soon in regard to the problem or issue.":
                                 stage = "Preparation";
                                 break;
-                            case "Stage 4: The audience modify their behaviours, experiences and/or environment to overcome the issue or problem. (e.g. people that buy healthy food and throw away snacks while loosing weight)":
+                            case "Stage 4: The audience is already taking action to overcome the problem or issue.":
                                 stage = "Action";
                                 break;
                             default:
