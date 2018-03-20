@@ -493,15 +493,20 @@ public class MetaFirstFormFragment extends Fragment {
                 @Override
                 public void onClick(View view){
                     if (generated == 0){
-                        imageUrlTxt.getEditText().setText(orientationTxt.getEditText().getText().toString()+"\n"
-                                +complicatedActionTxt.getEditText().getText().toString()+"\n"
-                                +evaluationTxt.getEditText().getText().toString()+"\n"
-                                +resolutionTxt.getEditText().getText().toString());
+
+                        imageUrlTxt.getEditText().setText(Html.fromHtml(
+                                "<font color=\"#B2182D\">"+contextRelatedTxt.getEditText().getText().toString()+"</font>"+"<br>"
+                                +"<font color=\"#128E4A\">"+stageRelatedTxt.getEditText().getText().toString()+"</font>"+"<br>"+"<br>"
+                                +orientationTxt.getEditText().getText().toString()+"<br>"
+                                +complicatedActionTxt.getEditText().getText().toString()+"<br>"
+                                +evaluationTxt.getEditText().getText().toString()+"<br>"
+                                +resolutionTxt.getEditText().getText().toString()+"<br>"+"<br>"
+                                +"<font color=\"#8E44AD\">"+messgageTxt.getEditText().getText().toString()+"</font>"));
                         generated = 1;
                     } else {
                         AlertDialog.Builder generatePopUp = new AlertDialog.Builder(getActivity());
                         generatePopUp.setTitle("Are you sure you want to generate again?");
-                        generatePopUp.setMessage("This button gives you the narrative so far based on the fields you have completed before. You can edit the narrative here to make it more fluent.\n\nIf you have made changes it is best NOT to generate again since any changes will be lost!");
+                        generatePopUp.setMessage("This button gives you the persuasive so far based on the fields you have completed before. You can edit the story here to make it more fluent.\n\nIf you have made changes it is best NOT to generate again since any changes will be lost!");
                         generatePopUp.setNegativeButton("Oops! Not really", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
@@ -511,10 +516,14 @@ public class MetaFirstFormFragment extends Fragment {
                         generatePopUp.setPositiveButton("          Yes           ", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                imageUrlTxt.getEditText().setText(orientationTxt.getEditText().getText().toString()+"\n"
-                                        +complicatedActionTxt.getEditText().getText().toString()+"\n"
-                                        +evaluationTxt.getEditText().getText().toString()+"\n"
-                                        +resolutionTxt.getEditText().getText().toString());
+                                imageUrlTxt.getEditText().setText(Html.fromHtml(
+                                        "<font color=\"#B2182D\">"+contextRelatedTxt.getEditText().getText().toString()+"</font>"+"<br>"
+                                                +"<font color=\"#128E4A\">"+stageRelatedTxt.getEditText().getText().toString()+"</font>"+"<br>"+"<br>"
+                                                +orientationTxt.getEditText().getText().toString()+"<br>"
+                                                +complicatedActionTxt.getEditText().getText().toString()+"<br>"
+                                                +evaluationTxt.getEditText().getText().toString()+"<br>"
+                                                +resolutionTxt.getEditText().getText().toString()+"<br>"+"<br>"
+                                                +"<font color=\"#8E44AD\">"+messgageTxt.getEditText().getText().toString()+"</font>"));
                                 dialogInterface.dismiss();
                             }
                         });

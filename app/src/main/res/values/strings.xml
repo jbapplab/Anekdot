@@ -47,10 +47,10 @@
         \n\nIn order for you to make your story more relatable Anecdot will guide you through a series of steps that will help you to tailor your story according to your audience.
     </string>
 
-    <string name="categoryMetaFirst">To begin with, select the <b>topic</b> in which your story fits. By selecting one of the topics provided (or by suggesting your own), you are directly
+    <string name="categoryMetaFirst">To begin with, select the <b><font color="#B2182D">topic</font></b> in which your story fits. By selecting one of the topics provided (or by suggesting your own), you are directly
         targeting people that are interested to read a relevant story. This will also give you some specific tips later on.</string>
     <string name="stageMetaFirst">Secondly, the state that your audience is in greatly affects their perception of your story in general and of your intended message.
-        \n\nThe audience typically moves through <b>4 main stages</b> in order to change.  While thinking of the problem or issue your story will be about, select the <b>stage</b>
+        \n\nThe audience typically moves through <b>4 main stages</b> in order to change.  While thinking of the problem or issue your story will be about, select the <b><font color="#128E4A">stage</font></b>
         in which your intended audience would most likely belong in regard to the issue.</string>
     <string name="swipeRightMetaFirst">According to what you have selected, tailored suggestions have been generated for you. You can <b>swipe right</b>
         and get extra information on how to make your story more relatable and thus more persuasive for your audience. Specific <b>goals and strategies</b>
@@ -60,13 +60,13 @@
         Anything goes, from a <b>hero\'s journey</b>, to a story of <b>personal growth</b> that have changed your worldview.
     </string>
 
-    <string name="guidanceMetaFirst">Now think about your audience in relation to the <b>stage</b> they are in.
+    <string name="guidanceMetaFirst">Now think about your audience in relation to the <b><font color="#128E4A">stage</font></b> they are in.
         \n- How can you make the <b>stage goal</b> suggested in the tips section relevant to them?
         \n- Which <b>strategies</b> will more likely work for them?
         \n\nUse the field below to capture your ideas. You will be able to rearrange these later when editing your story.</string>
     <string name="stageRelatedHint">Making the story relatable: stage.</string>
 
-    <string name="guidance2MetaFirst">Think about the <b>topic/theme/area</b> of your story.
+    <string name="guidance2MetaFirst">Think about the <b><font color="#B2182D">topic/theme/area</font></b> of your story.
         \n- Is it relatable to your intended audience?
         \n- How does this affect the setting
         and actors of the story?
@@ -111,7 +111,7 @@
     <string name="resolutionMetaFirst">Describe what happened in the end.</string>
 
     <string name="beforeMessageMetaFirst">The next part is very important for your story to be persuasive. It gives you the opportunity to leave your audience with the
-        <b>meaning or significance</b> of what happened.
+        <b><font color="#8E44AD">meaning or significance</font></b> of what happened.
         \n- You can describe how after the issue has been resolved the world is a better place for the people in the story.
         \n- You could share <b>strategies</b> and give <b>suggestions</b> to your audience and reinforce of <b>why these are relevant</b> to them.
         \n- You could write about how the audience\'s life will improve after following your suggestions along perhaps with how this experience changed you.
@@ -120,10 +120,14 @@
         to apply what they have learned.</string>
     <string name="messageMetaFirst">What should the audience take away?</string>
 
-    <string name="beforeUrlMetaFirst">In case you want to see your <b>narrative</b> so far you can use the button below to generate it. You can also edit your narrative in the field provided to make it more coherent and fluent.</string>
-    <string name="urlMetaFirst">Generate and edit your narrative.</string>
+    <string name="beforeUrlMetaFirst">You can use the button below to generate your <b>persuasive story</b> based your previous inputs.
+        \n\nAs mentioned before your story consists of persuasive factors related to the <b><font color="#B2182D">topic</font></b> of the story and the <b><font color="#128E4A">stage</font></b> that your audience is in
+        as well as a <b><font color="#000000">narrative</font></b> that these will be structured around. Your takeaway <b><font color="#8E44AD">message</font></b> for your audience is also presented in the end.
+        \n\nThe content is colour coded so it is easier to identify the elements even if these are rearranged in the story. The final story will not be coloured, it is simply for your convenience while editing. You can freely edit your story in the field provided below to make it more coherent, fluent and relatable to your audience. Sections can be cut/copy-pasted and new information can be added.
+        \n\n<b>Attention!</b> It is best to complete all the fields above before attempting to generate your persuasive story. This will be essential when attempting to save your story in the end.</string>
+    <string name="urlMetaFirst">Generate and edit your persuasive story.</string>
 
-    <string name="review_story">Review and Edit Persuasive Story</string>
+    <string name="review_story">Preview and Save Story</string>
     <string name="save_story">Save Story</string>
     <string name="update_story">Update Story</string>
     <!-- END STORY FORM -->
