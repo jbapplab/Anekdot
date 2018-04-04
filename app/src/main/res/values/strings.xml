@@ -44,7 +44,7 @@
         This makes the story more influential to them.
         \n\nTalking about influence you should be aiming to <b>change</b> some aspect of your audience\'s personality. This could be
         their <b>knowledge/understanding</b> regarding an issue, their <b>attitude</b> towards it, their <b>intention</b> to do something about it and ultimately a potential positive <b>behaviour</b> relevant to it.
-        \n\nIn order for you to make your story more relatable Anecdot will guide you through a series of steps that will help you to tailor your story according to your audience.
+        \n\nIn order for you to make your story more relatable Anecdot will guide you through a series of steps that will help you to tailor your story according to your audience.\n
     </string>
 
     <string name="categoryMetaFirst">To begin with, select the <b><font color="#B2182D">topic</font></b> in which your story fits. By selecting one of the topics provided (or by suggesting your own), you are directly
@@ -127,9 +127,9 @@
         \n\n<b>Attention!</b> It is best to complete all the fields above before attempting to generate your persuasive story. This will be essential when attempting to save your story in the end.</string>
     <string name="urlMetaFirst">Generate and edit your persuasive story.</string>
 
-    <string name="review_story">Preview and Save Story</string>
+    <string name="review_story">Preview and Post Online</string>
     <string name="save_story">Save Story</string>
-    <string name="update_story">Update Story</string>
+    <string name="update_story">Preview and Update</string>
     <!-- END STORY FORM -->
 
 
