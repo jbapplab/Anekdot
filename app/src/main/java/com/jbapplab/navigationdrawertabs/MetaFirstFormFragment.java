@@ -12,9 +12,11 @@ package com.jbapplab.navigationdrawertabs;
  holding it.
  */
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -32,6 +34,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,6 +45,7 @@ import com.jbapplab.navigationdrawertabs.m_DataObject.StoryCRUD;
 import com.jbapplab.navigationdrawertabs.m_MySQL.MySQLClientCRUD;
 
 import org.greenrobot.eventbus.EventBus;
+import org.w3c.dom.Text;
 
 
 public class MetaFirstFormFragment extends Fragment {
@@ -323,35 +327,29 @@ public class MetaFirstFormFragment extends Fragment {
                                     public void onClick(DialogInterface dialogInterface, int i) {
 
                                         imageUrl = imageUrlTxt.getEditText().getText().toString();
-                                        storyFull =  "<b>" + storyTitle  + "</b>" + "<BR>" + storyDescription + "<BR>" + imageUrl;
+                                        storyFull =  "Title: "+"<b>" + storyTitle  + "</b>" + "<BR><BR>" + "Description: " + storyDescription + "<BR><BR>" + "Story:" + imageUrl;
 
-                                        //TODO ALERT DIALOG
-                                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                                        builder.setTitle("Preview and Update");
+                                        final Dialog popUpDialog = new Dialog(getActivity());
+                                        popUpDialog.setContentView(R.layout.custom_story_preview_dialog);
 
-                                        final TextView textPopup = new TextView(getActivity());
-                                        textPopup.setText(Html.fromHtml(storyFull));
-                                        textPopup.setTextColor(getResources().getColor(R.color.black));
-                                        textPopup.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
-                                        textPopup.setSingleLine(false);
-                                        textPopup.setLines(20);
-                                        textPopup.setGravity(Gravity.LEFT | Gravity.TOP);
-                                        textPopup.setHorizontalScrollBarEnabled(false);
-                                        textPopup.setBackgroundColor(getResources().getColor(R.color.white));
-                                        textPopup.setPadding(30, 30, 30, 30);
+                                        TextView builderTitle = (TextView) popUpDialog.findViewById(R.id.titleText);
 
-                                        builder.setView(textPopup);
+                                        final TextView builderStory = (TextView) popUpDialog.findViewById(R.id.storyText);
+                                        builderStory.setText(storyFull);
 
-                                        builder.setNegativeButton("Back, I need to change more!", new DialogInterface.OnClickListener() {
+                                        Button yesButton = (Button) popUpDialog.findViewById(R.id.btn_yes);
+                                        Button noButton = (Button) popUpDialog.findViewById(R.id.btn_no);
+
+                                        noButton.setOnClickListener(new View.OnClickListener() {
                                             @Override
-                                            public void onClick(DialogInterface dialogInterfaceN, int i) {
-                                                dialogInterfaceN.dismiss();
+                                            public void onClick(View v) {
+                                                popUpDialog.dismiss();
                                             }
                                         });
 
-                                        builder.setPositiveButton("All good, update!", new DialogInterface.OnClickListener() {
+                                        yesButton.setOnClickListener(new View.OnClickListener() {
                                             @Override
-                                            public void onClick(DialogInterface dialogInterfaceN, int i) {
+                                            public void onClick(View v) {
 
                                                 if ((actionString != null) && actionString.equals("update")){
 
@@ -372,7 +370,7 @@ public class MetaFirstFormFragment extends Fragment {
                                                     storyCRUD.setStoryMeta(storyMeta);
                                                     storyCRUD.setStageRelated(stageRelated);;
                                                     storyCRUD.setContextRelated(contextRelated);
-                                                    storyCRUD.setStoryFull(textPopup.getText().toString());
+                                                    storyCRUD.setStoryFull(builderStory.getText().toString());
                                                     storyCRUD.setImageUrl(imageUrl);
                                                     storyCRUD.setAudienceStage(stage);
 
@@ -406,7 +404,7 @@ public class MetaFirstFormFragment extends Fragment {
                                                     storyCRUD.setStoryMeta(storyMeta);
                                                     storyCRUD.setStageRelated(stageRelated);;
                                                     storyCRUD.setContextRelated(contextRelated);
-                                                    storyCRUD.setStoryFull(textPopup.getText().toString());
+                                                    storyCRUD.setStoryFull(builderStory.getText().toString());
                                                     storyCRUD.setImageUrl(imageUrl);
                                                     storyCRUD.setAudienceStage(stage);
 
@@ -427,20 +425,7 @@ public class MetaFirstFormFragment extends Fragment {
 
                                             }
                                         });
-
-                                        AlertDialog alertDialog = builder.create();
-                                        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
-                                        layoutParams.copyFrom(alertDialog.getWindow().getAttributes());
-                                        layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
-                                        layoutParams.height = WindowManager.LayoutParams.MATCH_PARENT;
-                                        alertDialog.show();
-                                        alertDialog.getWindow().setAttributes(layoutParams);
-
-                                        final Button positiveButton = alertDialog.getButton(AlertDialog.BUTTON_POSITIVE);
-                                        LinearLayout parent = (LinearLayout) positiveButton.getParent();
-                                        parent.setGravity(Gravity.CENTER_HORIZONTAL);
-                                        View leftSpacer = parent.getChildAt(1);
-                                        leftSpacer.setVisibility(View.GONE);
+                                        popUpDialog.show();
                                     }
                                 });
                                 AlertDialog alertDialogGenerate = popUpUpdate.create();
@@ -460,14 +445,25 @@ public class MetaFirstFormFragment extends Fragment {
                                     public void onClick(DialogInterface dialogInterface, int i) {
 
                                         imageUrl = imageUrlTxt.getEditText().getText().toString();
-                                        storyFull =  "<b>" + storyTitle  + "</b>" + "<BR>" + storyDescription + "<BR>" + imageUrl;
+                                        storyFull =  "Title: "+"<b>" + storyTitle  + "</b>" + "<BR><BR>" + "Description: " + storyDescription + "<BR><BR>" + "Story:" + imageUrl;
 
                                         //TODO ALERT DIALOG
                                         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                                        builder.setTitle("Preview and Update");
+
+                                        TextView title = new TextView(getActivity());
+                                        // You Can Customise your Title here
+                                        title.setText(Html.fromHtml("<b>Preview and Update</b>"));
+                                        //title.setBackgroundColor(Color.DKGRAY);
+                                        title.setPadding(30, 30, 30, 30);
+                                        title.setGravity(Gravity.LEFT);
+                                        title.setTextColor(getResources().getColor(R.color.colorAccent));
+                                        title.setTextSize(20);
+
+                                        builder.setCustomTitle(title);
+                                        //builder.setTitle(Html.fromHtml("<font color='#d21414'>Preview and Update</font>"));
 
                                         final TextView textPopup = new TextView(getActivity());
-                                        textPopup.setText(Html.fromHtml(storyFull));
+                                        textPopup.setText(storyFull);
                                         textPopup.setTextColor(getResources().getColor(R.color.black));
                                         textPopup.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
                                         textPopup.setSingleLine(false);
@@ -477,7 +473,11 @@ public class MetaFirstFormFragment extends Fragment {
                                         textPopup.setBackgroundColor(getResources().getColor(R.color.white));
                                         textPopup.setPadding(30, 30, 30, 30);
 
-                                        builder.setView(textPopup);
+                                        final ScrollView scrollView = new ScrollView(getActivity());
+                                        scrollView.addView(textPopup);
+                                        scrollView.setVerticalScrollBarEnabled(true);
+
+                                        builder.setView(scrollView);
 
                                         builder.setNegativeButton("Back, I need to change more!", new DialogInterface.OnClickListener() {
                                             @Override
@@ -570,6 +570,13 @@ public class MetaFirstFormFragment extends Fragment {
                                         layoutParams.copyFrom(alertDialog.getWindow().getAttributes());
                                         layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
                                         layoutParams.height = WindowManager.LayoutParams.MATCH_PARENT;
+
+                                        /*
+                                        if(textPopup.getParent()!=null){
+                                            ((ViewGroup)textPopup.getParent()).removeView(textPopup);
+                                        }
+                                        */
+
                                         alertDialog.show();
                                         alertDialog.getWindow().setAttributes(layoutParams);
 
@@ -752,10 +759,10 @@ public class MetaFirstFormFragment extends Fragment {
                                         +resolutionTxt.getEditText().getText().toString()+"<br>"+"<br>"
                                         +"<font color=\"#8E44AD\">"+messgageTxt.getEditText().getText().toString()+"</font>"));
                         imageUrl = imageUrlTxt.getEditText().getText().toString();
-                        storyFull =  "<b>" + storyTitle  + "</b>" + "<BR>" + storyDescription + "<BR>" + imageUrl;
+                        storyFull =  "Title: "+"<b>" + storyTitle  + "</b>" + "<BR><BR>" + "Description: " + storyDescription + "<BR><BR>" + "Story:" + imageUrl;
                     } else {
                         imageUrl = imageUrlTxt.getEditText().getText().toString();
-                        storyFull =  "<b>" + storyTitle  + "</b>" + "<BR>" + storyDescription + "<BR>" + imageUrl;
+                        storyFull =  "Title: "+"<b>" + storyTitle  + "</b>" + "<BR><BR>" + "Description: " + storyDescription + "<BR><BR>" + "Story:" + imageUrl;
                     }
 
                     //Client side validation
@@ -786,10 +793,21 @@ public class MetaFirstFormFragment extends Fragment {
 
                         //TODO ALERT DIALOG
                         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                        builder.setTitle("Preview and Post Online");
+
+                        TextView title = new TextView(getActivity());
+                        // You Can Customise your Title here
+                        title.setText(Html.fromHtml("<b>Preview and Post Online</b>"));
+                        //title.setBackgroundColor(Color.DKGRAY);
+                        title.setPadding(30, 30, 30, 30);
+                        title.setGravity(Gravity.LEFT);
+                        title.setTextColor(getResources().getColor(R.color.colorAccent));
+                        title.setTextSize(20);
+
+                        builder.setCustomTitle(title);
+                        //builder.setTitle(Html.fromHtml("<font color='#d21414'>Preview and Post Online</font>"));
 
                         final TextView textPopup = new TextView(getActivity());
-                        textPopup.setText(Html.fromHtml(storyFull));
+                        textPopup.setText(storyFull);
                         textPopup.setTextColor(getResources().getColor(R.color.black));
                         textPopup.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
                         textPopup.setSingleLine(false);
@@ -799,7 +817,11 @@ public class MetaFirstFormFragment extends Fragment {
                         textPopup.setBackgroundColor(getResources().getColor(R.color.white));
                         textPopup.setPadding(30, 30, 30, 30);
 
-                        builder.setView(textPopup);
+                        final ScrollView scrollView = new ScrollView(getActivity());
+                        scrollView.addView(textPopup);
+                        scrollView.setVerticalScrollBarEnabled(true);
+
+                        builder.setView(scrollView);
 
                         builder.setNegativeButton("Back, I need to change more!", new DialogInterface.OnClickListener() {
                             @Override
@@ -892,6 +914,13 @@ public class MetaFirstFormFragment extends Fragment {
                         layoutParams.copyFrom(alertDialog.getWindow().getAttributes());
                         layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
                         layoutParams.height = WindowManager.LayoutParams.MATCH_PARENT;
+
+                        /*
+                        if(textPopup.getParent()!=null){
+                            ((ViewGroup)textPopup.getParent()).removeView(textPopup);
+                        }
+                        */
+
                         alertDialog.show();
                         alertDialog.getWindow().setAttributes(layoutParams);
 
