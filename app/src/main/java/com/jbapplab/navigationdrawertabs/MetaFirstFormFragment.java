@@ -324,26 +324,29 @@ public class MetaFirstFormFragment extends Fragment {
                                 });
                                 popUpUpdate.setPositiveButton("          Yes           ", new DialogInterface.OnClickListener() {
                                     @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                    public void onClick(final DialogInterface dialogInterface, int i) {
 
                                         imageUrl = imageUrlTxt.getEditText().getText().toString();
                                         storyFull =  "Title: "+"<b>" + storyTitle  + "</b>" + "<BR><BR>" + "Description: " + storyDescription + "<BR><BR>" + "Story:" + imageUrl;
 
-                                        final Dialog popUpDialog = new Dialog(getActivity());
-                                        popUpDialog.setContentView(R.layout.custom_story_preview_dialog);
+                                        final AlertDialog.Builder popUpDialog = new AlertDialog.Builder(getActivity());
+                                        LayoutInflater layoutInflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-                                        TextView builderTitle = (TextView) popUpDialog.findViewById(R.id.titleText);
+                                        View viewPopUp = layoutInflater.inflate(R.layout.custom_story_preview_dialog, null);
+                                        popUpDialog.setView(viewPopUp);
 
-                                        final TextView builderStory = (TextView) popUpDialog.findViewById(R.id.storyText);
+                                        TextView builderTitle = (TextView) viewPopUp.findViewById(R.id.titleText);
+
+                                        final TextView builderStory = (TextView) viewPopUp.findViewById(R.id.storyText);
                                         builderStory.setText(storyFull);
 
-                                        Button yesButton = (Button) popUpDialog.findViewById(R.id.btn_yes);
-                                        Button noButton = (Button) popUpDialog.findViewById(R.id.btn_no);
+                                        Button yesButton = (Button) viewPopUp.findViewById(R.id.btn_yes);
+                                        Button noButton = (Button) viewPopUp.findViewById(R.id.btn_no);
 
                                         noButton.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
-                                                popUpDialog.dismiss();
+                                                dialogInterface.dismiss();
                                             }
                                         });
 
@@ -425,7 +428,8 @@ public class MetaFirstFormFragment extends Fragment {
 
                                             }
                                         });
-                                        popUpDialog.show();
+                                        AlertDialog alertDialogNestedGenerate = popUpDialog.create();
+                                        alertDialogNestedGenerate.show();
                                     }
                                 });
                                 AlertDialog alertDialogGenerate = popUpUpdate.create();
