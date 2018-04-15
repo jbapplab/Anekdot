@@ -120,6 +120,10 @@
         to apply what they have learned.</string>
     <string name="messageMetaFirst">What should the audience take away?</string>
 
+    <string name="beforeReview">Ok! Now we are ready to put all the elements of your persuasive story together.
+        \n You can click the generate button to create your persuasive story. You will be able to edit your persuasive story after generating it. You can always come back to this screen to get tips but</string>
+
+
     <string name="beforeUrlMetaFirst">You can use the button below to generate your <b>persuasive story</b> based your previous inputs.
         \n\nAs mentioned before your story consists of persuasive factors related to the <b><font color="#B2182D">topic</font></b> of the story and the <b><font color="#128E4A">stage</font></b> that your audience is in
         as well as a <b><font color="#000000">narrative</font></b> that these will be structured around. Your takeaway <b><font color="#8E44AD">message</font></b> for your audience is also presented in the end.
@@ -190,6 +194,12 @@
     <string name="link3">Article: <a href="https://www.hrzone.com/talent/retention/how-to-use-storytelling-to-influence-people" >How to use storytelling to influence people</a></string>
     <string name="link4"><a href="http://www.www.com" >ForGet Password</a></string>
     <string name="link5"><a href="http://www.www.com" >ForGet Password</a></string>
+
+    <string name="precontemplation_info">I want to know more</string>
+    <string name="contemplation_info">I am thinking to change</string>
+    <string name="preparation_info">I want to do something soon</string>
+    <string name="action_info">I am already trying</string>
+    <string name="default_info">Not defined</string>
 
 
 </resources>

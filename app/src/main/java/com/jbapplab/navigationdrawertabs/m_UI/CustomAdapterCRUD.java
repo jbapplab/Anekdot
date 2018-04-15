@@ -55,25 +55,40 @@ public class CustomAdapterCRUD extends RecyclerView.Adapter<MyViewHolderCRUD> {
 
         final StoryCRUD story = stories.get(position);
 
-        holder.storyId.setText(Integer.toString(story.getStoryId()));
+        //holder.storyId.setText(Integer.toString(story.getStoryId()));
         holder.storyTitle.setText(story.getStoryTitle());
         holder.storyCategory.setText(story.getStoryCategory());
         holder.ifOtherSpecify.setText(story.getIfOtherSpecify());
-        holder.authorId.setText(Integer.toString(story.getAuthorId()));
+        //holder.authorId.setText(Integer.toString(story.getAuthorId()));
         holder.storyDescription.setText(story.getStoryDescription());
-        holder.storyEvents.setText(story.getStoryEvents());
-        holder.orientation.setText(story.getOrientation());
-        holder.complicatedAction.setText(story.getComplicatedAction());
-        holder.evaluation.setText(story.getEvaluation());
-        holder.resolution.setText(story.getResolution());
-        holder.message.setText(story.getMessage());
-        holder.storyMeta.setText(story.getStoryMeta());
-        holder.stageRelated.setText(story.getStageRelated());
-        holder.contextRelated.setText(story.getContextRelated());
-        holder.storyFull.setText(story.getStoryFull());
-        holder.storyTitle.setText(story.getStoryTitle());
-        holder.audienceStage.setText(story.getAudienceStage());
-        PicassoClient.downloadImage(context, story.getImageUrl(), holder.storyImage);
+        //holder.storyEvents.setText(story.getStoryEvents());
+        //holder.orientation.setText(story.getOrientation());
+        //holder.complicatedAction.setText(story.getComplicatedAction());
+        //holder.evaluation.setText(story.getEvaluation());
+        //holder.resolution.setText(story.getResolution());
+        //holder.message.setText(story.getMessage());
+        //holder.storyMeta.setText(story.getStoryMeta());
+        //holder.stageRelated.setText(story.getStageRelated());
+        //holder.contextRelated.setText(story.getContextRelated());
+        //holder.storyFull.setText(story.getStoryFull());
+
+        switch (story.getAudienceStage()){
+            case "Precontemplation":
+                holder.audienceStage.setText(R.string.precontemplation_info);
+                break;
+            case "Contemplation":
+                holder.audienceStage.setText(R.string.contemplation_info);
+                break;
+            case "Preparation":
+                holder.audienceStage.setText(R.string.preparation_info);
+                break;
+            case "Action":
+                holder.audienceStage.setText(R.string.action_info);
+                break;
+            default:
+                holder.audienceStage.setText(R.string.default_info);
+        }
+        PicassoClient.downloadImage(context, story.getStoryCategory(), holder.storyImage);
 
         holder.setItemClickListener(new StoryItemClickListener() {
             @Override
