@@ -1,57 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="330dp"
-    android:layout_height="600dp"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:padding="10dp"
-    android:weightSum="15">
+    android:shrinkColumns="*">
 
-    <TextView
-        android:id="@+id/titleText"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_gravity="start"
-        android:text="Preview and Update"
-        android:textColor="@color/colorAccent"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        />
 
-    <ScrollView
-        android:id="@+id/scrollViewPopup"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="11">
-            <TextView
-                android:id="@+id/storyText"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-    </ScrollView>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="3"
-        android:layout_gravity="center"
-        android:orientation="horizontal">
-        <Button
-            style="@style/Base.Widget.AppCompat.Button.Colored"
-            android:id="@+id/btn_no"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:background="@android:color/white"
-            android:text="Back, I need to change more!"
-            android:textColor="@color/colorAccent"/>
-
-        <Button
-            style="@style/Base.Widget.AppCompat.Button.Colored"
-            android:id="@+id/btn_yes"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:background="@android:color/white"
-            android:text="All good, update!"
+        <TextView
+            android:id="@+id/popupTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
             android:textColor="@color/colorAccent"
-            android:paddingStart="10dp"/>
-    </LinearLayout>
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingBottom="10dp"/>
 
-</LinearLayout>
+    <View
+        android:layout_height="2dp"
+        android:background="@color/colorAccent"
+        android:paddingBottom="3dp"/>
+    <TableRow>
+        <TextView
+            android:id="@+id/storyTitlePre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="Title:"
+            android:paddingTop="3dp"/>
+
+    </TableRow>
+    <TableRow>
+        <TextView
+            android:id="@+id/storyTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:gravity="start"
+            android:paddingBottom="3dp"
+            android:maxLines="2"/>
+    </TableRow>
+    <View
+        android:layout_height="2dp"
+        android:background="@color/colorAccent"/>
+    <TableRow>
+        <TextView
+            android:id="@+id/storyDescriptionPre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="Description:"
+            android:paddingTop="3dp"
+            />
+    </TableRow>
+    <TableRow>
+        <TextView
+            android:id="@+id/storyDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:gravity="start"
+            android:paddingBottom="3dp"
+            android:maxLines="3"/>
+    </TableRow>
+    <View
+        android:layout_height="2dp"
+        android:background="@color/colorAccent"/>
+    <TableRow>
+        <TextView
+            android:id="@+id/storyPre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="Story:"
+            android:paddingTop="3dp"/>
+    </TableRow>
+        <ScrollView
+            android:id="@+id/scrollViewPopup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/storyMain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="15sp"
+                android:paddingBottom="3dp"/>
+        </ScrollView>
+    <View
+        android:layout_height="2dp"
+        android:background="@color/colorAccent"/>
+</TableLayout>

@@ -12,29 +12,20 @@ package com.jbapplab.navigationdrawertabs;
  holding it.
  */
 
-import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.text.Html;
-import android.text.InputType;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,8 +36,6 @@ import com.jbapplab.navigationdrawertabs.m_DataObject.StoryCRUD;
 import com.jbapplab.navigationdrawertabs.m_MySQL.MySQLClientCRUD;
 
 import org.greenrobot.eventbus.EventBus;
-import org.w3c.dom.Text;
-
 
 public class MetaFirstFormFragment extends Fragment {
 
@@ -231,13 +220,13 @@ public class MetaFirstFormFragment extends Fragment {
                         AlertDialog.Builder generatePopUp = new AlertDialog.Builder(getActivity());
                         generatePopUp.setTitle("Are you sure you want to generate again?");
                         generatePopUp.setMessage("Since you are updating this story lets be certain! If you made changes on the fields above and you want to see how this makes a new story that is fine.\n\nIf you have made changes only in the story it is best NOT to generate again since any changes will be lost!");
-                        generatePopUp.setNegativeButton("Oops! Not really", new DialogInterface.OnClickListener() {
+                        generatePopUp.setNegativeButton("Oops! No", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 dialogInterface.dismiss();
                             }
                         });
-                        generatePopUp.setPositiveButton("          Yes           ", new DialogInterface.OnClickListener() {
+                        generatePopUp.setPositiveButton("Generate story", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 imageUrlTxt.getEditText().setText(Html.fromHtml(
@@ -248,12 +237,23 @@ public class MetaFirstFormFragment extends Fragment {
                                                 +evaluationTxt.getEditText().getText().toString()+"<br>"
                                                 +resolutionTxt.getEditText().getText().toString()+"<br>"+"<br>"
                                                 +"<font color=\"#8E44AD\">"+messgageTxt.getEditText().getText().toString()+"</font>"));
+
+                                EventBus.getDefault().post(new EventBusShareStoryMetaFirstActivity(imageUrlTxt.getEditText().getText().toString()));
+
                                 editCounter = 1;
                                 dialogInterface.dismiss();
                             }
                         });
                         AlertDialog alertDialogGenerate = generatePopUp.create();
                         alertDialogGenerate.show();
+
+                    final Button positiveButton = alertDialogGenerate.getButton(AlertDialog.BUTTON_POSITIVE);
+                    final Button negativeButton = alertDialogGenerate.getButton(AlertDialog.BUTTON_NEGATIVE);
+
+                    LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) positiveButton.getLayoutParams();
+                    layoutParams.weight = 10;
+                    positiveButton.setLayoutParams(layoutParams);
+                    negativeButton.setLayoutParams(layoutParams);
                 }
             });
 
@@ -278,7 +278,7 @@ public class MetaFirstFormFragment extends Fragment {
 
                     storyEvents = orientation + "\n" + complicatedAction + "\n" + evaluation + "\n" + resolution + "\n" + message;
                     storyMeta = stageRelated + "\n" + contextRelated;
-                    storyFull = "test";
+
 
                     //Client side validation
                     easyForm.validate();
@@ -316,181 +316,44 @@ public class MetaFirstFormFragment extends Fragment {
                                 AlertDialog.Builder popUpUpdate = new AlertDialog.Builder(getActivity());
                                 popUpUpdate.setTitle("Are you sure you are ready to update?");
                                 popUpUpdate.setMessage("It appears that you have not made any changes to your main story!\n\nIf it is the case that you wanted to change only the title, description and topic/stage that is fine.");
-                                popUpUpdate.setNegativeButton("Oops! Not really", new DialogInterface.OnClickListener() {
+                                popUpUpdate.setNegativeButton("Oops! No", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
                                         dialogInterface.dismiss();
                                     }
                                 });
-                                popUpUpdate.setPositiveButton("          Yes           ", new DialogInterface.OnClickListener() {
+                                popUpUpdate.setPositiveButton("Preview", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(final DialogInterface dialogInterface, int i) {
 
                                         imageUrl = imageUrlTxt.getEditText().getText().toString();
-                                        storyFull =  "Title: "+"<b>" + storyTitle  + "</b>" + "<BR><BR>" + "Description: " + storyDescription + "<BR><BR>" + "Story:" + imageUrl;
 
                                         final AlertDialog.Builder popUpDialog = new AlertDialog.Builder(getActivity());
-                                        LayoutInflater layoutInflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                                        LayoutInflater layoutInflater = getActivity().getLayoutInflater();
+                                        View customPopupView = layoutInflater.inflate(R.layout.custom_story_preview_dialog, null);
 
-                                        View viewPopUp = layoutInflater.inflate(R.layout.custom_story_preview_dialog, null);
-                                        popUpDialog.setView(viewPopUp);
+                                        popUpDialog.setView(customPopupView);
 
-                                        TextView builderTitle = (TextView) viewPopUp.findViewById(R.id.titleText);
+                                        TextView popupTitle = (TextView) customPopupView.findViewById(R.id.popupTitle);
+                                        TextView popupStoryTitle = (TextView) customPopupView.findViewById(R.id.storyTitle);
+                                        TextView popupStoryDescription = (TextView) customPopupView.findViewById(R.id.storyDescription);
+                                        final TextView popupStoryMain = (TextView) customPopupView.findViewById(R.id.storyMain);
 
-                                        final TextView builderStory = (TextView) viewPopUp.findViewById(R.id.storyText);
-                                        builderStory.setText(storyFull);
+                                        popupTitle.setText("Preview and Update");
+                                        popupStoryTitle.setText(storyTitle);
+                                        popupStoryDescription.setText(storyDescription);
+                                        popupStoryMain.setText(imageUrl);
 
-                                        Button yesButton = (Button) viewPopUp.findViewById(R.id.btn_yes);
-                                        Button noButton = (Button) viewPopUp.findViewById(R.id.btn_no);
+                                        storyFull =  "Title: " + storyTitle + "\n\n" + "Description: " + storyDescription + "\n\n" + "Story:" + imageUrl;
 
-                                        noButton.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                dialogInterface.dismiss();
-                                            }
-                                        });
-
-                                        yesButton.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-
-                                                if ((actionString != null) && actionString.equals("update")){
-
-                                                    //Save data
-                                                    StoryCRUD storyCRUD = new StoryCRUD();
-                                                    storyCRUD.setStoryId(storyIdInt);
-                                                    storyCRUD.setStoryTitle(storyTitle);
-                                                    storyCRUD.setStoryCategory(storyCategory);
-                                                    storyCRUD.setIfOtherSpecify(ifOtherSpecify);
-                                                    storyCRUD.setAuthorId(authorIdInt);
-                                                    storyCRUD.setStoryDescription(storyDescription);
-                                                    storyCRUD.setStoryEvents(storyEvents);
-                                                    storyCRUD.setOrientation(orientation);
-                                                    storyCRUD.setComplicatedAction(complicatedAction);
-                                                    storyCRUD.setEvaluation(evaluation);
-                                                    storyCRUD.setResolution(resolution);
-                                                    storyCRUD.setMessage(message);
-                                                    storyCRUD.setStoryMeta(storyMeta);
-                                                    storyCRUD.setStageRelated(stageRelated);;
-                                                    storyCRUD.setContextRelated(contextRelated);
-                                                    storyCRUD.setStoryFull(builderStory.getText().toString());
-                                                    storyCRUD.setImageUrl(imageUrl);
-                                                    storyCRUD.setAudienceStage(stage);
-
-                                                    new MySQLClientCRUD(getActivity(), userIdString, firstNameString, lastNameString, usernameString, passwordString, emailString).update(storyCRUD, storyCategorySpinner, storyTitleTxt, ifOtherSpecifyTxt, storyDescriptionTxt, orientationTxt, complicatedActionTxt, evaluationTxt, resolutionTxt, messgageTxt, stageRelatedTxt, contextRelatedTxt, imageUrlTxt, audienceStageSpinner);
-
-                                                    Intent intentGoToRetrieveStoriesCRUDActivity = new Intent(getActivity(), RetrieveStoriesCRUDActivity.class);
-                                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("CATEGORY_KEY", storyCategory);
-                                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("userId_KEY", userIdString);
-                                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("firstName_KEY", firstNameString);
-                                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("lastName_KEY", lastNameString);
-                                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("username_KEY", usernameString);
-                                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("password_KEY", passwordString);
-                                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("email_KEY", emailString);
-                                                    getActivity().startActivity(intentGoToRetrieveStoriesCRUDActivity);
-
-                                                } else {
-
-                                                    //Save data
-                                                    StoryCRUD storyCRUD = new StoryCRUD();
-                                                    storyCRUD.setStoryTitle(storyTitle);
-                                                    storyCRUD.setStoryCategory(storyCategory);
-                                                    storyCRUD.setIfOtherSpecify(ifOtherSpecify);
-                                                    storyCRUD.setAuthorId(authorId);
-                                                    storyCRUD.setStoryDescription(storyDescription);
-                                                    storyCRUD.setStoryEvents(storyEvents);
-                                                    storyCRUD.setOrientation(orientation);
-                                                    storyCRUD.setComplicatedAction(complicatedAction);
-                                                    storyCRUD.setEvaluation(evaluation);
-                                                    storyCRUD.setResolution(resolution);
-                                                    storyCRUD.setMessage(message);
-                                                    storyCRUD.setStoryMeta(storyMeta);
-                                                    storyCRUD.setStageRelated(stageRelated);;
-                                                    storyCRUD.setContextRelated(contextRelated);
-                                                    storyCRUD.setStoryFull(builderStory.getText().toString());
-                                                    storyCRUD.setImageUrl(imageUrl);
-                                                    storyCRUD.setAudienceStage(stage);
-
-                                                    new MySQLClientCRUD(getActivity(), userIdString, firstNameString, lastNameString, usernameString, passwordString, emailString).add(storyCRUD, storyCategorySpinner, storyTitleTxt, ifOtherSpecifyTxt, storyDescriptionTxt, orientationTxt, complicatedActionTxt, evaluationTxt, resolutionTxt, messgageTxt, stageRelatedTxt, contextRelatedTxt, imageUrlTxt, audienceStageSpinner);
-
-                                                    //TODO CHECK IF CORRECT
-                                                    Intent intentGoToRetrieveStoriesCRUDActivity = new Intent(getActivity(), RetrieveStoriesCRUDActivity.class);
-                                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("CATEGORY_KEY", storyCategory);
-                                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("userId_KEY", userIdString);
-                                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("firstName_KEY", firstNameString);
-                                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("lastName_KEY", lastNameString);
-                                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("username_KEY", usernameString);
-                                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("password_KEY", passwordString);
-                                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("email_KEY", emailString);
-                                                    getActivity().startActivity(intentGoToRetrieveStoriesCRUDActivity);
-
-                                                }
-
-                                            }
-                                        });
-                                        AlertDialog alertDialogNestedGenerate = popUpDialog.create();
-                                        alertDialogNestedGenerate.show();
-                                    }
-                                });
-                                AlertDialog alertDialogGenerate = popUpUpdate.create();
-                                alertDialogGenerate.show();
-                            } else {
-                                AlertDialog.Builder popUpUpdate = new AlertDialog.Builder(getActivity());
-                                popUpUpdate.setTitle("Are you sure you are ready to update?");
-                                popUpUpdate.setMessage("You have made changes to your main story!\n\nHave you considered changing your title, description and/or topic/stage to reflect these?");
-                                popUpUpdate.setNegativeButton("Oops! Not really", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        dialogInterface.dismiss();
-                                    }
-                                });
-                                popUpUpdate.setPositiveButton("          Yes           ", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-
-                                        imageUrl = imageUrlTxt.getEditText().getText().toString();
-                                        storyFull =  "Title: "+"<b>" + storyTitle  + "</b>" + "<BR><BR>" + "Description: " + storyDescription + "<BR><BR>" + "Story:" + imageUrl;
-
-                                        //TODO ALERT DIALOG
-                                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-
-                                        TextView title = new TextView(getActivity());
-                                        // You Can Customise your Title here
-                                        title.setText(Html.fromHtml("<b>Preview and Update</b>"));
-                                        //title.setBackgroundColor(Color.DKGRAY);
-                                        title.setPadding(30, 30, 30, 30);
-                                        title.setGravity(Gravity.LEFT);
-                                        title.setTextColor(getResources().getColor(R.color.colorAccent));
-                                        title.setTextSize(20);
-
-                                        builder.setCustomTitle(title);
-                                        //builder.setTitle(Html.fromHtml("<font color='#d21414'>Preview and Update</font>"));
-
-                                        final TextView textPopup = new TextView(getActivity());
-                                        textPopup.setText(storyFull);
-                                        textPopup.setTextColor(getResources().getColor(R.color.black));
-                                        textPopup.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
-                                        textPopup.setSingleLine(false);
-                                        textPopup.setLines(20);
-                                        textPopup.setGravity(Gravity.LEFT | Gravity.TOP);
-                                        textPopup.setHorizontalScrollBarEnabled(false);
-                                        textPopup.setBackgroundColor(getResources().getColor(R.color.white));
-                                        textPopup.setPadding(30, 30, 30, 30);
-
-                                        final ScrollView scrollView = new ScrollView(getActivity());
-                                        scrollView.addView(textPopup);
-                                        scrollView.setVerticalScrollBarEnabled(true);
-
-                                        builder.setView(scrollView);
-
-                                        builder.setNegativeButton("Back, I need to change more!", new DialogInterface.OnClickListener() {
+                                        popUpDialog.setNegativeButton("Back", new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialogInterfaceN, int i) {
                                                 dialogInterfaceN.dismiss();
                                             }
                                         });
 
-                                        builder.setPositiveButton("All good, update!", new DialogInterface.OnClickListener() {
+                                        popUpDialog.setPositiveButton("Update", new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialogInterfaceN, int i) {
 
@@ -513,7 +376,7 @@ public class MetaFirstFormFragment extends Fragment {
                                                     storyCRUD.setStoryMeta(storyMeta);
                                                     storyCRUD.setStageRelated(stageRelated);;
                                                     storyCRUD.setContextRelated(contextRelated);
-                                                    storyCRUD.setStoryFull(textPopup.getText().toString());
+                                                    storyCRUD.setStoryFull(popupStoryMain.getText().toString());
                                                     storyCRUD.setImageUrl(imageUrl);
                                                     storyCRUD.setAudienceStage(stage);
 
@@ -547,7 +410,149 @@ public class MetaFirstFormFragment extends Fragment {
                                                     storyCRUD.setStoryMeta(storyMeta);
                                                     storyCRUD.setStageRelated(stageRelated);;
                                                     storyCRUD.setContextRelated(contextRelated);
-                                                    storyCRUD.setStoryFull(textPopup.getText().toString());
+                                                    storyCRUD.setStoryFull(popupStoryMain.getText().toString());
+                                                    storyCRUD.setImageUrl(imageUrl);
+                                                    storyCRUD.setAudienceStage(stage);
+
+                                                    new MySQLClientCRUD(getActivity(), userIdString, firstNameString, lastNameString, usernameString, passwordString, emailString).add(storyCRUD, storyCategorySpinner, storyTitleTxt, ifOtherSpecifyTxt, storyDescriptionTxt, orientationTxt, complicatedActionTxt, evaluationTxt, resolutionTxt, messgageTxt, stageRelatedTxt, contextRelatedTxt, imageUrlTxt, audienceStageSpinner);
+
+                                                    //TODO CHECK IF CORRECT
+                                                    Intent intentGoToRetrieveStoriesCRUDActivity = new Intent(getActivity(), RetrieveStoriesCRUDActivity.class);
+                                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("CATEGORY_KEY", storyCategory);
+                                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("userId_KEY", userIdString);
+                                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("firstName_KEY", firstNameString);
+                                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("lastName_KEY", lastNameString);
+                                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("username_KEY", usernameString);
+                                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("password_KEY", passwordString);
+                                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("email_KEY", emailString);
+                                                    getActivity().startActivity(intentGoToRetrieveStoriesCRUDActivity);
+
+                                                }
+
+                                            }
+                                        });
+                                        AlertDialog alertDialogNested = popUpDialog.create();
+                                        alertDialogNested.show();
+
+                                        final Button nestedPositiveButton = alertDialogNested.getButton(AlertDialog.BUTTON_POSITIVE);
+                                        final Button nestedNegativeButton = alertDialogNested.getButton(AlertDialog.BUTTON_NEGATIVE);
+
+                                        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) nestedPositiveButton.getLayoutParams();
+                                        layoutParams.weight = 10;
+                                        nestedPositiveButton.setLayoutParams(layoutParams);
+                                        nestedNegativeButton.setLayoutParams(layoutParams);
+                                    }
+                                });
+                                AlertDialog alertDialog = popUpUpdate.create();
+                                alertDialog.show();
+
+                                final Button positiveButton = alertDialog.getButton(AlertDialog.BUTTON_POSITIVE);
+                                final Button negativeButton = alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+
+                                LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) positiveButton.getLayoutParams();
+                                layoutParams.weight = 10;
+                                positiveButton.setLayoutParams(layoutParams);
+                                negativeButton.setLayoutParams(layoutParams);
+
+                            } else {
+                                AlertDialog.Builder popUpUpdate = new AlertDialog.Builder(getActivity());
+                                popUpUpdate.setTitle("Are you sure you are ready to update?");
+                                popUpUpdate.setMessage("You have made changes to your main story!\n\nHave you considered changing your title, description and/or topic/stage to reflect these?");
+                            popUpUpdate.setNegativeButton("Oops! No", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    dialogInterface.dismiss();
+                                }
+                            });
+                            popUpUpdate.setPositiveButton("Preview", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(final DialogInterface dialogInterface, int i) {
+
+                                    imageUrl = imageUrlTxt.getEditText().getText().toString();
+
+                                    final AlertDialog.Builder popUpDialog = new AlertDialog.Builder(getActivity());
+                                    LayoutInflater layoutInflater = getActivity().getLayoutInflater();
+                                    View customPopupView = layoutInflater.inflate(R.layout.custom_story_preview_dialog, null);
+
+                                    popUpDialog.setView(customPopupView);
+
+                                    TextView popupTitle = (TextView) customPopupView.findViewById(R.id.popupTitle);
+                                    TextView popupStoryTitle = (TextView) customPopupView.findViewById(R.id.storyTitle);
+                                    TextView popupStoryDescription = (TextView) customPopupView.findViewById(R.id.storyDescription);
+                                    final TextView popupStoryMain = (TextView) customPopupView.findViewById(R.id.storyMain);
+
+                                    popupTitle.setText("Preview and Update");
+                                    popupStoryTitle.setText(storyTitle);
+                                    popupStoryDescription.setText(storyDescription);
+                                    popupStoryMain.setText(imageUrl);
+
+                                    storyFull =  "Title: " + storyTitle + "\n\n" + "Description: " + storyDescription + "\n\n" + "Story:" + imageUrl;
+
+                                    popUpDialog.setNegativeButton("Back", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterfaceN, int i) {
+                                            dialogInterfaceN.dismiss();
+                                        }
+                                    });
+
+                                    popUpDialog.setPositiveButton("Update", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterfaceN, int i) {
+
+                                                if ((actionString != null) && actionString.equals("update")){
+
+                                                    //Save data
+                                                    StoryCRUD storyCRUD = new StoryCRUD();
+                                                    storyCRUD.setStoryId(storyIdInt);
+                                                    storyCRUD.setStoryTitle(storyTitle);
+                                                    storyCRUD.setStoryCategory(storyCategory);
+                                                    storyCRUD.setIfOtherSpecify(ifOtherSpecify);
+                                                    storyCRUD.setAuthorId(authorIdInt);
+                                                    storyCRUD.setStoryDescription(storyDescription);
+                                                    storyCRUD.setStoryEvents(storyEvents);
+                                                    storyCRUD.setOrientation(orientation);
+                                                    storyCRUD.setComplicatedAction(complicatedAction);
+                                                    storyCRUD.setEvaluation(evaluation);
+                                                    storyCRUD.setResolution(resolution);
+                                                    storyCRUD.setMessage(message);
+                                                    storyCRUD.setStoryMeta(storyMeta);
+                                                    storyCRUD.setStageRelated(stageRelated);;
+                                                    storyCRUD.setContextRelated(contextRelated);
+                                                    storyCRUD.setStoryFull(popupStoryMain.getText().toString());
+                                                    storyCRUD.setImageUrl(imageUrl);
+                                                    storyCRUD.setAudienceStage(stage);
+
+                                                    new MySQLClientCRUD(getActivity(), userIdString, firstNameString, lastNameString, usernameString, passwordString, emailString).update(storyCRUD, storyCategorySpinner, storyTitleTxt, ifOtherSpecifyTxt, storyDescriptionTxt, orientationTxt, complicatedActionTxt, evaluationTxt, resolutionTxt, messgageTxt, stageRelatedTxt, contextRelatedTxt, imageUrlTxt, audienceStageSpinner);
+
+                                                    Intent intentGoToRetrieveStoriesCRUDActivity = new Intent(getActivity(), RetrieveStoriesCRUDActivity.class);
+                                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("CATEGORY_KEY", storyCategory);
+                                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("userId_KEY", userIdString);
+                                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("firstName_KEY", firstNameString);
+                                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("lastName_KEY", lastNameString);
+                                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("username_KEY", usernameString);
+                                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("password_KEY", passwordString);
+                                                    intentGoToRetrieveStoriesCRUDActivity.putExtra("email_KEY", emailString);
+                                                    getActivity().startActivity(intentGoToRetrieveStoriesCRUDActivity);
+
+                                                } else {
+
+                                                    //Save data
+                                                    StoryCRUD storyCRUD = new StoryCRUD();
+                                                    storyCRUD.setStoryTitle(storyTitle);
+                                                    storyCRUD.setStoryCategory(storyCategory);
+                                                    storyCRUD.setIfOtherSpecify(ifOtherSpecify);
+                                                    storyCRUD.setAuthorId(authorId);
+                                                    storyCRUD.setStoryDescription(storyDescription);
+                                                    storyCRUD.setStoryEvents(storyEvents);
+                                                    storyCRUD.setOrientation(orientation);
+                                                    storyCRUD.setComplicatedAction(complicatedAction);
+                                                    storyCRUD.setEvaluation(evaluation);
+                                                    storyCRUD.setResolution(resolution);
+                                                    storyCRUD.setMessage(message);
+                                                    storyCRUD.setStoryMeta(storyMeta);
+                                                    storyCRUD.setStageRelated(stageRelated);;
+                                                    storyCRUD.setContextRelated(contextRelated);
+                                                    storyCRUD.setStoryFull(popupStoryMain.getText().toString());
                                                     storyCRUD.setImageUrl(imageUrl);
                                                     storyCRUD.setAudienceStage(stage);
 
@@ -569,31 +574,28 @@ public class MetaFirstFormFragment extends Fragment {
                                             }
                                         });
 
-                                        AlertDialog alertDialog = builder.create();
-                                        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
-                                        layoutParams.copyFrom(alertDialog.getWindow().getAttributes());
-                                        layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
-                                        layoutParams.height = WindowManager.LayoutParams.MATCH_PARENT;
+                                    AlertDialog alertDialogNested = popUpDialog.create();
+                                    alertDialogNested.show();
 
-                                        /*
-                                        if(textPopup.getParent()!=null){
-                                            ((ViewGroup)textPopup.getParent()).removeView(textPopup);
-                                        }
-                                        */
+                                    final Button nestedPositiveButton = alertDialogNested.getButton(AlertDialog.BUTTON_POSITIVE);
+                                    final Button nestedNegativeButton = alertDialogNested.getButton(AlertDialog.BUTTON_NEGATIVE);
 
-                                        alertDialog.show();
-                                        alertDialog.getWindow().setAttributes(layoutParams);
-
-                                        final Button positiveButton = alertDialog.getButton(AlertDialog.BUTTON_POSITIVE);
-                                        LinearLayout parent = (LinearLayout) positiveButton.getParent();
-                                        parent.setGravity(Gravity.CENTER_HORIZONTAL);
-                                        View leftSpacer = parent.getChildAt(1);
-                                        leftSpacer.setVisibility(View.GONE);
-
+                                    LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) nestedPositiveButton.getLayoutParams();
+                                    layoutParams.weight = 10;
+                                    nestedPositiveButton.setLayoutParams(layoutParams);
+                                    nestedNegativeButton.setLayoutParams(layoutParams);
                                     }
                                 });
-                                AlertDialog alertDialogGenerate = popUpUpdate.create();
-                                alertDialogGenerate.show();
+                            AlertDialog alertDialog = popUpUpdate.create();
+                            alertDialog.show();
+
+                            final Button positiveButton = alertDialog.getButton(AlertDialog.BUTTON_POSITIVE);
+                            final Button negativeButton = alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+
+                            LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) positiveButton.getLayoutParams();
+                            layoutParams.weight = 10;
+                            positiveButton.setLayoutParams(layoutParams);
+                            negativeButton.setLayoutParams(layoutParams);
                             }
                     } else {
                         Toast.makeText(getActivity(), "The last input was invalid.", Toast.LENGTH_SHORT).show();
@@ -695,19 +697,22 @@ public class MetaFirstFormFragment extends Fragment {
                                 +evaluationTxt.getEditText().getText().toString()+"<br>"
                                 +resolutionTxt.getEditText().getText().toString()+"<br>"+"<br>"
                                 +"<font color=\"#8E44AD\">"+messgageTxt.getEditText().getText().toString()+"</font>"));
+
+                        EventBus.getDefault().post(new EventBusShareStoryMetaFirstActivity(imageUrlTxt.getEditText().getText().toString()));
+
                         generated = 1;
                         editCounter = 1;
                     } else {
                         AlertDialog.Builder generatePopUp = new AlertDialog.Builder(getActivity());
                         generatePopUp.setTitle("Are you sure you want to generate again?");
-                        generatePopUp.setMessage("This button gives you the persuasive so far based on the fields you have completed before. You can edit the story here to make it more fluent.\n\nIf you have made changes it is best NOT to generate again since any changes will be lost!");
-                        generatePopUp.setNegativeButton("Oops! Not really", new DialogInterface.OnClickListener() {
+                        generatePopUp.setMessage("Since you are updating this story lets be certain! If you made changes on the fields above and you want to see how this makes a new story that is fine.\n\nIf you have made changes only in the story it is best NOT to generate again since any changes will be lost!");
+                        generatePopUp.setNegativeButton("Oops! No", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 dialogInterface.dismiss();
                             }
                         });
-                        generatePopUp.setPositiveButton("          Yes           ", new DialogInterface.OnClickListener() {
+                        generatePopUp.setPositiveButton("Generate story", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 imageUrlTxt.getEditText().setText(Html.fromHtml(
@@ -718,12 +723,23 @@ public class MetaFirstFormFragment extends Fragment {
                                                 +evaluationTxt.getEditText().getText().toString()+"<br>"
                                                 +resolutionTxt.getEditText().getText().toString()+"<br>"+"<br>"
                                                 +"<font color=\"#8E44AD\">"+messgageTxt.getEditText().getText().toString()+"</font>"));
+
+                                EventBus.getDefault().post(new EventBusShareStoryMetaFirstActivity(imageUrlTxt.getEditText().getText().toString()));
+
                                 editCounter = 1;
                                 dialogInterface.dismiss();
                             }
                         });
                         AlertDialog alertDialogGenerate = generatePopUp.create();
                         alertDialogGenerate.show();
+
+                        final Button positiveButton = alertDialogGenerate.getButton(AlertDialog.BUTTON_POSITIVE);
+                        final Button negativeButton = alertDialogGenerate.getButton(AlertDialog.BUTTON_NEGATIVE);
+
+                        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) positiveButton.getLayoutParams();
+                        layoutParams.weight = 10;
+                        positiveButton.setLayoutParams(layoutParams);
+                        negativeButton.setLayoutParams(layoutParams);
                     }
 
                 }
@@ -763,17 +779,20 @@ public class MetaFirstFormFragment extends Fragment {
                                         +resolutionTxt.getEditText().getText().toString()+"<br>"+"<br>"
                                         +"<font color=\"#8E44AD\">"+messgageTxt.getEditText().getText().toString()+"</font>"));
                         imageUrl = imageUrlTxt.getEditText().getText().toString();
-                        storyFull =  "Title: "+"<b>" + storyTitle  + "</b>" + "<BR><BR>" + "Description: " + storyDescription + "<BR><BR>" + "Story:" + imageUrl;
+
+                        EventBus.getDefault().post(new EventBusShareStoryMetaFirstActivity(imageUrl));
+
                     } else {
                         imageUrl = imageUrlTxt.getEditText().getText().toString();
-                        storyFull =  "Title: "+"<b>" + storyTitle  + "</b>" + "<BR><BR>" + "Description: " + storyDescription + "<BR><BR>" + "Story:" + imageUrl;
+
+                        EventBus.getDefault().post(new EventBusShareStoryMetaFirstActivity(imageUrl));
                     }
 
                     //Client side validation
                     easyForm.validate();
 
                     if (easyForm.isValid()) {
-                        Toast.makeText(getActivity(), "All the fields are valid.", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getActivity(), "All the fields are valid.", Toast.LENGTH_SHORT).show();
 
                         //To appoint label from category selected in stages
                         stage= "Stage 1: The audience is unaware of the problem or issue you are describing.";
@@ -795,48 +814,36 @@ public class MetaFirstFormFragment extends Fragment {
                                 return;
                         }
 
-                        //TODO ALERT DIALOG
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                        imageUrl = imageUrlTxt.getEditText().getText().toString();
 
-                        TextView title = new TextView(getActivity());
-                        // You Can Customise your Title here
-                        title.setText(Html.fromHtml("<b>Preview and Post Online</b>"));
-                        //title.setBackgroundColor(Color.DKGRAY);
-                        title.setPadding(30, 30, 30, 30);
-                        title.setGravity(Gravity.LEFT);
-                        title.setTextColor(getResources().getColor(R.color.colorAccent));
-                        title.setTextSize(20);
+                        final AlertDialog.Builder popUpDialog = new AlertDialog.Builder(getActivity());
+                        LayoutInflater layoutInflater = getActivity().getLayoutInflater();
+                        View customPopupView = layoutInflater.inflate(R.layout.custom_story_preview_dialog, null);
 
-                        builder.setCustomTitle(title);
-                        //builder.setTitle(Html.fromHtml("<font color='#d21414'>Preview and Post Online</font>"));
+                        popUpDialog.setView(customPopupView);
 
-                        final TextView textPopup = new TextView(getActivity());
-                        textPopup.setText(storyFull);
-                        textPopup.setTextColor(getResources().getColor(R.color.black));
-                        textPopup.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
-                        textPopup.setSingleLine(false);
-                        textPopup.setLines(20);
-                        textPopup.setGravity(Gravity.LEFT | Gravity.TOP);
-                        textPopup.setHorizontalScrollBarEnabled(false);
-                        textPopup.setBackgroundColor(getResources().getColor(R.color.white));
-                        textPopup.setPadding(30, 30, 30, 30);
+                        TextView popupTitle = (TextView) customPopupView.findViewById(R.id.popupTitle);
+                        TextView popupStoryTitle = (TextView) customPopupView.findViewById(R.id.storyTitle);
+                        TextView popupStoryDescription = (TextView) customPopupView.findViewById(R.id.storyDescription);
+                        final TextView popupStoryMain = (TextView) customPopupView.findViewById(R.id.storyMain);
 
-                        final ScrollView scrollView = new ScrollView(getActivity());
-                        scrollView.addView(textPopup);
-                        scrollView.setVerticalScrollBarEnabled(true);
+                        popupTitle.setText("Preview and Post Online");
+                        popupStoryTitle.setText(storyTitle);
+                        popupStoryDescription.setText(storyDescription);
+                        popupStoryMain.setText(imageUrl);
 
-                        builder.setView(scrollView);
+                        storyFull =  "Title: " + storyTitle + "\n\n" + "Description: " + storyDescription + "\n\n" + "Story:" + imageUrl;
 
-                        builder.setNegativeButton("Back, I need to change more!", new DialogInterface.OnClickListener() {
+                        popUpDialog.setNegativeButton("Back", new DialogInterface.OnClickListener() {
                             @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                dialogInterface.dismiss();
+                            public void onClick(DialogInterface dialogInterfaceN, int i) {
+                                dialogInterfaceN.dismiss();
                             }
                         });
 
-                        builder.setPositiveButton("All good, post online!", new DialogInterface.OnClickListener() {
+                        popUpDialog.setPositiveButton("Post Online", new DialogInterface.OnClickListener() {
                             @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
+                            public void onClick(DialogInterface dialogInterfaceN, int i) {
 
                                 if ((actionString != null) && actionString.equals("update")){
 
@@ -857,7 +864,7 @@ public class MetaFirstFormFragment extends Fragment {
                                     storyCRUD.setStoryMeta(storyMeta);
                                     storyCRUD.setStageRelated(stageRelated);;
                                     storyCRUD.setContextRelated(contextRelated);
-                                    storyCRUD.setStoryFull(textPopup.getText().toString());
+                                    storyCRUD.setStoryFull(popupStoryMain.getText().toString());
                                     storyCRUD.setImageUrl(imageUrl);
                                     storyCRUD.setAudienceStage(stage);
 
@@ -891,7 +898,7 @@ public class MetaFirstFormFragment extends Fragment {
                                     storyCRUD.setStoryMeta(storyMeta);
                                     storyCRUD.setStageRelated(stageRelated);;
                                     storyCRUD.setContextRelated(contextRelated);
-                                    storyCRUD.setStoryFull(textPopup.getText().toString());
+                                    storyCRUD.setStoryFull(popupStoryMain.getText().toString());
                                     storyCRUD.setImageUrl(imageUrl);
                                     storyCRUD.setAudienceStage(stage);
 
@@ -913,26 +920,16 @@ public class MetaFirstFormFragment extends Fragment {
                             }
                         });
 
-                        AlertDialog alertDialog = builder.create();
-                        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
-                        layoutParams.copyFrom(alertDialog.getWindow().getAttributes());
-                        layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
-                        layoutParams.height = WindowManager.LayoutParams.MATCH_PARENT;
+                        AlertDialog alertDialogNested = popUpDialog.create();
+                        alertDialogNested.show();
 
-                        /*
-                        if(textPopup.getParent()!=null){
-                            ((ViewGroup)textPopup.getParent()).removeView(textPopup);
-                        }
-                        */
+                        final Button nestedPositiveButton = alertDialogNested.getButton(AlertDialog.BUTTON_POSITIVE);
+                        final Button nestedNegativeButton = alertDialogNested.getButton(AlertDialog.BUTTON_NEGATIVE);
 
-                        alertDialog.show();
-                        alertDialog.getWindow().setAttributes(layoutParams);
-
-                        final Button positiveButton = alertDialog.getButton(AlertDialog.BUTTON_POSITIVE);
-                        LinearLayout parent = (LinearLayout) positiveButton.getParent();
-                        parent.setGravity(Gravity.CENTER_HORIZONTAL);
-                        View leftSpacer = parent.getChildAt(1);
-                        leftSpacer.setVisibility(View.GONE);
+                        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) nestedPositiveButton.getLayoutParams();
+                        layoutParams.weight = 10;
+                        nestedPositiveButton.setLayoutParams(layoutParams);
+                        nestedNegativeButton.setLayoutParams(layoutParams);
 
                     } else {
                         Toast.makeText(getActivity(), "The last input was invalid.", Toast.LENGTH_SHORT).show();

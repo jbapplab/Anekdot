@@ -16,6 +16,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 
 public class MetaFirstActivity extends AppCompatActivity {
@@ -35,6 +38,8 @@ public class MetaFirstActivity extends AppCompatActivity {
     String username;
     String password;
     String email;
+
+    String fullStoryForShare;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -307,11 +312,11 @@ public class MetaFirstActivity extends AppCompatActivity {
                 return true;
 
             case R.id.menu_item_share:
+
                 //TODO User chose the "Share" action FULL STORY
-                //Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.putExtra(Intent.EXTRA_TEXT, "THIS SHOULD BE THE FULL STORY");
+                sendIntent.putExtra(Intent.EXTRA_TEXT, fullStoryForShare);
                 sendIntent.setType("text/plain");
                 startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.send_to)));
                 return true;
@@ -322,5 +327,23 @@ public class MetaFirstActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
 
         }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onShareStoryEvent(EventBusShareStoryMetaFirstActivity event) {
+        fullStoryForShare = event.message;
+    }
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
     }
 }
