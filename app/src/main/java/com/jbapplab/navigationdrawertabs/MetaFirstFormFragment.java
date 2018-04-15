@@ -622,6 +622,9 @@ public class MetaFirstFormFragment extends Fragment {
             final Button buttonAdd = getView().findViewById(R.id.addButton);
             final Button buttonGenerate = getView().findViewById(R.id.generateButton);
 
+            imageUrlTxt.getEditText().setText("Try generating to share and post online!");
+            EventBus.getDefault().post(new EventBusShareStoryMetaFirstActivity(imageUrlTxt.getEditText().getText().toString()));
+
             buttonAdd.setEnabled(true);
             buttonAdd.setAlpha(1);
 

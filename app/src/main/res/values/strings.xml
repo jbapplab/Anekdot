@@ -33,7 +33,7 @@
     <string name="placeholder_image">placeholder image</string>
     <string name="category_name">Category Name</string>
     <string name="category_image">Category Image</string>
-    <string name="send_to">Send text to:</string>
+    <string name="send_to">Share persuasive story via:</string>
 
     <!-- START STORY FORM -->
     <string name="storyCreateMetaFirst">Create a New Story:\nThink the Audience First</string>
