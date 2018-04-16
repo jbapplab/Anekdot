@@ -13,7 +13,7 @@
     <string name="error_message_empty">Please fill this field</string>
     <string name="error_message_email">Please input a valid email address</string>
     <string name="error_message_digit">Please input digits only</string>
-    <string name="error_message_password">Length must be at least 6-12 characters. Special characters are not allowed.</string>
+    <string name="error_message_password">Length must be at least 6–12 characters. Special characters are not allowed.</string>
 
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
@@ -120,7 +120,7 @@
         to apply what they have learned.</string>
     <string name="messageMetaFirst">What should the audience take away?</string>
 
-    <string name="beforeReview">Ok! Now we are ready to put all the elements of your persuasive story together.
+    <string name="beforeReview">OK! Now we are ready to put all the elements of your persuasive story together.
         \n You can click the generate button to create your persuasive story. You will be able to edit your persuasive story after generating it. You can always come back to this screen to get tips but</string>
 
 
@@ -137,8 +137,6 @@
     <!-- END STORY FORM -->
 
 
-
-
     <string name="register">register</string>
 
     <!-- User area strings -->
@@ -153,8 +151,7 @@
     <string name="generate_tip">I want another tip!</string>
     <string name="intro_links_tutorials">Here you can find useful links and video tutorials for persuasive writing.</string>
 
-    <string-array
-        name="string_array_TipOTD">
+    <string-array name="string_array_TipOTD">
         <item>Take a stance. What do you think about the issue? What side will you take? Be aware of any prejudices you might have that could color your argument. What resolution will you suggest?</item>
         <item>Know your audience. Determine if your audience will agree with your position and why they may not. You must be able to understand both sides of the issue in order to successfully argue your point of view.</item>
         <item>Thoroughly research your topic. The point of a persuasive essay is to provide detailed and compelling evidence—you should be able to disprove the opposing argument. It will likely be necessary to undertake library-based research in order to accomplish this.</item>
@@ -190,16 +187,40 @@
 
     <!-- LINKS -->
     <string name="link1">Guide: <a href="https://problogger.com/th-science-of-storytelling-6-ways-to-write-more-persuasive-stories/">6 Ways to Write More Persuasive Stories</a></string>
-    <string name="link2">Article: <a href="https://hbr.org/2011/03/using-stories-as-a-tool-of-per" >Using Stories to Persuade</a></string>
-    <string name="link3">Article: <a href="https://www.hrzone.com/talent/retention/how-to-use-storytelling-to-influence-people" >How to use storytelling to influence people</a></string>
-    <string name="link4"><a href="http://www.www.com" >ForGet Password</a></string>
-    <string name="link5"><a href="http://www.www.com" >ForGet Password</a></string>
+    <string name="link2">Article: <a href="https://hbr.org/2011/03/using-stories-as-a-tool-of-per">Using Stories to Persuade</a></string>
+    <string name="link3">Article: <a href="https://www.hrzone.com/talent/retention/how-to-use-storytelling-to-influence-people">How to use storytelling to influence people</a></string>
+    <string name="link4"><a href="http://www.www.com">ForGet Password</a></string>
+    <string name="link5"><a href="http://www.www.com">ForGet Password</a></string>
 
     <string name="precontemplation_info">I want to know more</string>
     <string name="contemplation_info">I am thinking to change</string>
     <string name="preparation_info">I want to do something soon</string>
     <string name="action_info">I am already trying</string>
     <string name="default_info">Not defined</string>
+
+    <string name="write_story_notification_title_template">Write story: %1$s</string>
+
+    <!-- TODO: remove this placeholder text -->
+    <string name="write_story_notification_placeholder_text_template">You said %1$s and lorem ipsum
+        dolor sit amet, consectetur adipiscing elit. Etiam non enim magna. Morbi dictum, velit vel
+        semper venenatis, magna odio volutpat velit, at ullamcorper nulla lacus sed turpis.
+        Pellentesque vitae metus elit, nec tincidunt tellus. Integer sed nisl sem, ullamcorper
+        ornare lacus. Duis ac mauris sed massa congue volutpat. Donec sed erat sit amet turpis
+        viverra rhoncus sit amet nec magna. Donec lacinia ligula at libero volutpat volutpat nec nec
+        tortor.
+    </string>
+
+    <string name="action_share">Share</string>
+    <string name="action_reply">Reply</string>
+
+    <string name="sett_reminder_header">Set notification for story nudge</string>
+    <string name="sett_reminder_label">Sometimes we simply forget that important things happened during the day
+     and good ideas that we had are not used make a change. With Anecdote you can set a gentle nudge at a
+    convenient time for you (e.g. when you are comfy at home) to start writing a compelling story. Practice
+    makes perfect so try to write often and share your world-changing ideas!</string>
+    <string name="sett_reminder_desc">Flick the switch to enable/disable notifications.</string>
+    <string name="sett_reminder_time_label">Set Reminder Time</string>
+    <string name="sett_reminder_time_content">8 : 00 PM</string>
 
 
 </resources>

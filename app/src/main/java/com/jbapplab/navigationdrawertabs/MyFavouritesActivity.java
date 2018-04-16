@@ -2,6 +2,7 @@ package com.jbapplab.navigationdrawertabs;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -11,12 +12,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.jbapplab.navigationdrawertabs.m_DataObject.StoryCRUD;
 import com.jbapplab.navigationdrawertabs.m_MySQL.MySQLClientCRUD;
 import com.jbapplab.navigationdrawertabs.m_UI.CustomAdapterCRUD;
 
@@ -44,8 +45,8 @@ public class MyFavouritesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_favourites);
 
-        /**
-         * Here we need to retrieve the data that we passed through the intent
+        /*
+          Here we need to retrieve the data that we passed through the intent
          */
         Intent intent = getIntent();
         userId = intent.getStringExtra("userId_KEY");
@@ -55,22 +56,18 @@ public class MyFavouritesActivity extends AppCompatActivity {
         password = intent.getStringExtra("password_KEY");
         email = intent.getStringExtra("email_KEY");
 
-        //Set the toolbar as an action bar to later change the label
-        Toolbar mainToolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(mainToolbar);
-
-        /**
-         *Setup the DrawerLayout and NavigationView
+        /*
+         Setup the DrawerLayout and NavigationView
          */
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        mNavigationView = (NavigationView) findViewById(R.id.navigation_stuff);
+        mDrawerLayout = findViewById(R.id.drawerLayout);
+        mNavigationView = findViewById(R.id.navigation_stuff);
 
-        /**
-         * Setup click events on the Navigation View Items.
+        /*
+          Setup click events on the Navigation View Items.
          */
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(MenuItem menuItem) {
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 mDrawerLayout.closeDrawers();
 
                 //Can add more according to the buttons I will need
@@ -199,8 +196,8 @@ public class MyFavouritesActivity extends AppCompatActivity {
 
         });
 
-        /**
-         * Setup Drawer Toggle of the Toolbar
+        /*
+          Setup Drawer Toggle of the Toolbar
          */
 
         android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
@@ -218,14 +215,14 @@ public class MyFavouritesActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerViewRetrieveFavouritesStoriesCRUD);
         recyclerView.setLayoutManager(new LinearLayoutManager(MyFavouritesActivity.this));
 
-        ArrayList dummyArrayList = new ArrayList<>();
+        ArrayList<StoryCRUD> dummyArrayList = new ArrayList<>();
         CustomAdapterCRUD customAdapterCRUD = new CustomAdapterCRUD(this, dummyArrayList, userId, firstName, lastName, username, password, email);
         recyclerView.setAdapter(customAdapterCRUD);
 
         final SwipeRefreshLayout swipeRefreshLayout = findViewById(R.id.swipeLayoutRetrieveFavouritesStoriesCRUD);
 
         //Retrieve
-        mainToolbar.setTitle("My Favourites");
+        toolbar.setTitle("My Favourites");
         new MySQLClientCRUD(MyFavouritesActivity.this, userId, firstName, lastName, username, password, email).retrieveMyFavourites(recyclerView, swipeRefreshLayout, progressBar);
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

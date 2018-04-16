@@ -3,6 +3,8 @@
     package="com.jbapplab.navigationdrawertabs">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 
     <application
         android:allowBackup="true"
@@ -28,13 +30,18 @@
         <activity android:name=".SelectSavedTypeActivity" />
         <activity android:name=".RetrieveStoriesCRUDActivity" />
         <activity android:name=".SelectCreateTypeActivity" />
-        <activity android:name=".MetaFirstActivity"
-            android:screenOrientation="portrait"/>
+        <activity android:name=".MetaFirstActivity" android:screenOrientation="portrait" />
         <activity android:name=".RetrieveStoriesActivity" />
         <activity android:name=".MyStoriesActivity" />
         <activity android:name=".MyFavouritesActivity" />
-        <activity android:name=".SettingsActivity" />
-        <activity android:name=".HelpActivity"></activity>
+        <activity android:name=".SettingsActivity" android:screenOrientation="portrait" />
+        <activity android:name=".HelpActivity" />
+
+        <receiver android:name=".AlarmReceiver" android:enabled="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

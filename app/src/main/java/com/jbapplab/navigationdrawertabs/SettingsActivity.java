@@ -1,20 +1,49 @@
 package com.jbapplab.navigationdrawertabs;
 
+
+import android.annotation.TargetApi;
+import android.app.TimePickerDialog;
+import android.content.ClipboardManager;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SwitchCompat;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class SettingsActivity extends AppCompatActivity {
+
+    //Declarations for Notifications
+    String TAG = "RemindMe";
+    LocalData localData;
+
+    SwitchCompat reminderSwitch;
+    TextView tvTime;
+
+    LinearLayout ll_set_time;
+
+    int hour, min;
+
+    ClipboardManager myClipboard;
 
     //Navigation drawer declaration
     DrawerLayout mDrawerLayout;
@@ -199,6 +228,136 @@ public class SettingsActivity extends AppCompatActivity {
         mDrawerLayout.addDrawerListener(mDrawerToggle);
 
         mDrawerToggle.syncState();
+
+        /*
+        // prepare intent which is triggered if the notification is selected
+        Intent intentNotification = new Intent(this, MetaFirstActivity.class);
+        intentNotification.putExtra("userId_KEY", userId);
+        intentNotification.putExtra("firstName_KEY", firstName);
+        intentNotification.putExtra("lastName_KEY", lastName);
+        intentNotification.putExtra("username_KEY", username);
+        intentNotification.putExtra("password_KEY", password);
+        intentNotification.putExtra("email_KEY", email);
+
+        // use System.currentTimeMillis() to have a unique ID for the pending intent
+        PendingIntent pIntent = PendingIntent.getActivity(this, (int) System.currentTimeMillis(), intentNotification, 0);
+
+        // build notification the addAction re-use the same intent to keep the example short
+        Notification n  = new Notification.Builder(this)
+                .setContentTitle("New mail from " + "test@gmail.com")
+                .setContentText("Subject")
+                .setSmallIcon(R.drawable.ic_stat_write_story)
+                .setContentIntent(pIntent)
+                .setAutoCancel(true)
+                .addAction(R.drawable.create_audience, "Write story!", pIntent).build();
+
+
+        NotificationManager notificationManager =
+                (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+
+        assert notificationManager != null;
+        notificationManager.notify(0, n);
+        */
+
+        //Notification Handling
+        localData = new LocalData(getApplicationContext());
+
+        myClipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+
+        ll_set_time = (LinearLayout) findViewById(R.id.ll_set_time);
+
+        tvTime = (TextView) findViewById(R.id.tv_reminder_time_desc);
+
+        reminderSwitch = (SwitchCompat) findViewById(R.id.timerSwitch);
+
+        hour = localData.get_hour();
+        min = localData.get_min();
+
+        tvTime.setText(getFormatedTime(hour, min));
+        reminderSwitch.setChecked(localData.getReminderStatus());
+
+        if (!localData.getReminderStatus())
+            ll_set_time.setAlpha(0.4f);
+
+        reminderSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                localData.setReminderStatus(isChecked);
+                if (isChecked) {
+                    Log.d(TAG, "onCheckedChanged: true");
+                    NotificationScheduler.setReminder(SettingsActivity.this, AlarmReceiver.class, localData.get_hour(), localData.get_min());
+                    ll_set_time.setAlpha(1f);
+                } else {
+                    Log.d(TAG, "onCheckedChanged: false");
+                    NotificationScheduler.cancelReminder(SettingsActivity.this, AlarmReceiver.class);
+                    ll_set_time.setAlpha(0.4f);
+                }
+
+            }
+        });
+
+        ll_set_time.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (localData.getReminderStatus())
+                    showTimePickerDialog(localData.get_hour(), localData.get_min());
+            }
+        });
+    }
+
+    //Methods for Notifications
+    private void showTimePickerDialog(int h, int m) {
+
+        LayoutInflater inflater = getLayoutInflater();
+        View view = inflater.inflate(R.layout.timepicker_header, null);
+
+        TimePickerDialog builder = new TimePickerDialog(this, R.style.DialogTheme,
+                new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int hour, int min) {
+                        Log.d(TAG, "onTimeSet: hour " + hour);
+                        Log.d(TAG, "onTimeSet: min " + min);
+                        localData.set_hour(hour);
+                        localData.set_min(min);
+                        tvTime.setText(getFormatedTime(hour, min));
+                        NotificationScheduler.setReminder(SettingsActivity.this, AlarmReceiver.class, localData.get_hour(), localData.get_min());
+
+
+                    }
+                }, h, m, false);
+
+        builder.setCustomTitle(view);
+        builder.show();
+
+    }
+
+    public String getFormatedTime(int h, int m) {
+        final String OLD_FORMAT = "HH:mm";
+        final String NEW_FORMAT = "hh:mm a";
+
+        String oldDateString = h + ":" + m;
+        String newDateString = "";
+
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat(OLD_FORMAT, getCurrentLocale());
+            Date d = sdf.parse(oldDateString);
+            sdf.applyPattern(NEW_FORMAT);
+            newDateString = sdf.format(d);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return newDateString;
+    }
+
+    @TargetApi(Build.VERSION_CODES.N)
+    public Locale getCurrentLocale() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            return getResources().getConfiguration().getLocales().get(0);
+        } else {
+            //noinspection deprecation
+            return getResources().getConfiguration().locale;
+        }
     }
 
     /*
@@ -228,7 +387,6 @@ public class SettingsActivity extends AppCompatActivity {
                 return true;
 
             case R.id.menu_item_share:
-                //TODO User chose the "Share" action WE PUT CONTEXT SPECIFIC SHARE
                 Toast.makeText(SettingsActivity.this, "There is nothing but settings here, move along!", Toast.LENGTH_SHORT).show();
                 return true;
 
@@ -238,5 +396,7 @@ public class SettingsActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
 
         }
+
+
     }
 }

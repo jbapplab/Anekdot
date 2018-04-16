@@ -2,6 +2,7 @@ package com.jbapplab.navigationdrawertabs;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -16,6 +17,9 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 public class UserAreaActivity extends AppCompatActivity {
+
+    //Shared preferences
+    private SharedPreferences.Editor userInfoEditor;
 
     //Navigation drawer declaration
     DrawerLayout mDrawerLayout;
@@ -215,6 +219,18 @@ public class UserAreaActivity extends AppCompatActivity {
         mDrawerLayout.addDrawerListener(mDrawerToggle);
 
         mDrawerToggle.syncState();
+
+        //Use shared preferences to save user info
+        SharedPreferences userInfo = getSharedPreferences("userInfo", MODE_PRIVATE);
+        userInfoEditor = userInfo.edit();
+
+        userInfoEditor.putString("userId", userId);
+        userInfoEditor.putString("firstName", firstName);
+        userInfoEditor.putString("password", password);
+        userInfoEditor.putString("lastName", lastName);
+        userInfoEditor.putString("username", username);
+        userInfoEditor.putString("email", email);
+        userInfoEditor.apply();
     }
 
     public void setActionBarTitle(String title){

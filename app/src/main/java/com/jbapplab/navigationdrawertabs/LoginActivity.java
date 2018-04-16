@@ -11,9 +11,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.ShareActionProvider;
 import android.widget.TextView;
-
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -26,9 +24,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private ProgressBar progressBar;
     private CheckBox saveLoginCheckBox;
-    private SharedPreferences loginPreferences;
     private SharedPreferences.Editor loginPrefsEditor;
-    private Boolean saveLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,17 +37,17 @@ public class LoginActivity extends AppCompatActivity {
             LoginActivity.this.finishAndRemoveTask();
         }
 
-        final EditText etUsername = (EditText) findViewById(R.id.etUsername);
-        final EditText etPassword = (EditText) findViewById(R.id.etPassword);
-        final Button bLogin = (Button) findViewById(R.id.bLogin);
-        final TextView tvRegisterHere = (TextView) findViewById(R.id.tvRegisterHere);
+        final EditText etUsername = findViewById(R.id.etUsername);
+        final EditText etPassword = findViewById(R.id.etPassword);
+        final Button bLogin = findViewById(R.id.bLogin);
+        final TextView tvRegisterHere = findViewById(R.id.tvRegisterHere);
 
         //Save login info
-        saveLoginCheckBox = (CheckBox)findViewById(R.id.saveLoginCheckBox);
-        loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+        saveLoginCheckBox = findViewById(R.id.saveLoginCheckBox);
+        SharedPreferences loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
         loginPrefsEditor = loginPreferences.edit();
 
-        saveLogin = loginPreferences.getBoolean("saveLogin", false);
+        Boolean saveLogin = loginPreferences.getBoolean("saveLogin", false);
         if (saveLogin) {
             etUsername.setText(loginPreferences.getString("username", ""));
             etPassword.setText(loginPreferences.getString("password", ""));
@@ -84,31 +80,31 @@ public class LoginActivity extends AppCompatActivity {
                     loginPrefsEditor.putBoolean("saveLogin", true);
                     loginPrefsEditor.putString("username", username);
                     loginPrefsEditor.putString("password", password);
-                    loginPrefsEditor.commit();
+                    loginPrefsEditor.apply();
                 } else {
                     loginPrefsEditor.clear();
-                    loginPrefsEditor.commit();
+                    loginPrefsEditor.apply();
                 }
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        /**
-                         * We need to convert the response to a JSON object so we can work with it.
-                         *Like before we have a success that shows us if the response has been successful or not.
-                         *
+                        /*
+                          We need to convert the response to a JSON object so we can work with it.
+                         Like before we have a success that shows us if the response has been successful or not.
+
                          */
                         try {
                             JSONObject jsonResponse = new JSONObject(response);
                             boolean success = jsonResponse.getBoolean("success");
 
                             if (success){
-                                /**
-                                 * If successful we want to get the details from the JSON response and send that over to
-                                 * the UserAreaActivity. We can retrieve the fields we said that we would get in the PHP
-                                 * file. Then we need to create an intend to open the UserAreaActivity. Using the intent
-                                 * we can send extra stuff to the new activity. After we pass all the data we need to pass
-                                 * in the new activity we need to open it.
+                                /*
+                                  If successful we want to get the details from the JSON response and send that over to
+                                  the UserAreaActivity. We can retrieve the fields we said that we would get in the PHP
+                                  file. Then we need to create an intend to open the UserAreaActivity. Using the intent
+                                  we can send extra stuff to the new activity. After we pass all the data we need to pass
+                                  in the new activity we need to open it.
                                   */
 
                                 int userId = jsonResponse.getInt("userId");
@@ -160,9 +156,9 @@ public class LoginActivity extends AppCompatActivity {
 
                 LoginRequest loginRequest = new LoginRequest(username, password, responseListener, errorListener);
 
-                /**
-                 * Finally we need to add our request to a request queue.
-                 * Then we ask to get the queue from volley, because volley hold all of the requests.
+                /*
+                  Finally we need to add our request to a request queue.
+                  Then we ask to get the queue from volley, because volley hold all of the requests.
                  */
                 RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
                 queue.add(loginRequest);

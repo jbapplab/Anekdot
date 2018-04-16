@@ -1,7 +1,5 @@
 package com.jbapplab.navigationdrawertabs;
 
-import android.util.Log;
-
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
@@ -26,15 +24,15 @@ public class LoginRequest extends StringRequest {
     private Map<String, String> params;
 
     //Create a constructor for when the first instance of this class is created
-    public LoginRequest(String username, String password, Response.Listener<String> listener, Response.ErrorListener errorListener){
-        /**
-         * We need to pass some data to volley which will allow it to execute our request
-         * -First thing we need to pass is the method - POST means we are gonna send some data to register.php and it
-         * will respond with some data.
-         * -Then we need to give volley the URL
-         * -Then we need to give it the listener: when volley has finished with the request it will inform the
-         * Response.Listener
-         * -Finally we need to provide an error listener that volley will inform if something goes wrong with the request
+    LoginRequest(String username, String password, Response.Listener<String> listener, Response.ErrorListener errorListener){
+        /*
+          We need to pass some data to volley which will allow it to execute our request
+          -First thing we need to pass is the method - POST means we are gonna send some data to register.php and it
+          will respond with some data.
+          -Then we need to give volley the URL
+          -Then we need to give it the listener: when volley has finished with the request it will inform the
+          Response.Listener
+          -Finally we need to provide an error listener that volley will inform if something goes wrong with the request
          */
         super(Request.Method.POST, LOGIN_REQUEST_URL, listener, errorListener);
 
