@@ -44,15 +44,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Set the toolbar as an action bar to later change the label
-        Toolbar mainToolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar mainToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(mainToolbar);
 
         /**
          *Setup the DrawerLayout and NavigationView
          */
 
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        mNavigationView = (NavigationView) findViewById(R.id.navigation_stuff);
+        mDrawerLayout = findViewById(R.id.drawerLayout);
+        mNavigationView = findViewById(R.id.navigation_stuff);
 
         /**
          * Lets inflate the very first fragment
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
          * Setup Drawer Toggle of the Toolbar
          */
 
-        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
+        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
         ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout, toolbar,R.string.app_name,
                 R.string.app_name);
 

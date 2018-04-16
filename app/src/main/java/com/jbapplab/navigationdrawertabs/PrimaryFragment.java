@@ -58,9 +58,7 @@ public class PrimaryFragment extends Fragment {
 
         final TextView tvWelcomeMessage = getView().findViewById(R.id.tvWelcomeMessage);
 
-        //TODO SEND THIS BACK AND FORTH TO ALL
-        Log.i("UserId-UserArea: ", userId);
-
+        //Log.i("UserId-UserArea: ", userId);
 
         String message = "Hi "+ firstName + ", how are you going to influence the word today?";
         tvWelcomeMessage.setText(message);

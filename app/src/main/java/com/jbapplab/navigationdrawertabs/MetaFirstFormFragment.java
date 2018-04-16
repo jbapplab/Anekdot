@@ -767,7 +767,6 @@ public class MetaFirstFormFragment extends Fragment {
                     stageRelated = stageRelatedTxt.getEditText().getText().toString();
                     contextRelated = contextRelatedTxt.getEditText().getText().toString();
 
-                    //TODO get from user activity for create
                     authorId = Integer.parseInt(userIdString);
                     storyEvents = orientation + "\n" + complicatedAction + "\n" + evaluation + "\n" + resolution + "\n" + message;
                     storyMeta = stageRelated + "\n" + contextRelated;
