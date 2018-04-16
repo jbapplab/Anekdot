@@ -43,19 +43,19 @@ public class StageFragment extends Fragment {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        Log.i("onSaveInstanceState", ": STAGE");
+        //Log.i("onSaveInstanceState", ": STAGE");
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        Log.i("onAttach", ": STAGE");
+        //Log.i("onAttach", ": STAGE");
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.i("onCreate", ": STAGE");
+        //Log.i("onCreate", ": STAGE");
 
         if (savedInstanceState != null){
             Log.i("On Create STAGE: ", "SAVEDINSTANCE");
@@ -66,7 +66,7 @@ public class StageFragment extends Fragment {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onStageSelected(EventBusStageSelected eventBusStageSelected){
         stageSelection = eventBusStageSelected.message;
-        Toast.makeText(getActivity(), stageSelection, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getActivity(), stageSelection, Toast.LENGTH_SHORT).show();
 
         switch (stageSelection){
             case "Stage 1: The audience is unaware of the problem or issue you are describing.":
@@ -90,7 +90,7 @@ public class StageFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Log.i("onCreateView", ": STAGE");
+        //Log.i("onCreateView", ": STAGE");
         /*
         UNPACK THE DATA FROM THE BUNDLE
         */
@@ -156,56 +156,56 @@ public class StageFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Log.i("onActivityCreated", ": STAGE");
+        //Log.i("onActivityCreated", ": STAGE");
     }
 
     @Override
     public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
-        Log.i("onViewStateRestored", ": STAGE");
+        //Log.i("onViewStateRestored", ": STAGE");
     }
 
     @Override
     public void onStart() {
         super.onStart();
         EventBus.getDefault().register(this);
-        Log.i("onStart", ": STAGE");
+        //Log.i("onStart", ": STAGE");
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        Log.i("onResume", ": STAGE");
+        //Log.i("onResume", ": STAGE");
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        Log.i("onPause", ": STAGE");
+        //Log.i("onPause", ": STAGE");
     }
 
     @Override
     public void onStop() {
         super.onStop();
         EventBus.getDefault().unregister(this);
-        Log.i("onStop", ": STAGE");
+        //Log.i("onStop", ": STAGE");
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        Log.i("onDestroyView", ": STAGE");
+        //Log.i("onDestroyView", ": STAGE");
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.i("onDestroy", ": STAGE");
+        //Log.i("onDestroy", ": STAGE");
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        Log.i("onDetach", ": STAGE");
+        //Log.i("onDetach", ": STAGE");
     }
 }

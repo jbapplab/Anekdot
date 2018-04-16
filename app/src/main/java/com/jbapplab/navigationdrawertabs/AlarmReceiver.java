@@ -34,6 +34,6 @@ public class AlarmReceiver extends BroadcastReceiver {
         }
         //Trigger the notification
         NotificationScheduler.showNotification(context, MetaFirstActivity.class,
-                "Hey! How is your inspiration?", "w!rite a compelling story now?", userId, firstName, lastName, username, password, email);
+                "Hey! How is your inspiration?", "Write a compelling story now?", userId, firstName, lastName, username, password, email);
     }
 }

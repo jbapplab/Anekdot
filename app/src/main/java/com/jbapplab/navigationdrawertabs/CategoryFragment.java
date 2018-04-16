@@ -48,22 +48,22 @@ public class CategoryFragment extends Fragment {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        Log.i("onSaveInstanceState", ": CATEGORY");
+        //Log.i("onSaveInstanceState", ": CATEGORY");
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        Log.i("onAttach", ": CATEGORY");
+        //Log.i("onAttach", ": CATEGORY");
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.i("onCreate", ": CATEGORY");
+        //Log.i("onCreate", ": CATEGORY");
 
         if (savedInstanceState != null){
-            Log.i("On Create CATEGORY: ", "SAVEDINSTANCE");
+            //Log.i("On Create CATEGORY: ", "SAVEDINSTANCE");
         }
     }
 
@@ -71,7 +71,7 @@ public class CategoryFragment extends Fragment {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onCategorySelected(EventBusCategorySelected eventBusCategorySelected){
         categorySelection = eventBusCategorySelected.message;
-        Toast.makeText(getActivity(), categorySelection, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getActivity(), categorySelection, Toast.LENGTH_SHORT).show();
 
         switch (categorySelection){
             case "Other":
@@ -260,7 +260,7 @@ public class CategoryFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Log.i("onCreateView", ": CATEGORY");
+        //Log.i("onCreateView", ": CATEGORY");
 
         /*
         UNPACK THE DATA FROM THE BUNDLE
@@ -275,7 +275,7 @@ public class CategoryFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        Log.i("onViewCreated", ": CATEGORY");
+        //Log.i("onViewCreated", ": CATEGORY");
         relativeLayoutOther = view.findViewById(R.id.Other);
                 relativeLayoutArt = view.findViewById(R.id.Art);
                 relativeLayoutCauses = view.findViewById(R.id.Causes);
@@ -295,56 +295,56 @@ public class CategoryFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Log.i("onActivityCreated", ": CATEGORY");
+        //Log.i("onActivityCreated", ": CATEGORY");
     }
 
     @Override
     public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
-        Log.i("onViewStateRestored", ": CATEGORY");
+        //Log.i("onViewStateRestored", ": CATEGORY");
     }
 
     @Override
     public void onStart() {
         super.onStart();
         EventBus.getDefault().register(this);
-        Log.i("onStart", ": CATEGORY");
+        //Log.i("onStart", ": CATEGORY");
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        Log.i("onResume", ": CATEGORY");
+        //Log.i("onResume", ": CATEGORY");
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        Log.i("onPause", ": CATEGORY");
+        //Log.i("onPause", ": CATEGORY");
     }
 
     @Override
     public void onStop() {
         super.onStop();
         EventBus.getDefault().unregister(this);
-        Log.i("onStop", ": CATEGORY");
+        //Log.i("onStop", ": CATEGORY");
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        Log.i("onDestroyView", ": CATEGORY");
+        //Log.i("onDestroyView", ": CATEGORY");
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.i("onDestroy", ": CATEGORY");
+        //Log.i("onDestroy", ": CATEGORY");
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        Log.i("onDetach", ": CATEGORY");
+        //Log.i("onDetach", ": CATEGORY");
     }
 }
