@@ -654,7 +654,7 @@ public class MySQLClientCRUD {
 
                         }catch (JSONException e){
 
-                            Toast.makeText(context, "You have not saved any favourite stories yet", Toast.LENGTH_LONG).show();
+                            Toast.makeText(context, "You have not saved any favourite stories yet.", Toast.LENGTH_LONG).show();
                             progressBar.setAlpha(0);
 
                         }

@@ -2,13 +2,16 @@ package com.jbapplab.navigationdrawertabs;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.ShareActionProvider;
 import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
@@ -22,6 +25,10 @@ import org.json.JSONObject;
 public class LoginActivity extends AppCompatActivity {
 
     private ProgressBar progressBar;
+    private CheckBox saveLoginCheckBox;
+    private SharedPreferences loginPreferences;
+    private SharedPreferences.Editor loginPrefsEditor;
+    private Boolean saveLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +45,18 @@ public class LoginActivity extends AppCompatActivity {
         final EditText etPassword = (EditText) findViewById(R.id.etPassword);
         final Button bLogin = (Button) findViewById(R.id.bLogin);
         final TextView tvRegisterHere = (TextView) findViewById(R.id.tvRegisterHere);
+
+        //Save login info
+        saveLoginCheckBox = (CheckBox)findViewById(R.id.saveLoginCheckBox);
+        loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+        loginPrefsEditor = loginPreferences.edit();
+
+        saveLogin = loginPreferences.getBoolean("saveLogin", false);
+        if (saveLogin) {
+            etUsername.setText(loginPreferences.getString("username", ""));
+            etPassword.setText(loginPreferences.getString("password", ""));
+            saveLoginCheckBox.setChecked(true);
+        }
 
         //This sets the loading progress bar
         progressBar = findViewById(R.id.progressBar);
@@ -60,6 +79,16 @@ public class LoginActivity extends AppCompatActivity {
                 progressBar.setAlpha(1);
                 final String username = etUsername.getText().toString();
                 final String password = etPassword.getText().toString();
+
+                if (saveLoginCheckBox.isChecked()) {
+                    loginPrefsEditor.putBoolean("saveLogin", true);
+                    loginPrefsEditor.putString("username", username);
+                    loginPrefsEditor.putString("password", password);
+                    loginPrefsEditor.commit();
+                } else {
+                    loginPrefsEditor.clear();
+                    loginPrefsEditor.commit();
+                }
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override

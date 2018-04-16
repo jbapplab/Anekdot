@@ -267,8 +267,7 @@ public class MyStoriesActivity extends AppCompatActivity {
                 return true;
 
             case R.id.menu_item_share:
-                //TODO User chose the "Share" action WE PUT CONTEXT SPECIFIC SHARE
-                Toast.makeText(MyStoriesActivity.this, "There is nothing but your stories here, move along!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MyStoriesActivity.this, "If you want to share a story look at it more closely!", Toast.LENGTH_SHORT).show();
                 return true;
 
             default:

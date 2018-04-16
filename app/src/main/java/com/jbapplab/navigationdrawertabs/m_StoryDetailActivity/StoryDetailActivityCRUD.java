@@ -295,7 +295,24 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
         //retrieveStageRelatedDetail.setText(stageRelated);
         //retrieveContextRelatedDetail.setText(contextRelated);
         retrieveStoryFullDetail.setText(imageUrl);
-        retrieveAudienceStageDetail.setText(audienceStage);
+
+        switch (audienceStage){
+            case "Precontemplation":
+                retrieveAudienceStageDetail.setText(R.string.precontemplation_info);
+                break;
+            case "Contemplation":
+                retrieveAudienceStageDetail.setText(R.string.contemplation_info);
+                break;
+            case "Preparation":
+                retrieveAudienceStageDetail.setText(R.string.preparation_info);
+                break;
+            case "Action":
+                retrieveAudienceStageDetail.setText(R.string.action_info);
+                break;
+            default:
+                retrieveAudienceStageDetail.setText(R.string.default_info);
+        }
+
         PicassoClient.downloadImage(this, storyCategory, retrieveStoryImageDetail);
 
         //Rename title
@@ -439,8 +456,11 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
                 return true;
 
             case R.id.menu_item_share:
-                //TODO User chose the "Share" action WE SHARE STORY DETAILS!
-                Toast.makeText(StoryDetailActivityCRUD.this, "HERE STORY DETAILS", Toast.LENGTH_SHORT).show();
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, retrieveStoryFullDetail.getText());
+                sendIntent.setType("text/plain");
+                startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.send_to)));
                 return true;
 
             default:
