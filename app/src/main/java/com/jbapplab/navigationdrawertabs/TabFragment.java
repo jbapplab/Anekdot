@@ -37,13 +37,6 @@ public class TabFragment extends Fragment {
     public static ViewPager viewPager;
     public static int int_items = 3 ;
 
-    String userId;
-    String firstName;
-    String lastName;
-    String username;
-    String password;
-    String email;
-
     PrimaryFragment primaryFragment = new PrimaryFragment();
 
     @Nullable
@@ -80,17 +73,6 @@ public class TabFragment extends Fragment {
             }
         });
 
-        /*
-        UNPACK THE DATA FROM THE BUNDLE
-        */
-
-        userId = getArguments().getString("userId_KEY");
-        firstName = getArguments().getString("firstName_KEY");
-        lastName = getArguments().getString("lastName_KEY");
-        username = getArguments().getString("username_KEY");
-        password = getArguments().getString("password_KEY");
-        email = getArguments().getString("email_KEY");
-
         return x;
     }
 
@@ -109,7 +91,6 @@ public class TabFragment extends Fragment {
         {
             switch (position){
                 case 0 :
-                    sendDataPrimaryFragment();
                     return primaryFragment;
                 case 1 :
 
@@ -147,22 +128,6 @@ public class TabFragment extends Fragment {
             return null;
         }
 
-        /*
-    SEND DATA TO FRAGMENT
-     */
-        private void sendDataPrimaryFragment() {
-            //PACK DATA IN A BUNDLE
-            Bundle forPrimaryBundle = new Bundle();
-            forPrimaryBundle.putString("userId_KEY", userId);
-            forPrimaryBundle.putString("firstName_KEY", firstName);
-            forPrimaryBundle.putString("lastName_KEY", lastName);
-            forPrimaryBundle.putString("username_KEY", username);
-            forPrimaryBundle.putString("password_KEY", password);
-            forPrimaryBundle.putString("email_KEY", email);
-
-            //PASS OVER THE BUNDLE TO OUR FRAGMENT
-            primaryFragment.setArguments(forPrimaryBundle);
-        }
     }
 
 }

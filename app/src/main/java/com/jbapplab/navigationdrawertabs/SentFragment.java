@@ -44,7 +44,7 @@ public class SentFragment extends Fragment {
          * Set the title bar according to the fragment
          * I am guessing this can be done with
          */
-        ((MainActivity) getActivity())
+        ((UserAreaActivity) getActivity())
                 .setActionBarTitle("Sent");
 
         /**

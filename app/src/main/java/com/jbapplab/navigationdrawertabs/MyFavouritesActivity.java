@@ -128,6 +128,7 @@ public class MyFavouritesActivity extends AppCompatActivity {
                 if (menuItem.getItemId() == R.id.nav_item_myfavourites) {
 
                     Intent intentGoToMyFavouritesActivity = new Intent(MyFavouritesActivity.this, MyFavouritesActivity.class);
+                    intentGoToMyFavouritesActivity.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     intentGoToMyFavouritesActivity.putExtra("userId_KEY", userId);
                     intentGoToMyFavouritesActivity.putExtra("firstName_KEY", firstName);
                     intentGoToMyFavouritesActivity.putExtra("lastName_KEY", lastName);

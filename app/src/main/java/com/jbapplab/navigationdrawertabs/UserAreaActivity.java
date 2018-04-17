@@ -89,10 +89,15 @@ public class UserAreaActivity extends AppCompatActivity {
                 //Can add more according to the buttons I will need
                 //Added the addToBackStack("str") bit to use back button
                 if (menuItem.getItemId() == R.id.nav_item_home) {
-                    //Toast.makeText(UserAreaActivity.this, "Home", Toast.LENGTH_LONG).show();
-                    FragmentTransaction xfragmentTransaction = mFragmentManager.beginTransaction();
-                    sendDataTabFragment();
-                    xfragmentTransaction.replace(R.id.containerView, tabFragment).addToBackStack("str").commit();
+                    Intent intentGoToHomeActivity = new Intent(UserAreaActivity.this, UserAreaActivity.class);
+                    intentGoToHomeActivity.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    intentGoToHomeActivity.putExtra("userId_KEY", userId);
+                    intentGoToHomeActivity.putExtra("firstName_KEY", firstName);
+                    intentGoToHomeActivity.putExtra("lastName_KEY", lastName);
+                    intentGoToHomeActivity.putExtra("username_KEY", username);
+                    intentGoToHomeActivity.putExtra("password_KEY", password);
+                    intentGoToHomeActivity.putExtra("email_KEY", email);
+                    UserAreaActivity.this.startActivity(intentGoToHomeActivity);
                 }
 
                 if (menuItem.getItemId() == R.id.nav_item_logout) {

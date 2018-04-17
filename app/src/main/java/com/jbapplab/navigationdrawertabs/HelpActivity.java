@@ -172,6 +172,7 @@ public class HelpActivity extends AppCompatActivity {
                 if (menuItem.getItemId() == R.id.nav_item_help) {
 
                     Intent intentGoToHelpActivity = new Intent(HelpActivity.this, HelpActivity.class);
+                    intentGoToHelpActivity.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     intentGoToHelpActivity.putExtra("userId_KEY", userId);
                     intentGoToHelpActivity.putExtra("firstName_KEY", firstName);
                     intentGoToHelpActivity.putExtra("lastName_KEY", lastName);

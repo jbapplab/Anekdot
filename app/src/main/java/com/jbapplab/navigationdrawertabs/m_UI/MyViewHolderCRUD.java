@@ -36,22 +36,22 @@ public class MyViewHolderCRUD extends RecyclerView.ViewHolder implements View.On
     public MyViewHolderCRUD(View itemView) {
         super(itemView);
 
-        storyId = itemView.findViewById(R.id.retrieveStoryId);
+        //storyId = itemView.findViewById(R.id.retrieveStoryId);
         storyTitle = itemView.findViewById(R.id.retrieveStoryTitle);
         storyCategory = itemView.findViewById(R.id.retrieveStoryCategory);
         ifOtherSpecify = itemView.findViewById(R.id.retrieveIfOtherSpecify);
-        authorId = itemView.findViewById(R.id.retrieveAuthorId);
+        //authorId = itemView.findViewById(R.id.retrieveAuthorId);
         storyDescription = itemView.findViewById(R.id.retrieveStoryDescription);
-        storyEvents = itemView.findViewById(R.id.retrieveStoryEvents);
-        orientation = itemView.findViewById(R.id.retrieveOrientation);
-        complicatedAction = itemView.findViewById(R.id.retrieveComplicatedAction);
-        evaluation = itemView.findViewById(R.id.retrieveEvaluation);
-        resolution = itemView.findViewById(R.id.retrieveResolution);
-        message = itemView.findViewById(R.id.retrieveMessage);
-        storyMeta = itemView.findViewById(R.id.retrieveStoryMeta);
-        stageRelated = itemView.findViewById(R.id.retrieveStageRelated);
-        contextRelated = itemView.findViewById(R.id.retrieveContextRelated);
-        storyFull = itemView.findViewById(R.id.retrieveStoryFull);
+        //storyEvents = itemView.findViewById(R.id.retrieveStoryEvents);
+        //orientation = itemView.findViewById(R.id.retrieveOrientation);
+        //complicatedAction = itemView.findViewById(R.id.retrieveComplicatedAction);
+        //evaluation = itemView.findViewById(R.id.retrieveEvaluation);
+        //resolution = itemView.findViewById(R.id.retrieveResolution);
+        //message = itemView.findViewById(R.id.retrieveMessage);
+        //storyMeta = itemView.findViewById(R.id.retrieveStoryMeta);
+        //stageRelated = itemView.findViewById(R.id.retrieveStageRelated);
+        //contextRelated = itemView.findViewById(R.id.retrieveContextRelated);
+       // storyFull = itemView.findViewById(R.id.retrieveStoryFull);
         audienceStage = itemView.findViewById(R.id.retrieveAudienceStage);
 
         storyImage = itemView.findViewById(R.id.retrieveStoryImage);

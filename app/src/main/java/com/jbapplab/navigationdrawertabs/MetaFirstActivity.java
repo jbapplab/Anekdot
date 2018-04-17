@@ -186,6 +186,7 @@ public class MetaFirstActivity extends AppCompatActivity {
                 if (menuItem.getItemId() == R.id.nav_item_eventsfirst) {
 
                     Intent intentGoToEvensFirstActivity = new Intent(MetaFirstActivity.this, MetaFirstActivity.class);
+                    intentGoToEvensFirstActivity.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     intentGoToEvensFirstActivity.putExtra("userId_KEY", userIdString);
                     intentGoToEvensFirstActivity.putExtra("firstName_KEY", firstName);
                     intentGoToEvensFirstActivity.putExtra("lastName_KEY", lastName);

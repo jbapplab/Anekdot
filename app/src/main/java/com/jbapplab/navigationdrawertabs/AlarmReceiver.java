@@ -13,7 +13,7 @@ public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        //Use shared preferences to save user info
+        //Use shared preferences to retrieve user info
         SharedPreferences userInfo = context.getSharedPreferences("userInfo", Context.MODE_PRIVATE);
         String userId = userInfo.getString("userId", "");
         String firstName = userInfo.getString("firstName", "");

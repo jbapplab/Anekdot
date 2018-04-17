@@ -119,6 +119,7 @@ public class MyStoriesActivity extends AppCompatActivity {
                 if (menuItem.getItemId() == R.id.nav_item_mystories) {
 
                     Intent intentGoToMyStoriesActivity = new Intent(MyStoriesActivity.this, MyStoriesActivity.class);
+                    intentGoToMyStoriesActivity.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     intentGoToMyStoriesActivity.putExtra("userId_KEY", userId);
                     intentGoToMyStoriesActivity.putExtra("firstName_KEY", firstName);
                     intentGoToMyStoriesActivity.putExtra("lastName_KEY", lastName);

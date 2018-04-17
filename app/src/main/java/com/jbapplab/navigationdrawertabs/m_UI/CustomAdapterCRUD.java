@@ -8,9 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.jbapplab.navigationdrawertabs.R;
-import com.jbapplab.navigationdrawertabs.m_DataObject.Story;
 import com.jbapplab.navigationdrawertabs.m_DataObject.StoryCRUD;
-import com.jbapplab.navigationdrawertabs.m_StoryDetailActivity.StoryDetailActivity;
 import com.jbapplab.navigationdrawertabs.m_StoryDetailActivity.StoryDetailActivityCRUD;
 
 import java.util.ArrayList;

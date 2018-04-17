@@ -471,4 +471,8 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

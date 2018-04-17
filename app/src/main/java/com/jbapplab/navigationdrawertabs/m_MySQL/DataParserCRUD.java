@@ -6,9 +6,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
-import com.jbapplab.navigationdrawertabs.m_DataObject.Story;
 import com.jbapplab.navigationdrawertabs.m_DataObject.StoryCRUD;
-import com.jbapplab.navigationdrawertabs.m_UI.CustomAdapter;
 import com.jbapplab.navigationdrawertabs.m_UI.CustomAdapterCRUD;
 
 import org.json.JSONArray;

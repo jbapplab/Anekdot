@@ -189,6 +189,7 @@ public class SettingsActivity extends AppCompatActivity {
                 if (menuItem.getItemId() == R.id.nav_item_settings) {
 
                     Intent intentGoToSettingsActivity = new Intent(SettingsActivity.this, SettingsActivity.class);
+                    intentGoToSettingsActivity.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     intentGoToSettingsActivity.putExtra("userId_KEY", userId);
                     intentGoToSettingsActivity.putExtra("firstName_KEY", firstName);
                     intentGoToSettingsActivity.putExtra("lastName_KEY", lastName);
@@ -377,6 +378,7 @@ public class SettingsActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_settings:
                 Intent intentGoToSettingsActivity = new Intent(SettingsActivity.this, SettingsActivity.class);
+                intentGoToSettingsActivity.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 intentGoToSettingsActivity.putExtra("userId_KEY", userId);
                 intentGoToSettingsActivity.putExtra("firstName_KEY", firstName);
                 intentGoToSettingsActivity.putExtra("lastName_KEY", lastName);

@@ -105,6 +105,7 @@ public class SelectCategoryActivity extends AppCompatActivity {
                 if (menuItem.getItemId() == R.id.nav_item_categories) {
 
                     Intent intentGoToSelectCategoryActivity = new Intent(SelectCategoryActivity.this, SelectCategoryActivity.class);
+                    intentGoToSelectCategoryActivity.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     intentGoToSelectCategoryActivity.putExtra("userId_KEY", userId);
                     intentGoToSelectCategoryActivity.putExtra("firstName_KEY", firstName);
                     intentGoToSelectCategoryActivity.putExtra("lastName_KEY", lastName);

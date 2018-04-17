@@ -61,29 +61,29 @@ public class StoryCoreFragment extends Fragment {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        Log.i("onSaveInstanceState", ": CONTAINER");
+        //Log.i("onSaveInstanceState", ": CONTAINER");
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        Log.i("onAttach", ": CONTAINER");
+        //Log.i("onAttach", ": CONTAINER");
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.i("onCreate", ": CONTAINER");
+        //Log.i("onCreate", ": CONTAINER");
 
         if (savedInstanceState != null){
-            Log.i("On Create CONTAINER: ", "SAVEDINSTANCE");
+            //Log.i("On Create CONTAINER: ", "SAVEDINSTANCE");
         }
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Log.i("onCreateView", ": CONTAINER");
+        //Log.i("onCreateView", ": CONTAINER");
         /**
          * Set the title bar according to the fragment
          */
@@ -157,19 +157,19 @@ public class StoryCoreFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Log.i("onViewCreated", ": CONTAINER");
+        //Log.i("onViewCreated", ": CONTAINER");
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Log.i("onActivityCreated", ": CONTAINER");
+        //Log.i("onActivityCreated", ": CONTAINER");
     }
 
     @Override
     public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
-        Log.i("onViewStateRestored", ": CONTAINER");
+        //Log.i("onViewStateRestored", ": CONTAINER");
     }
 
 
@@ -279,88 +279,49 @@ public class StoryCoreFragment extends Fragment {
         metaFirstFormFragment.setArguments(forMetaFirstFormBundle);
     }
 
-    /*Subscribers to the events - The method is called when a EventBus event is posted
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onCategorySelected(EventBusCategorySelected eventBusCategorySelected){
-        categorySelection = eventBusCategorySelected.message;
-        sendDataToCategoryFragment();
-        Toast.makeText(getActivity(), categorySelection, Toast.LENGTH_SHORT).show();
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onStageSelected(EventBusStageSelected eventBusStageSelected){
-        stageSelection = eventBusStageSelected.message;
-        sendDataToStageFragment();
-        Toast.makeText(getActivity(), stageSelection, Toast.LENGTH_SHORT).show();
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onSavedInstanceStateForm(EventBusOnSavedInstanceStateForm eventBusStageOnSavedInstanceStateForm){
-        userIdString = eventBusStageOnSavedInstanceStateForm.userIdString;
-        actionString = eventBusStageOnSavedInstanceStateForm.actionString;
-        storyIdString = eventBusStageOnSavedInstanceStateForm.storyIdString;
-        storyTitle = eventBusStageOnSavedInstanceStateForm.storyTitle;
-        ifOtherSpecify = eventBusStageOnSavedInstanceStateForm.ifOtherSpecify;
-        authorIdString = eventBusStageOnSavedInstanceStateForm.authorIdString;
-        storyDescription = eventBusStageOnSavedInstanceStateForm.storyDescription;
-        orientation = eventBusStageOnSavedInstanceStateForm.orientation;
-        complicatedAction = eventBusStageOnSavedInstanceStateForm.complicatedAction;
-        evaluation = eventBusStageOnSavedInstanceStateForm.evaluation;
-        resolution = eventBusStageOnSavedInstanceStateForm.resolution;
-        message = eventBusStageOnSavedInstanceStateForm.message;
-        stageRelated = eventBusStageOnSavedInstanceStateForm.stageRelated;
-        contextRelated = eventBusStageOnSavedInstanceStateForm.contextRelated;
-        imageUrl = eventBusStageOnSavedInstanceStateForm.imageUrl;
-
-        sendDataToCategoryFragment();
-        sendDataToStageFragment();
-        sendDataMetaFirstFormFragment();
-        //Toast.makeText(getActivity(), stageSelection, Toast.LENGTH_SHORT).show();
-    }
-    */
 
     @Override
     public void onStart() {
         super.onStart();
         //EventBus.getDefault().register(this);
-        Log.i("onStart", ": CONTAINER");
+        //Log.i("onStart", ": CONTAINER");
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        Log.i("onResume", ": CONTAINER");
+        //Log.i("onResume", ": CONTAINER");
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        Log.i("onPause", ": CONTAINER");
+        //Log.i("onPause", ": CONTAINER");
     }
 
     @Override
     public void onStop() {
         super.onStop();
         //EventBus.getDefault().unregister(this);
-        Log.i("onStop", ": CONTAINER");
+        //Log.i("onStop", ": CONTAINER");
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        Log.i("onDestroyView", ": CONTAINER");
+        //Log.i("onDestroyView", ": CONTAINER");
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.i("onDestroy", ": CONTAINER");
+        //Log.i("onDestroy", ": CONTAINER");
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        Log.i("onDetach", ": CONTAINER");
+        //Log.i("onDetach", ": CONTAINER");
     }
 
 

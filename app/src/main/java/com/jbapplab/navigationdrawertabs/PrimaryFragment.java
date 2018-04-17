@@ -12,7 +12,9 @@ package com.jbapplab.navigationdrawertabs;
  holding it.
  */
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -39,16 +41,15 @@ public class PrimaryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        /*
-        UNPACK THE DATA FROM THE BUNDLE
-        */
+        //Use shared preferences to retrieve user info
+        SharedPreferences userInfo = getActivity().getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+        userId = userInfo.getString("userId", "");
+        firstName = userInfo.getString("firstName", "");
+        lastName = userInfo.getString("lastName", "");
+        username = userInfo.getString("username", "");
+        password = userInfo.getString("password", "");
+        email = userInfo.getString("email", "");
 
-        userId = this.getArguments().getString("userId_KEY");
-        firstName = this.getArguments().getString("firstName_KEY");
-        lastName = this.getArguments().getString("lastName_KEY"); //not immediately used
-        username = this.getArguments().getString("username_KEY");
-        password = this.getArguments().getString("password_KEY"); //not immediately used
-        email = this.getArguments().getString("email_KEY"); //not immediately used
 
         return inflater.inflate(R.layout.primary_layout,null);
     }
