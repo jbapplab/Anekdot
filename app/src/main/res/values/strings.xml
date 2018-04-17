@@ -151,6 +151,7 @@
     <string name="generate_tip">I want another tip!</string>
     <string name="intro_links_tutorials">Here you can find useful links and video tutorials for persuasive writing.</string>
 
+    <!-- Tip of the day -->
     <string-array name="string_array_TipOTD">
         <item>Take a stance. What do you think about the issue? What side will you take? Be aware of any prejudices you might have that could color your argument. What resolution will you suggest?</item>
         <item>Know your audience. Determine if your audience will agree with your position and why they may not. You must be able to understand both sides of the issue in order to successfully argue your point of view.</item>
@@ -176,7 +177,7 @@
         <item>“Sir! Yes, Sir!” Use all of your imagination to create a situation in which the reader will agree with you. It’s very easy to do. Make some general statements or ask questions that are difficult to challenge. Ask questions where the only possible answer is YES.</item>
         <item>Predict Your Reader. Anticipate the questions of the reader, and answer them before they’re even asked – before they’ve even thought about. Neutralize possible questions before they even appear. Comprehensive information is exactly what your reader is looking for.</item>
         <item>Prove it! It’s easy to write persuasive text if you can back up your claims with facts and studies. Numbers and percentages have the best effect. They’re your strongest tools for convincing readers.</item>
-        <item>Be Specific. Use real-life examples. We believe in examples we can relate to. It’s easy to say: “Do this, do that.” But how can you apply it in real life? Examples from the real world make material understandable. They make readers think, “If someone else achieved this, why can't I?”</item>
+        <item>Be Specific. Use real-life examples. We believe in examples we can relate to. It’s easy to say: “Do this, do that.” But how can you apply it in real life? Examples from the real world make material understandable. They make readers think, “If someone else achieved this, why can\'t I?”</item>
         <item>Touch the Emotions. Evoke emotion in the reader. As we know, emotions are the main motivation behind making a purchases or sealing a business deal. Emotions awaken desire. As Napoleon Hill said: “The starting point of all achievement is desire.”</item>
         <item>Use Greatness. Cite great wisdom. Well-chosen quotes from successful people will elevate your text to the next level. A couple of good quotes from well-known experts in the field will help you to make your material more compelling.</item>
         <item>Use Structure. Divide your articles into paragraphs, headings, subheadings and lists. These increase the visual appeal of the text. Paragraphs should contain between 2 and 5 sentences, and no more. That will make it much easier for your reader to digest your material.</item>
@@ -210,9 +211,7 @@
         tortor.
     </string>
 
-    <string name="action_share">Share</string>
-    <string name="action_reply">Reply</string>
-
+    <!-- Notifications -->
     <string name="sett_reminder_header">Set notification for story nudge</string>
     <string name="sett_reminder_label">Sometimes we simply forget that important things happened during the day
      and good ideas that we had are not used make a change. With Anecdote you can set a gentle nudge at a
@@ -222,5 +221,130 @@
     <string name="sett_reminder_time_label">Set Reminder Time</string>
     <string name="sett_reminder_time_content">8 : 00 PM</string>
 
+    <!-- Stages Fragment -->
+    <string name="stage_default">Default Information</string>
+    <string name="stage_default_label">Something was not properly selected, please go back and select a stage in the relevant spinner.
+    \n\nBut since you are here you could perhaps benefit from some general information on how to write a persuasive story.
+    \n- Start with a <b>logical argument</b> in regard to a problem or issue.
+    \n- You should also give <b>suggestions and strategies</b> to show to your audience <b>what they should</b> do in regard to the issue.
+    \n- You should explain <b>why</b> they should do that and <b>what they will gain</b> if they do so.
+    \n\nRemember your goal is to construct a <b>persuasive argument</b> to help them move from the fence!
+    \n\n\nAlso here are the top 5 impactful words in the English language: <b>You, Because, Free, Instantly, New</b>
+    \nUse them wisely!</string>
 
+    <string name="stage_1">Stage 1: Before Thinking</string>
+    <string name="stage_1_label"><font color="#d21414"><b>\nInformation: </b></font>In this stage the audience is <b>unaware</b> of the problem/issue that you are describing.
+        \n\n<font color="#d21414"><b>Change potential: </b></font>They <b>don\'t have the intention to make a change</b> in relation to it in the foreseeable future (e.g. 6 months).
+        \n\n<font color="#d21414"><b>Example: </b></font>First time smokers that do not know the dangers of smoking fall into this category.\n</string>
+    <string name="stage_1_goal">Your goal in this stage is:</string>
+    <string name="stage_1_goal_label">- To make them <b>aware</b> of the problem or issue.
+        \n- Suggest specific <b>examples and strategies</b> for your audience. \n</string>
+    <string name="stage_1_strategies">Strategies of Change</string>
+    <string name="get_the_facts"><b>Get the facts</b></string>
+    <string name="get_the_facts_label">This strategy aims to mainly change <b>knowledge and understanding</b> of the audience
+    in regard to themselves and the problem/issue or the intended message.
+        \n\n<b>You can help them by:</b>
+        \n- Making relevant observations
+        \n- Showcasing confrontations between actors in the story
+        \n- Elaborating on your interpretations of the situation
+        \n- Suggesting relevant sources of information for them to educate themselves
+        \n\n<b>They will:</b>
+        \n- Find and learn new facts, ideas and tips that support change\n
+    </string>
+    <string name="pay_attention_to_feelings"><b>Pay attention to feelings</b></string>
+    <string name="pay_attention_to_feelings_label">The goal here is to have your audience <b>experience and express feelings</b> about problems and
+        their potential solutions. The audience tends to <b>connect to a character</b> in a story that they feel they can relate to and <b>transfer the
+            character\'s emotions to themselves</b>.
+    \n\n<b>You can help them by:</b>
+        \n- Drawing attention to the characters and their feelings through situations in your story that makes them contemplate loss
+        \n- Providing hints that make them connect and re-dramatise the situation into their daily lives
+        \n- Influencing them to immerse into a different role into the story
+    \n\n<b>They will:</b>
+        \n- Experience negative emotions in relation to the problem/issue (e.g. fear, anxiety, worry)
+        \n- Link these negative emotions to the undesired behaviour (the one you want them to move away from)\n</string>
+    <string name="notice_your_effect_on_others"><b>Notice your effect on others</b></string>
+    <string name="notice_your_effect_on_others_label">This is meant to make your audience <b>assess how their individual problem/issue affects their environment.</b>
+     \n\n<b>You can help them by:</b>
+        \n- Addressing them directly in the story or vicariously via the actor of the story
+        \n- Giving examples in combinations with facts
+        \n- Explicitly stating the feelings of different sides for empathy training
+    \n\n<b>They will:</b>
+        \n- Realise the positive/negative impact they potentially have to their environment\n</string>
+    <string name="notice_public_support"><b>Notice public support</b></string>
+    <string name="notice_public_support_label">This strategy is meant to showcase the importance of incorporating in the story the
+    <b>social and societal</b> aspect of the problem/issue.
+    \n\n<b>You can help them by:</b>
+        \n- Making them realise that the desired behaviour is preferred by their circles and the society overall
+        \n- Advocating for a specific aspect, empower your audience by stating the universality of the support
+        \n- Pointing to relevant policy campaigns and interventions
+    \n\n<b>They will:</b>
+        \n- Understand and potentially attempt to follow the socially desirable path (adhere to social norms)</string>
+
+    <string name="stage_2">Stage 2: Thinking</string>
+    <string name="stage_2_label"><font color="#d21414"><b>\nInformation: </b></font>In this stage the audience is <b>aware</b> of the problem/issue that you are describing.
+        \n\n<font color="#d21414"><b>Change potential: </b></font>They are <b>seriously considering to make a change</b> in relation to it in the foreseeable future (e.g. 6 months).
+        \n\n<font color="#d21414"><b>Example: </b></font> People that have been diagnosed with respiratory problems due to smoking fall into this category.\n</string>
+    <string name="stage_2_goal_label">- To change the <b>intention to act</b> of your audience.
+        \n- Show that the cons of changing towards the desired behaviour are not that many.\n</string>
+    <string name="create_a_new_self_image"><b>Create a new self image</b></string>
+    <string name="create_a_new_self_image_label">This strategy aims to make the audience assess how they feel and think about themselves with respect to the problem.
+    \n\n<b>You can help them by:</b>
+        \n- Showing them potential corrective emotional experiences of the actors
+        \n- Showing them through story imagery important values to them
+    \n\n<b>They will:</b>
+        \n- Re-evaluate themselves and help clarify/consolidate their values.\n</string>
+
+    <string name="stage_3">Stage 3: Preparing to Act</string>
+    <string name="stage_3_label"><font color="#d21414"><b>\nInformation: </b></font>In this stage the audience is <b>may have already taken some steps</b> towards the desired behaviour.
+        \n\n<font color="#d21414"><b>Change potential: </b></font>They are <b>intending to take action</b> in regard the problem/issue that you are describing very soon (e.g. next 30 days).
+        \n\n<font color="#d21414"><b>Example: </b></font>People that know about the benefits of exercising and want to lose weight, but they are postponing to sign up for the gym fall into this category.\n</string>
+    <string name="stage_3_goal_label">- To actually make them act by showing that they <b>can</b> change.
+        \n- Give them the required nudge to <b>go from thinking to acting</b>.\n</string>
+    <string name="make_a_commitment"><b>Make a commitment</b></string>
+    <string name="make_a_commitment_label">The purpose of this strategy is to make your audience <b>believe that they have the ability to change.</b>
+    \n\n<b>You can help them by:</b>
+        \n- Reassuring them that they can do it
+        \n- Showing that a relatable character in your story can do it
+        \n- Suggesting to your audience to commit to action
+        \n- Giving specific examples of resolutions to assist their decision making process
+    \n\n<b>They will:</b>
+        \n- Strengthen their commitments in order to achieve self-liberation\n</string>
+    <string name="get_support"><b>Get Support</b></string>
+    <string name="get_support_label">The goal of this strategy is to encourage the audience to be <b>open and trusting</b> about the problem/issue with someone who cares.
+    \n\n<b>You can help them by:</b>
+        \n- Encouraging them to seek social support from their circles
+        \n- Showing them how to form theurapeutic alliances with their peers
+    \n\n<b>They will:</b>
+        \n- Potentially turn to self-help and social media groups that can assist in that aspect\n</string>
+    <string name="use_substitutes"><b>Use substitutes</b></string>
+    <string name="use_substitutes_label">This process of change is important because it <b>aims to substitute problematic behaviours with desired alternatives.</b>
+    \n\n<b>You can help them by:</b>
+        \n- Making them relax and desensitise in regard of the problematic outcomes
+        \n- Giving them examples and suggestions to increase their confidence towards achieving the desired outcomes
+    \n\n<b>They will:</b>
+        \n- Be more assertive and positive about themselves and their capabilities\n</string>
+
+    <string name="stage_4">Stage 4: Acting</string>
+    <string name="stage_4_label"><font color="#d21414"><b>\nInformation: </b></font>In this stage the audience is <b>currently modifying their behaviour, experiences and/or environment</b> to overcome the issue/problem.
+        \n\n<font color="#d21414"><b>Change potential: </b></font>They have <b>overtly changed their behaviour</b> for some time (less than 6 months).
+        \n\n<font color="#d21414"><b>Example: </b></font>People that have committed to a diet, go to the gym but are victims of the occasional food temptation fall into this category.\n</string>
+    <string name="stage_4_goal_label">- To help them gain the <b>self-confidence</b> needed to maintain the positive outcome of their efforts (consolidate their gains).
+        \n- Potentially <b>prevent relapse</b> to undesirable behaviours.\n</string>
+    <string name="manage_the_environment"><b>Manage the environment</b></string>
+    <string name="manage_the_environment_label">This process of change aims to teach the audience to <b>control situations and other causes that trigger problematic behaviours</b>.
+    \n\n<b>You can help them by:</b>
+        \n- Suggesting stimuli that encourage alternative desired behaviours
+        \n- Providing guidance through your story to help them arrange their environment in order to counter stimuli that trigger undesirable behaviours
+    \n\n<b>They will:</b>
+        \n- Learn to avoid high risk cues and to employ fading techniques to them\n</string>
+    <string name="rewarding_oneself_or_being_rewarded_by_others_for_making_changes"><b>Rewarding oneself or being rewarded by others for making changes</b></string>
+    <string name="rewarding_oneself_or_being_rewarded_by_others_for_making_changes_label">This strategy of change aims to help the audience <b>manage overt and covert reinforcement.</b>
+        \n\n<b>You can help them by:</b>
+        \n- Showing through the characters of the story the overt benefits of the desired behaviour
+        \n- Encouraging them to self-reward
+        \n- Suggesting contingency contracts (benefits-consequences for meeting or failing to achieve the desired behaviour)
+    \n\n<b>They will:</b>
+        \n- Learn to appreciate the increased rewards of the positive behaviour in contrast to the decreased rewards of the undesired behaviour\n
+    </string>
+    <!-- End of Stages fragment -->
 </resources>

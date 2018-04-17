@@ -13,22 +13,22 @@ import com.jbapplab.navigationdrawertabs.R;
 
 public class MyViewHolderCRUD extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-    TextView storyId;
+    //TextView storyId;
     TextView storyTitle;
     TextView storyCategory;
     TextView ifOtherSpecify;
-    TextView authorId;
+    //TextView authorId;
     TextView storyDescription;
-    TextView storyEvents;
-    TextView orientation;
-    TextView complicatedAction;
-    TextView evaluation;
-    TextView resolution;
-    TextView message;
-    TextView storyMeta;
-    TextView stageRelated;
-    TextView contextRelated;
-    TextView storyFull;
+    //TextView storyEvents;
+    //TextView orientation;
+    //TextView complicatedAction;
+    //TextView evaluation;
+    //TextView resolution;
+    //TextView message;
+    //TextView storyMeta;
+    //TextView stageRelated;
+    //TextView contextRelated;
+    //TextView storyFull;
     TextView audienceStage;
     ImageView storyImage;
     StoryItemClickListener itemClickListener;

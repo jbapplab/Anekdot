@@ -1,4 +1,4 @@
-package com.jbapplab.navigationdrawertabs;
+package com.jbapplab.navigationdrawertabs.m_Notification;
 
 import android.content.Context;
 import android.content.SharedPreferences;

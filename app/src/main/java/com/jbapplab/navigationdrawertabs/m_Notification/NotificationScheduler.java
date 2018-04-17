@@ -1,4 +1,4 @@
-package com.jbapplab.navigationdrawertabs;
+package com.jbapplab.navigationdrawertabs.m_Notification;
 
 import android.app.AlarmManager;
 import android.app.Notification;
@@ -12,6 +12,8 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
+
+import com.jbapplab.navigationdrawertabs.R;
 
 import java.util.Calendar;
 

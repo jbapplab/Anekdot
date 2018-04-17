@@ -31,7 +31,7 @@
         <activity android:name=".SettingsActivity" android:screenOrientation="portrait" />
         <activity android:name=".HelpActivity" />
 
-        <receiver android:name=".AlarmReceiver" android:enabled="false">
+        <receiver android:name=".m_Notification.AlarmReceiver" android:enabled="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>

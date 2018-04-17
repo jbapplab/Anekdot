@@ -21,9 +21,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
-import android.widget.Switch;
-import android.widget.TextView;
-import android.widget.Toast;
+
+import com.jbapplab.navigationdrawertabs.m_EventHandling.EventBusStageSelected;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -58,7 +57,7 @@ public class StageFragment extends Fragment {
         //Log.i("onCreate", ": STAGE");
 
         if (savedInstanceState != null){
-            Log.i("On Create STAGE: ", "SAVEDINSTANCE");
+            //Log.i("On Create STAGE: ", "SAVEDINSTANCE");
         }
     }
 

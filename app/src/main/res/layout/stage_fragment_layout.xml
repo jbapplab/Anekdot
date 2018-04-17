@@ -25,7 +25,7 @@
                 android:id="@+id/textViewDefault"
                 android:layout_centerHorizontal="true"
                 android:textColor="@color/colorAccent"
-                android:text="Default Information"/>
+                android:text="@string/stage_default"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -33,7 +33,7 @@
                 android:textSize="15sp"
                 android:layout_marginTop="15dp"
                 android:layout_centerHorizontal="true"
-                android:text="Here are some default information about a persuasive story. Something was not properly selected, please go back and select a stage in the relevant spinner."
+                android:text="@string/stage_default_label"
                 android:textColor="@color/colorPrimary"
                 android:layout_below="@+id/textViewDefault"/>
 
@@ -66,7 +66,7 @@
                 android:id="@+id/textView0"
                 android:layout_centerHorizontal="true"
                 android:textColor="@color/colorAccent"
-                android:text="Stage 1: Before Thinking"/>
+                android:text="@string/stage_1"/>
 
             <TextView
                 android:id="@+id/textView0StageExplanation"
@@ -74,9 +74,16 @@
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
                 android:layout_marginTop="5dp"
-                android:text="In this stage the audience is unaware of the problem/issue that you are describing. They don't have the intention to make a change in relation to it in the forseeable future (e.g. 6 months). \n First time smokers that do not know the dangers of smoking fall into this category."
+                android:text="@string/stage_1_label"
                 android:textColor="@color/colorPrimary"
                 android:layout_below="@id/textView0"/>
+
+            <View
+                android:id="@+id/spacer1"
+                android:layout_below="@id/textView0StageExplanation"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/colorAccent"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -85,8 +92,8 @@
                 android:textSize="20sp"
                 android:id="@+id/textView0Goal"
                 android:textColor="@color/colorAccent"
-                android:text="Your goal in this stage is:"
-                android:layout_below="@id/textView0StageExplanation"/>
+                android:text="@string/stage_1_goal"
+                android:layout_below="@id/spacer1"/>
 
             <TextView
                 android:id="@+id/textView0GoalExplanation"
@@ -94,9 +101,16 @@
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
                 android:layout_marginTop="5dp"
-                android:text="To make them aware of the problem or issue."
+                android:text="@string/stage_1_goal_label"
                 android:textColor="@color/colorPrimary"
                 android:layout_below="@id/textView0Goal"/>
+
+            <View
+                android:id="@+id/spacer2"
+                android:layout_below="@id/textView0GoalExplanation"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/colorAccent"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -105,16 +119,16 @@
                 android:textSize="20sp"
                 android:id="@+id/textView0Strategies"
                 android:textColor="@color/colorAccent"
-                android:text="Strategies of Change"
-                android:layout_below="@id/textView0GoalExplanation"/>
+                android:text="@string/stage_1_strategies"
+                android:layout_below="@id/spacer2"/>
 
             <TextView
                 android:id="@+id/textView0ConsciousnessRaising"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 android:layout_marginTop="10dp"
-                android:text="Get the facts"
+                android:text="@string/get_the_facts"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_below="@id/textView0Strategies"/>
 
@@ -124,19 +138,26 @@
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
                 android:layout_marginTop="5dp"
-                android:text="To make them aware of the problem or issue."
-                android:textColor="@color/colorPrimaryDark"
+                android:text="@string/get_the_facts_label"
+                android:textColor="@color/colorPrimary"
                 android:layout_below="@id/textView0ConsciousnessRaising"/>
+
+            <View
+                android:id="@+id/spacer3"
+                android:layout_below="@id/textView0ConsciousnessRaisingText"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorPrimaryDark"/>
 
             <TextView
                 android:id="@+id/textView0DramaticRelief"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 android:layout_marginTop="10dp"
-                android:text="Pay attention to feelings"
+                android:text="@string/pay_attention_to_feelings"
                 android:textColor="@color/colorPrimaryDark"
-                android:layout_below="@id/textView0ConsciousnessRaisingText"/>
+                android:layout_below="@id/spacer3"/>
 
             <TextView
                 android:id="@+id/textView0DramaticReliefText"
@@ -144,19 +165,26 @@
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
                 android:layout_marginTop="5dp"
-                android:text="To make them aware of the problem or issue."
-                android:textColor="@color/colorPrimaryDark"
+                android:text="@string/pay_attention_to_feelings_label"
+                android:textColor="@color/colorPrimary"
                 android:layout_below="@id/textView0DramaticRelief"/>
+
+            <View
+                android:id="@+id/spacer4"
+                android:layout_below="@id/textView0DramaticReliefText"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorPrimaryDark"/>
 
             <TextView
                 android:id="@+id/textView0EnvironmentalReevaluation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 android:layout_marginTop="10dp"
-                android:text="Notice your effect on others"
+                android:text="@string/notice_your_effect_on_others"
                 android:textColor="@color/colorPrimaryDark"
-                android:layout_below="@id/textView0DramaticReliefText"/>
+                android:layout_below="@id/spacer4"/>
 
             <TextView
                 android:id="@+id/textView0EnvironmentalReevaluationText"
@@ -164,10 +192,36 @@
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
                 android:layout_marginTop="5dp"
-                android:text="To make them aware of the problem or issue."
-                android:textColor="@color/colorPrimaryDark"
+                android:text="@string/notice_your_effect_on_others_label"
+                android:textColor="@color/colorPrimary"
                 android:layout_below="@id/textView0EnvironmentalReevaluation"/>
 
+            <View
+                android:id="@+id/spacer5"
+                android:layout_below="@id/textView0EnvironmentalReevaluationText"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorPrimaryDark"/>
+
+            <TextView
+                android:id="@+id/textView0SocialLiberation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17sp"
+                android:layout_marginTop="10dp"
+                android:text="@string/notice_public_support"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_below="@id/spacer5"/>
+
+            <TextView
+                android:id="@+id/textView0SocialLiberationText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_marginTop="5dp"
+                android:text="@string/notice_public_support_label"
+                android:textColor="@color/colorPrimary"
+                android:layout_below="@id/textView0SocialLiberation"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -185,7 +239,7 @@
                 android:id="@+id/textView1"
                 android:layout_centerHorizontal="true"
                 android:textColor="@color/colorAccent"
-                android:text="Stage 2: Thinking"/>
+                android:text="@string/stage_2"/>
 
             <TextView
                 android:id="@+id/textView1StageExplanation"
@@ -193,9 +247,16 @@
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
                 android:layout_marginTop="5dp"
-                android:text="In this stage the audience is aware of the problem/issue that you are describing. They are seriously considering to make a change in relation to it in the forseeable future (e.g. 6 months). \n People that have been diagnosed with respiratory problems due to smoking fall into this category."
+                android:text="@string/stage_2_label"
                 android:textColor="@color/colorPrimary"
                 android:layout_below="@id/textView1"/>
+
+            <View
+                android:id="@+id/spacer21"
+                android:layout_below="@id/textView1StageExplanation"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/colorAccent"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -204,8 +265,8 @@
                 android:textSize="20sp"
                 android:id="@+id/textView1Goal"
                 android:textColor="@color/colorAccent"
-                android:text="Your goal in this stage is:"
-                android:layout_below="@id/textView1StageExplanation"/>
+                android:text="@string/stage_1_goal"
+                android:layout_below="@id/spacer21"/>
 
             <TextView
                 android:id="@+id/textView1GoalExplanation"
@@ -213,9 +274,16 @@
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
                 android:layout_marginTop="5dp"
-                android:text="To change the intent to act of your audience by showing that the cons of changing are not that many."
+                android:text="@string/stage_2_goal_label"
                 android:textColor="@color/colorPrimary"
                 android:layout_below="@id/textView1Goal"/>
+
+            <View
+                android:id="@+id/spacer22"
+                android:layout_below="@id/textView1GoalExplanation"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/colorAccent"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -224,16 +292,16 @@
                 android:textSize="20sp"
                 android:id="@+id/textView1Strategies"
                 android:textColor="@color/colorAccent"
-                android:text="Strategies of Change"
-                android:layout_below="@id/textView1GoalExplanation"/>
+                android:text="@string/stage_1_strategies"
+                android:layout_below="@id/spacer22"/>
 
             <TextView
                 android:id="@+id/textView1SelfReevaluation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 android:layout_marginTop="10dp"
-                android:text="Create a new self image"
+                android:text="@string/create_a_new_self_image"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_below="@id/textView1Strategies"/>
 
@@ -243,9 +311,36 @@
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
                 android:layout_marginTop="5dp"
-                android:text="To make them aware of the problem or issue."
+                android:text="@string/create_a_new_self_image_label"
                 android:textColor="@color/colorPrimary"
                 android:layout_below="@id/textView1SelfReevaluation"/>
+
+            <View
+                android:id="@+id/spacer23"
+                android:layout_below="@id/textView1SelfReevaluationText"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorPrimaryDark"/>
+
+            <TextView
+                android:id="@+id/textView1SocialLiberation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17sp"
+                android:layout_marginTop="10dp"
+                android:text="@string/notice_public_support"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_below="@id/spacer23"/>
+
+            <TextView
+                android:id="@+id/textView1SocialLiberationText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_marginTop="5dp"
+                android:text="@string/notice_public_support_label"
+                android:textColor="@color/colorPrimary"
+                android:layout_below="@id/textView1SocialLiberation"/>
 
         </RelativeLayout>
 
@@ -264,7 +359,7 @@
                 android:id="@+id/textView2"
                 android:layout_centerHorizontal="true"
                 android:textColor="@color/colorAccent"
-                android:text="Stage 3: Preparing to Act"/>
+                android:text="@string/stage_3"/>
 
             <TextView
                 android:id="@+id/textView2StageExplanation"
@@ -272,9 +367,16 @@
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
                 android:layout_marginTop="5dp"
-                android:text="In this stage the audience is intending to take action in regard the problem/issue that you are describing very soon (e.g. next 30 days). They may have already taken initial steps towards this direction.  \n People that know about the benefits of exercising and whant to lose weight, but they are postponing to sign up for the gym fall into this category."
+                android:text="@string/stage_3_label"
                 android:textColor="@color/colorPrimary"
                 android:layout_below="@id/textView2"/>
+
+            <View
+                android:id="@+id/spacer31"
+                android:layout_below="@id/textView2StageExplanation"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/colorAccent"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -283,8 +385,8 @@
                 android:textSize="20sp"
                 android:id="@+id/textView2Goal"
                 android:textColor="@color/colorAccent"
-                android:text="Your goal in this stage is:"
-                android:layout_below="@id/textView2StageExplanation"/>
+                android:text="@string/stage_1_goal"
+                android:layout_below="@id/spacer31"/>
 
             <TextView
                 android:id="@+id/textView2GoalExplanation"
@@ -292,9 +394,16 @@
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
                 android:layout_marginTop="5dp"
-                android:text="To actually make them act by showing that they can change. Give them the required nudge to go from thinking to acting."
+                android:text="@string/stage_3_goal_label"
                 android:textColor="@color/colorPrimary"
                 android:layout_below="@id/textView2Goal"/>
+
+            <View
+                android:id="@+id/spacer32"
+                android:layout_below="@id/textView2GoalExplanation"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/colorAccent"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -303,16 +412,16 @@
                 android:textSize="20sp"
                 android:id="@+id/textView2Strategies"
                 android:textColor="@color/colorAccent"
-                android:text="Strategies of Change"
-                android:layout_below="@id/textView2GoalExplanation"/>
+                android:text="@string/stage_1_strategies"
+                android:layout_below="@id/spacer32"/>
 
             <TextView
                 android:id="@+id/textView2SelfLiberation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 android:layout_marginTop="10dp"
-                android:text="Make a commitment"
+                android:text="@string/make_a_commitment"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_below="@id/textView2Strategies"/>
 
@@ -322,19 +431,26 @@
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
                 android:layout_marginTop="5dp"
-                android:text="To make them aware of the problem or issue."
+                android:text="@string/make_a_commitment_label"
                 android:textColor="@color/colorPrimary"
                 android:layout_below="@id/textView2SelfLiberation"/>
+
+            <View
+                android:id="@+id/spacer33"
+                android:layout_below="@id/textView2SelfLiberationText"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorPrimaryDark"/>
 
             <TextView
                 android:id="@+id/textView2HelpingRelationships"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 android:layout_marginTop="10dp"
-                android:text="Get Support"
+                android:text="@string/get_support"
                 android:textColor="@color/colorPrimaryDark"
-                android:layout_below="@id/textView2SelfLiberationText"/>
+                android:layout_below="@id/spacer33"/>
 
             <TextView
                 android:id="@+id/textView2HelpingRelationshipsText"
@@ -342,19 +458,26 @@
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
                 android:layout_marginTop="5dp"
-                android:text="To make them aware of the problem or issue."
+                android:text="@string/get_support_label"
                 android:textColor="@color/colorPrimary"
                 android:layout_below="@id/textView2HelpingRelationships"/>
+
+            <View
+                android:id="@+id/spacer34"
+                android:layout_below="@id/textView2HelpingRelationshipsText"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorPrimaryDark"/>
 
             <TextView
                 android:id="@+id/textView2CounterConditioning"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
+                android:textSize="17sp"
                 android:layout_marginTop="10dp"
-                android:text="Use substitutes"
+                android:text="@string/use_substitutes"
                 android:textColor="@color/colorPrimaryDark"
-                android:layout_below="@id/textView2HelpingRelationshipsText"/>
+                android:layout_below="@id/spacer34"/>
 
             <TextView
                 android:id="@+id/textView2CounterConditioningText"
@@ -362,9 +485,36 @@
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
                 android:layout_marginTop="5dp"
-                android:text="To make them aware of the problem or issue."
+                android:text="@string/use_substitutes_label"
                 android:textColor="@color/colorPrimary"
                 android:layout_below="@id/textView2CounterConditioning"/>
+
+            <View
+                android:id="@+id/spacer35"
+                android:layout_below="@id/textView2CounterConditioningText"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorPrimaryDark"/>
+
+            <TextView
+                android:id="@+id/textView2SocialLiberation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17sp"
+                android:layout_marginTop="10dp"
+                android:text="@string/notice_public_support"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_below="@id/spacer35"/>
+
+            <TextView
+                android:id="@+id/textView2SocialLiberationText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_marginTop="5dp"
+                android:text="@string/notice_public_support_label"
+                android:textColor="@color/colorPrimary"
+                android:layout_below="@id/textView2SocialLiberation"/>
 
         </RelativeLayout>
 
@@ -383,7 +533,7 @@
                 android:id="@+id/textView3"
                 android:layout_centerHorizontal="true"
                 android:textColor="@color/colorAccent"
-                android:text="Stage 4: Acting"/>
+                android:text="@string/stage_4"/>
 
             <TextView
                 android:id="@+id/textView3StageExplanation"
@@ -391,9 +541,16 @@
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
                 android:layout_marginTop="5dp"
-                android:text="In this stage the audience is currently modifying their behaviour, experiences and/or environment to overcome the issue/problem (e.g. they have changed their overt behaviour for less than 6 months). \n People that have committed to a diet, go to the gym but are victims of the occasional food temptation fall into this category."
+                android:text="@string/stage_4_label"
                 android:textColor="@color/colorPrimary"
                 android:layout_below="@id/textView3"/>
+
+            <View
+                android:id="@+id/spacer41"
+                android:layout_below="@id/textView3StageExplanation"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/colorAccent"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -402,8 +559,8 @@
                 android:textSize="20sp"
                 android:id="@+id/textView3Goal"
                 android:textColor="@color/colorAccent"
-                android:text="Your goal in this stage is:"
-                android:layout_below="@id/textView3StageExplanation"/>
+                android:text="@string/stage_1_goal"
+                android:layout_below="@id/spacer41"/>
 
             <TextView
                 android:id="@+id/textView3GoalExplanation"
@@ -411,9 +568,16 @@
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
                 android:layout_marginTop="5dp"
-                android:text="To help them gain the self-confidence needed to maintain the positive outcome of their efforts (consolidate their gains) and potentially prevent relapse to undesirable behaviours."
+                android:text="@string/stage_4_goal_label"
                 android:textColor="@color/colorPrimary"
                 android:layout_below="@id/textView3Goal"/>
+
+            <View
+                android:id="@+id/spacer42"
+                android:layout_below="@id/textView3GoalExplanation"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/colorAccent"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -422,8 +586,8 @@
                 android:textSize="20sp"
                 android:id="@+id/textView3Strategies"
                 android:textColor="@color/colorAccent"
-                android:text="Strategies of Change"
-                android:layout_below="@id/textView3GoalExplanation"/>
+                android:text="@string/stage_1_strategies"
+                android:layout_below="@id/spacer42"/>
 
             <TextView
                 android:id="@+id/textView3StimulusControl"
@@ -431,7 +595,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
                 android:layout_marginTop="10dp"
-                android:text="Manage the environment"
+                android:text="@string/manage_the_environment"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_below="@id/textView3Strategies"/>
 
@@ -441,9 +605,16 @@
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
                 android:layout_marginTop="5dp"
-                android:text="To make them aware of the problem or issue."
+                android:text="@string/manage_the_environment_label"
                 android:textColor="@color/colorPrimary"
                 android:layout_below="@id/textView3StimulusControl"/>
+
+            <View
+                android:id="@+id/spacer43"
+                android:layout_below="@id/textView3StimulusControlText"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorPrimaryDark"/>
 
             <TextView
                 android:id="@+id/textView3ReinforcementManagement"
@@ -451,9 +622,9 @@
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
                 android:layout_marginTop="10dp"
-                android:text="Rewarding onself or being rewarded by others for making changes."
+                android:text="@string/rewarding_oneself_or_being_rewarded_by_others_for_making_changes"
                 android:textColor="@color/colorPrimaryDark"
-                android:layout_below="@id/textView3StimulusControlText"/>
+                android:layout_below="@id/spacer43"/>
 
             <TextView
                 android:id="@+id/textView3ReinforcementManagementText"
@@ -461,9 +632,36 @@
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
                 android:layout_marginTop="5dp"
-                android:text="To make them aware of the problem or issue."
+                android:text="@string/rewarding_oneself_or_being_rewarded_by_others_for_making_changes_label"
                 android:textColor="@color/colorPrimary"
                 android:layout_below="@id/textView3ReinforcementManagement"/>
+
+            <View
+                android:id="@+id/spacer44"
+                android:layout_below="@id/textView3ReinforcementManagementText"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorPrimaryDark"/>
+
+            <TextView
+                android:id="@+id/textView3SocialLiberation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17sp"
+                android:layout_marginTop="10dp"
+                android:text="@string/notice_public_support"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_below="@id/spacer44"/>
+
+            <TextView
+                android:id="@+id/textView3SocialLiberationText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_marginTop="5dp"
+                android:text="@string/notice_public_support_label"
+                android:textColor="@color/colorPrimary"
+                android:layout_below="@id/textView3SocialLiberation"/>
 
         </RelativeLayout>
 
