@@ -150,6 +150,7 @@
     <string name="intro_TipOTD">Here is today\'s tip for more impactful and influential stories!</string>
     <string name="generate_tip">I want another tip!</string>
     <string name="intro_links_tutorials">Here you can find useful links and video tutorials for persuasive writing.</string>
+    <!-- User area strings end-->
 
     <!-- Tip of the day -->
     <string-array name="string_array_TipOTD">
@@ -185,6 +186,7 @@
         <item>Draw Your Text. If you can express your idea in a few pictures, rather than 10 paragraphs of text, use the pictures! What would you rather share on social networks – a picture or a link to text? Infographics are a great way to get your ideas across. Modern readers are reluctant to spend a lot of time reading, but they’re quick to register and interpret visual information.</item>
         <item>Use Your Imagination. Writing that tells a story makes is so much more special than that which is only informative. Story-telling awakens our imagination and makes your message relatable to the reader. It’s also far more interesting to read. Use words such as “imagine”, “see” and “remember”.</item>
     </string-array>
+    <!-- Tip of the day end -->
 
     <!-- LINKS -->
     <string name="link1">Guide: <a href="https://problogger.com/th-science-of-storytelling-6-ways-to-write-more-persuasive-stories/">6 Ways to Write More Persuasive Stories</a></string>
@@ -193,11 +195,13 @@
     <string name="link4"><a href="http://www.www.com">ForGet Password</a></string>
     <string name="link5"><a href="http://www.www.com">ForGet Password</a></string>
 
+    <!-- Stage labels -->
     <string name="precontemplation_info">I want to know more</string>
     <string name="contemplation_info">I am thinking to change</string>
     <string name="preparation_info">I want to do something soon</string>
     <string name="action_info">I am already trying</string>
     <string name="default_info">Not defined</string>
+    <!-- Stage labels end-->
 
     <string name="write_story_notification_title_template">Write story: %1$s</string>
 
@@ -348,9 +352,194 @@
     </string>
     <!-- End of Stages fragment -->
 
+    <!-- Help and support Activity -->
     <string name="help_and_support">Help and Support</string>
     <string name="help_description">\nIn case of a bug, issue or any other kind of assistance please use the button below to contact me.</string>
     <string name="timer_icon">timer icon</string>
     <string name="report_a_problem">Report a problem</string>
+    <!-- End of Help and Support Activity -->
 
+    <!-- Category/Topic Fragment -->
+    <string name="default_topic">Default Topic</string>
+    <string name="stage_default_info">\nSomething was not properly selected, please go back and select a stage in the relevant spinner.
+    \n\nBut since you are here you could perhaps benefit from some general information on how to write a persuasive story.
+    \n- Start with a <b>logical argument</b> in regard to a problem or issue.
+    \n- You should also give <b>suggestions and strategies</b> to show to your audience <b>what they should</b> do in regard to the issue.
+    \n- You should explain <b>why</b> they should do that and <b>what they will gain</b> if they do so.
+    \n\nRemember your goal is to construct a <b>persuasive argument</b> to help them move from the fence!
+    \n\n\nAlso here are the top 5 impactful words in the English language: <b>You, Because, Free, Instantly, New</b>
+    \nUse them wisely!</string>
+    <string name="other">Other</string>
+    <string name="other_information">\nAs mentioned before, the <b>topic</b> of your story is very important in order for your audience to relate to it. Remember,
+        a <b>more relatable story</b> is <b>more impactful</b> and <b>more persuasive</b> so your goal is to achieve exactly that. Try to make your audience immerse in your story and transport to your setting.
+        \n\n<font color="#d21414"><b>Think of your audience: </b></font>
+        \n- <b>Who</b> are they?
+        \n- <b>Why</b> are they would be particularly interested in this topic?
+        \n\n<font color="#d21414"><b>Think of your story: </b></font>
+        \n- Who are the <b>characters</b> in your story? Can your audience relate to them? Will you be able to show desired and undesired behaviours through your characters to influence your audience?
+        \n- <b>Where and when</b> does the story take place? Is this context/setting something that you audience could visualise themselves in? Does it fit to the problem/issue that you are trying to describe?
+        \n- <b>How</b> do your characters/actors act and interact with each other? What state are they in? Will your audience be able to relate to this behavioural situation?
+        \n- Are there any <b>specific constraints</b> you should consider that relate to the topic of the story that you should set?
+        \n\n<font color="#d21414">You can use the <b>topic field in your story form</b>  to start taking notes on making the story more relatable using its topic.</font>
+    </string>
+    <string name="art">Art</string>
+    <string name="art_information">\nAs mentioned before, the <b>topic</b> of your story is very important in order for your audience to relate to it. Remember,
+        a <b>more relatable story</b> is <b>more impactful</b> and <b>more persuasive</b> so your goal is to achieve exactly that. Try to make your audience immerse in your story and transport to your setting.
+        \n\n<font color="#d21414"><b>Think of your audience: </b></font>
+        \n- <b>Who</b> are they?
+        \n- <b>Why</b> are they would be particularly interested in this topic?
+        \n\n<font color="#d21414"><b>Think of your story: </b></font>
+        \n- Who are the <b>characters</b> in your story? Can your audience relate to them? Will you be able to show desired and undesired behaviours through your characters to influence your audience?
+        \n- <b>Where and when</b> does the story take place? Is this context/setting something that you audience could visualise themselves in? Does it fit to the problem/issue that you are trying to describe?
+        \n- <b>How</b> do your characters/actors act and interact with each other? What state are they in? Will your audience be able to relate to this behavioural situation?
+        \n- Are there any <b>specific constraints</b> you should consider that relate to the topic of the story that you should set?
+        <!--
+        \n\n<font color="#d21414"><b>Specific for Art: </b></font>
+        \n- <b>Who</b> are they?
+        -->
+        \n\n<font color="#d21414">You can use the <b>topic field in your story form</b>  to start taking notes on making the story more relatable using its topic.</font>
+    </string>
+    <string name="causes">Causes</string>
+    <string name="causes_information">\nAs mentioned before, the <b>topic</b> of your story is very important in order for your audience to relate to it. Remember,
+        a <b>more relatable story</b> is <b>more impactful</b> and <b>more persuasive</b> so your goal is to achieve exactly that. Try to make your audience immerse in your story and transport to your setting.
+        \n\n<font color="#d21414"><b>Think of your audience: </b></font>
+        \n- <b>Who</b> are they?
+        \n- <b>Why</b> are they would be particularly interested in this topic?
+        \n\n<font color="#d21414"><b>Think of your story: </b></font>
+        \n- Who are the <b>characters</b> in your story? Can your audience relate to them? Will you be able to show desired and undesired behaviours through your characters to influence your audience?
+        \n- <b>Where and when</b> does the story take place? Is this context/setting something that you audience could visualise themselves in? Does it fit to the problem/issue that you are trying to describe?
+        \n- <b>How</b> do your characters/actors act and interact with each other? What state are they in? Will your audience be able to relate to this behavioural situation?
+        \n- Are there any <b>specific constraints</b> you should consider that relate to the topic of the story that you should set?
+        <!--
+        \n\n<font color="#d21414"><b>Specific for Causes: </b></font>
+        \n- <b>Who</b> are they?
+        -->
+        \n\n<font color="#d21414">You can use the <b>topic field in your story form</b>  to start taking notes on making the story more relatable using its topic.</font>
+    </string>
+    <string name="education">Education</string>
+    <string name="education_information">\nAs mentioned before, the <b>topic</b> of your story is very important in order for your audience to relate to it. Remember,
+        a <b>more relatable story</b> is <b>more impactful</b> and <b>more persuasive</b> so your goal is to achieve exactly that. Try to make your audience immerse in your story and transport to your setting.
+        \n\n<font color="#d21414"><b>Think of your audience: </b></font>
+        \n- <b>Who</b> are they?
+        \n- <b>Why</b> are they would be particularly interested in this topic?
+        \n\n<font color="#d21414"><b>Think of your story: </b></font>
+        \n- Who are the <b>characters</b> in your story? Can your audience relate to them? Will you be able to show desired and undesired behaviours through your characters to influence your audience?
+        \n- <b>Where and when</b> does the story take place? Is this context/setting something that you audience could visualise themselves in? Does it fit to the problem/issue that you are trying to describe?
+        \n- <b>How</b> do your characters/actors act and interact with each other? What state are they in? Will your audience be able to relate to this behavioural situation?
+        \n- Are there any <b>specific constraints</b> you should consider that relate to the topic of the story that you should set?
+        <!--
+        \n\n<font color="#d21414"><b>Specific for Education: </b></font>
+        \n- <b>Who</b> are they?
+        -->
+        \n\n<font color="#d21414">You can use the <b>topic field in your story form</b>  to start taking notes on making the story more relatable using its topic.</font>
+    </string>
+    <string name="food">Food</string>
+    <string name="food_information">\nAs mentioned before, the <b>topic</b> of your story is very important in order for your audience to relate to it. Remember,
+        a <b>more relatable story</b> is <b>more impactful</b> and <b>more persuasive</b> so your goal is to achieve exactly that. Try to make your audience immerse in your story and transport to your setting.
+        \n\n<font color="#d21414"><b>Think of your audience: </b></font>
+        \n- <b>Who</b> are they?
+        \n- <b>Why</b> are they would be particularly interested in this topic?
+        \n\n<font color="#d21414"><b>Think of your story: </b></font>
+        \n- Who are the <b>characters</b> in your story? Can your audience relate to them? Will you be able to show desired and undesired behaviours through your characters to influence your audience?
+        \n- <b>Where and when</b> does the story take place? Is this context/setting something that you audience could visualise themselves in? Does it fit to the problem/issue that you are trying to describe?
+        \n- <b>How</b> do your characters/actors act and interact with each other? What state are they in? Will your audience be able to relate to this behavioural situation?
+        \n- Are there any <b>specific constraints</b> you should consider that relate to the topic of the story that you should set?
+        <!--
+        \n\n<font color="#d21414"><b>Specific for Food: </b></font>
+        \n- <b>Who</b> are they?
+        -->
+        \n\n<font color="#d21414">You can use the <b>topic field in your story form</b>  to start taking notes on making the story more relatable using its topic.</font>
+    </string>
+    <string name="lifestyle">Lifestyle</string>
+    <string name="lifestyle_information">\nAs mentioned before, the <b>topic</b> of your story is very important in order for your audience to relate to it. Remember,
+        a <b>more relatable story</b> is <b>more impactful</b> and <b>more persuasive</b> so your goal is to achieve exactly that. Try to make your audience immerse in your story and transport to your setting.
+        \n\n<font color="#d21414"><b>Think of your audience: </b></font>
+        \n- <b>Who</b> are they?
+        \n- <b>Why</b> are they would be particularly interested in this topic?
+        \n\n<font color="#d21414"><b>Think of your story: </b></font>
+        \n- Who are the <b>characters</b> in your story? Can your audience relate to them? Will you be able to show desired and undesired behaviours through your characters to influence your audience?
+        \n- <b>Where and when</b> does the story take place? Is this context/setting something that you audience could visualise themselves in? Does it fit to the problem/issue that you are trying to describe?
+        \n- <b>How</b> do your characters/actors act and interact with each other? What state are they in? Will your audience be able to relate to this behavioural situation?
+        \n- Are there any <b>specific constraints</b> you should consider that relate to the topic of the story that you should set?
+        <!--
+        \n\n<font color="#d21414"><b>Specific for Lifestyle: </b></font>
+        \n- <b>Who</b> are they?
+        -->
+        \n\n<font color="#d21414">You can use the <b>topic field in your story form</b>  to start taking notes on making the story more relatable using its topic.</font>
+    </string>
+    <string name="business">Business</string>
+    <string name="business_information">\nAs mentioned before, the <b>topic</b> of your story is very important in order for your audience to relate to it. Remember,
+        a <b>more relatable story</b> is <b>more impactful</b> and <b>more persuasive</b> so your goal is to achieve exactly that. Try to make your audience immerse in your story and transport to your setting.
+        \n\n<font color="#d21414"><b>Think of your audience: </b></font>
+        \n- <b>Who</b> are they?
+        \n- <b>Why</b> are they would be particularly interested in this topic?
+        \n\n<font color="#d21414"><b>Think of your story: </b></font>
+        \n- Who are the <b>characters</b> in your story? Can your audience relate to them? Will you be able to show desired and undesired behaviours through your characters to influence your audience?
+        \n- <b>Where and when</b> does the story take place? Is this context/setting something that you audience could visualise themselves in? Does it fit to the problem/issue that you are trying to describe?
+        \n- <b>How</b> do your characters/actors act and interact with each other? What state are they in? Will your audience be able to relate to this behavioural situation?
+        \n- Are there any <b>specific constraints</b> you should consider that relate to the topic of the story that you should set?
+        <!--
+        \n\n<font color="#d21414"><b>Specific for Business: </b></font>
+        \n- <b>Who</b> are they?
+        -->
+        \n\n<font color="#d21414">You can use the <b>topic field in your story form</b>  to start taking notes on making the story more relatable using its topic.</font>
+    </string>
+    <string name="sports">Sports</string>
+    <string name="sports_information">\nAs mentioned before, the <b>topic</b> of your story is very important in order for your audience to relate to it. Remember,
+        a <b>more relatable story</b> is <b>more impactful</b> and <b>more persuasive</b> so your goal is to achieve exactly that. Try to make your audience immerse in your story and transport to your setting.
+        \n\n<font color="#d21414"><b>Think of your audience: </b></font>
+        \n- <b>Who</b> are they?
+        \n- <b>Why</b> are they would be particularly interested in this topic?
+        \n\n<font color="#d21414"><b>Think of your story: </b></font>
+        \n- Who are the <b>characters</b> in your story? Can your audience relate to them? Will you be able to show desired and undesired behaviours through your characters to influence your audience?
+        \n- <b>Where and when</b> does the story take place? Is this context/setting something that you audience could visualise themselves in? Does it fit to the problem/issue that you are trying to describe?
+        \n- <b>How</b> do your characters/actors act and interact with each other? What state are they in? Will your audience be able to relate to this behavioural situation?
+        \n- Are there any <b>specific constraints</b> you should consider that relate to the topic of the story that you should set?
+        <!--
+        \n\n<font color="#d21414"><b>Specific for Sports: </b></font>
+        \n- <b>Who</b> are they?
+        -->
+        \n\n<font color="#d21414">You can use the <b>topic field in your story form</b>  to start taking notes on making the story more relatable using its topic.</font>
+    </string>
+    <string name="travel">Travel</string>
+    <string name="travel_information">\nAs mentioned before, the <b>topic</b> of your story is very important in order for your audience to relate to it. Remember,
+        a <b>more relatable story</b> is <b>more impactful</b> and <b>more persuasive</b> so your goal is to achieve exactly that. Try to make your audience immerse in your story and transport to your setting.
+        \n\n<font color="#d21414"><b>Think of your audience: </b></font>
+        \n- <b>Who</b> are they?
+        \n- <b>Why</b> are they would be particularly interested in this topic?
+        \n\n<font color="#d21414"><b>Think of your story: </b></font>
+        \n- Who are the <b>characters</b> in your story? Can your audience relate to them? Will you be able to show desired and undesired behaviours through your characters to influence your audience?
+        \n- <b>Where and when</b> does the story take place? Is this context/setting something that you audience could visualise themselves in? Does it fit to the problem/issue that you are trying to describe?
+        \n- <b>How</b> do your characters/actors act and interact with each other? What state are they in? Will your audience be able to relate to this behavioural situation?
+        \n- Are there any <b>specific constraints</b> you should consider that relate to the topic of the story that you should set?
+        <!--
+        \n\n<font color="#d21414"><b>Specific for Travel: </b></font>
+        \n- <b>Who</b> are they?
+        -->
+        \n\n<font color="#d21414">You can use the <b>topic field in your story form</b>  to start taking notes on making the story more relatable using its topic.</font>
+    </string>
+    <string name="security">Security</string>
+    <string name="security_information">\nAs mentioned before, the <b>topic</b> of your story is very important in order for your audience to relate to it. Remember,
+        a <b>more relatable story</b> is <b>more impactful</b> and <b>more persuasive</b> so your goal is to achieve exactly that. Try to make your audience immerse in your story and transport to your setting.
+        \n\n<font color="#d21414"><b>Think of your audience: </b></font>
+        \n- <b>Who</b> are they?
+        \n- <b>Why</b> are they would be particularly interested in this topic?
+        \n\n<font color="#d21414"><b>Think of your story: </b></font>- Who are the <b>characters</b> in your story? Can your audience relate to them? Will you be able to show desired and undesired behaviours through your characters to influence your audience?
+        \n- <b>Where and when</b> does the story take place? Is this context/setting something that you audience could visualise themselves in? Does it fit to the problem/issue that you are trying to describe?
+        \n- <b>How</b> do your characters/actors act and interact with each other? What state are they in? Will your audience be able to relate to this behavioural situation?
+        \n- Are there any <b>specific constraints</b> you should consider that relate to the topic of the story that you should set?
+        <!--
+        \n\n<font color="#d21414"><b>Specific for Security: </b></font>
+        \n- <b>Who</b> are they?
+        -->
+        \n\n<font color="#d21414">You can use the <b>topic field in your story form</b>  to start taking notes on making the story more relatable using its topic.</font>
+    </string>
+
+    <!-- End of Category/Topic Fragment -->
+
+    <!-- -->
+    <!-- End of -->
+
+    <!-- -->
+    <!-- End of -->
 </resources>
