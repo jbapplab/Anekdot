@@ -88,11 +88,12 @@
                         android:text="@string/sett_reminder_time_label" />
 
                     <ImageView
+                        android:contentDescription="@string/timer_icon"
                         android:id="@+id/iv_timer"
                         android:layout_width="@dimen/timer_icon"
                         android:layout_height="@dimen/timer_icon"
                         android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true"
+                        android:layout_alignParentStart="true"
                         android:layout_centerVertical="true"
                         android:src="@drawable/ic_timer" />
 

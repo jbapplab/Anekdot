@@ -347,4 +347,10 @@
         \n- Learn to appreciate the increased rewards of the positive behaviour in contrast to the decreased rewards of the undesired behaviour\n
     </string>
     <!-- End of Stages fragment -->
+
+    <string name="help_and_support">Help and Support</string>
+    <string name="help_description">\nIn case of a bug, issue or any other kind of assistance please use the button below to contact me.</string>
+    <string name="timer_icon">timer icon</string>
+    <string name="report_a_problem">Report a problem</string>
+
 </resources>
