@@ -1,7 +1,6 @@
 package com.jbapplab.navigationdrawertabs.m_MySQL;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

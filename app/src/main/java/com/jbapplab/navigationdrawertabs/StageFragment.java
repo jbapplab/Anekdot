@@ -104,7 +104,7 @@ public class StageFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        Log.i("onViewCreated", ": STAGE");
+        //Log.i("onViewCreated", ": STAGE");
                 relativeLayout0 = view.findViewById(R.id.stage0);
                 relativeLayout1 = view.findViewById(R.id.stage1);
                 relativeLayout2 = view.findViewById(R.id.stage2);

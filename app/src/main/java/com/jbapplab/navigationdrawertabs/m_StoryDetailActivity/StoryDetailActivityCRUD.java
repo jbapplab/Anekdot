@@ -9,36 +9,24 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.Volley;
 import com.jbapplab.navigationdrawertabs.HelpActivity;
 import com.jbapplab.navigationdrawertabs.LoginActivity;
-import com.jbapplab.navigationdrawertabs.LoginRequest;
 import com.jbapplab.navigationdrawertabs.MetaFirstActivity;
 import com.jbapplab.navigationdrawertabs.MyFavouritesActivity;
 import com.jbapplab.navigationdrawertabs.MyStoriesActivity;
 import com.jbapplab.navigationdrawertabs.R;
-import com.jbapplab.navigationdrawertabs.RetrieveStoriesCRUDActivity;
 import com.jbapplab.navigationdrawertabs.SelectCategoryActivity;
 import com.jbapplab.navigationdrawertabs.SettingsActivity;
 import com.jbapplab.navigationdrawertabs.UserAreaActivity;
 import com.jbapplab.navigationdrawertabs.m_MySQL.MySQLClientCRUD;
-import com.jbapplab.navigationdrawertabs.m_UI.CustomAdapterCategory;
 import com.jbapplab.navigationdrawertabs.m_UI.PicassoClient;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class StoryDetailActivityCRUD extends AppCompatActivity {
 

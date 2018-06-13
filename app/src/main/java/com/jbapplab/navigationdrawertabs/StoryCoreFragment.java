@@ -21,25 +21,16 @@ package com.jbapplab.navigationdrawertabs;
  */
 
 import android.content.Context;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TableLayout;
-import android.widget.Toast;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -132,6 +123,7 @@ public class StoryCoreFragment extends Fragment {
         usernameString = getArguments().getString("USERNAME_KEY");
         passwordString = getArguments().getString("PASSWORD_KEY");
         emailString = getArguments().getString("EMAIL_KEY");
+
         if (getArguments().getString("UPDATE_KEY") != null) {
             actionString = getArguments().getString("UPDATE_KEY");
         }
@@ -150,6 +142,8 @@ public class StoryCoreFragment extends Fragment {
             contextRelated = getArguments().getString("CONTEXT_RELATED_KEY");
             imageUrl = getArguments().getString("IMAGE_URL_KEY");
         }
+
+        sendDataMetaFirstFormFragment();
 
         return view;
     }
@@ -195,18 +189,6 @@ public class StoryCoreFragment extends Fragment {
 
         @Override
         public Fragment getItem(int position){
-            /*TEST TODO
-            if(position==0){
-                sendDataMetaFirstFormFragment();
-            } else if (position==1){
-                sendDataToCategoryFragment();
-            } else if (position==2){
-                sendDataToStageFragment();
-            }
-            */
-            sendDataMetaFirstFormFragment();
-            sendDataToStageFragment();
-            sendDataToCategoryFragment();
             return mFragmentList.get(position);
         }
 
@@ -229,34 +211,15 @@ public class StoryCoreFragment extends Fragment {
     String categorySelection = "default";
     String stageSelection = "default";
 
-    /*
-        SEND DATA TO FRAGMENT
-        */
-    private void sendDataToStageFragment() {
-        //PACK DATA IN A BUNDLE
-        Bundle forStageFragment = new Bundle();
-        forStageFragment.putString("STAGE_KEY", stageSelection);
-        //PASS OVER THE BUNDLE TO OUR FRAGMENT
-        stageFragment.setArguments(forStageFragment);
-    }
-
-    private void sendDataToCategoryFragment(){
-        //PACK DATA IN A BUNDLE
-        Bundle forCategoryFragment = new Bundle();
-        forCategoryFragment.putString("CATEGORY_KEY", categorySelection);
-        //PASS OVER THE BUNDLE TO OUR FRAGMENT
-        categoryFragment.setArguments(forCategoryFragment);
-    }
-
     private void sendDataMetaFirstFormFragment() {
         //PACK DATA IN A BUNDLE
         Bundle forMetaFirstFormBundle = new Bundle();
         forMetaFirstFormBundle.putString("USERID_KEY", userIdString);
-        forMetaFirstFormBundle.putString("FIRSTNAME_KEY", userIdString);
-        forMetaFirstFormBundle.putString("LASTNAME_KEY", userIdString);
-        forMetaFirstFormBundle.putString("USERNAME_KEY", userIdString);
-        forMetaFirstFormBundle.putString("PASSWORD_KEY", userIdString);
-        forMetaFirstFormBundle.putString("EMAIL_KEY", userIdString);
+        forMetaFirstFormBundle.putString("FIRSTNAME_KEY", firstNameString);
+        forMetaFirstFormBundle.putString("LASTNAME_KEY", lastNameString);
+        forMetaFirstFormBundle.putString("USERNAME_KEY", usernameString);
+        forMetaFirstFormBundle.putString("PASSWORD_KEY", passwordString);
+        forMetaFirstFormBundle.putString("EMAIL_KEY", emailString);
 
         if (getArguments().getString("UPDATE_KEY") != null) {
             forMetaFirstFormBundle.putString("UPDATE_KEY", actionString);

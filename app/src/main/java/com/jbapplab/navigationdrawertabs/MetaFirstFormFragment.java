@@ -90,6 +90,7 @@ public class MetaFirstFormFragment extends Fragment {
         usernameString = getArguments().getString("USERNAME_KEY");
         passwordString = getArguments().getString("PASSWORD_KEY");
         emailString = getArguments().getString("EMAIL_KEY");
+
         if (getArguments().getString("UPDATE_KEY") != null) {
             actionString = getArguments().getString("UPDATE_KEY");
         }
@@ -108,6 +109,7 @@ public class MetaFirstFormFragment extends Fragment {
             contextRelated = getArguments().getString("CONTEXT_RELATED_KEY");
             imageUrl = getArguments().getString("IMAGE_URL_KEY");
         }
+
         return inflater.inflate(R.layout.meta_first_main,null);
     }
 

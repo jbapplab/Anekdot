@@ -14,11 +14,9 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.jbapplab.navigationdrawertabs.m_MySQL.DownloaderCRUD;
 import com.jbapplab.navigationdrawertabs.m_MySQL.MySQLClientCRUD;
 import com.jbapplab.navigationdrawertabs.m_UI.CustomAdapterCRUD;
 
