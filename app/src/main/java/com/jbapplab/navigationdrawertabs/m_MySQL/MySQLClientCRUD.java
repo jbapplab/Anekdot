@@ -31,14 +31,9 @@ import static java.lang.Integer.parseInt;
 public class MySQLClientCRUD {
 
     //Variables
-    String userId;
-    String firstName;
-    String lastName;
-    String username;
-    String password;
-    String email;
+    private String userId, firstName, lastName, username, password, email;
 
-    //Save/Retrieve URLS
+    /* Save/Retrieve URLS */
     private static final String DATA_INSERT_URL = "http://applabjb.000webhostapp.com/create_CRUD.php";
     private static final String DATA_RETRIEVE_URL = "http://applabjb.000webhostapp.com/create_index.php";
 
@@ -141,7 +136,7 @@ public class MySQLClientCRUD {
                                 } catch (JSONException e){
 
                                     e.printStackTrace();
-                                    Toast.makeText(context, "Server responded but Anekdot could not parse the data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(context, "Server responded but Anecdote could not parse the data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
 
                                 }
                             }
@@ -294,7 +289,7 @@ public class MySQLClientCRUD {
                                 } catch (JSONException e){
 
                                     e.printStackTrace();
-                                    Toast.makeText(context, "Server responded but Anekdot could not parse the data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(context, "Server responded but Anecdote could not parse the data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
 
                                 }
                             }
@@ -404,7 +399,7 @@ public class MySQLClientCRUD {
                                 } catch (JSONException e){
 
                                     e.printStackTrace();
-                                    Toast.makeText(context, "Server responded but Anekdot could not parse the data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(context, "Server responded but Anecdote could not parse the data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
 
                                 }
                             }
@@ -416,7 +411,6 @@ public class MySQLClientCRUD {
                         public void onError(ANError anError) {
 
                             Toast.makeText(context, "Unsuccessful connection to the server: Error - " + anError.getMessage(),Toast.LENGTH_SHORT).show();
-
                         }
                     });
 
@@ -464,7 +458,7 @@ public class MySQLClientCRUD {
                                 } catch (JSONException e){
 
                                     e.printStackTrace();
-                                    Toast.makeText(context, "Server responded but Anekdot could not parse the data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(context, "Server responded but Anecdote could not parse the data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
 
                                 }
                             }
