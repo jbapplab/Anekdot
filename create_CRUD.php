@@ -26,7 +26,25 @@ if (isset($_POST['action'])){
 		$image_url = $_POST['image_url'];
 		$audience_stage = $_POST['audience_stage'];
 		
-		$dbAdapter->insert(array($story_title,$story_category,$if_other_specify,$author_id,$story_description,$story_events,$orientation,$complicated_action,$evaluation,$resolution,$message,$story_meta,$stage_related,$context_related,$story_full,$image_url,$audience_stage));
+		$s0 = addslashes($story_title);
+		$s1 = addslashes($story_category);
+		$s2 = addslashes($if_other_specify);
+		$s3 = addslashes($author_id);
+		$s4 = addslashes($story_description);
+		$s5 = addslashes($story_events);
+		$s6 = addslashes($orientation);
+		$s7 = addslashes($complicated_action);
+		$s8 = addslashes($evaluation);
+		$s9 = addslashes($resolution);
+		$s10 = addslashes($message);
+		$s11 = addslashes($story_meta);
+		$s12 = addslashes($stage_related);
+		$s13 = addslashes($context_related);
+		$s14 = addslashes($story_full);
+		$s15 = addslashes($image_url);
+		$s16 = addslashes($audience_stage);
+		
+		$dbAdapter->insert(array($s0,$s1,$s2,$s3,$s4,$s5,$s6,$s7,$s8,$s9,$s10,$s11,$s12,$s13,$s14,$s15,$s16));
 
 		} else if ($_POST['action']=="update"){
 		
@@ -51,7 +69,25 @@ if (isset($_POST['action'])){
 		$image_url = $_POST['image_url'];
 		$audience_stage = $_POST['audience_stage'];
 		
-		$dbAdapter->update($id,(array($story_title,$story_category,$if_other_specify,$author_id,$story_description,$story_events,$orientation,$complicated_action,$evaluation,$resolution,$message,$story_meta,$stage_related,$context_related,$story_full,$image_url,$audience_stage)));
+		$s0 = addslashes($story_title);
+		$s1 = addslashes($story_category);
+		$s2 = addslashes($if_other_specify);
+		$s3 = addslashes($author_id);
+		$s4 = addslashes($story_description);
+		$s5 = addslashes($story_events);
+		$s6 = addslashes($orientation);
+		$s7 = addslashes($complicated_action);
+		$s8 = addslashes($evaluation);
+		$s9 = addslashes($resolution);
+		$s10 = addslashes($message);
+		$s11 = addslashes($story_meta);
+		$s12 = addslashes($stage_related);
+		$s13 = addslashes($context_related);
+		$s14 = addslashes($story_full);
+		$s15 = addslashes($image_url);
+		$s16 = addslashes($audience_stage);
+		
+		$dbAdapter->update($id,(array($s0,$s1,$s2,$s3,$s4,$s5,$s6,$s7,$s8,$s9,$s10,$s11,$s12,$s13,$s14,$s15,$s16)));
 		
 	}else if ($_POST['action']=="delete"){
 		
@@ -82,10 +118,9 @@ if (isset($_POST['action'])){
 		
 		$dbAdapter = new DBadapter();
 		
-		$authorId = $_POST['author_id'];
 		$userId = $_POST['user_id'];
 		
-		$dbAdapter->retrieveMyFavourites($authorId, $userId);
+		$dbAdapter->retrieveMyStories($userId);
 	}
 	
 } else {

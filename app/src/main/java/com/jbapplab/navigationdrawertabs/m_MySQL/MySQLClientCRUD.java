@@ -148,7 +148,6 @@ public class MySQLClientCRUD {
                         public void onError(ANError anError) {
 
                             Toast.makeText(context, "Unsuccessful connection to the server: Error - " + anError.getMessage(),Toast.LENGTH_SHORT).show();
-
                         }
                     });
 
