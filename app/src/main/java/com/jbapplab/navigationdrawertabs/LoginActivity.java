@@ -32,10 +32,13 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 
-        //To exit when back pressed in user area
+        /* To exit when back pressed in user area
+
         if (getIntent().getExtras() != null && getIntent().getExtras().getBoolean("EXIT", false)) {
             LoginActivity.this.finishAndRemoveTask();
         }
+
+        */
 
         final EditText etUsername = findViewById(R.id.etUsername);
         final EditText etPassword = findViewById(R.id.etPassword);
@@ -174,13 +177,13 @@ public class LoginActivity extends AppCompatActivity {
         int backStackEntryCount = getSupportFragmentManager().getBackStackEntryCount();
         if (backStackEntryCount == 0) {
             new AlertDialog.Builder(this)
-                    .setTitle("Exit Anekdot?")
+                    .setTitle("Exit Anecdote?")
                     .setMessage("Are you sure you want to exit?")
                     .setNegativeButton(android.R.string.no, null)
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
                         public void onClick(DialogInterface arg0, int arg1) {
-                            LoginActivity.this.finishAndRemoveTask();
+                            ExitActivity.exitApplication(LoginActivity.this);
                         }
                     }).create().show();
         }

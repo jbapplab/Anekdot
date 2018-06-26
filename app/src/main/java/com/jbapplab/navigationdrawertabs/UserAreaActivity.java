@@ -248,16 +248,20 @@ public class UserAreaActivity extends AppCompatActivity {
         int backStackEntryCount = getSupportFragmentManager().getBackStackEntryCount();
         if (backStackEntryCount == 0) {
             new AlertDialog.Builder(this)
-                    .setTitle("Exit Anecdot?")
+                    .setTitle("Exit Anecdote?")
                     .setMessage("Are you sure you want to exit?")
                     .setNegativeButton(android.R.string.no, null)
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
                         public void onClick(DialogInterface arg0, int arg1) {
+
+                            /*
                             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             intent.putExtra("EXIT", true);
                             startActivity(intent);
+                            */
+                            ExitActivity.exitApplication(UserAreaActivity.this);
                         }
                     }).create().show();
         }

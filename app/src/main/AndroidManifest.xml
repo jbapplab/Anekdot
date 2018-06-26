@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="true"
@@ -13,25 +13,53 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity">
+        <activity
+            android:name=".LoginActivity"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".SelectCategoryActivity" />
-        <activity android:name=".UserAreaActivity" />
-        <activity android:name=".m_StoryDetailActivity.StoryDetailActivityCRUD" />
-        <activity android:name=".RetrieveStoriesCRUDActivity" />
-        <activity android:name=".MetaFirstActivity" android:screenOrientation="portrait" />
-        <activity android:name=".MyStoriesActivity" />
-        <activity android:name=".MyFavouritesActivity" />
-        <activity android:name=".SettingsActivity" android:screenOrientation="portrait" />
-        <activity android:name=".HelpActivity" />
+        <activity
+            android:name=".ExitActivity"
+            android:autoRemoveFromRecents="true"
+            android:theme="@android:style/Theme.NoDisplay" />
+        <activity
+            android:name=".RegisterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SelectCategoryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UserAreaActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".m_StoryDetailActivity.StoryDetailActivityCRUD"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RetrieveStoriesCRUDActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MetaFirstActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyStoriesActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyFavouritesActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SettingsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".HelpActivity"
+            android:screenOrientation="portrait" />
 
-        <receiver android:name=".m_Notification.AlarmReceiver" android:enabled="false">
+        <receiver
+            android:name=".m_Notification.AlarmReceiver"
+            android:enabled="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
