@@ -6,6 +6,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorSecondary">@color/colorAccent</item>
+        <item name="android:listDivider">@color/colorAccent</item>
     </style>
 
     <style name="HintTextLabel" parent="TextAppearance.Design.Hint">
@@ -54,5 +56,7 @@
         <item name="thumbTint">@color/colorAccent</item>
         <item name="trackTint">@color/thumb_inactive</item>
     </style>
+
+
 
 </resources>

@@ -17,7 +17,7 @@
 
     <!-- Settings, should always be in the overflow -->
     <item android:id="@+id/action_notifications"
-        android:title="Notifications"
+        android:title="Reminder"
         app:showAsAction="never"/>
 
     <item android:id="@+id/action_logout"

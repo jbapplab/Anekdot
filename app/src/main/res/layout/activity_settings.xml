@@ -18,7 +18,7 @@
         app:logo="@drawable/logo"
         app:contentInsetStartWithNavigation="0dp"
         app:titleMarginStart="15dp"
-        app:title="Notifications" />
+        app:title="Reminder" />
 
     <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -130,7 +130,7 @@
             android:layout_marginTop="0dp"
             app:itemIconTint="@color/colorPrimaryDark"
             app:menu="@menu/drawermenu"
-            app:tabSelectedTextColor="@color/colorAccent" />
+            app:tabSelectedTextColor="@color/colorAccent"/>
         <!--app:headerLayout="@layout/drawer_header"-->
 
     </android.support.v4.widget.DrawerLayout>

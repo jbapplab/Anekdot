@@ -147,8 +147,10 @@
     <string name="send_user_details">Share user details via:</string>
     <string name="scroll_right_tip_links_tutorials">Remember to scroll right to get your story tip of the day and access to useful links and tutorials.</string>
     <string name="dashboard_intro_text">Jump straight into the story!</string>
-    <string name="create_story">Create a Story</string>
-    <string name="read_story">Read a Story</string>
+    <string name="create_storyTop"><b>Create a Story</b></string>
+    <string name="create_story">Full Guidance</string>
+    <string name="read_storyTop"><b>Read a Story</b></string>
+    <string name="read_story">By Topic</string>
     <string name="my_favourites">My Favourites</string>
     <string name="story_categories">Story Categories</string>
     <string name="intro_TipOTD">Here is today\'s tip for more impactful and influential stories!</string>

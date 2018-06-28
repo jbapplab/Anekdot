@@ -24,7 +24,7 @@ import android.widget.TextView;
 import java.util.Random;
 
 
-public class SocialFragment extends Fragment {
+public class TipFragment extends Fragment {
 
     @Nullable
     @Override

@@ -33,8 +33,8 @@ import android.view.ViewGroup;
 
 public class TabFragment extends Fragment {
 
-    public static TabLayout tabLayout;
-    public static ViewPager viewPager;
+    public  TabLayout tabLayout;
+    public  ViewPager viewPager;
     public static int int_items = 3 ;
 
     PrimaryFragment primaryFragment = new PrimaryFragment();
@@ -94,10 +94,10 @@ public class TabFragment extends Fragment {
                     return primaryFragment;
                 case 1 :
 
-                    return new SocialFragment();
+                    return new TipFragment();
                 case 2 :
 
-                    return new UpdatesFragment();
+                    return new LinksFragment();
             }
             return
                     null;
@@ -119,7 +119,7 @@ public class TabFragment extends Fragment {
 
             switch (position){
                 case 0 :
-                    return "Profile";
+                    return "Dashboard";
                 case 1 :
                     return "Tip of the day";
                 case 2 :
