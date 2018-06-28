@@ -292,6 +292,10 @@ public class MetaFirstActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.actionbarmenu, menu);
+
+        MenuItem menuShareUserDetails = menu.findItem(R.id.menu_item_share_details);
+        menuShareUserDetails.setVisible(false);
+
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -301,7 +305,7 @@ public class MetaFirstActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_settings:
+            case R.id.action_notifications:
                 Intent intentGoToSettingsActivity = new Intent(MetaFirstActivity.this, SettingsActivity.class);
                 intentGoToSettingsActivity.putExtra("userId_KEY", userIdString);
                 intentGoToSettingsActivity.putExtra("firstName_KEY", firstName);
@@ -312,7 +316,23 @@ public class MetaFirstActivity extends AppCompatActivity {
                 MetaFirstActivity.this.startActivity(intentGoToSettingsActivity);
                 return true;
 
-            case R.id.menu_item_share:
+            case R.id.action_logout:
+                new AlertDialog.Builder(MetaFirstActivity.this)
+                        .setTitle("Log Out?")
+                        .setMessage("Are you sure you want to log out?")
+                        .setNegativeButton(android.R.string.no, null)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface arg0, int arg1) {
+
+                                Intent intentGoToLoginActivity = new Intent(MetaFirstActivity.this, LoginActivity.class);
+                                MetaFirstActivity.this.startActivity(intentGoToLoginActivity);
+
+                            }
+                        }).create().show();
+                return true;
+
+            case R.id.menu_item_share_story:
 
                 //TODO User chose the "Share" action FULL STORY
                 Intent sendIntent = new Intent();

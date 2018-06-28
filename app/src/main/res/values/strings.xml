@@ -144,7 +144,7 @@
     <string name="register">register</string>
 
     <!-- User area strings -->
-    <string name="send_user_details">Share user details:</string>
+    <string name="send_user_details">Share user details via:</string>
     <string name="scroll_right_tip_links_tutorials">Remember to scroll right to get your story tip of the day and access to useful links and tutorials.</string>
     <string name="dashboard_intro_text">Jump straight into the story!</string>
     <string name="create_story">Create a Story</string>

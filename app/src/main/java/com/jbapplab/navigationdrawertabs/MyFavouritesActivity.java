@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ProgressBar;
@@ -55,6 +56,10 @@ public class MyFavouritesActivity extends AppCompatActivity {
         username = intent.getStringExtra("username_KEY");
         password = intent.getStringExtra("password_KEY");
         email = intent.getStringExtra("email_KEY");
+
+        //Set the toolbar as an action bar to later change the label
+        Toolbar mainToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mainToolbar);
 
         /*
          Setup the DrawerLayout and NavigationView
@@ -243,6 +248,13 @@ public class MyFavouritesActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.actionbarmenu, menu);
+
+        MenuItem menuShareStory = menu.findItem(R.id.menu_item_share_story);
+        menuShareStory.setVisible(false);
+
+        MenuItem menuShareUserDetails = menu.findItem(R.id.menu_item_share_details);
+        menuShareUserDetails.setVisible(false);
+
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -252,7 +264,7 @@ public class MyFavouritesActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_settings:
+            case R.id.action_notifications:
                 Intent intentGoToSettingsActivity = new Intent(MyFavouritesActivity.this, SettingsActivity.class);
                 intentGoToSettingsActivity.putExtra("userId_KEY", userId);
                 intentGoToSettingsActivity.putExtra("firstName_KEY", firstName);
@@ -263,9 +275,27 @@ public class MyFavouritesActivity extends AppCompatActivity {
                 MyFavouritesActivity.this.startActivity(intentGoToSettingsActivity);
                 return true;
 
-            case R.id.menu_item_share:
+            case R.id.action_logout:
+                new AlertDialog.Builder(MyFavouritesActivity.this)
+                        .setTitle("Log Out?")
+                        .setMessage("Are you sure you want to log out?")
+                        .setNegativeButton(android.R.string.no, null)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface arg0, int arg1) {
+
+                                Intent intentGoToLoginActivity = new Intent(MyFavouritesActivity.this, LoginActivity.class);
+                                MyFavouritesActivity.this.startActivity(intentGoToLoginActivity);
+
+                            }
+                        }).create().show();
+                return true;
+
+                /*
+                case R.id.menu_item_share:
                 Toast.makeText(MyFavouritesActivity.this, "If you want to share a story look at it more closely!", Toast.LENGTH_SHORT).show();
                 return true;
+                */
 
             default:
                 // If we got here, the user's action was not recognized.

@@ -22,6 +22,7 @@ import com.jbapplab.navigationdrawertabs.MetaFirstActivity;
 import com.jbapplab.navigationdrawertabs.MyFavouritesActivity;
 import com.jbapplab.navigationdrawertabs.MyStoriesActivity;
 import com.jbapplab.navigationdrawertabs.R;
+import com.jbapplab.navigationdrawertabs.RetrieveStoriesCRUDActivity;
 import com.jbapplab.navigationdrawertabs.SelectCategoryActivity;
 import com.jbapplab.navigationdrawertabs.SettingsActivity;
 import com.jbapplab.navigationdrawertabs.UserAreaActivity;
@@ -423,6 +424,10 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.actionbarmenu, menu);
+
+        MenuItem menuShareStory = menu.findItem(R.id.menu_item_share_details);
+        menuShareStory.setVisible(false);
+
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -432,7 +437,7 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_settings:
+            case R.id.action_notifications:
                 Intent intentGoToSettingsActivity = new Intent(StoryDetailActivityCRUD.this, SettingsActivity.class);
                 intentGoToSettingsActivity.putExtra("userId_KEY", userId);
                 intentGoToSettingsActivity.putExtra("firstName_KEY", firstName);
@@ -443,7 +448,23 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
                 StoryDetailActivityCRUD.this.startActivity(intentGoToSettingsActivity);
                 return true;
 
-            case R.id.menu_item_share:
+            case R.id.action_logout:
+                new AlertDialog.Builder(StoryDetailActivityCRUD.this)
+                        .setTitle("Log Out?")
+                        .setMessage("Are you sure you want to log out?")
+                        .setNegativeButton(android.R.string.no, null)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface arg0, int arg1) {
+
+                                Intent intentGoToLoginActivity = new Intent(StoryDetailActivityCRUD.this, LoginActivity.class);
+                                StoryDetailActivityCRUD.this.startActivity(intentGoToLoginActivity);
+
+                            }
+                        }).create().show();
+                return true;
+
+            case R.id.menu_item_share_story:
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
                 sendIntent.putExtra(Intent.EXTRA_TEXT, retrieveStoryFullDetail.getText());

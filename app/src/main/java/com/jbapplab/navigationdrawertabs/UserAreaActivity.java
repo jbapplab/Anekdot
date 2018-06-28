@@ -14,7 +14,6 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 public class UserAreaActivity extends AppCompatActivity {
 
@@ -293,6 +292,10 @@ public class UserAreaActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.actionbarmenu, menu);
+
+        MenuItem menuShareStory = menu.findItem(R.id.menu_item_share_story);
+        menuShareStory.setVisible(false);
+
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -302,7 +305,7 @@ public class UserAreaActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_settings:
+            case R.id.action_notifications:
                 Intent intentGoToSettingsActivity = new Intent(UserAreaActivity.this, SettingsActivity.class);
                 intentGoToSettingsActivity.putExtra("userId_KEY", userId);
                 intentGoToSettingsActivity.putExtra("firstName_KEY", firstName);
@@ -313,12 +316,28 @@ public class UserAreaActivity extends AppCompatActivity {
                 UserAreaActivity.this.startActivity(intentGoToSettingsActivity);
                 return true;
 
-            case R.id.menu_item_share:
+            case R.id.action_logout:
+                new AlertDialog.Builder(UserAreaActivity.this)
+                        .setTitle("Log Out?")
+                        .setMessage("Are you sure you want to log out?")
+                        .setNegativeButton(android.R.string.no, null)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface arg0, int arg1) {
+
+                                Intent intentGoToLoginActivity = new Intent(UserAreaActivity.this, LoginActivity.class);
+                                UserAreaActivity.this.startActivity(intentGoToLoginActivity);
+
+                            }
+                        }).create().show();
+                return true;
+
+            case R.id.menu_item_share_details:
                 //TODO User chose the "Share" action WE PUT CONTEXT SPECIFIC SHARE
                 //Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.putExtra(Intent.EXTRA_TEXT, "Anecdote user: "+firstName+" "+lastName+" - "+username+" - "+email);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, "Anecdote user: "+firstName+" "+lastName+" - Username: "+username+" - Email: "+email);
                 sendIntent.setType("text/plain");
                 startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.send_user_details)));
                 return true;

@@ -425,6 +425,13 @@ public class RetrieveStoriesCRUDActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.actionbarmenu, menu);
+
+        MenuItem menuShareStory = menu.findItem(R.id.menu_item_share_story);
+        menuShareStory.setVisible(false);
+
+        MenuItem menuShareUserDetails = menu.findItem(R.id.menu_item_share_details);
+        menuShareUserDetails.setVisible(false);
+
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -434,7 +441,7 @@ public class RetrieveStoriesCRUDActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_settings:
+            case R.id.action_notifications:
                 Intent intentGoToSettingsActivity = new Intent(RetrieveStoriesCRUDActivity.this, SettingsActivity.class);
                 intentGoToSettingsActivity.putExtra("userId_KEY", userId);
                 intentGoToSettingsActivity.putExtra("firstName_KEY", firstName);
@@ -445,10 +452,28 @@ public class RetrieveStoriesCRUDActivity extends AppCompatActivity {
                 RetrieveStoriesCRUDActivity.this.startActivity(intentGoToSettingsActivity);
                 return true;
 
-            case R.id.menu_item_share:
+            case R.id.action_logout:
+                new AlertDialog.Builder(RetrieveStoriesCRUDActivity.this)
+                        .setTitle("Log Out?")
+                        .setMessage("Are you sure you want to log out?")
+                        .setNegativeButton(android.R.string.no, null)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface arg0, int arg1) {
+
+                                Intent intentGoToLoginActivity = new Intent(RetrieveStoriesCRUDActivity.this, LoginActivity.class);
+                                RetrieveStoriesCRUDActivity.this.startActivity(intentGoToLoginActivity);
+
+                            }
+                        }).create().show();
+                return true;
+
+                /*
+                case R.id.menu_item_share:
                 //TODO User chose the "Share" action WE PUT CONTEXT SPECIFIC SHARE
                 Toast.makeText(RetrieveStoriesCRUDActivity.this, "If you want to share a story look at it more closely!", Toast.LENGTH_SHORT).show();
                 return true;
+                */
 
             default:
                 // If we got here, the user's action was not recognized.

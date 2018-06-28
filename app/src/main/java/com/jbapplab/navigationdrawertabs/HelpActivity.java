@@ -225,8 +225,17 @@ public class HelpActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.actionbarmenu, menu);
+
+        MenuItem menuShareStory = menu.findItem(R.id.menu_item_share_story);
+        menuShareStory.setVisible(false);
+
+        MenuItem menuShareUserDetails = menu.findItem(R.id.menu_item_share_details);
+        menuShareUserDetails.setVisible(false);
+
         return super.onCreateOptionsMenu(menu);
     }
+
+
 
     /*
     HANDLE CLICK ON MENU ACTIONS
@@ -234,7 +243,7 @@ public class HelpActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_settings:
+            case R.id.action_notifications:
                 Intent intentGoToSettingsActivity = new Intent(HelpActivity.this, SettingsActivity.class);
                 intentGoToSettingsActivity.putExtra("userId_KEY", userId);
                 intentGoToSettingsActivity.putExtra("firstName_KEY", firstName);
@@ -245,12 +254,30 @@ public class HelpActivity extends AppCompatActivity {
                 HelpActivity.this.startActivity(intentGoToSettingsActivity);
                 return true;
 
-            case R.id.menu_item_share:
+                case R.id.action_logout:
+                    new AlertDialog.Builder(HelpActivity.this)
+                            .setTitle("Log Out?")
+                            .setMessage("Are you sure you want to log out?")
+                            .setNegativeButton(android.R.string.no, null)
+                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                                public void onClick(DialogInterface arg0, int arg1) {
+
+                                    Intent intentGoToLoginActivity = new Intent(HelpActivity.this, LoginActivity.class);
+                                    HelpActivity.this.startActivity(intentGoToLoginActivity);
+
+                                }
+                            }).create().show();
+                return true;
+
+                /*
+                case R.id.menu_item_share:
                 //TODO User chose the "Share" action WE PUT CONTEXT SPECIFIC SHARE
                 Toast.makeText(HelpActivity.this, "There is nothing but help things here, move along!", Toast.LENGTH_SHORT).show();
                 return true;
+                */
 
-            default:
+                default:
                 // If we got here, the user's action was not recognized.
                 // Invoke the superclass to handle it.
                 return super.onOptionsItemSelected(item);
