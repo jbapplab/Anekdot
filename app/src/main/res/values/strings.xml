@@ -4,6 +4,10 @@
 
     <string name="submit">Submit</string>
 
+    <string name="register_here">
+        <u>Register here</u>
+    </string>
+
     <string name="empty_check">Empty check</string>
     <string name="email_check">Email check</string>
     <string name="digit_check">Digit check</string>
@@ -13,7 +17,7 @@
     <string name="error_message_empty">Please fill this field</string>
     <string name="error_message_email">Please input a valid email address</string>
     <string name="error_message_digit">Please input digits only</string>
-    <string name="error_message_password">Length must be at least 6–12 characters. Special characters are not allowed.</string>
+    <string name="error_message_password">Length 6–12 characters. Only letters and numbers allowed.</string>
 
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
