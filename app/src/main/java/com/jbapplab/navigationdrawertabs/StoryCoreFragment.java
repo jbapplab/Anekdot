@@ -22,6 +22,7 @@ package com.jbapplab.navigationdrawertabs;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -31,6 +32,14 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TableLayout;
+
+import com.jbapplab.navigationdrawertabs.m_EventHandling.EventBusCategorySelected;
+import com.jbapplab.navigationdrawertabs.m_EventHandling.EventBusStageSelected;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +57,8 @@ public class StoryCoreFragment extends Fragment {
     Fragment metaFirstFormFragment = new MetaFirstFormFragment();
     Fragment categoryFragment = new CategoryFragment();
     Fragment stageFragment = new StageFragment();
+
+    TabLayout tabs;
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
@@ -69,6 +80,8 @@ public class StoryCoreFragment extends Fragment {
         if (savedInstanceState != null){
             //Log.i("On Create CONTAINER: ", "SAVEDINSTANCE");
         }
+
+        EventBus.getDefault().register(this);
     }
 
     @Nullable
@@ -78,8 +91,9 @@ public class StoryCoreFragment extends Fragment {
         /**
          * Set the title bar according to the fragment
          */
+        //TODO CHANGE NAME ACCORDING TO FORMAT
         ((MetaFirstActivity) getActivity())
-                .setActionBarTitle("Create");
+                .setActionBarTitle("Guidance");
 
         /**
          *Inflate tab_layout and setup Views.
@@ -89,9 +103,8 @@ public class StoryCoreFragment extends Fragment {
         ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewpagerStoryCore);
         setupViewPager(viewPager);
         viewPager.setOffscreenPageLimit(2);
-        TabLayout tabs = (TabLayout) view.findViewById(R.id.tabsStoryCore);
+        tabs = view.findViewById(R.id.tabsStoryCore);
         tabs.setupWithViewPager(viewPager);
-
 
         /*
          *Set an Apater for the View Pager
@@ -247,10 +260,86 @@ public class StoryCoreFragment extends Fragment {
     }
 
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onStageSelected(EventBusStageSelected eventBusStageSelected){
+        stageSelection = eventBusStageSelected.message;
+        //Toast.makeText(getActivity(), stageSelection, Toast.LENGTH_SHORT).show();
+        String stage;
+        switch (stageSelection){
+            case "Stage 1: The audience is unaware of the problem or issue you are describing.":
+                stage = "Stage 1 Tips";
+                break;
+            case "Stage 2: The audience is aware of the problem or issue you are describing.":
+                stage = "Stage 2 Tips";
+                break;
+            case "Stage 3: The audience wants to act soon regarding the problem or issue.":
+                stage = "Stage 3 Tips";
+                break;
+            case "Stage 4: The audience is already taking action to overcome the problem or issue.":
+                stage = "Stage 4 Tips";
+                break;
+            default:
+                stage = "Stage Tips";
+        }
+        updateStageTitle(stage, tabs);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onCategorySelected(EventBusCategorySelected eventBusCategorySelected){
+        categorySelection = eventBusCategorySelected.message;
+        //Toast.makeText(getActivity(), categorySelection, Toast.LENGTH_SHORT).show();
+
+        String category;
+        switch (categorySelection){
+            case "Other":
+                category = "Other Tips";
+                break;
+            case "Art":
+                category = "Art Tips";
+                break;
+            case "Causes":
+                category = "Causes Tips";
+                break;
+            case "Education":
+                category = "Education Tips";
+                break;
+            case "Food":
+                category = "Food Tips";
+                break;
+            case "Lifestyle":
+                category = "Lifestyle Tips";
+                break;
+            case "Business":
+                category = "Business Tips";
+                break;
+            case "Sports":
+                category = "Sports Tips";
+                break;
+            case "Travel":
+                category = "Travel Tips";
+                break;
+            case "Security":
+                category = "Security Tips";
+                break;
+            default:
+                category = "Topic Tips";
+        }
+        updateCategoryTitle(category, tabs);
+    }
+
+    public void updateStageTitle(String stage, TabLayout tabs){
+        tabs.getTabAt(2).setText(stage);
+    }
+
+    public void updateCategoryTitle(String category, TabLayout tabs){
+        tabs.getTabAt(1).setText(category);
+    }
+
+
+
     @Override
     public void onStart() {
         super.onStart();
-        //EventBus.getDefault().register(this);
         //Log.i("onStart", ": CONTAINER");
     }
 
@@ -269,7 +358,6 @@ public class StoryCoreFragment extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
-        //EventBus.getDefault().unregister(this);
         //Log.i("onStop", ": CONTAINER");
     }
 
@@ -282,6 +370,9 @@ public class StoryCoreFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
+
+        EventBus.getDefault().unregister(this);
+
         //Log.i("onDestroy", ": CONTAINER");
     }
 
