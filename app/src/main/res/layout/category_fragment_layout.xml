@@ -33,7 +33,7 @@
                 android:textSize="15sp"
                 android:layout_marginTop="10dp"
                 android:layout_centerHorizontal="true"
-                android:text="@string/stage_default_info"
+                android:text="@string/topic_default_info"
                 android:textColor="@color/colorPrimary"
                 android:layout_below="@+id/topicInfoDefault"/>
 

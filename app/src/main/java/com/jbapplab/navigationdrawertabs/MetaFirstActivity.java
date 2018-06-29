@@ -32,7 +32,7 @@ public class MetaFirstActivity extends AppCompatActivity {
     FragmentTransaction mFragmentTransaction;
     Fragment storyCoreFragment = new StoryCoreFragment();
 
-    String userIdString, actionString, storyIdString, storyTitle, ifOtherSpecify, authorIdString, storyDescription, orientation, complicatedAction, evaluation, resolution, message, stageRelated, contextRelated, imageUrl;
+    String userIdString, actionString, storyIdString, storyTitle, ifOtherSpecify, authorIdString, storyDescription, orientation, complicatedAction, evaluation, resolution, message, stageRelated, contextRelated, imageUrl, audienceStage, storyCategory;
     String firstName;
     String lastName;
     String username;
@@ -74,6 +74,8 @@ public class MetaFirstActivity extends AppCompatActivity {
             stageRelated = intent.getExtras().getString("STAGE_RELATED_KEY");
             contextRelated = intent.getExtras().getString("CONTEXT_RELATED_KEY");
             imageUrl = intent.getExtras().getString("IMAGE_URL_KEY");
+            storyCategory = intent.getExtras().getString("STORY_CATEGORY_KEY");
+            audienceStage = intent.getExtras().getString("AUDIENCE_STAGE_KEY");
         }
 
 
@@ -280,6 +282,8 @@ public class MetaFirstActivity extends AppCompatActivity {
             bundle.putString("STAGE_RELATED_KEY", stageRelated);
             bundle.putString("CONTEXT_RELATED_KEY", contextRelated);
             bundle.putString("IMAGE_URL_KEY", imageUrl);
+            bundle.putString("STORY_CATEGORY_KEY", storyCategory);
+            bundle.putString("AUDIENCE_STAGE_KEY", audienceStage);
         }
 
         //PASS OVER THE BUNDLE TO OUR FRAGMENT

@@ -375,6 +375,14 @@
     \n\nRemember your goal is to construct a <b>persuasive argument</b> to help them move from the fence!
     \n\n\nAlso here are the top 5 impactful words in the English language: <b>You, Because, Free, Instantly, New</b>
     \nUse them wisely!</string>
+    <string name="topic_default_info">\nSomething was not properly selected, please go back and select a topic in the relevant spinner.
+    \n\nBut since you are here you could perhaps benefit from some general information on how to write a persuasive story.
+    \n- Start with a <b>logical argument</b> in regard to a problem or issue.
+    \n- You should also give <b>suggestions and strategies</b> to show to your audience <b>what they should</b> do in regard to the issue.
+    \n- You should explain <b>why</b> they should do that and <b>what they will gain</b> if they do so.
+    \n\nRemember your goal is to construct a <b>persuasive argument</b> to help them move from the fence!
+    \n\n\nAlso here are the top 5 impactful words in the English language: <b>You, Because, Free, Instantly, New</b>
+    \nUse them wisely!</string>
     <string name="other">Other</string>
     <string name="other_information">\nAs mentioned before, the <b>topic</b> of your story is very important in order for your audience to relate to it. Remember,
         a <b>more relatable story</b> is <b>more impactful</b> and <b>more persuasive</b> so your goal is to achieve exactly that. Try to make your audience immerse in your story and transport to your setting.

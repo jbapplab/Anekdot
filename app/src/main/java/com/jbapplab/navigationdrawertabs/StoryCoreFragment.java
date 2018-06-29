@@ -42,7 +42,7 @@ public class StoryCoreFragment extends Fragment {
     //public static int int_items = 3;
 
     String userIdString, firstNameString, lastNameString, usernameString, passwordString, emailString;
-    String actionString, storyIdString, storyTitle, ifOtherSpecify, authorIdString, storyDescription, orientation, complicatedAction, evaluation, resolution, message, stageRelated, contextRelated, imageUrl;
+    String actionString, storyIdString, storyTitle, ifOtherSpecify, authorIdString, storyDescription, orientation, complicatedAction, evaluation, resolution, message, stageRelated, contextRelated, imageUrl, storyCategory, audienceStage;
 
     FragmentManager mFragmentManager;
     Fragment metaFirstFormFragment = new MetaFirstFormFragment();
@@ -141,6 +141,8 @@ public class StoryCoreFragment extends Fragment {
             stageRelated = getArguments().getString("STAGE_RELATED_KEY");
             contextRelated = getArguments().getString("CONTEXT_RELATED_KEY");
             imageUrl = getArguments().getString("IMAGE_URL_KEY");
+            storyCategory = getArguments().getString("STORY_CATEGORY_KEY");
+            audienceStage = getArguments().getString("AUDIENCE_STAGE_KEY");
         }
 
         sendDataMetaFirstFormFragment();
@@ -238,6 +240,8 @@ public class StoryCoreFragment extends Fragment {
             forMetaFirstFormBundle.putString("STAGE_RELATED_KEY", stageRelated);
             forMetaFirstFormBundle.putString("CONTEXT_RELATED_KEY", contextRelated);
             forMetaFirstFormBundle.putString("IMAGE_URL_KEY", imageUrl);
+            forMetaFirstFormBundle.putString("STORY_CATEGORY_KEY", storyCategory);
+            forMetaFirstFormBundle.putString("AUDIENCE_STAGE_KEY", audienceStage);
         }
         metaFirstFormFragment.setArguments(forMetaFirstFormBundle);
     }

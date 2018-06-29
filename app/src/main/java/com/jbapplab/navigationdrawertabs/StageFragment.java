@@ -74,7 +74,7 @@ public class StageFragment extends Fragment {
             case "Stage 2: The audience is aware of the problem or issue you are describing.":
                 stage = "1";
                 break;
-            case "Stage 3: The audience wants to take action soon in regard to the problem or issue.":
+            case "Stage 3: The audience wants to act soon regarding the problem or issue.":
                 stage = "2";
                 break;
             case "Stage 4: The audience is already taking action to overcome the problem or issue.":
