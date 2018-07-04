@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,8 +28,13 @@ import com.jbapplab.navigationdrawertabs.RetrieveStoriesCRUDActivity;
 import com.jbapplab.navigationdrawertabs.SelectCategoryActivity;
 import com.jbapplab.navigationdrawertabs.SettingsActivity;
 import com.jbapplab.navigationdrawertabs.UserAreaActivity;
+import com.jbapplab.navigationdrawertabs.m_EventHandling.EventBusOnServerSuccess;
 import com.jbapplab.navigationdrawertabs.m_MySQL.MySQLClientCRUD;
 import com.jbapplab.navigationdrawertabs.m_UI.PicassoClient;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 public class StoryDetailActivityCRUD extends AppCompatActivity {
 
@@ -43,6 +49,8 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
     String username;
     String password;
     String email;
+
+    String success;
 
     TextView retrieveStoryIdDetail, retrieveStoryTitleDetail, retrieveStoryCategoryDetail, retrieveIfOtherSpecifyDetail, retrieveAuthorIdDetail, retrieveStoryDescriptionDetail, retrieveStoryEventsDetail, retrieveOrientationDetail, retrieveComplicatedActionDetail, retrieveEvaluationDetail, retrieveResolutionDetail, retrieveMessageDetail, retrieveStoryMetaDetail, retrieveStageRelatedDetail, retrieveContextRelatedDetail, retrieveStoryFullDetail, retrieveAudienceStageDetail;
     ImageView retrieveStoryImageDetail;
@@ -384,6 +392,7 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
                             public void onClick(DialogInterface arg0, int arg1) {
                                 new MySQLClientCRUD(StoryDetailActivityCRUD.this, userId, firstName, lastName, username, password, email).delete(Integer.parseInt(storyId));
 
+                                /*
                                 Intent intentDeleteStory = new Intent(StoryDetailActivityCRUD.this, MyStoriesActivity.class);
                                 intentDeleteStory.putExtra("userId_KEY", userId);
                                 intentDeleteStory.putExtra("firstName_KEY", firstName);
@@ -392,6 +401,7 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
                                 intentDeleteStory.putExtra("password_KEY", password);
                                 intentDeleteStory.putExtra("email_KEY", email);
                                 StoryDetailActivityCRUD.this.startActivity(intentDeleteStory);
+                                */
 
                             }
                         }).create().show();
@@ -504,5 +514,40 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onServerSuccess(EventBusOnServerSuccess eventBusOnServerSuccess) {
+        success = eventBusOnServerSuccess.message;
+
+        switch (success) {
+            case "success_favourite":
+                Log.i("Success: ", "Favourite!");
+                break;
+            case "success_delete":
+                Intent intentDeleteStory = new Intent(StoryDetailActivityCRUD.this, MyStoriesActivity.class);
+                intentDeleteStory.putExtra("userId_KEY", userId);
+                intentDeleteStory.putExtra("firstName_KEY", firstName);
+                intentDeleteStory.putExtra("lastName_KEY", lastName);
+                intentDeleteStory.putExtra("username_KEY", username);
+                intentDeleteStory.putExtra("password_KEY", password);
+                intentDeleteStory.putExtra("email_KEY", email);
+                StoryDetailActivityCRUD.this.startActivity(intentDeleteStory);
+                break;
+            default:
+                Log.i("StoryDetailActivityCRUD", "Event Bus Error");
+        }
     }
 }

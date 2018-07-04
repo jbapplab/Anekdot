@@ -14,8 +14,11 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.emmasuzuki.easyform.EasyTextInputLayout;
 import com.jbapplab.navigationdrawertabs.m_DataObject.StoryCRUD;
+import com.jbapplab.navigationdrawertabs.m_EventHandling.EventBusCategorySelected;
+import com.jbapplab.navigationdrawertabs.m_EventHandling.EventBusOnServerSuccess;
 import com.jbapplab.navigationdrawertabs.m_UI.CustomAdapterCRUD;
 
+import org.greenrobot.eventbus.EventBus;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -57,7 +60,11 @@ public class MySQLClientCRUD {
     public void add(StoryCRUD storyCRUD, final View...inputViews) {
 
         if(storyCRUD==null){
+
+            EventBus.getDefault().post(new EventBusOnServerSuccess("false"));
+
             Toast.makeText(context, "No data to save.", Toast.LENGTH_SHORT).show();
+
         } else {
             AndroidNetworking.post(DATA_INSERT_URL)
                     .addBodyParameter("action","save")
@@ -128,20 +135,25 @@ public class MySQLClientCRUD {
                                         image_url.getEditText().setText("");
                                         audienceStage.setSelection(0);
 
+                                        EventBus.getDefault().post(new EventBusOnServerSuccess("success_add"));
+
                                         Toast.makeText(context, "Story was posted online successfully.", Toast.LENGTH_SHORT).show();
 
                                     } else {
 
-                                        Toast.makeText(context, "Oops! Anecdote could not post the story online.\nPlease try again.", Toast.LENGTH_LONG).show();
+                                        EventBus.getDefault().post(new EventBusOnServerSuccess("false"));
 
+                                        Toast.makeText(context, "Oops! Anecdote could not post the story online.\nPlease try again.", Toast.LENGTH_LONG).show();
                                     }
 
                                 } catch (JSONException e){
 
                                     e.printStackTrace();
                                     //Toast.makeText(context, "Server responded but Anecdote could not parse the data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                                    Toast.makeText(context, "Oops! Anecdote could fulfil your request.", Toast.LENGTH_LONG).show();
 
+                                    EventBus.getDefault().post(new EventBusOnServerSuccess("false"));
+
+                                    Toast.makeText(context, "Oops! Anecdote could fulfil your request.", Toast.LENGTH_LONG).show();
                                 }
                             }
 
@@ -152,6 +164,9 @@ public class MySQLClientCRUD {
                         public void onError(ANError anError) {
 
                             //Toast.makeText(context, "Could not connect to the Anecdote server: Error - " + anError.getMessage(),Toast.LENGTH_LONG).show();
+
+                            EventBus.getDefault().post(new EventBusOnServerSuccess("false"));
+
                             Toast.makeText(context, "Oops! Could not connect to the Anecdote server.",Toast.LENGTH_LONG).show();
                         }
                     });
@@ -236,9 +251,10 @@ public class MySQLClientCRUD {
 
                         }catch (JSONException e){
 
+                            EventBus.getDefault().post(new EventBusOnServerSuccess("false"));
+
                             Toast.makeText(context, "There are no stories in this category at the moment.\nPlease go back and select another.", Toast.LENGTH_LONG).show();
                             progressBar.setAlpha(0);
-
                         }
 
                     }
@@ -247,6 +263,9 @@ public class MySQLClientCRUD {
                     @Override
                     public void onError(ANError anError) {
                         anError.printStackTrace();
+
+                        EventBus.getDefault().post(new EventBusOnServerSuccess("false"));
+
                         Toast.makeText(context, "Oops! Could not retrieve any stories.",Toast.LENGTH_LONG).show();
                         //Toast.makeText(context, "Unsuccessful: Error is - "+anError.getMessage(), Toast.LENGTH_LONG).show();
                         progressBar.setAlpha(0);
@@ -262,6 +281,9 @@ public class MySQLClientCRUD {
     public void favourite(int storyId, int userId) {
 
         if(storyId==0){
+
+            EventBus.getDefault().post(new EventBusOnServerSuccess("false"));
+
             Toast.makeText(context, "No data to save.", Toast.LENGTH_SHORT).show();
         } else {
             AndroidNetworking.post(DATA_INSERT_URL)
@@ -283,15 +305,20 @@ public class MySQLClientCRUD {
 
                                     if(responseString.equalsIgnoreCase("Success")){
 
+                                        EventBus.getDefault().post(new EventBusOnServerSuccess("success_favourite"));
+
                                         Toast.makeText(context, "Story saved in favourites.", Toast.LENGTH_SHORT).show();
 
                                     } else {
 
-                                        Toast.makeText(context, "Oops! Anecdote could not save the story to favourites.\nPlease try again.", Toast.LENGTH_LONG).show();
+                                        EventBus.getDefault().post(new EventBusOnServerSuccess("false"));
 
+                                        Toast.makeText(context, "Oops! Anecdote could not save the story to favourites.\nPlease try again.", Toast.LENGTH_LONG).show();
                                     }
 
                                 } catch (JSONException e){
+
+                                    EventBus.getDefault().post(new EventBusOnServerSuccess("false"));
 
                                     e.printStackTrace();
                                     //Toast.makeText(context, "Server responded but Anecdote could not parse the data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -305,9 +332,10 @@ public class MySQLClientCRUD {
                         @Override
                         public void onError(ANError anError) {
 
+                            EventBus.getDefault().post(new EventBusOnServerSuccess("false"));
+
                             //Toast.makeText(context, "Unsuccessful connection to the server: Error - " + anError.getMessage(),Toast.LENGTH_SHORT).show();
                             Toast.makeText(context, "Oops! Could not connect to the Anecdote server.",Toast.LENGTH_LONG).show();
-
                         }
                     });
 
@@ -322,6 +350,9 @@ public class MySQLClientCRUD {
     public void update(StoryCRUD storyCRUD, final View...inputViews) {
 
         if(storyCRUD==null){
+
+            EventBus.getDefault().post(new EventBusOnServerSuccess("false"));
+
             Toast.makeText(context, "No data to update.", Toast.LENGTH_SHORT).show();
         } else {
             AndroidNetworking.post(DATA_INSERT_URL)
@@ -394,23 +425,26 @@ public class MySQLClientCRUD {
                                         image_url.getEditText().setText("");
                                         audienceStage.setSelection(0);
 
+                                        EventBus.getDefault().post(new EventBusOnServerSuccess("success_update"));
+
                                         //TODO go to my stories or the tab of the edited story
                                         Toast.makeText(context, "Story was updated successfully.", Toast.LENGTH_SHORT).show();
 
                                     } else {
 
+                                        EventBus.getDefault().post(new EventBusOnServerSuccess("false"));
+
                                         //Toast.makeText(context, "Server transaction was not successful.", Toast.LENGTH_SHORT).show();
                                         Toast.makeText(context, "Oops! Anecdote could not update the story.\nPlease try again.", Toast.LENGTH_LONG).show();
-
-
                                     }
 
                                 } catch (JSONException e){
 
+                                    EventBus.getDefault().post(new EventBusOnServerSuccess("false"));
+
                                     e.printStackTrace();
                                     //Toast.makeText(context, "Server responded but Anecdote could not parse the data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                                     Toast.makeText(context, "Oops! Anecdote could fulfil your request.", Toast.LENGTH_LONG).show();
-
                                 }
                             }
 
@@ -419,6 +453,8 @@ public class MySQLClientCRUD {
                         //Error
                         @Override
                         public void onError(ANError anError) {
+
+                            EventBus.getDefault().post(new EventBusOnServerSuccess("false"));
 
                             //Toast.makeText(context, "Unsuccessful connection to the server: Error - " + anError.getMessage(),Toast.LENGTH_SHORT).show();
                             Toast.makeText(context, "Oops! Could not connect to the Anecdote server.",Toast.LENGTH_LONG).show();
@@ -436,6 +472,9 @@ public class MySQLClientCRUD {
     public void delete(int storyId) {
 
         if(storyId==0){
+
+            EventBus.getDefault().post(new EventBusOnServerSuccess("false"));
+
             Toast.makeText(context, "No valid story to delete.", Toast.LENGTH_SHORT).show();
         } else {
             AndroidNetworking.post(DATA_INSERT_URL)
@@ -456,23 +495,25 @@ public class MySQLClientCRUD {
 
                                     if(responseString.equalsIgnoreCase("Success")){
 
-                                        Toast.makeText(context, "Your story has been deleted.", Toast.LENGTH_SHORT).show();
+                                        EventBus.getDefault().post(new EventBusOnServerSuccess("success_delete"));
 
-                                        //TODO
+                                        Toast.makeText(context, "Your story has been deleted.", Toast.LENGTH_SHORT).show();
 
                                     } else {
 
+                                        EventBus.getDefault().post(new EventBusOnServerSuccess("false"));
+
                                         //Toast.makeText(context, "Server transaction was not successful.", Toast.LENGTH_SHORT).show();
                                         Toast.makeText(context, "Oops! Anecdote could not delete the story.\nPlease try again.", Toast.LENGTH_LONG).show();
-
                                     }
 
                                 } catch (JSONException e){
 
+                                    EventBus.getDefault().post(new EventBusOnServerSuccess("false"));
+
                                     e.printStackTrace();
                                     //Toast.makeText(context, "Server responded but Anecdote could not parse the data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                                     Toast.makeText(context, "Oops! Anecdote could fulfil your request.", Toast.LENGTH_LONG).show();
-
                                 }
                             }
 
@@ -482,9 +523,10 @@ public class MySQLClientCRUD {
                         @Override
                         public void onError(ANError anError) {
 
+                            EventBus.getDefault().post(new EventBusOnServerSuccess("false"));
+
                             //Toast.makeText(context, "Unsuccessful connection to the server: Error - " + anError.getMessage(),Toast.LENGTH_SHORT).show();
                             Toast.makeText(context, "Oops! Could not connect to the Anecdote server.",Toast.LENGTH_LONG).show();
-
                         }
                     });
         }
@@ -567,9 +609,10 @@ public class MySQLClientCRUD {
 
                         }catch (JSONException e){
 
+                            EventBus.getDefault().post(new EventBusOnServerSuccess("false"));
+
                             Toast.makeText(context, "You have not created any stories yet.", Toast.LENGTH_LONG).show();
                             progressBar.setAlpha(0);
-
                         }
 
                     }
@@ -578,6 +621,9 @@ public class MySQLClientCRUD {
                     @Override
                     public void onError(ANError anError) {
                         anError.printStackTrace();
+
+                        EventBus.getDefault().post(new EventBusOnServerSuccess("false"));
+
                         Toast.makeText(context, "Oops! Could not retrieve any stories.",Toast.LENGTH_LONG).show();
                         //Toast.makeText(context, "Unsuccessful: Error is - "+anError.getMessage(), Toast.LENGTH_LONG).show();
                         progressBar.setAlpha(0);
@@ -662,9 +708,10 @@ public class MySQLClientCRUD {
 
                         }catch (JSONException e){
 
+                            EventBus.getDefault().post(new EventBusOnServerSuccess("false"));
+
                             Toast.makeText(context, "You have not saved any stories to your favourites yet.", Toast.LENGTH_LONG).show();
                             progressBar.setAlpha(0);
-
                         }
                     }
 
@@ -672,6 +719,9 @@ public class MySQLClientCRUD {
                     @Override
                     public void onError(ANError anError) {
                         anError.printStackTrace();
+
+                        EventBus.getDefault().post(new EventBusOnServerSuccess("false"));
+
                         //Toast.makeText(context, "Unsuccessful: Error is - "+anError.getMessage(), Toast.LENGTH_LONG).show();
                         Toast.makeText(context, "Oops! Could not retrieve any stories.",Toast.LENGTH_LONG).show();
                         progressBar.setAlpha(0);
