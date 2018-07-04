@@ -154,7 +154,6 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
 
                 }
 
-                //TODO REVERSE ORDER OF METAFIRST
                 if (menuItem.getItemId() == R.id.nav_item_eventsfirst) {
 
                     Intent intentGoToEvensFirstActivity = new Intent(StoryDetailActivityCRUD.this, MetaFirstActivity.class);
@@ -164,6 +163,7 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
                     intentGoToEvensFirstActivity.putExtra("username_KEY", username);
                     intentGoToEvensFirstActivity.putExtra("password_KEY", password);
                     intentGoToEvensFirstActivity.putExtra("email_KEY", email);
+                    intentGoToEvensFirstActivity.putExtra("version_KEY", "detailed_guidance");
                     StoryDetailActivityCRUD.this.startActivity(intentGoToEvensFirstActivity);
 
                 }
@@ -177,6 +177,7 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
                     intentGoToMetaFirstActivity.putExtra("username_KEY", username);
                     intentGoToMetaFirstActivity.putExtra("password_KEY", password);
                     intentGoToMetaFirstActivity.putExtra("email_KEY", email);
+                    intentGoToMetaFirstActivity.putExtra("version_KEY", "basic_instructions");
                     StoryDetailActivityCRUD.this.startActivity(intentGoToMetaFirstActivity);
 
                 }
@@ -430,6 +431,7 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
                 //intentSendUpdate.putExtra("STORY_FULL_KEY", storyFull);
                 intentSendUpdate.putExtra("AUDIENCE_STAGE_KEY", audienceStage);
                 intentSendUpdate.putExtra("IMAGE_URL_KEY", imageUrl);
+                intentSendUpdate.putExtra("version_KEY", "basic_instructions");
 
                 StoryDetailActivityCRUD.this.startActivity(intentSendUpdate);
             }

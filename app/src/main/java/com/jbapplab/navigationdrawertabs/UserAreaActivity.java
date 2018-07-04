@@ -154,7 +154,6 @@ public class UserAreaActivity extends AppCompatActivity {
 
                 }
 
-                //TODO REVERSE ORDER OF METAFIRST
                 if (menuItem.getItemId() == R.id.nav_item_eventsfirst) {
 
                     Intent intentGoToEvensFirstActivity = new Intent(UserAreaActivity.this, MetaFirstActivity.class);
@@ -164,6 +163,7 @@ public class UserAreaActivity extends AppCompatActivity {
                     intentGoToEvensFirstActivity.putExtra("username_KEY", username);
                     intentGoToEvensFirstActivity.putExtra("password_KEY", password);
                     intentGoToEvensFirstActivity.putExtra("email_KEY", email);
+                    intentGoToEvensFirstActivity.putExtra("version_KEY", "detailed_guidance");
                     UserAreaActivity.this.startActivity(intentGoToEvensFirstActivity);
 
                 }
@@ -177,6 +177,7 @@ public class UserAreaActivity extends AppCompatActivity {
                     intentGoToMetaFirstActivity.putExtra("username_KEY", username);
                     intentGoToMetaFirstActivity.putExtra("password_KEY", password);
                     intentGoToMetaFirstActivity.putExtra("email_KEY", email);
+                    intentGoToMetaFirstActivity.putExtra("version_KEY", "basic_instructions");
                     UserAreaActivity.this.startActivity(intentGoToMetaFirstActivity);
 
                 }

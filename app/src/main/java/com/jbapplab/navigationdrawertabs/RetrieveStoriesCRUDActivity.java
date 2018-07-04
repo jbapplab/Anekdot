@@ -143,7 +143,6 @@ public class RetrieveStoriesCRUDActivity extends AppCompatActivity {
 
                 }
 
-                //TODO REVERSE ORDER OF METAFIRST
                 if (menuItem.getItemId() == R.id.nav_item_eventsfirst) {
 
                     Intent intentGoToEvensFirstActivity = new Intent(RetrieveStoriesCRUDActivity.this, MetaFirstActivity.class);
@@ -153,6 +152,7 @@ public class RetrieveStoriesCRUDActivity extends AppCompatActivity {
                     intentGoToEvensFirstActivity.putExtra("username_KEY", username);
                     intentGoToEvensFirstActivity.putExtra("password_KEY", password);
                     intentGoToEvensFirstActivity.putExtra("email_KEY", email);
+                    intentGoToEvensFirstActivity.putExtra("version_KEY", "detailed_guidance");
                     RetrieveStoriesCRUDActivity.this.startActivity(intentGoToEvensFirstActivity);
 
                 }
@@ -166,6 +166,7 @@ public class RetrieveStoriesCRUDActivity extends AppCompatActivity {
                     intentGoToMetaFirstActivity.putExtra("username_KEY", username);
                     intentGoToMetaFirstActivity.putExtra("password_KEY", password);
                     intentGoToMetaFirstActivity.putExtra("email_KEY", email);
+                    intentGoToMetaFirstActivity.putExtra("version_KEY", "basic_instructions");
                     RetrieveStoriesCRUDActivity.this.startActivity(intentGoToMetaFirstActivity);
 
                 }

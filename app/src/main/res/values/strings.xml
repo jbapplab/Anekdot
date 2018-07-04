@@ -41,6 +41,7 @@
 
     <!-- START STORY FORM -->
     <string name="storyCreateMetaFirst">Create a Story with\nFull Guidance</string>
+    <string name="storyCreateMetaFirstSimple">Create a Story with\nBasic Instructions</string>
     <string name="welcomeMessageMetaFirst">OK! It is time to create a <b>persuasive</b> story.
         \nA persuasive story is a story that aims to <b>influence</b>.
         \n\nIn most cases the audience is more persuaded from stories that describe an <b>issue</b> and its <b>potential resolution</b>.
@@ -77,11 +78,11 @@
         \n\nUse the field below to capture any related ideas. You will be able to rearrange them later when editing your story.</string>
     <string name="contextRelatedHint">Making the story relatable: topic.</string>
 
-    <string name="guidance3MetaFirst">Give some keywords for your story.</string>
-    <string name="ifOtherSpecifyMetaFirst">Story keywords.</string>
+    <string name="guidance3MetaFirst">Provide some keywords that characterise your story.</string>
+    <string name="ifOtherSpecifyMetaFirst">Add story keywords.</string>
 
     <string name="beforeTitleMetaFirst">Next we will start thinking of the content of the narrative around which our persuasive story is constructed. Each compelling story needs to start somewhere.
-        \nGive a <b>title</b> and a <b>short description</b>for your story/idea. You can always change it later.</string>
+        \nGive a <b>title</b> and a <b>short description</b> for your story/idea. You can always change it later.</string>
     <string name="titleMetaFirst">Give the title of your story.</string>
     <string name="storyDescriptionMetaFirst">Quickly summarise your story in one line.</string>
 

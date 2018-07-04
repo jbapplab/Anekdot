@@ -51,7 +51,7 @@ public class StoryCoreFragment extends Fragment {
     //public static int int_items = 3;
 
     String userIdString, firstNameString, lastNameString, usernameString, passwordString, emailString;
-    String actionString, storyIdString, storyTitle, ifOtherSpecify, authorIdString, storyDescription, orientation, complicatedAction, evaluation, resolution, message, stageRelated, contextRelated, imageUrl, storyCategory, audienceStage;
+    String actionString, storyIdString, storyTitle, ifOtherSpecify, authorIdString, storyDescription, orientation, complicatedAction, evaluation, resolution, message, stageRelated, contextRelated, imageUrl, storyCategory, audienceStage, version;
 
     FragmentManager mFragmentManager;
     Fragment metaFirstFormFragment = new MetaFirstFormFragment();
@@ -88,12 +88,6 @@ public class StoryCoreFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //Log.i("onCreateView", ": CONTAINER");
-        /**
-         * Set the title bar according to the fragment
-         */
-        //TODO CHANGE NAME ACCORDING TO FORMAT
-        ((MetaFirstActivity) getActivity())
-                .setActionBarTitle("Guidance");
 
         /**
          *Inflate tab_layout and setup Views.
@@ -136,6 +130,7 @@ public class StoryCoreFragment extends Fragment {
         usernameString = getArguments().getString("USERNAME_KEY");
         passwordString = getArguments().getString("PASSWORD_KEY");
         emailString = getArguments().getString("EMAIL_KEY");
+        version = getArguments().getString("VERSION_KEY");
 
         if (getArguments().getString("UPDATE_KEY") != null) {
             actionString = getArguments().getString("UPDATE_KEY");
@@ -156,6 +151,25 @@ public class StoryCoreFragment extends Fragment {
             imageUrl = getArguments().getString("IMAGE_URL_KEY");
             storyCategory = getArguments().getString("STORY_CATEGORY_KEY");
             audienceStage = getArguments().getString("AUDIENCE_STAGE_KEY");
+        }
+
+        if (version.equals("detailed_guidance")) {
+
+            /**
+             * Set the title bar according to the fragment
+             */
+            ((MetaFirstActivity) getActivity())
+                    .setActionBarTitle("Detailed");
+
+
+        } else {
+
+            /**
+             * Set the title bar according to the fragment
+             */
+            ((MetaFirstActivity) getActivity())
+                    .setActionBarTitle("Basic");
+
         }
 
         sendDataMetaFirstFormFragment();
@@ -235,6 +249,7 @@ public class StoryCoreFragment extends Fragment {
         forMetaFirstFormBundle.putString("USERNAME_KEY", usernameString);
         forMetaFirstFormBundle.putString("PASSWORD_KEY", passwordString);
         forMetaFirstFormBundle.putString("EMAIL_KEY", emailString);
+        forMetaFirstFormBundle.putString("VERSION_KEY", version);
 
         if (getArguments().getString("UPDATE_KEY") != null) {
             forMetaFirstFormBundle.putString("UPDATE_KEY", actionString);

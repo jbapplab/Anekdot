@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.jbapplab.navigationdrawertabs.m_EventHandling.EventBusShareStoryMetaFirstActivity;
 
@@ -32,7 +33,7 @@ public class MetaFirstActivity extends AppCompatActivity {
     FragmentTransaction mFragmentTransaction;
     Fragment storyCoreFragment = new StoryCoreFragment();
 
-    String userIdString, actionString, storyIdString, storyTitle, ifOtherSpecify, authorIdString, storyDescription, orientation, complicatedAction, evaluation, resolution, message, stageRelated, contextRelated, imageUrl, audienceStage, storyCategory;
+    String userIdString, actionString, storyIdString, storyTitle, ifOtherSpecify, authorIdString, storyDescription, orientation, complicatedAction, evaluation, resolution, message, stageRelated, contextRelated, imageUrl, audienceStage, storyCategory, version;
     String firstName;
     String lastName;
     String username;
@@ -59,6 +60,7 @@ public class MetaFirstActivity extends AppCompatActivity {
         password = intent.getStringExtra("password_KEY");
         email = intent.getStringExtra("email_KEY");
         actionString = intent.getExtras().getString("UPDATE_KEY");
+        version = intent.getExtras().getString("version_KEY");
 
         if ((intent.getExtras() != null) && (intent.getExtras().getString("UPDATE_KEY") != null) &&(actionString.equals("update"))) {
             storyIdString = intent.getExtras().getString("STORY_ID_KEY");
@@ -187,23 +189,42 @@ public class MetaFirstActivity extends AppCompatActivity {
                 //TODO REVERSE ORDER OF METAFIRST FIX THIS
                 if (menuItem.getItemId() == R.id.nav_item_eventsfirst) {
 
+                        /*
+                        FragmentTransaction xfragmentTransaction = mFragmentManager.beginTransaction();
+                        sendDataStoryCoreFragment();
+                        xfragmentTransaction.replace(R.id.containerViewMetaFirst, storyCoreFragment).addToBackStack("str").commit();
+                        */
+
+
                     Intent intentGoToEvensFirstActivity = new Intent(MetaFirstActivity.this, MetaFirstActivity.class);
-                    intentGoToEvensFirstActivity.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    if (version.equals("detailed_guidance")) {
+                        intentGoToEvensFirstActivity.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    }
                     intentGoToEvensFirstActivity.putExtra("userId_KEY", userIdString);
                     intentGoToEvensFirstActivity.putExtra("firstName_KEY", firstName);
                     intentGoToEvensFirstActivity.putExtra("lastName_KEY", lastName);
                     intentGoToEvensFirstActivity.putExtra("username_KEY", username);
                     intentGoToEvensFirstActivity.putExtra("password_KEY", password);
                     intentGoToEvensFirstActivity.putExtra("email_KEY", email);
+                    intentGoToEvensFirstActivity.putExtra("version_KEY", "detailed_guidance");
                     MetaFirstActivity.this.startActivity(intentGoToEvensFirstActivity);
 
                 }
 
                 if (menuItem.getItemId() == R.id.nav_item_audiencefirst) {
 
-                    FragmentTransaction xfragmentTransaction = mFragmentManager.beginTransaction();
-                    sendDataStoryCoreFragment();
-                    xfragmentTransaction.replace(R.id.containerViewMetaFirst, storyCoreFragment).addToBackStack("str").commit();
+                    Intent intentGoToMetaFirstActivity = new Intent(MetaFirstActivity.this, MetaFirstActivity.class);
+                    if (version.equals("basic_instructions")) {
+                        intentGoToMetaFirstActivity.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    }
+                    intentGoToMetaFirstActivity.putExtra("userId_KEY", userIdString);
+                    intentGoToMetaFirstActivity.putExtra("firstName_KEY", firstName);
+                    intentGoToMetaFirstActivity.putExtra("lastName_KEY", lastName);
+                    intentGoToMetaFirstActivity.putExtra("username_KEY", username);
+                    intentGoToMetaFirstActivity.putExtra("password_KEY", password);
+                    intentGoToMetaFirstActivity.putExtra("email_KEY", email);
+                    intentGoToMetaFirstActivity.putExtra("version_KEY", "basic_instructions");
+                    MetaFirstActivity.this.startActivity(intentGoToMetaFirstActivity);
 
                 }
 
@@ -268,6 +289,7 @@ public class MetaFirstActivity extends AppCompatActivity {
         bundle.putString("PASSWORD_KEY", password);
         bundle.putString("EMAIL_KEY", email);
         bundle.putString("UPDATE_KEY", actionString);
+        bundle.putString("VERSION_KEY", version);
         if ((actionString != null) && actionString.equals("update")){
             bundle.putString("STORY_ID_KEY", storyIdString);
             bundle.putString("STORY_TITLE_KEY", storyTitle);

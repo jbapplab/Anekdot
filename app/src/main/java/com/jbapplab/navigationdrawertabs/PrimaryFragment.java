@@ -79,6 +79,7 @@ public class PrimaryFragment extends Fragment {
                 createIntent.putExtra("username_KEY", username);
                 createIntent.putExtra("password_KEY", password);
                 createIntent.putExtra("email_KEY", email);
+                createIntent.putExtra("version_KEY", "detailed_guidance");
                 //Then we told the current activity to perform that intent
                 getActivity().startActivity(createIntent);
             }

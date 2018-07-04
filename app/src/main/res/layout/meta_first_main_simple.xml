@@ -21,7 +21,7 @@
             android:gravity="center"
             android:id="@+id/textViewStoryCreateMeta"
             android:textColor="@color/colorAccent"
-            android:text="@string/storyCreateMetaFirst"/>
+            android:text="@string/storyCreateMetaFirstSimple"/>
 
         <TextView
             android:layout_width="match_parent"

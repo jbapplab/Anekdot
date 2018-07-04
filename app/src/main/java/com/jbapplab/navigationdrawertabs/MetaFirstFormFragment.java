@@ -12,6 +12,8 @@ package com.jbapplab.navigationdrawertabs;
  holding it.
  */
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,6 +24,8 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -43,7 +47,7 @@ import org.greenrobot.eventbus.EventBus;
 public class MetaFirstFormFragment extends Fragment {
 
     String userIdString, firstNameString, lastNameString, usernameString, passwordString, emailString;
-    String actionString, storyIdString, storyTitle, ifOtherSpecify, authorIdString, storyDescription, orientation, complicatedAction, evaluation, resolution, message, stageRelated, contextRelated, imageUrl, storyCategory, audienceStage, storyEvents, storyMeta, storyFull, stage, storyFullEdited;
+    String actionString, storyIdString, storyTitle, ifOtherSpecify, authorIdString, storyDescription, orientation, complicatedAction, evaluation, resolution, message, stageRelated, contextRelated, imageUrl, storyCategory, audienceStage, storyEvents, storyMeta, storyFull, stage, version;
     int authorId;
     int editCounter = 0;
     Boolean spinnerCategoryValid;
@@ -93,6 +97,7 @@ public class MetaFirstFormFragment extends Fragment {
         usernameString = getArguments().getString("USERNAME_KEY");
         passwordString = getArguments().getString("PASSWORD_KEY");
         emailString = getArguments().getString("EMAIL_KEY");
+        version = getArguments().getString("VERSION_KEY");
 
         if (getArguments().getString("UPDATE_KEY") != null) {
             actionString = getArguments().getString("UPDATE_KEY");
@@ -115,7 +120,15 @@ public class MetaFirstFormFragment extends Fragment {
             audienceStage = getArguments().getString("AUDIENCE_STAGE_KEY");
         }
 
-        return inflater.inflate(R.layout.meta_first_main,null);
+        //TODO CREATE UPDATE VERSIONS
+        if (version.equals("detailed_guidance")) {
+
+            return inflater.inflate(R.layout.meta_first_main, null);
+
+        } else {
+
+            return inflater.inflate(R.layout.meta_first_main_simple, null);
+        }
     }
 
     @Override
@@ -123,11 +136,17 @@ public class MetaFirstFormFragment extends Fragment {
         //Log.i("onViewCreated", ": FORM");
         //final String userIdStringSIS, actionStringSIS, storyIdStringSIS, storyTitleSIS, ifOtherSpecifySIS, authorIdStringSIS, storyDescriptionSIS, orientationSIS, complicatedActionSIS, evaluationSIS, resolutionSIS, messageSIS, stageRelatedSIS, contextRelatedSIS, imageUrlSIS;
 
-        final EasyForm easyForm = getView().findViewById(R.id.meta_first_form);
-        //final EditText editText = getView().findViewById(R.id.uniquetest);
 
         //This is to populate the views with the update info
         if ((actionString != null) && actionString.equals("update")){
+
+            final EasyForm easyForm = getView().findViewById(R.id.meta_first_form);
+            final EasyForm easyFormAdd = getView().findViewById(R.id.meta_first_form_add);
+
+            easyFormAdd.setVisibility(View.GONE);
+            easyFormAdd.setEnabled(false);
+
+            //final EditText editText = getView().findViewById(R.id.uniquetest);
 
             //Reference views
             storyCategorySpinner = getView().findViewById(R.id.categorySpinner);
@@ -311,19 +330,21 @@ public class MetaFirstFormFragment extends Fragment {
                         generatePopUp.setPositiveButton("Generate story", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                imageUrlTxt.getEditText().setText(Html.fromHtml(
+                                imageUrlTxt.getEditText().setText(Html.fromHtml((
                                         "<font color=\"#B2182D\">"+contextRelatedTxt.getEditText().getText().toString()+"</font>"+"<br>"
                                                 +"<font color=\"#128E4A\">"+stageRelatedTxt.getEditText().getText().toString()+"</font>"+"<br>"+"<br>"
                                                 +orientationTxt.getEditText().getText().toString()+"<br>"
                                                 +complicatedActionTxt.getEditText().getText().toString()+"<br>"
                                                 +evaluationTxt.getEditText().getText().toString()+"<br>"
                                                 +resolutionTxt.getEditText().getText().toString()+"<br>"+"<br>"
-                                                +"<font color=\"#8E44AD\">"+messgageTxt.getEditText().getText().toString()+"</font>"));
+                                                +"<font color=\"#8E44AD\">"+messgageTxt.getEditText().getText().toString()+"</font>").replace("\n", "<br>")));
 
                                 EventBus.getDefault().post(new EventBusShareStoryMetaFirstActivity(imageUrlTxt.getEditText().getText().toString()));
 
                                 editCounter = 1;
+                                imageUrlTxt.requestFocus();
                                 dialogInterface.dismiss();
+                                hideKeyboard(getActivity());
                             }
                         });
                         AlertDialog alertDialogGenerate = generatePopUp.create();
@@ -720,7 +741,7 @@ public class MetaFirstFormFragment extends Fragment {
                                 negativeButton.setLayoutParams(layoutParams);
                             }
                         } else {
-                            Toast.makeText(getActivity(), "The last input was invalid.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "Oops! Some field is not filled.\nPlease fill all the fields to proceed.", Toast.LENGTH_LONG).show();
                         }
                     }
                 }
@@ -728,22 +749,28 @@ public class MetaFirstFormFragment extends Fragment {
 
         } else {
 
+            final EasyForm easyForm = getView().findViewById(R.id.meta_first_form);
+            final EasyForm easyFormAdd = getView().findViewById(R.id.meta_first_form_add);
+
+            easyForm.setVisibility(View.GONE);
+            easyForm.setEnabled(false);
+
             //Reference views
             storyCategorySpinner = getView().findViewById(R.id.categorySpinner);
-            final EasyTextInputLayout storyTitleTxt = getView().findViewById(R.id.storyTitle);
-            final EasyTextInputLayout ifOtherSpecifyTxt = getView().findViewById(R.id.ifOtherSpecify);
-            final EasyTextInputLayout storyDescriptionTxt = getView().findViewById(R.id.storyDescription);
-            final EasyTextInputLayout orientationTxt = getView().findViewById(R.id.orientation);
-            final EasyTextInputLayout complicatedActionTxt = getView().findViewById(R.id.complicatedAction);
-            final EasyTextInputLayout evaluationTxt = getView().findViewById(R.id.evaluation);
-            final EasyTextInputLayout resolutionTxt = getView().findViewById(R.id.resolution);
-            final EasyTextInputLayout messgageTxt = getView().findViewById(R.id.message);
-            final EasyTextInputLayout stageRelatedTxt = getView().findViewById(R.id.stageRelated);
-            final EasyTextInputLayout contextRelatedTxt = getView().findViewById(R.id.contextRelated);
-            final EasyTextInputLayout imageUrlTxt = getView().findViewById(R.id.imageUrl);
+            final EasyTextInputLayout storyTitleTxt = getView().findViewById(R.id.storyTitleadd);
+            final EasyTextInputLayout ifOtherSpecifyTxt = getView().findViewById(R.id.ifOtherSpecifyadd);
+            final EasyTextInputLayout storyDescriptionTxt = getView().findViewById(R.id.storyDescriptionadd);
+            final EasyTextInputLayout orientationTxt = getView().findViewById(R.id.orientationadd);
+            final EasyTextInputLayout complicatedActionTxt = getView().findViewById(R.id.complicatedActionadd);
+            final EasyTextInputLayout evaluationTxt = getView().findViewById(R.id.evaluationadd);
+            final EasyTextInputLayout resolutionTxt = getView().findViewById(R.id.resolutionadd);
+            final EasyTextInputLayout messgageTxt = getView().findViewById(R.id.messageadd);
+            final EasyTextInputLayout stageRelatedTxt = getView().findViewById(R.id.stageRelatedadd);
+            final EasyTextInputLayout contextRelatedTxt = getView().findViewById(R.id.contextRelatedadd);
+            final EasyTextInputLayout imageUrlTxt = getView().findViewById(R.id.imageUrladd);
             audienceStageSpinner = getView().findViewById(R.id.stageSpinner);
             final Button buttonAdd = getView().findViewById(R.id.addButton);
-            final Button buttonGenerate = getView().findViewById(R.id.generateButton);
+            final Button buttonGenerateAdd = getView().findViewById(R.id.generateButtonadd);
 
             imageUrlTxt.getEditText().setText("Try generating to share and post online!");
             EventBus.getDefault().post(new EventBusShareStoryMetaFirstActivity(imageUrlTxt.getEditText().getText().toString()));
@@ -816,25 +843,28 @@ public class MetaFirstFormFragment extends Fragment {
             });
 
 
-            buttonGenerate.setOnClickListener(new View.OnClickListener(){
+            buttonGenerateAdd.setOnClickListener(new View.OnClickListener(){
                 int generated = 0;
                 @Override
                 public void onClick(View view){
                     if (generated == 0){
 
-                        imageUrlTxt.getEditText().setText(Html.fromHtml(
+                        imageUrlTxt.getEditText().setText(Html.fromHtml((
                                 "<font color=\"#B2182D\">"+contextRelatedTxt.getEditText().getText().toString()+"</font>"+"<br>"
                                 +"<font color=\"#128E4A\">"+stageRelatedTxt.getEditText().getText().toString()+"</font>"+"<br>"+"<br>"
                                 +orientationTxt.getEditText().getText().toString()+"<br>"
                                 +complicatedActionTxt.getEditText().getText().toString()+"<br>"
                                 +evaluationTxt.getEditText().getText().toString()+"<br>"
                                 +resolutionTxt.getEditText().getText().toString()+"<br>"+"<br>"
-                                +"<font color=\"#8E44AD\">"+messgageTxt.getEditText().getText().toString()+"</font>"));
+                                +"<font color=\"#8E44AD\">"+messgageTxt.getEditText().getText().toString()+"</font>").replace("\n", "<br>")));
 
                         EventBus.getDefault().post(new EventBusShareStoryMetaFirstActivity(imageUrlTxt.getEditText().getText().toString()));
 
                         generated = 1;
                         editCounter = 1;
+                        imageUrlTxt.requestFocus();
+                        hideKeyboard(getActivity());
+
                     } else {
                         AlertDialog.Builder generatePopUp = new AlertDialog.Builder(getActivity());
                         generatePopUp.setTitle("Are you sure you want to generate again?");
@@ -848,19 +878,21 @@ public class MetaFirstFormFragment extends Fragment {
                         generatePopUp.setPositiveButton("Generate story", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                imageUrlTxt.getEditText().setText(Html.fromHtml(
+                                imageUrlTxt.getEditText().setText(Html.fromHtml((
                                         "<font color=\"#B2182D\">"+contextRelatedTxt.getEditText().getText().toString()+"</font>"+"<br>"
                                                 +"<font color=\"#128E4A\">"+stageRelatedTxt.getEditText().getText().toString()+"</font>"+"<br>"+"<br>"
                                                 +orientationTxt.getEditText().getText().toString()+"<br>"
                                                 +complicatedActionTxt.getEditText().getText().toString()+"<br>"
                                                 +evaluationTxt.getEditText().getText().toString()+"<br>"
                                                 +resolutionTxt.getEditText().getText().toString()+"<br>"+"<br>"
-                                                +"<font color=\"#8E44AD\">"+messgageTxt.getEditText().getText().toString()+"</font>"));
+                                                +"<font color=\"#8E44AD\">"+messgageTxt.getEditText().getText().toString()+"</font>").replace("\n", "<br>")));
 
                                 EventBus.getDefault().post(new EventBusShareStoryMetaFirstActivity(imageUrlTxt.getEditText().getText().toString()));
 
                                 editCounter = 1;
+                                imageUrlTxt.requestFocus();
                                 dialogInterface.dismiss();
+                                hideKeyboard(getActivity());
                             }
                         });
                         AlertDialog alertDialogGenerate = generatePopUp.create();
@@ -958,9 +990,9 @@ public class MetaFirstFormFragment extends Fragment {
                         }
 
                         //Client side validation
-                        easyForm.validate();
+                        easyFormAdd.validate();
 
-                        if (easyForm.isValid()) {
+                        if (easyFormAdd.isValid()) {
                             //Toast.makeText(getActivity(), "All the fields are valid.", Toast.LENGTH_SHORT).show();
 
                             //To appoint label from category selected in stages
@@ -1103,12 +1135,27 @@ public class MetaFirstFormFragment extends Fragment {
                             nestedNegativeButton.setLayoutParams(layoutParams);
 
                         } else {
-                            Toast.makeText(getActivity(), "The last input was invalid.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "Oops! Some field is not filled.\nPlease fill all the fields to proceed.", Toast.LENGTH_LONG).show();
                         }
                     }
                 }
             });
         }
+    }
+
+    public static void hideKeyboard(Context context) {
+        try {
+            ((Activity) context).getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+            if ((((Activity) context).getCurrentFocus() != null) && (((Activity) context).getCurrentFocus().getWindowToken() != null)) {
+                ((InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(((Activity) context).getCurrentFocus().getWindowToken(), 0);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void showKeyboard(Context context) {
+        ((InputMethodManager) (context).getSystemService(Context.INPUT_METHOD_SERVICE)).toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
     }
 
     @Override
