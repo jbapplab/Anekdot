@@ -18,7 +18,7 @@
         app:logo="@drawable/logo"
         app:contentInsetStartWithNavigation="0dp"
         app:titleMarginStart="15dp"
-        app:title="Help" />
+        app:title="Support" />
 
     <android.support.v4.widget.DrawerLayout
         xmlns:android="http://schemas.android.com/apk/res/android"

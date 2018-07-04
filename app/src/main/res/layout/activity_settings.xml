@@ -34,7 +34,7 @@
             <TextView
                 android:id="@+id/tv_reminder_header"
                 style="@style/settings_header"
-                android:text="@string/sett_reminder_header" />
+                android:text="@string/set_reminder_header" />
 
             <RelativeLayout
                 android:layout_width="wrap_content"

@@ -152,7 +152,7 @@ public class MetaFirstFormFragment extends Fragment {
             //This is to populate our spinners
             ArrayAdapter<String> categoryAdapter = new ArrayAdapter<String>(getActivity(), R.layout.support_simple_spinner_dropdown_item);
 
-            categoryAdapter.add("Choose a topic");
+            categoryAdapter.add("Select a topic");
             categoryAdapter.add("Other");
             categoryAdapter.add("Art");
             categoryAdapter.add("Causes");
@@ -169,7 +169,7 @@ public class MetaFirstFormFragment extends Fragment {
 
             ArrayAdapter<String> stageAdapter = new ArrayAdapter<String>(getActivity(), R.layout.multiline_spinner);
 
-            stageAdapter.add("Choose a stage");
+            stageAdapter.add("Select a stage");
             stageAdapter.add("Stage 1: The audience is unaware of the problem or issue you are describing.");
             stageAdapter.add("Stage 2: The audience is aware of the problem or issue you are describing.");
             stageAdapter.add("Stage 3: The audience wants to act soon regarding the problem or issue.");
@@ -754,7 +754,7 @@ public class MetaFirstFormFragment extends Fragment {
             //This is to populate our spinners
             ArrayAdapter<String> categoryAdapter = new ArrayAdapter<String>(getActivity(), R.layout.support_simple_spinner_dropdown_item);
 
-            categoryAdapter.add("Choose a topic");
+            categoryAdapter.add("Select a topic");
             categoryAdapter.add("Other");
             categoryAdapter.add("Art");
             categoryAdapter.add("Causes");
@@ -771,7 +771,7 @@ public class MetaFirstFormFragment extends Fragment {
 
             ArrayAdapter<String> stageAdapter = new ArrayAdapter<String>(getActivity(), R.layout.multiline_spinner);
 
-            stageAdapter.add("Choose a stage");
+            stageAdapter.add("Select a stage");
             stageAdapter.add("Stage 1: The audience is unaware of the problem or issue you are describing.");
             stageAdapter.add("Stage 2: The audience is aware of the problem or issue you are describing.");
             stageAdapter.add("Stage 3: The audience wants to act soon regarding the problem or issue.");

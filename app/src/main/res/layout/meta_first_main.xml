@@ -9,7 +9,7 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:padding="10dp"
         android:gravity="center">
 
@@ -24,11 +24,35 @@
             android:text="@string/storyCreateMetaFirst"/>
 
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            android:textSize="20sp"
+            android:id="@+id/generalInformation"
+            android:textColor="@color/colorAccent"
+            android:text="Think of your audience!"/>
+
+        <TextView
             android:id="@+id/tvWelcomeMessageMetaFirst"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="5dp"
             android:text="@string/welcomeMessageMetaFirst"/>
+
+        <TextView
+            android:id="@+id/horizontal_divider_pre1"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/colorPrimary"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:textSize="20sp"
+            android:id="@+id/selectionInformation"
+            android:textColor="@color/colorAccent"
+            android:text="Select for tailored tips!"/>
 
         <TextView
             android:id="@+id/tvCategory"
@@ -67,7 +91,7 @@
             android:id="@+id/horizontal_divider_1"
             android:layout_width="match_parent"
             android:layout_height="3dp"
-            android:background="@color/colorAccent"/>
+            android:background="@color/colorPrimary"/>
 
         <com.emmasuzuki.easyform.EasyForm
             android:id="@+id/meta_first_form"
@@ -124,7 +148,7 @@
                 android:id="@+id/horizontal_divider_2"
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
-                android:background="@color/colorAccent"
+                android:background="@color/colorPrimary"
                 android:layout_below="@id/ifOtherSpecify"/>
 
             <TextView
@@ -159,7 +183,7 @@
                 android:id="@+id/horizontal_divider_3"
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
-                android:background="@color/colorAccent"
+                android:background="@color/colorPrimary"
                 android:layout_below="@id/stageRelated"/>
 
             <TextView
@@ -205,7 +229,7 @@
                 android:id="@+id/horizontal_divider_4"
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
-                android:background="@color/colorAccent"
+                android:background="@color/colorPrimary"
                 android:layout_below="@id/storyDescription"/>
 
             <TextView
@@ -294,7 +318,7 @@
                 android:id="@+id/horizontal_divider_6"
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
-                android:background="@color/colorAccent"
+                android:background="@color/colorPrimary"
                 android:layout_below="@id/resolution"/>
 
             <TextView
@@ -340,7 +364,7 @@
                 android:id="@+id/horizontal_divider_5"
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
-                android:background="@color/colorAccent"
+                android:background="@color/colorPrimary"
                 android:layout_below="@id/message"/>
 
             <TextView
@@ -366,7 +390,7 @@
                 android:id="@+id/generateButton"
                 android:layout_below="@id/tvBeforeURL"
                 android:layout_marginTop="20dp"
-                android:text="Generate Persuasive Story"
+                android:text="Generate and Edit Your Story"
                 android:textColor="@android:color/white"/>
             <com.emmasuzuki.easyform.EasyTextInputLayout
                 android:id="@+id/imageUrl"
