@@ -89,7 +89,7 @@ public class MySQLClientCRUD {
 
                                     //Show response from server
                                     String responseString = response.get(0).toString();
-                                    Toast.makeText(context, "Server response: " + responseString, Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(context, "Server response: " + responseString, Toast.LENGTH_SHORT).show();
 
                                     if(responseString.equalsIgnoreCase("Success")){
 
@@ -127,16 +127,20 @@ public class MySQLClientCRUD {
                                         context_related.getEditText().setText("");
                                         image_url.getEditText().setText("");
                                         audienceStage.setSelection(0);
+
+                                        Toast.makeText(context, "Story was posted online successfully.", Toast.LENGTH_SHORT).show();
+
                                     } else {
 
-                                        Toast.makeText(context, "Server transaction was not successful.", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(context, "Oops! Anecdote could not post the story online.\nPlease try again.", Toast.LENGTH_LONG).show();
 
                                     }
 
                                 } catch (JSONException e){
 
                                     e.printStackTrace();
-                                    Toast.makeText(context, "Server responded but Anecdote could not parse the data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(context, "Server responded but Anecdote could not parse the data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(context, "Oops! Anecdote could fulfil your request.", Toast.LENGTH_LONG).show();
 
                                 }
                             }
@@ -147,7 +151,8 @@ public class MySQLClientCRUD {
                         @Override
                         public void onError(ANError anError) {
 
-                            Toast.makeText(context, "Unsuccessful connection to the server: Error - " + anError.getMessage(),Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(context, "Could not connect to the Anecdote server: Error - " + anError.getMessage(),Toast.LENGTH_LONG).show();
+                            Toast.makeText(context, "Oops! Could not connect to the Anecdote server.",Toast.LENGTH_LONG).show();
                         }
                     });
 
@@ -231,7 +236,7 @@ public class MySQLClientCRUD {
 
                         }catch (JSONException e){
 
-                            Toast.makeText(context, "There are no stories in this category at the moment. Please go back and select another.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(context, "There are no stories in this category at the moment.\nPlease go back and select another.", Toast.LENGTH_LONG).show();
                             progressBar.setAlpha(0);
 
                         }
@@ -242,7 +247,8 @@ public class MySQLClientCRUD {
                     @Override
                     public void onError(ANError anError) {
                         anError.printStackTrace();
-                        Toast.makeText(context, "Unsuccessful: Error is - "+anError.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, "Oops! Could not retrieve any stories.",Toast.LENGTH_LONG).show();
+                        //Toast.makeText(context, "Unsuccessful: Error is - "+anError.getMessage(), Toast.LENGTH_LONG).show();
                         progressBar.setAlpha(0);
                     }
 
@@ -273,7 +279,7 @@ public class MySQLClientCRUD {
 
                                     //Show response from server
                                     String responseString = response.get(0).toString();
-                                    Toast.makeText(context, "Server response: " + responseString, Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(context, "Server response: " + responseString, Toast.LENGTH_SHORT).show();
 
                                     if(responseString.equalsIgnoreCase("Success")){
 
@@ -281,15 +287,15 @@ public class MySQLClientCRUD {
 
                                     } else {
 
-                                        Toast.makeText(context, "Server transaction was not successful.", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(context, "Oops! Anecdote could not save the story to favourites.\nPlease try again.", Toast.LENGTH_LONG).show();
 
                                     }
 
                                 } catch (JSONException e){
 
                                     e.printStackTrace();
-                                    Toast.makeText(context, "Server responded but Anecdote could not parse the data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-
+                                    //Toast.makeText(context, "Server responded but Anecdote could not parse the data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(context, "Oops! Anecdote could fulfil your request.", Toast.LENGTH_LONG).show();
                                 }
                             }
 
@@ -299,7 +305,8 @@ public class MySQLClientCRUD {
                         @Override
                         public void onError(ANError anError) {
 
-                            Toast.makeText(context, "Unsuccessful connection to the server: Error - " + anError.getMessage(),Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(context, "Unsuccessful connection to the server: Error - " + anError.getMessage(),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "Oops! Could not connect to the Anecdote server.",Toast.LENGTH_LONG).show();
 
                         }
                     });
@@ -348,7 +355,7 @@ public class MySQLClientCRUD {
 
                                     //Show response from server
                                     String responseString = response.get(0).toString();
-                                    Toast.makeText(context, "Server response: " + responseString, Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(context, "Server response: " + responseString, Toast.LENGTH_SHORT).show();
 
                                     if(responseString.equalsIgnoreCase("Success")){
 
@@ -388,17 +395,21 @@ public class MySQLClientCRUD {
                                         audienceStage.setSelection(0);
 
                                         //TODO go to my stories or the tab of the edited story
+                                        Toast.makeText(context, "Story was updated successfully.", Toast.LENGTH_SHORT).show();
 
                                     } else {
 
-                                        Toast.makeText(context, "Server transaction was not successful.", Toast.LENGTH_SHORT).show();
+                                        //Toast.makeText(context, "Server transaction was not successful.", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(context, "Oops! Anecdote could not update the story.\nPlease try again.", Toast.LENGTH_LONG).show();
+
 
                                     }
 
                                 } catch (JSONException e){
 
                                     e.printStackTrace();
-                                    Toast.makeText(context, "Server responded but Anecdote could not parse the data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(context, "Server responded but Anecdote could not parse the data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(context, "Oops! Anecdote could fulfil your request.", Toast.LENGTH_LONG).show();
 
                                 }
                             }
@@ -409,7 +420,8 @@ public class MySQLClientCRUD {
                         @Override
                         public void onError(ANError anError) {
 
-                            Toast.makeText(context, "Unsuccessful connection to the server: Error - " + anError.getMessage(),Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(context, "Unsuccessful connection to the server: Error - " + anError.getMessage(),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "Oops! Could not connect to the Anecdote server.",Toast.LENGTH_LONG).show();
                         }
                     });
 
@@ -440,24 +452,26 @@ public class MySQLClientCRUD {
 
                                     //Show response from server
                                     String responseString = response.get(0).toString();
-                                    Toast.makeText(context, "Server response: " + responseString, Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(context, "Server response: " + responseString, Toast.LENGTH_SHORT).show();
 
                                     if(responseString.equalsIgnoreCase("Success")){
 
-                                        Toast.makeText(context, "Your story has been deleted", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(context, "Your story has been deleted.", Toast.LENGTH_SHORT).show();
 
                                         //TODO
 
                                     } else {
 
-                                        Toast.makeText(context, "Server transaction was not successful.", Toast.LENGTH_SHORT).show();
+                                        //Toast.makeText(context, "Server transaction was not successful.", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(context, "Oops! Anecdote could not delete the story.\nPlease try again.", Toast.LENGTH_LONG).show();
 
                                     }
 
                                 } catch (JSONException e){
 
                                     e.printStackTrace();
-                                    Toast.makeText(context, "Server responded but Anecdote could not parse the data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(context, "Server responded but Anecdote could not parse the data: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(context, "Oops! Anecdote could fulfil your request.", Toast.LENGTH_LONG).show();
 
                                 }
                             }
@@ -468,7 +482,8 @@ public class MySQLClientCRUD {
                         @Override
                         public void onError(ANError anError) {
 
-                            Toast.makeText(context, "Unsuccessful connection to the server: Error - " + anError.getMessage(),Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(context, "Unsuccessful connection to the server: Error - " + anError.getMessage(),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "Oops! Could not connect to the Anecdote server.",Toast.LENGTH_LONG).show();
 
                         }
                     });
@@ -563,7 +578,8 @@ public class MySQLClientCRUD {
                     @Override
                     public void onError(ANError anError) {
                         anError.printStackTrace();
-                        Toast.makeText(context, "Unsuccessful: Error is - "+anError.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, "Oops! Could not retrieve any stories.",Toast.LENGTH_LONG).show();
+                        //Toast.makeText(context, "Unsuccessful: Error is - "+anError.getMessage(), Toast.LENGTH_LONG).show();
                         progressBar.setAlpha(0);
                     }
                 });
@@ -646,7 +662,7 @@ public class MySQLClientCRUD {
 
                         }catch (JSONException e){
 
-                            Toast.makeText(context, "You have not saved any favourite stories yet.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(context, "You have not saved any stories to your favourites yet.", Toast.LENGTH_LONG).show();
                             progressBar.setAlpha(0);
 
                         }
@@ -656,7 +672,8 @@ public class MySQLClientCRUD {
                     @Override
                     public void onError(ANError anError) {
                         anError.printStackTrace();
-                        Toast.makeText(context, "Unsuccessful: Error is - "+anError.getMessage(), Toast.LENGTH_LONG).show();
+                        //Toast.makeText(context, "Unsuccessful: Error is - "+anError.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, "Oops! Could not retrieve any stories.",Toast.LENGTH_LONG).show();
                         progressBar.setAlpha(0);
                     }
         });

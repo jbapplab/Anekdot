@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -46,7 +47,8 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
     TextView retrieveStoryIdDetail, retrieveStoryTitleDetail, retrieveStoryCategoryDetail, retrieveIfOtherSpecifyDetail, retrieveAuthorIdDetail, retrieveStoryDescriptionDetail, retrieveStoryEventsDetail, retrieveOrientationDetail, retrieveComplicatedActionDetail, retrieveEvaluationDetail, retrieveResolutionDetail, retrieveMessageDetail, retrieveStoryMetaDetail, retrieveStageRelatedDetail, retrieveContextRelatedDetail, retrieveStoryFullDetail, retrieveAudienceStageDetail;
     ImageView retrieveStoryImageDetail;
 
-    Button buttonSave, buttonUpdate, buttonDelete;
+    Button buttonUpdate, buttonDelete;
+    ImageButton buttonSave, buttonShare;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -244,6 +246,7 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
         buttonUpdate = findViewById(R.id.buttonUpdate);
         buttonDelete = findViewById(R.id.buttonDelete);
         buttonSave = findViewById(R.id.buttonSave);
+        buttonShare = findViewById(R.id.buttonShare);
 
 
         //RECEIVE
@@ -332,6 +335,8 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
                             public void onClick(DialogInterface arg0, int arg1) {
                             new MySQLClientCRUD(StoryDetailActivityCRUD.this, userId, firstName, lastName, username, password, email).favourite(Integer.parseInt(storyId), Integer.parseInt(userId));
 
+                                /* Do not move to the new screen
+
                                 Intent intentFavouriteStory = new Intent(StoryDetailActivityCRUD.this, MyFavouritesActivity.class);
                                 intentFavouriteStory.putExtra("userId_KEY", userId);
                                 intentFavouriteStory.putExtra("firstName_KEY", firstName);
@@ -341,11 +346,25 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
                                 intentFavouriteStory.putExtra("email_KEY", email);
                                 StoryDetailActivityCRUD.this.startActivity(intentFavouriteStory);
 
+                                */
+
                             }
                         }).create().show();
                 //Toast.makeText(StoryDetailActivityCRUD.this, "Story saved in favourites second?.", Toast.LENGTH_SHORT).show();
 
 
+            }
+        });
+
+        //SHARE STORY
+        buttonShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, retrieveStoryFullDetail.getText());
+                sendIntent.setType("text/plain");
+                startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.send_to)));
             }
         });
 
