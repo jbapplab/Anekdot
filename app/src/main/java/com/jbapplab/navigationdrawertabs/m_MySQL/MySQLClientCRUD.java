@@ -3,6 +3,7 @@ package com.jbapplab.navigationdrawertabs.m_MySQL;
 import android.content.Context;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
@@ -301,7 +302,7 @@ public class MySQLClientCRUD {
 
                                     //Show response from server
                                     String responseString = response.get(0).toString();
-                                    //Toast.makeText(context, "Server response: " + responseString, Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(context, responseString, Toast.LENGTH_SHORT).show();
 
                                     if(responseString.equalsIgnoreCase("Success")){
 
@@ -313,7 +314,7 @@ public class MySQLClientCRUD {
 
                                         EventBus.getDefault().post(new EventBusOnServerSuccess("false"));
 
-                                        Toast.makeText(context, "Oops! Anecdote could not save the story to favourites.\nPlease try again.", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(context, "Oops! Anecdote could not save the story to favourites.\n" + responseString, Toast.LENGTH_LONG).show();
                                     }
 
                                 } catch (JSONException e){
@@ -477,6 +478,7 @@ public class MySQLClientCRUD {
 
             Toast.makeText(context, "No valid story to delete.", Toast.LENGTH_SHORT).show();
         } else {
+            Log.i("Id", String.valueOf(storyId));
             AndroidNetworking.post(DATA_INSERT_URL)
                     .addBodyParameter("action","delete")
                     .addBodyParameter("story_id", String.valueOf(storyId))
@@ -504,7 +506,7 @@ public class MySQLClientCRUD {
                                         EventBus.getDefault().post(new EventBusOnServerSuccess("false"));
 
                                         //Toast.makeText(context, "Server transaction was not successful.", Toast.LENGTH_SHORT).show();
-                                        Toast.makeText(context, "Oops! Anecdote could not delete the story.\nPlease try again.", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(context, "Oops! Anecdote could not delete the story.\n" +responseString, Toast.LENGTH_LONG).show();
                                     }
 
                                 } catch (JSONException e){

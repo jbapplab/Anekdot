@@ -22,6 +22,7 @@ class DBadapter{
 		$con = $this->connect();
 		
 		if ($con != null){
+		    
 			$sql = "INSERT INTO story(story_title, story_category, if_other_specify, author_id, story_description, story_events, orientation, complicated_action, evaluation, resolution, message, story_meta, stage_related, context_related, story_full, image_url, audience_stage) VALUES('$s[0]','$s[1]','$s[2]','$s[3]','$s[4]','$s[5]','$s[6]','$s[7]','$s[8]','$s[9]','$s[10]','$s[11]','$s[12]','$s[13]','$s[14]','$s[15]','$s[16]')";
 			
 			try{
@@ -30,7 +31,7 @@ class DBadapter{
 				if($result){
 					print(json_encode(array("Success")));
 				} else {
-					print(json_encode(array("Unsuccessful")));
+					print(json_encode(array("Posting online failed.")));
 				}
 			} catch (Exception $e){
 				print(json_encode(array("PHP EXCEPTION: Can't save to MySQL Database. "+$e->getMessage())));
@@ -162,7 +163,7 @@ class DBadapter{
                 if($result) {
                     print(json_encode(array("Success")));
                 } else {
-                    print(json_encode(array("Delete action failed.")));
+                    print(json_encode(array("There is an issue with the database.")));
                 }
             }catch (Exception $e){
                 print(json_encode(array("PHP EXCEPTION : Can't delete entry in MySQL Database. "+$e->getMessage())));
@@ -264,7 +265,7 @@ class DBadapter{
 					print(json_encode(array("PHP EXCEPTION: Can't retrieve data from the MySQL database.")));
 				}*/
 				
-				print(json_encode(array("You have not yet created any stories. Create some and return again to this section.")));
+				print(json_encode(array("You have not yet saved any stories in your favourites. Save some and return again to this section.")));
 			}	
 			
 		} else {
