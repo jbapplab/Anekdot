@@ -441,7 +441,7 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
                 //intentSendUpdate.putExtra("STORY_FULL_KEY", storyFull);
                 intentSendUpdate.putExtra("AUDIENCE_STAGE_KEY", audienceStage);
                 intentSendUpdate.putExtra("IMAGE_URL_KEY", imageUrl);
-                intentSendUpdate.putExtra("version_KEY", "basic_instructions");
+                intentSendUpdate.putExtra("version_KEY", "update_story");
 
                 StoryDetailActivityCRUD.this.startActivity(intentSendUpdate);
             }

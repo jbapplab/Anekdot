@@ -478,7 +478,6 @@ public class MySQLClientCRUD {
 
             Toast.makeText(context, "No valid story to delete.", Toast.LENGTH_SHORT).show();
         } else {
-            Log.i("Id", String.valueOf(storyId));
             AndroidNetworking.post(DATA_INSERT_URL)
                     .addBodyParameter("action","delete")
                     .addBodyParameter("story_id", String.valueOf(storyId))

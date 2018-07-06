@@ -21,7 +21,7 @@
             android:gravity="center"
             android:id="@+id/textViewStoryCreateMeta"
             android:textColor="@color/colorAccent"
-            android:text="@string/storyCreateMetaFirst"/>
+            android:text="Update your Story"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -130,62 +130,62 @@
             android:background="@color/colorPrimary"/>
 
         <com.emmasuzuki.easyform.EasyForm
-            android:id="@+id/meta_first_form_add"
+            android:id="@+id/meta_first_form_update"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:showErrorOn="unfocus"
             app:submitButton="@+id/addButton">
 
             <TextView
-                android:layout_toStartOf="@id/meta_first_form_add"
+                android:layout_toStartOf="@id/meta_first_form_update"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="10dp"
                 android:textSize="20sp"
-                android:id="@+id/contextTitleMetaFirst_add"
+                android:id="@+id/contextTitleMetaFirst"
                 android:textColor="@color/colorAccent"
                 android:text="Story topic"/>
 
             <at.blogc.android.views.ExpandableTextView
-                android:id="@+id/tvContextRelated_add"
+                android:id="@+id/tvContextRelated"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/guidance2MetaFirst"
                 android:paddingTop="10dp"
-                android:layout_below="@id/contextTitleMetaFirst_add"
+                android:layout_below="@id/contextTitleMetaFirst"
                 android:textColor="@color/colorPrimary"
                 android:maxLines="2"
                 android:ellipsize="none"
                 app:animation_duration="750"/>
             <ImageButton
-                android:id="@+id/button_tvContextRelated_add"
+                android:id="@+id/button_tvContextRelated"
                 android:contentDescription="toggle3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_below="@id/tvContextRelated_add"/>
+                android:layout_below="@id/tvContextRelated"/>
 
             <com.emmasuzuki.easyform.EasyTextInputLayout
-                android:id="@+id/contextRelated_add"
+                android:id="@+id/contextRelated"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/button_tvContextRelated_add"
+                android:layout_below="@id/button_tvContextRelated"
                 android:hint="@string/contextRelatedHint"
                 app:errorMessage="@string/error_message_empty"
                 app:errorType="empty"
                 android:inputType="textMultiLine"/>
             <TextView
-                android:id="@+id/tvIfOtherSpecify_add"
+                android:id="@+id/tvIfOtherSpecify"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/guidance3MetaFirst"
                 android:paddingTop="5dp"
-                android:layout_below="@id/contextRelated_add"/>
+                android:layout_below="@id/contextRelated"/>
             <com.emmasuzuki.easyform.EasyTextInputLayout
-                android:id="@+id/ifOtherSpecify_add"
+                android:id="@+id/ifOtherSpecify"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tvIfOtherSpecify_add"
+                android:layout_below="@id/tvIfOtherSpecify"
                 android:layout_marginTop="8dp"
                 android:hint="@string/ifOtherSpecifyMetaFirst"
                 app:errorMessage="@string/error_message_empty"
@@ -194,27 +194,27 @@
 
 
             <TextView
-                android:id="@+id/horizontal_divider_2_add"
+                android:id="@+id/horizontal_divider_2"
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
                 android:background="@color/colorPrimary"
-                android:layout_below="@id/ifOtherSpecify_add"/>
+                android:layout_below="@id/ifOtherSpecify"/>
 
             <TextView
-                android:layout_below="@id/horizontal_divider_2_add"
+                android:layout_below="@id/horizontal_divider_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="10dp"
                 android:textSize="20sp"
-                android:id="@+id/stageTitleMetaFirst_add"
+                android:id="@+id/stageTitleMetaFirst"
                 android:textColor="@color/colorAccent"
                 android:text="Audience stage"/>
 
             <at.blogc.android.views.ExpandableTextView
-                android:id="@+id/tvStageRelated_add"
+                android:id="@+id/tvStageRelated"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/stageTitleMetaFirst_add"
+                android:layout_below="@id/stageTitleMetaFirst"
                 android:text="@string/guidanceMetaFirst"
                 android:paddingTop="10dp"
                 android:textColor="@color/colorPrimary"
@@ -222,18 +222,18 @@
                 android:ellipsize="none"
                 app:animation_duration="750"/>
             <ImageButton
-                android:id="@+id/button_tvStageRelated_add"
+                android:id="@+id/button_tvStageRelated"
                 android:contentDescription="toggle4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_below="@id/tvStageRelated_add"/>
+                android:layout_below="@id/tvStageRelated"/>
 
             <com.emmasuzuki.easyform.EasyTextInputLayout
-                android:id="@+id/stageRelated_add"
+                android:id="@+id/stageRelated"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/button_tvStageRelated_add"
+                android:layout_below="@id/button_tvStageRelated"
                 android:hint="@string/stageRelatedHint"
                 app:errorMessage="@string/error_message_empty"
                 app:errorType="empty"
@@ -241,33 +241,33 @@
                 android:paddingBottom="10dp"/>
 
             <TextView
-                android:id="@+id/horizontal_divider_3_add"
+                android:id="@+id/horizontal_divider_3"
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
                 android:background="@color/colorPrimary"
-                android:layout_below="@id/stageRelated_add"/>
+                android:layout_below="@id/stageRelated"/>
 
             <TextView
-                android:layout_below="@id/horizontal_divider_3_add"
+                android:layout_below="@id/horizontal_divider_3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="10dp"
                 android:textSize="20sp"
-                android:id="@+id/ideaTitleMetaFirst_add"
+                android:id="@+id/ideaTitleMetaFirst"
                 android:textColor="@color/colorAccent"
                 android:text="The idea"/>
             <TextView
-                android:id="@+id/tvBeforeTitle_add"
+                android:id="@+id/tvBeforeTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/beforeTitleMetaFirst"
                 android:paddingTop="10dp"
-                android:layout_below="@id/ideaTitleMetaFirst_add"/>
+                android:layout_below="@id/ideaTitleMetaFirst"/>
             <com.emmasuzuki.easyform.EasyTextInputLayout
-                android:id="@+id/storyTitle_add"
+                android:id="@+id/storyTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tvBeforeTitle_add"
+                android:layout_below="@id/tvBeforeTitle"
                 android:layout_marginTop="8dp"
                 android:hint="@string/titleMetaFirst"
                 app:errorMessage="@string/error_message_empty"
@@ -275,10 +275,10 @@
                 android:inputType="textMultiLine"/>
 
             <com.emmasuzuki.easyform.EasyTextInputLayout
-                android:id="@+id/storyDescription_add"
+                android:id="@+id/storyDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/storyTitle_add"
+                android:layout_below="@id/storyTitle"
                 android:layout_marginTop="8dp"
                 android:hint="@string/storyDescriptionMetaFirst"
                 app:errorMessage="@string/error_message_empty"
@@ -287,133 +287,133 @@
                 android:paddingBottom="10dp"/>
 
             <TextView
-                android:id="@+id/horizontal_divider_4_add"
+                android:id="@+id/horizontal_divider_4"
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
                 android:background="@color/colorPrimary"
-                android:layout_below="@id/storyDescription_add"/>
+                android:layout_below="@id/storyDescription"/>
 
             <TextView
-                android:layout_below="@id/horizontal_divider_4_add"
+                android:layout_below="@id/horizontal_divider_4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="10dp"
                 android:textSize="20sp"
-                android:id="@+id/narrativeTitleMetaFirst_add"
+                android:id="@+id/narrativeTitleMetaFirst"
                 android:textColor="@color/colorAccent"
                 android:text="The narrative"/>
 
             <at.blogc.android.views.ExpandableTextView
-                android:id="@+id/tvBeforeOrientation_add"
+                android:id="@+id/tvBeforeOrientation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/beforeOrientationMetaFirst"
                 android:paddingTop="10dp"
-                android:layout_below="@id/narrativeTitleMetaFirst_add"
+                android:layout_below="@id/narrativeTitleMetaFirst"
                 android:textColor="@color/colorPrimary"
                 android:maxLines="3"
                 android:ellipsize="none"
                 app:animation_duration="750"/>
             <ImageButton
-                android:id="@+id/button_tvBeforeOrientation_add"
+                android:id="@+id/button_tvBeforeOrientation"
                 android:contentDescription="toggle5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_below="@id/tvBeforeOrientation_add"/>
+                android:layout_below="@id/tvBeforeOrientation"/>
 
             <com.emmasuzuki.easyform.EasyTextInputLayout
-                android:id="@+id/orientation_add"
+                android:id="@+id/orientation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/button_tvBeforeOrientation_add"
+                android:layout_below="@id/button_tvBeforeOrientation"
                 android:hint="@string/orientationMetaFirst"
                 app:errorMessage="@string/error_message_empty"
                 app:errorType="empty"
                 android:inputType="textMultiLine"/>
 
             <at.blogc.android.views.ExpandableTextView
-                android:id="@+id/tvBeforeComplicatedAction_add"
+                android:id="@+id/tvBeforeComplicatedAction"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/beforeComplicatedActionMetaFirst"
                 android:paddingTop="10dp"
-                android:layout_below="@id/orientation_add"
+                android:layout_below="@id/orientation"
                 android:textColor="@color/colorPrimary"
                 android:maxLines="2"
                 android:ellipsize="none"
                 app:animation_duration="750"/>
             <ImageButton
-                android:id="@+id/button_tvBeforeComplicatedAction_add"
+                android:id="@+id/button_tvBeforeComplicatedAction"
                 android:contentDescription="toggle6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_below="@id/tvBeforeComplicatedAction_add"/>
+                android:layout_below="@id/tvBeforeComplicatedAction"/>
 
             <com.emmasuzuki.easyform.EasyTextInputLayout
-                android:id="@+id/complicatedAction_add"
+                android:id="@+id/complicatedAction"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/button_tvBeforeComplicatedAction_add"
+                android:layout_below="@id/button_tvBeforeComplicatedAction"
                 android:hint="@string/complicatedActionMetaFirst"
                 app:errorMessage="@string/error_message_empty"
                 app:errorType="empty"
                 android:inputType="textMultiLine"/>
 
             <at.blogc.android.views.ExpandableTextView
-                android:id="@+id/tvBeforeEvaluation_add"
+                android:id="@+id/tvBeforeEvaluation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/beforeEvaluationMetaFirst"
                 android:paddingTop="10dp"
-                android:layout_below="@id/complicatedAction_add"
+                android:layout_below="@id/complicatedAction"
                 android:textColor="@color/colorPrimary"
                 android:maxLines="2"
                 android:ellipsize="none"
                 app:animation_duration="750"/>
             <ImageButton
-                android:id="@+id/button_tvBeforeEvaluation_add"
+                android:id="@+id/button_tvBeforeEvaluation"
                 android:contentDescription="toggle7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_below="@id/tvBeforeEvaluation_add"/>
+                android:layout_below="@id/tvBeforeEvaluation"/>
 
             <com.emmasuzuki.easyform.EasyTextInputLayout
-                android:id="@+id/evaluation_add"
+                android:id="@+id/evaluation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/button_tvBeforeEvaluation_add"
+                android:layout_below="@id/button_tvBeforeEvaluation"
                 android:hint="@string/evaluationMetaFirst"
                 app:errorMessage="@string/error_message_empty"
                 app:errorType="empty"
                 android:inputType="textMultiLine"/>
 
             <at.blogc.android.views.ExpandableTextView
-                android:id="@+id/tvBeforeResolution_add"
+                android:id="@+id/tvBeforeResolution"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/beforeResolutionMetaFirst"
                 android:paddingTop="10dp"
-                android:layout_below="@id/evaluation_add"
+                android:layout_below="@id/evaluation"
                 android:textColor="@color/colorPrimary"
                 android:maxLines="2"
                 android:ellipsize="none"
                 app:animation_duration="750"/>
             <ImageButton
-                android:id="@+id/button_tvBeforeResolution_add"
+                android:id="@+id/button_tvBeforeResolution"
                 android:contentDescription="toggle8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_below="@id/tvBeforeResolution_add"/>
+                android:layout_below="@id/tvBeforeResolution"/>
 
             <com.emmasuzuki.easyform.EasyTextInputLayout
-                android:id="@+id/resolution_add"
+                android:id="@+id/resolution"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/button_tvBeforeResolution_add"
+                android:layout_below="@id/button_tvBeforeResolution"
                 android:hint="@string/resolutionMetaFirst"
                 app:errorMessage="@string/error_message_empty"
                 app:errorType="empty"
@@ -421,47 +421,47 @@
                 android:paddingBottom="10dp"/>
 
             <TextView
-                android:id="@+id/horizontal_divider_6_add"
+                android:id="@+id/horizontal_divider_6"
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
                 android:background="@color/colorPrimary"
-                android:layout_below="@id/resolution_add"/>
+                android:layout_below="@id/resolution"/>
 
             <TextView
-                android:layout_below="@id/horizontal_divider_6_add"
+                android:layout_below="@id/horizontal_divider_6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="10dp"
                 android:textSize="20sp"
-                android:id="@+id/messageTitleMetaFirst_add"
+                android:id="@+id/messageTitleMetaFirst"
                 android:textColor="@color/colorAccent"
                 android:text="The takeaway message"/>
 
             <at.blogc.android.views.ExpandableTextView
-                android:id="@+id/tvBeforeMessage_add"
+                android:id="@+id/tvBeforeMessage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/beforeMessageMetaFirst"
                 android:paddingTop="10dp"
-                android:layout_below="@id/messageTitleMetaFirst_add"
+                android:layout_below="@id/messageTitleMetaFirst"
                 android:textColor="@color/colorPrimary"
                 android:maxLines="4"
                 android:ellipsize="none"
                 app:animation_duration="750"/>
             <ImageButton
-                android:id="@+id/button_tvBeforeMessage_add"
+                android:id="@+id/button_tvBeforeMessage"
                 android:contentDescription="toggle9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_below="@id/tvBeforeMessage_add"/>
+                android:layout_below="@id/tvBeforeMessage"/>
 
 
             <com.emmasuzuki.easyform.EasyTextInputLayout
-                android:id="@+id/message_add"
+                android:id="@+id/message"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/button_tvBeforeMessage_add"
+                android:layout_below="@id/button_tvBeforeMessage"
                 android:hint="@string/messageMetaFirst"
                 app:errorMessage="@string/error_message_empty"
                 app:errorType="empty"
@@ -469,54 +469,54 @@
                 android:paddingBottom="10dp"/>
 
             <TextView
-                android:id="@+id/horizontal_divider_5_add"
+                android:id="@+id/horizontal_divider_5"
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
                 android:background="@color/colorPrimary"
-                android:layout_below="@id/message_add"/>
+                android:layout_below="@id/message"/>
 
             <TextView
-                android:layout_below="@id/horizontal_divider_5_add"
+                android:layout_below="@id/horizontal_divider_5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="10dp"
                 android:textSize="20sp"
-                android:id="@+id/fullStoryTitleMetaFirst_add"
+                android:id="@+id/fullStoryTitleMetaFirst"
                 android:textColor="@color/colorAccent"
                 android:text="The persuasive story so far"/>
             <at.blogc.android.views.ExpandableTextView
-                android:id="@+id/tvBeforeURL_add"
+                android:id="@+id/tvBeforeURL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/beforeUrlMetaFirst"
                 android:paddingTop="10dp"
-                android:layout_below="@id/fullStoryTitleMetaFirst_add"
+                android:layout_below="@id/fullStoryTitleMetaFirst"
                 android:textColor="@color/colorPrimary"
                 android:maxLines="9"
                 android:ellipsize="none"
                 app:animation_duration="750"/>
             <ImageButton
-                android:id="@+id/button_tvBeforeURL_add"
+                android:id="@+id/button_tvBeforeURL"
                 android:contentDescription="toggle10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_below="@id/tvBeforeURL_add"/>
+                android:layout_below="@id/tvBeforeURL"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/Base.Widget.AppCompat.Button.Colored"
-                android:id="@+id/generateButton_add"
-                android:layout_below="@id/button_tvBeforeURL_add"
+                android:id="@+id/generateButton"
+                android:layout_below="@id/button_tvBeforeURL"
                 android:layout_marginTop="12dp"
                 android:text="Generate and Edit Your Story"
                 android:textColor="@android:color/white"/>
             <com.emmasuzuki.easyform.EasyTextInputLayout
-                android:id="@+id/imageUrl_add"
+                android:id="@+id/imageUrl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/generateButton_add"
+                android:layout_below="@id/generateButton"
                 android:layout_marginTop="8dp"
                 android:hint="@string/urlMetaFirst"
                 app:errorMessage="@string/error_message_empty"
@@ -526,13 +526,13 @@
 
             <Button
                 style="@style/Base.Widget.AppCompat.Button.Colored"
-                android:id="@+id/addButton"
+                android:id="@+id/updateButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/imageUrl_add"
+                android:layout_below="@id/imageUrl"
                 android:layout_marginTop="20dp"
                 android:background="@color/colorAccent"
-                android:text="@string/review_story"
+                android:text="@string/update_story"
                 android:textColor="@android:color/white"/>
         </com.emmasuzuki.easyform.EasyForm>
 
