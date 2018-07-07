@@ -38,9 +38,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:textColor="@color/colorPrimary"
-            android:text="@string/welcomeMessageMetaFirst"
-            android:maxLines="9"
-            android:ellipsize="none"
+            android:text="@string/welcomeMessageMetaFirst_simple"
+            android:maxLines="1"
             app:animation_duration="750"/>
         <ImageButton
             android:id="@+id/button_tvWelcomeMessageMetaFirst"
@@ -69,7 +68,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="@string/categoryMetaFirst"
+            android:text="@string/categoryMetaFirst_simple"
             android:paddingBottom="5dp"/>
 
         <android.support.v7.widget.CardView
@@ -88,7 +87,7 @@
             android:id="@+id/tvStage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/stageMetaFirst"
+            android:text="@string/stageMetaFirst_simple"
             android:paddingBottom="5dp"
             android:paddingTop="5dp"/>
 
@@ -109,12 +108,11 @@
             android:id="@+id/tvSwipeRight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/swipeRightMetaFirst"
+            android:text="@string/swipeRightMetaFirst_simple"
             android:textColor="@color/colorPrimary"
             android:paddingTop="5dp"
             android:paddingBottom="10dp"
-            android:maxLines="5"
-            android:ellipsize="none"
+            android:maxLines="1"
             app:animation_duration="750"/>
         <ImageButton
             android:id="@+id/button_tvSwipeRight"
@@ -150,12 +148,11 @@
                 android:id="@+id/tvContextRelated_add"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/guidance2MetaFirst"
+                android:text="@string/guidance2MetaFirst_simple"
                 android:paddingTop="10dp"
                 android:layout_below="@id/contextTitleMetaFirst_add"
                 android:textColor="@color/colorPrimary"
-                android:maxLines="2"
-                android:ellipsize="none"
+                android:maxLines="1"
                 app:animation_duration="750"/>
             <ImageButton
                 android:id="@+id/button_tvContextRelated_add"
@@ -215,11 +212,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/stageTitleMetaFirst_add"
-                android:text="@string/guidanceMetaFirst"
+                android:text="@string/guidanceMetaFirst_simple"
                 android:paddingTop="10dp"
                 android:textColor="@color/colorPrimary"
-                android:maxLines="2"
-                android:ellipsize="none"
+                android:maxLines="1"
                 app:animation_duration="750"/>
             <ImageButton
                 android:id="@+id/button_tvStageRelated_add"
@@ -260,7 +256,7 @@
                 android:id="@+id/tvBeforeTitle_add"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/beforeTitleMetaFirst"
+                android:text="@string/beforeTitleMetaFirst_simple"
                 android:paddingTop="10dp"
                 android:layout_below="@id/ideaTitleMetaFirst_add"/>
             <com.emmasuzuki.easyform.EasyTextInputLayout
@@ -307,12 +303,11 @@
                 android:id="@+id/tvBeforeOrientation_add"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/beforeOrientationMetaFirst"
+                android:text="@string/beforeOrientationMetaFirst_simple"
                 android:paddingTop="10dp"
                 android:layout_below="@id/narrativeTitleMetaFirst_add"
                 android:textColor="@color/colorPrimary"
-                android:maxLines="3"
-                android:ellipsize="none"
+                android:maxLines="1"
                 app:animation_duration="750"/>
             <ImageButton
                 android:id="@+id/button_tvBeforeOrientation_add"
@@ -336,7 +331,7 @@
                 android:id="@+id/tvBeforeComplicatedAction_add"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/beforeComplicatedActionMetaFirst"
+                android:text="@string/beforeComplicatedActionMetaFirst_simple"
                 android:paddingTop="10dp"
                 android:layout_below="@id/orientation_add"
                 android:textColor="@color/colorPrimary"
@@ -365,12 +360,11 @@
                 android:id="@+id/tvBeforeEvaluation_add"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/beforeEvaluationMetaFirst"
+                android:text="@string/beforeEvaluationMetaFirst_simple"
                 android:paddingTop="10dp"
                 android:layout_below="@id/complicatedAction_add"
                 android:textColor="@color/colorPrimary"
-                android:maxLines="2"
-                android:ellipsize="none"
+                android:maxLines="1"
                 app:animation_duration="750"/>
             <ImageButton
                 android:id="@+id/button_tvBeforeEvaluation_add"
@@ -394,12 +388,11 @@
                 android:id="@+id/tvBeforeResolution_add"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/beforeResolutionMetaFirst"
+                android:text="@string/beforeResolutionMetaFirst_simple"
                 android:paddingTop="10dp"
                 android:layout_below="@id/evaluation_add"
                 android:textColor="@color/colorPrimary"
-                android:maxLines="2"
-                android:ellipsize="none"
+                android:maxLines="1"
                 app:animation_duration="750"/>
             <ImageButton
                 android:id="@+id/button_tvBeforeResolution_add"
@@ -441,11 +434,11 @@
                 android:id="@+id/tvBeforeMessage_add"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/beforeMessageMetaFirst"
+                android:text="@string/beforeMessageMetaFirst_simple"
                 android:paddingTop="10dp"
                 android:layout_below="@id/messageTitleMetaFirst_add"
                 android:textColor="@color/colorPrimary"
-                android:maxLines="4"
+                android:maxLines="2"
                 android:ellipsize="none"
                 app:animation_duration="750"/>
             <ImageButton
@@ -488,11 +481,11 @@
                 android:id="@+id/tvBeforeURL_add"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/beforeUrlMetaFirst"
+                android:text="@string/beforeUrlMetaFirst_simple"
                 android:paddingTop="10dp"
                 android:layout_below="@id/fullStoryTitleMetaFirst_add"
                 android:textColor="@color/colorPrimary"
-                android:maxLines="9"
+                android:maxLines="6"
                 android:ellipsize="none"
                 app:animation_duration="750"/>
             <ImageButton

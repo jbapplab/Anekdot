@@ -41,7 +41,6 @@
 
     <!-- START STORY FORM -->
     <string name="storyCreateMetaFirst">Create a Story with\nFull Guidance</string>
-    <string name="storyCreateMetaFirstSimple">Create a Story with\nBasic Instructions</string>
     <string name="welcomeMessageMetaFirst">OK! It is time to create a <b>persuasive</b> story.
         \nA persuasive story is a story that aims to <b>influence</b>.
         \n\nIn most cases the audience is more persuaded from stories that describe an <b>issue</b> and its <b>potential resolution</b>.
@@ -59,7 +58,7 @@
         in which your intended audience would most likely belong in regard to the issue.</string>
     <string name="swipeRightMetaFirst">According to what you have selected, tailored suggestions have been generated for you. You can <b>swipe right</b>
         and get extra information on how to make your story more relatable and thus more persuasive for your audience.
-        \n\nfSpecific <b>goals and strategies</b>
+        \n\nSpecific <b>goals and strategies</b>
         are available according to your selections. Your persuasive story will be a combination of these persuasive factors and a narrative that will be structured within them to
         help deliver your message.
         \n\nYou could try to <b>promote an idea</b> to create change and move your audience to action or you can just <b>describe something important to you</b> and why is should matter to them as well.
@@ -92,7 +91,7 @@
         \n- <b>Who</b> is involved in the story?
         \n- <b>When</b> did the events take place? - <b>Where</b>?
         \n- <b>How</b> were the actors/people in the story feeling and acting?
-        \n- <b>Why</b> the situation was like that?
+        \n- <b>Why</b> was the situation like that?
         \n\nThis information will be used to bring your audience close to what you are describing.</string>
     <string name="orientationMetaFirst">Set the scene/background.</string>
 
@@ -143,6 +142,63 @@
     <string name="update_story">Preview and Update</string>
     <!-- END STORY FORM -->
 
+    <!-- Story form simple -->
+    <string name="storyCreateMetaFirstSimple">Create a Story with\nBasic Instructions</string>
+    <string name="welcomeMessageMetaFirst_simple">Lets create a <b>persuasive</b> story!
+        \n- Describe an <b>issue</b> and its <b>resolution</b>.
+        \n- Have in mind your <b>audience</b> and make the story <b>relatable</b> to them.
+        \n- Aim to <b>change</b> their <b>knowledge/understanding</b>, <b>attitude</b>, <b>intention</b>, and/or <b>behaviour</b> towards the issue you describe.
+    </string>
+    <string name="categoryMetaFirst_simple">To begin with, select the <b><font color="#B2182D">topic</font></b> in which your story fits.</string>
+    <string name="stageMetaFirst_simple">\nThe audience typically moves through <b>4 main stages</b> in order to change. Select the <b><font color="#128E4A">stage</font></b>
+        in which your  audience belongs in regard to the issue.</string>
+    <string name="swipeRightMetaFirst_simple">Tailored suggestions have been generated for you!
+        \nYou can <b>swipe right</b>
+        and get extra information on how to make your story more relatable and thus more persuasive for your audience.
+        \n- Use the <b>goals and strategies</b> provided
+        \n- <b>Promote an idea</b> or <b>describe something important to you</b>.
+    </string>
+
+    <string name="guidanceMetaFirst_simple">Think your audience in relation to the <b><font color="#128E4A">stage</font></b> they are in.
+        \n- How can you make the <b>stage goal</b> suggested in the tips section relevant to them?
+        \n- Which <b>strategies</b> will more likely work for them?</string>
+
+    <string name="guidance2MetaFirst_simple">Think about the <b><font color="#B2182D">topic</font></b> of your story.
+        \n- Is it relatable to your intended audience?
+        \n- How does this affect the setting and actors of the story?</string>
+
+    <string name="beforeTitleMetaFirst_simple">Each story needs to start somewhere.
+        \nGive a <b>title</b> and a <b>short description</b> for your story.</string>
+
+    <string name="beforeOrientationMetaFirst_simple"><b>Set the scene</b> and give the background for your story.
+        \n- <b>Who</b>, <b>When</b>, <b>Where?</b>
+        \n- <b>How</b> were the actors/people in the story feeling and acting?
+        \n- <b>Why</b> was the situation like that?</string>
+
+    <string name="beforeComplicatedActionMetaFirst_simple">Describe an <b>issue</b> and its <b>potential resolution</b> through the story.
+        \n- You could describe a <b>problem/challenge/obstacle/issue</b>
+        that your audience, you or someone else you are trying to influence struggles with now or in the past.</string>
+
+    <string name="beforeEvaluationMetaFirst_simple"><b>Why did you chose to share</b> the story?
+        \n- Why is it <b>important/interesting</b>?
+        \n- Why are you <b>excited/passionate</b> about it?</string>
+
+    <string name="beforeResolutionMetaFirst_simple"><b>What finally happened</b> in the story?
+        \n- How did the issue got <b>resolved</b> or how the goals were accomplished?</string>
+
+    <string name="beforeMessageMetaFirst_simple">Leave your audience with the <b><font color="#8E44AD">meaning or significance</font></b> of what happened.
+        \n- Share <b>strategies</b> and give <b>suggestions</b> to your audience.
+        \n- Write about how the audience\'s life will improve after following your suggestions.
+        \n- <b>Give a key takeaway lesson</b> and connect it to your audience\'s lives.
+    </string>
+
+    <string name="beforeUrlMetaFirst_simple">Press the generate button to put all the elements of your <b>persuasive story</b> together.
+        \nThese are persuasive factors related to the <b><font color="#B2182D">topic</font></b> of the story and the <b><font color="#128E4A">stage</font></b> that your audience is in.
+        \nThe <b><font color="#000000">narrative</font></b> is used to structure these and deliver your takeaway <b><font color="#8E44AD">message</font></b>.
+        \n\nThe content is colour coded to identify the elements even if these are rearranged in the story.
+        \n- Edit your story to make it more coherent, fluent and relatable to your audience.
+        \n\n<b>Attention!</b> Best omplete all the fields above before attempting to generate your persuasive story.</string>
+    <!-- Story form simple end -->
 
     <string name="register">register</string>
 
