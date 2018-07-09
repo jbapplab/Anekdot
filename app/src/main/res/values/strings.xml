@@ -204,8 +204,11 @@
 
     <!-- User area strings -->
     <string name="send_user_details">Share user details via:</string>
-    <string name="scroll_right_tip_links_tutorials">Remember to scroll right to get your story tip of the day and access to useful links and tutorials.</string>
-    <string name="dashboard_intro_text">Jump straight into the story!</string>
+    <string name="scroll_right_tip_links_tutorials">Remember to <b><font color="#d21414">scroll right</font></b> to get your
+        \nstory <b>tip of the day</b> and access to
+        \nuseful <b>links and tutorials</b>.</string>
+    <string name="dashboard_intro_text">Use the dashboard below
+        \nto jump straight into the stories!</string>
     <string name="create_storyTop"><b>Create a Story</b></string>
     <string name="create_story">Full Guidance</string>
     <string name="read_storyTop"><b>Read a Story</b></string>
@@ -419,9 +422,11 @@
 
     <!-- Help and support Activity -->
     <string name="help_and_support">Contact the developer!</string>
-    <string name="help_description">\nIn case of a bug, issue or any other kind of assistance please use the button below to contact me.</string>
+    <string name="help_description">\nIn case you would like to report an issue or require any other kind of assistance please use the button below to contact me at: <b><font color="#d21414">ib322@bath.ac.uk</font></b>.</string>
     <string name="timer_icon">timer icon</string>
     <string name="report_a_problem">Send Email</string>
+    <string name="resetTutText">\nPress the button below to <b><font color="#d21414">reset the tutorials</font></b> that appear when Anecdote is used for the first time.</string>
+
     <!-- End of Help and Support Activity -->
 
     <!-- Category/Topic Fragment -->

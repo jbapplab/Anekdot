@@ -40,4 +40,5 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'org.jsoup:jsoup:1.11.3'
     implementation 'at.blogc:expandabletextview:1.0.5'
+    implementation 'com.github.deano2390:MaterialShowcaseView:1.2.0'
 }

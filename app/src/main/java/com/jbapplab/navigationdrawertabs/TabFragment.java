@@ -20,6 +20,8 @@ package com.jbapplab.navigationdrawertabs;
  setupWithViewPager(viewPager) method of the TabLayout.
  */
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -30,6 +32,8 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
 
 public class TabFragment extends Fragment {
 
@@ -74,6 +78,8 @@ public class TabFragment extends Fragment {
         });
 
         return x;
+
+       /////////////////////////////// tabLayout.getTabAt(0);
     }
 
     class MyAdapter extends FragmentPagerAdapter{
@@ -129,5 +135,4 @@ public class TabFragment extends Fragment {
         }
 
     }
-
 }

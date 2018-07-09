@@ -50,58 +50,58 @@
                 android:id="@+id/spacerGridTopBorder1"
                 android:layout_height="2dp"
                 android:layout_width="2dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
             <TextView
                 android:id="@+id/spacerGridTopBorder1after"
                 android:layout_height="2dp"
                 android:layout_width="2dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
             <TextView
                 android:id="@+id/spacerGridTopBorder2"
                 android:layout_height="2dp"
                 android:layout_width="100dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
             <TextView
                 android:id="@+id/spacerGridTopBorder3before"
                 android:layout_height="2dp"
                 android:layout_width="2dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
             <TextView
                 android:id="@+id/spacerGridTopBorder3"
                 android:layout_height="2dp"
                 android:layout_width="2dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
             <TextView
                 android:id="@+id/spacerGridTopBorder3after"
                 android:layout_height="2dp"
                 android:layout_width="2dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
             <TextView
                 android:id="@+id/spacerGridTopBorder4"
                 android:layout_height="2dp"
                 android:layout_width="100dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
             <TextView
                 android:id="@+id/spacerGridTopBorder5"
                 android:layout_height="2dp"
                 android:layout_width="100dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
             <TextView
                 android:id="@+id/spacerGridTopBorder6before"
                 android:layout_height="2dp"
                 android:layout_width="2dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
             <TextView
                 android:id="@+id/spacerGridTopBorder6"
                 android:layout_height="2dp"
                 android:layout_width="2dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
 
             <TextView
                 android:id="@+id/spacerGridTopBorder1s"
                 android:layout_height="2dp"
                 android:layout_width="2dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
             <TextView
                 android:id="@+id/spacerGridTopBorder1safter"
                 android:layout_height="2dp"
@@ -118,7 +118,7 @@
                 android:id="@+id/spacerGridTopBorder3s"
                 android:layout_height="2dp"
                 android:layout_width="2dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
             <TextView
                 android:id="@+id/spacerGridTopBorder3safter"
                 android:layout_height="2dp"
@@ -139,12 +139,12 @@
                 android:id="@+id/spacerGridTopBorder6s"
                 android:layout_height="2dp"
                 android:layout_width="2dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
 
             <TextView
             android:id="@+id/spacerGridTop1"
             android:layout_width="2dp"
-            android:background="@color/colorAccent"/>
+            android:background="@color/colorPrimaryDark"/>
             <TextView
                 android:id="@+id/spacerGridTop1after"
                 android:layout_width="2dp"/>
@@ -165,7 +165,7 @@
             <TextView
                 android:id="@+id/spacerGridTop2"
                 android:layout_width="2dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
             <TextView
                 android:id="@+id/spacerGridTop2after"
                 android:layout_width="2dp"/>
@@ -187,13 +187,13 @@
             <TextView
                 android:id="@+id/spacerGridTop3"
                 android:layout_width="2dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
 
             <TextView
                 android:id="@+id/spacerGridOverImageBorder1"
                 android:layout_height="2dp"
                 android:layout_width="2dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
             <TextView
                 android:id="@+id/spacerGridOverImageBorder1after"
                 android:layout_height="2dp"
@@ -210,7 +210,7 @@
                 android:id="@+id/spacerGridOverImageBorder3"
                 android:layout_height="2dp"
                 android:layout_width="2dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
             <TextView
                 android:id="@+id/spacerGridOverImageBorder3after"
                 android:layout_height="2dp"
@@ -231,13 +231,13 @@
                 android:id="@+id/spacerGridOverImageBorder6"
                 android:layout_height="2dp"
                 android:layout_width="2dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
 
             <TextView
                 android:id="@+id/spacerGridMiddle1"
                 android:layout_width="2dp"
                 android:layout_height="100dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
             <TextView
                 android:id="@+id/spacerGridMiddle1after"
                 android:layout_width="2dp"
@@ -261,7 +261,7 @@
                 android:id="@+id/spacerGridMiddle2"
                 android:layout_width="2dp"
                 android:layout_height="100dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
             <TextView
                 android:id="@+id/spacerGridMiddle2after"
                 android:layout_width="2dp"
@@ -295,13 +295,13 @@
                 android:id="@+id/spacerGridMiddle3"
                 android:layout_width="2dp"
                 android:layout_height="100dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
 
             <TextView
                 android:id="@+id/spacerGridUnderImageBorder1"
                 android:layout_height="2dp"
                 android:layout_width="2dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
             <TextView
                 android:id="@+id/spacerGridUnderImageBorder1after"
                 android:layout_height="2dp"
@@ -318,7 +318,7 @@
                 android:id="@+id/spacerGridUnderImageBorder3"
                 android:layout_height="2dp"
                 android:layout_width="2dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
             <TextView
                 android:id="@+id/spacerGridUnderImageBorder3after"
                 android:layout_height="2dp"
@@ -339,12 +339,12 @@
                 android:id="@+id/spacerGridUnderImageBorder6"
                 android:layout_height="2dp"
                 android:layout_width="2dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
 
             <TextView
                 android:id="@+id/spacerGridBottom1"
                 android:layout_width="2dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
             <TextView
                 android:id="@+id/spacerGridBottom1after"
                 android:layout_width="2dp"/>
@@ -365,7 +365,7 @@
             <TextView
                 android:id="@+id/spacerGridBottom2"
                 android:layout_width="2dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
             <TextView
                 android:id="@+id/spacerGridBottom2after"
                 android:layout_width="2dp"/>
@@ -396,13 +396,13 @@
             <TextView
                 android:id="@+id/spacerGridBottom3"
                 android:layout_width="2dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
 
             <TextView
                 android:id="@+id/spacerGridBottomBorder1s"
                 android:layout_height="2dp"
                 android:layout_width="2dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
             <TextView
                 android:id="@+id/spacerGridBottomBorder1safter"
                 android:layout_height="2dp"
@@ -419,7 +419,7 @@
                 android:id="@+id/spacerGridBottomBorder3s"
                 android:layout_height="2dp"
                 android:layout_width="2dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
             <TextView
                 android:id="@+id/spacerGridBottomBorder3safter"
                 android:layout_height="2dp"
@@ -440,58 +440,58 @@
                 android:id="@+id/spacerGridBottomBorder6s"
                 android:layout_height="2dp"
                 android:layout_width="2dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
 
             <TextView
                 android:id="@+id/spacerGridBottomBorder1"
                 android:layout_height="2dp"
                 android:layout_width="2dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
             <TextView
                 android:id="@+id/spacerGridBottomBorder1after"
                 android:layout_height="2dp"
                 android:layout_width="2dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
             <TextView
                 android:id="@+id/spacerGridBottomBorder2"
                 android:layout_height="2dp"
                 android:layout_width="100dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
             <TextView
                 android:id="@+id/spacerGridBottomBorder3before"
                 android:layout_height="2dp"
                 android:layout_width="2dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
             <TextView
                 android:id="@+id/spacerGridBottomBorder3"
                 android:layout_height="2dp"
                 android:layout_width="2dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
             <TextView
                 android:id="@+id/spacerGridBottomBorder3after"
                 android:layout_height="2dp"
                 android:layout_width="2dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
             <TextView
                 android:id="@+id/spacerGridBottomBorder4"
                 android:layout_height="2dp"
                 android:layout_width="100dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
             <TextView
                 android:id="@+id/spacerGridBottomBorder5"
                 android:layout_height="2dp"
                 android:layout_width="100dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
             <TextView
                 android:id="@+id/spacerGridBottomBorder6before"
                 android:layout_height="2dp"
                 android:layout_width="2dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
             <TextView
                 android:id="@+id/spacerGridBottomBorder6"
                 android:layout_height="2dp"
                 android:layout_width="2dp"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorPrimaryDark"/>
 
         </GridLayout>
 </LinearLayout>

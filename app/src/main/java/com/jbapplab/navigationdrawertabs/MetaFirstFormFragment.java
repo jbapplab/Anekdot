@@ -57,6 +57,7 @@ public class MetaFirstFormFragment extends Fragment {
     String userIdString, firstNameString, lastNameString, usernameString, passwordString, emailString;
     String actionString, storyIdString, storyTitle, ifOtherSpecify, authorIdString, storyDescription, orientation, complicatedAction, evaluation, resolution, message, stageRelated, contextRelated, imageUrl, storyCategory, audienceStage, storyEvents, storyMeta, storyFull, stage, version;
     String success;
+    String stageToast;
     int authorId;
     int editCounter = 0;
     Boolean spinnerCategoryValid;
@@ -179,6 +180,9 @@ public class MetaFirstFormFragment extends Fragment {
                     spinnerCategoryValid = true;
                     //PASS OVER THE BUNDLE TO OUR FRAGMENT
                     EventBus.getDefault().post(new EventBusCategorySelected(storyCategorySpinner.getSelectedItem().toString()));
+                    if (storyCategorySpinner.getSelectedItemPosition()!=0){
+                        Toast.makeText(getActivity(), "Swipe right for \""+storyCategorySpinner.getSelectedItem().toString()+"\" tips.", Toast.LENGTH_SHORT).show();
+                    }
                 }
 
                 @Override
@@ -194,6 +198,10 @@ public class MetaFirstFormFragment extends Fragment {
                     spinnerStageValid = true;
                     //PASS OVER THE BUNDLE TO OUR FRAGMENT
                     EventBus.getDefault().post(new EventBusStageSelected(audienceStageSpinner.getSelectedItem().toString()));
+                    if (audienceStageSpinner.getSelectedItemPosition()!=0){
+                        switchStageForToast();
+                        Toast.makeText(getActivity(), "Swipe right for \""+stageToast+"\" tips.", Toast.LENGTH_SHORT).show();
+                    }
                 }
 
                 @Override
@@ -585,6 +593,9 @@ public class MetaFirstFormFragment extends Fragment {
                     spinnerCategoryValid = true;
                     //PASS OVER THE BUNDLE TO OUR FRAGMENT
                     EventBus.getDefault().post(new EventBusCategorySelected(storyCategorySpinner.getSelectedItem().toString()));
+                    if (storyCategorySpinner.getSelectedItemPosition()!=0){
+                        Toast.makeText(getActivity(), "Swipe right for \""+storyCategorySpinner.getSelectedItem().toString()+"\" tips.", Toast.LENGTH_SHORT).show();
+                    }
                 }
 
                 @Override
@@ -600,6 +611,10 @@ public class MetaFirstFormFragment extends Fragment {
                     spinnerStageValid = true;
                     //PASS OVER THE BUNDLE TO OUR FRAGMENT
                     EventBus.getDefault().post(new EventBusStageSelected(audienceStageSpinner.getSelectedItem().toString()));
+                    if (audienceStageSpinner.getSelectedItemPosition()!=0){
+                        switchStageForToast();
+                        Toast.makeText(getActivity(), "Swipe right for \""+stageToast+"\" tips.", Toast.LENGTH_SHORT).show();
+                    }
                 }
 
                 @Override
@@ -1139,7 +1154,25 @@ public class MetaFirstFormFragment extends Fragment {
                 break;
             default:
                 stage = "Precontemplation";
-                return;
+        }
+    }
+
+    void switchStageForToast(){
+        switch (audienceStageSpinner.getSelectedItem().toString()) {
+            case "Stage 1: The audience is unaware of the problem or issue you are describing.":
+                stageToast = "Stage 1";
+                break;
+            case "Stage 2: The audience is aware of the problem or issue you are describing.":
+                stageToast = "Stage 2";
+                break;
+            case "Stage 3: The audience wants to act soon regarding the problem or issue.":
+                stageToast = "Stage 3";
+                break;
+            case "Stage 4: The audience is already taking action to overcome the problem or issue.":
+                stageToast = "Stage 4";
+                break;
+            default:
+                stageToast = "No stage selected";
         }
     }
 

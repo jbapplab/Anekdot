@@ -1,7 +1,9 @@
 package com.jbapplab.navigationdrawertabs;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -30,7 +32,7 @@ public class HelpActivity extends AppCompatActivity {
     String password;
     String email;
 
-    Button emailButton;
+    Button emailButton, resetTutorialsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -207,6 +209,7 @@ public class HelpActivity extends AppCompatActivity {
         mDrawerToggle.syncState();
 
         emailButton = findViewById(R.id.emailButton);
+        resetTutorialsButton = findViewById(R.id.resetTutorialsButton);
 
         emailButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -216,6 +219,30 @@ public class HelpActivity extends AppCompatActivity {
                 intent.putExtra(Intent.EXTRA_SUBJECT, "Anecdote user "+username+" problem report.");
                 intent.putExtra(Intent.EXTRA_TEXT, "");
                 startActivity(Intent.createChooser(intent, "Send your email report via:"));
+            }
+        });
+
+        resetTutorialsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new AlertDialog.Builder(HelpActivity.this)
+                        .setTitle("Reset tutorials?")
+                        .setMessage("Are you sure you want to reset the tutorials?")
+                        .setNegativeButton(android.R.string.no, null)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface arg0, int arg1) {
+
+                                //TODO CLEAR SHARED PREFERENCES
+                                SharedPreferences.Editor loginPrefsTutorialEditor = HelpActivity.this.getSharedPreferences("LOGIN_TUTORIAL", Context.MODE_PRIVATE).edit();
+                                loginPrefsTutorialEditor.putBoolean("first_time", true).apply();
+
+                                SharedPreferences.Editor userAreaPrefsTutorialEditor = HelpActivity.this.getSharedPreferences("USER_AREA_TUTORIAL", Context.MODE_PRIVATE).edit();
+                                userAreaPrefsTutorialEditor.putBoolean("first_time", true).apply();
+
+                                Toast.makeText(HelpActivity.this, "The tutorials have been reset!", Toast.LENGTH_SHORT).show();
+                            }
+                        }).create().show();
             }
         });
     }

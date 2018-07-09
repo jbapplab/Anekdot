@@ -1,5 +1,6 @@
 package com.jbapplab.navigationdrawertabs;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -20,17 +21,20 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
+
 public class LoginActivity extends AppCompatActivity {
 
     private ProgressBar progressBar;
     private CheckBox saveLoginCheckBox;
     private SharedPreferences.Editor loginPrefsEditor;
+    TextView tvRegisterHere;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
 
         /* To exit when back pressed in user area
 
@@ -43,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         final EditText etUsername = findViewById(R.id.etUsername);
         final EditText etPassword = findViewById(R.id.etPassword);
         final Button bLogin = findViewById(R.id.bLogin);
-        final TextView tvRegisterHere = findViewById(R.id.tvRegisterHere);
+        tvRegisterHere = findViewById(R.id.tvRegisterHere);
 
         //Save login info
         saveLoginCheckBox = findViewById(R.id.saveLoginCheckBox);
@@ -190,5 +194,31 @@ public class LoginActivity extends AppCompatActivity {
         else {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //Tutorial
+        Boolean firstTime = LoginActivity.this.getSharedPreferences("LOGIN_TUTORIAL",  Context.MODE_PRIVATE).getBoolean("first_time", true);
+        if (firstTime) {
+            runTutorial(); // here you do what you want to do - an activity tutorial in my case
+            SharedPreferences.Editor loginPrefsTutorialEditor = LoginActivity.this.getSharedPreferences("LOGIN_TUTORIAL", Context.MODE_PRIVATE).edit();
+            loginPrefsTutorialEditor.putBoolean("first_time", false).apply();
+        }
+    }
+
+    void runTutorial() {
+        new MaterialShowcaseView.Builder(this)
+                .setMaskColour(getResources().getColor(R.color.colorAccent))
+                .setTarget(tvRegisterHere)
+                .setTitleText("New user?")
+                .setDismissText("OK!")
+                .setDismissOnTouch(true)
+                .setContentText("Make sure you register here!")
+                .setShapePadding(20)
+                .setDelay(1000) // optional but starting animations immediately in onCreate can make them choppy
+                .useFadeAnimation()
+                .show();
     }
 }

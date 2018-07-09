@@ -33,24 +33,26 @@
             android:layout_height="wrap_content"
             android:padding="10dp">
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/tv_help_header"
-            style="@style/settings_header"
-            android:text="@string/help_and_support" />
+            android:text="@string/help_and_support"
+            style="@style/settings_header"/>
 
         <TextView
             android:id="@+id/tv_help_desc"
-            style="@style/settings_sub_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="@dimen/items_inbetween_space"
             android:paddingTop="@dimen/items_top_padding"
-            android:text="@string/help_description"/>
+            android:text="@string/help_description"
+            style="@style/settings_sub_header"/>
 
         <Button
             style="@style/Base.Widget.AppCompat.Button.Colored"
             android:id="@+id/emailButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
             android:layout_marginTop="20dp"
             android:background="@color/colorAccent"
             android:text="@string/report_a_problem"
@@ -58,6 +60,57 @@
             android:padding="10dp"
             android:gravity="center"
             android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:id="@+id/horizontal_divider"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="@color/colorPrimary"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="25dp"/>
+
+            <TextView
+                android:id="@+id/tv_help_header2"
+                style="@style/settings_header"
+                android:text="Reset tutorials" />
+
+            <TextView
+                android:id="@+id/tv_help_desc2"
+                style="@style/settings_sub_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/items_inbetween_space"
+                android:paddingTop="@dimen/items_top_padding"
+                android:text="@string/resetTutText"/>
+
+            <Button
+                style="@style/Base.Widget.AppCompat.Button.Colored"
+                android:id="@+id/resetTutorialsButton"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorAccent"
+                android:text="Reset Tutorials"
+                android:textColor="@android:color/white"
+                android:padding="10dp"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:id="@+id/horizontal_divider2"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="@color/colorPrimary"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="25dp"/>
+
+            <TextView
+                android:id="@+id/textViewCopyright"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:text="This mobile application is copyright of the\nUniversity of Bath - © University of Bath 2018. \nAll rights reserved."
+                android:textAlignment="center" />
         </LinearLayout>
 
         <android.support.design.widget.NavigationView

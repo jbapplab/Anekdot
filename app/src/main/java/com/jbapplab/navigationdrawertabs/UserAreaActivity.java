@@ -1,5 +1,6 @@
 package com.jbapplab.navigationdrawertabs;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,6 +15,11 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
+import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
 
 public class UserAreaActivity extends AppCompatActivity {
 
@@ -36,7 +42,6 @@ public class UserAreaActivity extends AppCompatActivity {
     String username;
     String password;
     String email;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -349,5 +354,68 @@ public class UserAreaActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
 
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        //Tutorial
+        Boolean firstTime = UserAreaActivity.this.getSharedPreferences("USER_AREA_TUTORIAL",  Context.MODE_PRIVATE).getBoolean("first_time", true);
+        if (firstTime) {
+            runTutorial(); // here you do what you want to do - an activity tutorial in my case
+            SharedPreferences.Editor loginPrefsTutorialEditor = UserAreaActivity.this.getSharedPreferences("USER_AREA_TUTORIAL", Context.MODE_PRIVATE).edit();
+            loginPrefsTutorialEditor.putBoolean("first_time", false).apply();
+        }
+    }
+
+    void runTutorial() {
+        ShowcaseConfig config = new ShowcaseConfig();
+        config.setDelay(1000);
+
+        MaterialShowcaseSequence sequence = new MaterialShowcaseSequence(this, "USER_AREA_SHOWCASE");
+
+        sequence.setConfig(config);
+
+        sequence.addSequenceItem(new MaterialShowcaseView.Builder(this)
+                .setMaskColour(getResources().getColor(R.color.colorAccent))
+                .setTarget(mNavigationView)
+                .setTitleText("Welcome to Anecdote!")
+                .setContentText("This tutorial will guide you through the basic features.")
+                .setDismissText("OK!")
+                .setDelay(1000) // optional but starting animations immediately in onCreate can make them choppy
+                .useFadeAnimation()
+                .build());
+
+        sequence.addSequenceItem(new MaterialShowcaseView.Builder(this)
+                .setMaskColour(getResources().getColor(R.color.colorAccent))
+                .setTarget(mNavigationView)
+                .setTitleText("Welcome to Anecdote!")
+                .setContentText("Here is the Home screen, where you can navigate, receive tips and follow useful links.")
+                .setDismissText("OK!")
+                .useFadeAnimation()
+                .build());
+
+        sequence.addSequenceItem(new MaterialShowcaseView.Builder(this)
+                .setMaskColour(getResources().getColor(R.color.colorPrimaryDark))
+                .setTarget(mNavigationView)
+                .setTitleText("Drawer menu")
+                .setContentText("This is the Drawer Menu of Anecdote. It is available in every page and it can help you navigate in the app.")
+                .setDismissText("OK!")
+                .setShapePadding(20)
+                .useFadeAnimation()
+                .withRectangleShape()
+                .build());
+
+        sequence.addSequenceItem(new MaterialShowcaseView.Builder(this)
+                .setMaskColour(getResources().getColor(R.color.colorPrimaryDark))
+                .setTarget(mNavigationView)
+                .setTitleText("Drawer menu")
+                .setContentText("This is the Drawer Menu of Anecdote. It is available in every page and it can help you navigate in the app.")
+                .setShapePadding(20)
+                .useFadeAnimation()
+                .withRectangleShape()
+                .build());
+
+        sequence.start();
     }
 }
