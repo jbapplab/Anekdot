@@ -1,6 +1,8 @@
 package com.jbapplab.navigationdrawertabs;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -13,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.jbapplab.navigationdrawertabs.m_EventHandling.EventBusShareStoryMetaFirstActivity;
@@ -20,6 +23,8 @@ import com.jbapplab.navigationdrawertabs.m_EventHandling.EventBusShareStoryMetaF
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
 
 
 public class MetaFirstActivity extends AppCompatActivity {
@@ -91,7 +96,7 @@ public class MetaFirstActivity extends AppCompatActivity {
         mDrawerLayout = findViewById(R.id.drawerLayoutMetaFirst);
         mNavigationView = findViewById(R.id.navigation_stuffMetaFirst);
 
-        /**
+        /*
          * Lets inflate the very first fragment
          * Here , we are inflating the TabFragment as the first Fragment
          */
@@ -99,18 +104,8 @@ public class MetaFirstActivity extends AppCompatActivity {
         mFragmentTransaction = mFragmentManager.beginTransaction();
         sendDataStoryCoreFragment();
         mFragmentTransaction.replace(R.id.containerViewMetaFirst, storyCoreFragment, "STORYCORE_TAG").commit();
+
         /*
-        if (savedInstanceState == null) {
-            mFragmentManager = getSupportFragmentManager();
-            mFragmentTransaction = mFragmentManager.beginTransaction();
-            sendDataStoryCoreFragment();
-            mFragmentTransaction.replace(R.id.containerViewMetaFirst, storyCoreFragment, "STORYCORE_TAG").addToBackStack("fragmentStack").commit();
-        } else {
-            storyCoreFragment = getSupportFragmentManager().findFragmentByTag("STORYCORE_TAG");
-            Log.i("METAFIRSTACTIVITY", "Found the old fragment");
-        }
-        */
-        /**
          * Setup click events on the Navigation View Items.
          */
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -186,15 +181,7 @@ public class MetaFirstActivity extends AppCompatActivity {
 
                 }
 
-                //TODO REVERSE ORDER OF METAFIRST FIX THIS
                 if (menuItem.getItemId() == R.id.nav_item_eventsfirst) {
-
-                        /*
-                        FragmentTransaction xfragmentTransaction = mFragmentManager.beginTransaction();
-                        sendDataStoryCoreFragment();
-                        xfragmentTransaction.replace(R.id.containerViewMetaFirst, storyCoreFragment).addToBackStack("str").commit();
-                        */
-
 
                     Intent intentGoToEvensFirstActivity = new Intent(MetaFirstActivity.this, MetaFirstActivity.class);
                     if (version.equals("detailed_guidance")) {
@@ -393,4 +380,5 @@ public class MetaFirstActivity extends AppCompatActivity {
         super.onStop();
         EventBus.getDefault().unregister(this);
     }
+
 }

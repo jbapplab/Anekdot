@@ -123,12 +123,11 @@ public class TabFragment extends Fragment {
     public void onResume() {
         super.onResume();
         //Tutorial
-        runTutorial();
         Boolean firstTime = getActivity().getSharedPreferences("USER_AREA_TUTORIAL",  Context.MODE_PRIVATE).getBoolean("first_time", true);
         if (firstTime) {
-            //runTutorial();
-            SharedPreferences.Editor loginPrefsTutorialEditor = getActivity().getSharedPreferences("USER_AREA_TUTORIAL", Context.MODE_PRIVATE).edit();
-            loginPrefsTutorialEditor.putBoolean("first_time", false).apply();
+            runTutorial();
+            SharedPreferences.Editor userAreaPrefsTutorialEditor = getActivity().getSharedPreferences("USER_AREA_TUTORIAL", Context.MODE_PRIVATE).edit();
+            userAreaPrefsTutorialEditor.putBoolean("first_time", false).apply();
         }
     }
 
@@ -143,7 +142,7 @@ public class TabFragment extends Fragment {
 
         sequence.addSequenceItem(
                 new MaterialShowcaseView.Builder(getActivity())
-                        .setMaskColour(getResources().getColor(R.color.colorPrimaryDark))
+                        .setMaskColour(getResources().getColor(R.color.colorAccent))
                         .setTarget(dashboardTab)
                         .setTitleText("Welcome to Anecdote!")
                         .setContentText("This tutorial will guide you through the basic features.\n\n" +

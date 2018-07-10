@@ -240,6 +240,9 @@ public class HelpActivity extends AppCompatActivity {
                                 SharedPreferences.Editor userAreaPrefsTutorialEditor = HelpActivity.this.getSharedPreferences("USER_AREA_TUTORIAL", Context.MODE_PRIVATE).edit();
                                 userAreaPrefsTutorialEditor.putBoolean("first_time", true).apply();
 
+                                SharedPreferences.Editor metaFirstPrefsTutorialEditor = HelpActivity.this.getSharedPreferences("META_FIRST_TUTORIAL", Context.MODE_PRIVATE).edit();
+                                metaFirstPrefsTutorialEditor.putBoolean("first_time", true).apply();
+
                                 Toast.makeText(HelpActivity.this, "The tutorials have been reset!", Toast.LENGTH_SHORT).show();
                             }
                         }).create().show();

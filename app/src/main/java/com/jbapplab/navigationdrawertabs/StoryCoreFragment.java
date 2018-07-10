@@ -21,6 +21,7 @@ package com.jbapplab.navigationdrawertabs;
  */
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -44,6 +45,10 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.ArrayList;
 import java.util.List;
 
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
+import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
+
 public class StoryCoreFragment extends Fragment {
 
     //public static TabLayout tabLayout;
@@ -60,17 +65,8 @@ public class StoryCoreFragment extends Fragment {
 
     TabLayout tabs;
 
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        //Log.i("onSaveInstanceState", ": CONTAINER");
-    }
+    View storyForm, topicTips, stageTips;
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        //Log.i("onAttach", ": CONTAINER");
-    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -87,7 +83,6 @@ public class StoryCoreFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        //Log.i("onCreateView", ": CONTAINER");
 
         /**
          *Inflate tab_layout and setup Views.
@@ -100,25 +95,9 @@ public class StoryCoreFragment extends Fragment {
         tabs = view.findViewById(R.id.tabsStoryCore);
         tabs.setupWithViewPager(viewPager);
 
-        /*
-         *Set an Apater for the View Pager
-         *
-        mFragmentManager = getChildFragmentManager();
-        viewPager.setAdapter(new MyAdapter(mFragmentManager));
-
-        /**
-         * Now , this is a workaround ,
-         * The setupWithViewPager dose't works without the runnable .
-         * Maybe a Support Library Bug .
-         *
-
-        tabLayout.post(new Runnable() {
-            @Override
-            public void run() {
-                tabLayout.setupWithViewPager(viewPager);
-            }
-        });
-         */
+        storyForm = ((ViewGroup) tabs.getChildAt(0)).getChildAt(0);
+        topicTips = ((ViewGroup) tabs.getChildAt(0)).getChildAt(1);
+        stageTips = ((ViewGroup) tabs.getChildAt(0)).getChildAt(2);
 
         /*
         UNPACK THE DATA FROM THE BUNDLE
@@ -350,50 +329,68 @@ public class StoryCoreFragment extends Fragment {
         tabs.getTabAt(1).setText(category);
     }
 
-
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        //Log.i("onStart", ": CONTAINER");
-    }
-
     @Override
     public void onResume() {
         super.onResume();
-        //Log.i("onResume", ": CONTAINER");
+        //Tutorial
+        Boolean firstTime = getActivity().getSharedPreferences("META_FIRST_TUTORIAL",  Context.MODE_PRIVATE).getBoolean("first_time", true);
+        if (firstTime) {
+            runTutorial();
+            SharedPreferences.Editor metaFirstPrefsTutorialEditor = getActivity().getSharedPreferences("META_FIRST_TUTORIAL", Context.MODE_PRIVATE).edit();
+            metaFirstPrefsTutorialEditor.putBoolean("first_time", false).apply();
+        }
     }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-        //Log.i("onPause", ": CONTAINER");
-    }
+    void runTutorial() {
 
-    @Override
-    public void onStop() {
-        super.onStop();
-        //Log.i("onStop", ": CONTAINER");
-    }
+        ShowcaseConfig config = new ShowcaseConfig();
+        config.setDelay(500);
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        //Log.i("onDestroyView", ": CONTAINER");
-    }
+        MaterialShowcaseSequence sequence = new MaterialShowcaseSequence(getActivity());
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
+        sequence.setConfig(config);
 
-        EventBus.getDefault().unregister(this);
+        sequence.addSequenceItem(
+                new MaterialShowcaseView.Builder(getActivity())
+                        .setMaskColour(getResources().getColor(R.color.colorAccent))
+                        .setTarget(storyForm)
+                        .setTitleText("Create a persuasive story")
+                        .setContentText("Here you will find all the information you need to create a persuasive story.\n\n" +
+                                "Follow the instructions step by step and make sure you complete all the fields. You can receive more/less guidance by selecting the red \"expand/collapse arrows\".\n\n" +
+                                "It is all about making the story more relatable to your audience!")
+                        .setDismissText("OK, GOT IT!")
+                        .withoutShape()
+                        .setDelay(1000)
+                        .build()
+        );
 
-        //Log.i("onDestroy", ": CONTAINER");
-    }
+        sequence.addSequenceItem( new MaterialShowcaseView.Builder(getActivity())
+                .setMaskColour(getResources().getColor(R.color.colorPrimaryDark))
+                .setTarget(storyForm)
+                .setTitleText("Story form")
+                .setContentText("Here is where you will capture your ideas, generate and edit your story before you share or post it online.")
+                .setDismissText("OK, GOT IT!")
+                .build()
+        );
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        //Log.i("onDetach", ": CONTAINER");
+        sequence.addSequenceItem(new MaterialShowcaseView.Builder(getActivity())
+                .setMaskColour(getResources().getColor(R.color.colorPrimaryDark))
+                .setTarget(topicTips)
+                .setTitleText("Topic tips")
+                .setContentText("After you select a topic for your story, here you will get tailored tips that will help you make your story more relatable.")
+                .setDismissText("OK, GOT IT!")
+                .build()
+        );
+
+        sequence.addSequenceItem(new MaterialShowcaseView.Builder(getActivity())
+                .setMaskColour(getResources().getColor(R.color.colorPrimaryDark))
+                .setTarget(stageTips)
+                .setTitleText("Stage tips")
+                .setContentText("After you select the stage that your audience is in, here you will get tailored tips that will help you make your story more relatable.\"")
+                .setDismissText("OK, GOT IT!")
+                .build()
+        );
+
+        sequence.start();
     }
 }
