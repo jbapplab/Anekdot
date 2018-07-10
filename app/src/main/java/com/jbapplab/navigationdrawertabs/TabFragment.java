@@ -29,19 +29,28 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
 import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
+import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
 
 public class TabFragment extends Fragment {
 
-    public  TabLayout tabLayout;
-    public  ViewPager viewPager;
-    public static int int_items = 3 ;
+    FragmentManager mFragmentManager;
+    Fragment primaryFragment = new PrimaryFragment();
+    Fragment tipsFragment = new TipFragment();
+    Fragment linksFragment = new LinksFragment();
 
-    PrimaryFragment primaryFragment = new PrimaryFragment();
+    TabLayout tabLayout;
+
+    View dashboardTab, tipTab, linkTab;
 
     @Nullable
     @Override
@@ -55,84 +64,121 @@ public class TabFragment extends Fragment {
         /**
          *Inflate tab_layout and setup Views.
          */
-        View x =  inflater.inflate(R.layout.tab_layout,null);
-        tabLayout = (TabLayout) x.findViewById(R.id.tabs);
-        viewPager = (ViewPager) x.findViewById(R.id.viewpager);
+        View view = inflater.inflate(R.layout.tab_layout,null);
+        //Set up viewPager
+        ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewpager);
+        setupViewPager(viewPager);
+        viewPager.setOffscreenPageLimit(2);
+        tabLayout = view.findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
 
-        /**
-         *Set an Apater for the View Pager
-         */
-        viewPager.setAdapter(new MyAdapter(getChildFragmentManager()));
+        dashboardTab = ((ViewGroup) tabLayout.getChildAt(0)).getChildAt(0);
+        tipTab = ((ViewGroup) tabLayout.getChildAt(0)).getChildAt(1);
+        linkTab = ((ViewGroup) tabLayout.getChildAt(0)).getChildAt(2);
 
-        /**
-         * Now , this is a workaround ,
-         * The setupWithViewPager dose't works without the runnable .
-         * Maybe a Support Library Bug .
-         */
-
-        tabLayout.post(new Runnable() {
-            @Override
-            public void run() {
-                tabLayout.setupWithViewPager(viewPager);
-            }
-        });
-
-        return x;
-
-       /////////////////////////////// tabLayout.getTabAt(0);
+        return view;
     }
 
-    class MyAdapter extends FragmentPagerAdapter{
+    //ADD FRAGMENTS TO Tabs
+    private void setupViewPager(ViewPager viewPager){
+        mFragmentManager = getChildFragmentManager();
+        TabFragment.Adapter adapter = new Adapter(mFragmentManager);
+        adapter.addFragment(primaryFragment,"Dashboard");
+        adapter.addFragment(tipsFragment,"Tip of the Day");
+        adapter.addFragment(linksFragment,"Useful Links");
+        viewPager.setAdapter(adapter);
+    }
 
-        public MyAdapter(FragmentManager fm) {
-            super(fm);
-        }
+    //Custom Adapter
+    class Adapter extends FragmentPagerAdapter{
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
 
-        /**
-         * Return fragment with respect to Position .
-         */
-
-        @Override
-        public Fragment getItem(int position)
-        {
-            switch (position){
-                case 0 :
-                    return primaryFragment;
-                case 1 :
-
-                    return new TipFragment();
-                case 2 :
-
-                    return new LinksFragment();
-            }
-            return
-                    null;
+        public Adapter(FragmentManager manager){
+            super (manager);
         }
 
         @Override
-        public int getCount() {
-
-            return int_items;
-
+        public Fragment getItem(int position){
+            return mFragmentList.get(position);
         }
-
-        /**
-         * This method returns the title of the tab according to the position.
-         */
 
         @Override
-        public CharSequence getPageTitle(int position) {
-
-            switch (position){
-                case 0 :
-                    return "Dashboard";
-                case 1 :
-                    return "Tip of the day";
-                case 2 :
-                    return "Useful Links";
-            }
-            return null;
+        public int getCount(){
+            return  mFragmentList.size();
         }
 
+        public void addFragment(Fragment fragment, String title){
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position){
+            return mFragmentTitleList.get(position);
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        //Tutorial
+        runTutorial();
+        Boolean firstTime = getActivity().getSharedPreferences("USER_AREA_TUTORIAL",  Context.MODE_PRIVATE).getBoolean("first_time", true);
+        if (firstTime) {
+            //runTutorial();
+            SharedPreferences.Editor loginPrefsTutorialEditor = getActivity().getSharedPreferences("USER_AREA_TUTORIAL", Context.MODE_PRIVATE).edit();
+            loginPrefsTutorialEditor.putBoolean("first_time", false).apply();
+        }
+    }
+
+    void runTutorial() {
+
+        ShowcaseConfig config = new ShowcaseConfig();
+        config.setDelay(500);
+
+        MaterialShowcaseSequence sequence = new MaterialShowcaseSequence(getActivity());
+
+        sequence.setConfig(config);
+
+        sequence.addSequenceItem(
+                new MaterialShowcaseView.Builder(getActivity())
+                        .setMaskColour(getResources().getColor(R.color.colorPrimaryDark))
+                        .setTarget(dashboardTab)
+                        .setTitleText("Welcome to Anecdote!")
+                        .setContentText("This tutorial will guide you through the basic features.\n\n" +
+                                "On the top left you have the main menu that gives you access to all the features.\n\n" +
+                                "On the top right you have the options menu and where relevant the option to share information.")
+                        .setDismissText("OK, GOT IT!")
+                        .withoutShape()
+                        .setDelay(1000)
+                        .build()
+        );
+
+        sequence.addSequenceItem( new MaterialShowcaseView.Builder(getActivity())
+                .setMaskColour(getResources().getColor(R.color.colorPrimaryDark))
+                .setTarget(dashboardTab)
+                .setContentText("This is the Dashboard you can use it to quickly navigate through the app.")
+                .setDismissText("OK, GOT IT!")
+                .build()
+        );
+
+        sequence.addSequenceItem(new MaterialShowcaseView.Builder(getActivity())
+                .setMaskColour(getResources().getColor(R.color.colorPrimaryDark))
+                .setTarget(tipTab)
+                .setContentText("Here you can receive general writing tips.")
+                .setDismissText("OK, GOT IT!")
+                .build()
+        );
+
+        sequence.addSequenceItem(new MaterialShowcaseView.Builder(getActivity())
+                .setMaskColour(getResources().getColor(R.color.colorPrimaryDark))
+                .setTarget(linkTab)
+                .setContentText("And here you can select links of useful tutorials and articles.")
+                .setDismissText("OK, GOT IT!")
+                .build()
+        );
+
+        sequence.start();
     }
 }

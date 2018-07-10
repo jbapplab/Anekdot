@@ -209,16 +209,15 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     void runTutorial() {
-        new MaterialShowcaseView.Builder(this)
-                .setMaskColour(getResources().getColor(R.color.colorAccent))
+
+        new MaterialShowcaseView.Builder(LoginActivity.this)
                 .setTarget(tvRegisterHere)
                 .setTitleText("New user?")
-                .setDismissText("OK!")
-                .setDismissOnTouch(true)
+                .setDismissText("OK, GOT IT!")
                 .setContentText("Make sure you register here!")
-                .setShapePadding(20)
-                .setDelay(1000) // optional but starting animations immediately in onCreate can make them choppy
-                .useFadeAnimation()
+                .setDelay(1000)
+                .setMaskColour(getResources().getColor(R.color.colorAccent))
+                .setShapePadding(10)
                 .show();
     }
 }
