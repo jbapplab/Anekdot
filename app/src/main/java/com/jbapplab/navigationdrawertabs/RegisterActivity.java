@@ -20,10 +20,6 @@ import com.emmasuzuki.easyform.EasyTextInputLayout;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-//import butterknife.Bind;
-//import butterknife.ButterKnife;
-
-
 public class RegisterActivity extends AppCompatActivity {
 
     private ProgressBar progressBar;
@@ -61,8 +57,6 @@ public class RegisterActivity extends AppCompatActivity {
                 final String email = etEmail.getEditText().getText().toString();
                 final String password = etPassword.getEditText().getText().toString();
                 final String passwordConfirm = etPasswordConfirm.getEditText().getText().toString();
-                //This gets the age. converts it to an int and saves it
-                //final int age = Integer.parseInt(etAge.getText().toString());
 
                 if (passwordConfirm.equals(password)) {
                     easyForm.validate();
@@ -126,7 +120,6 @@ public class RegisterActivity extends AppCompatActivity {
                          */
                         RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
                         queue.add(registerRequest);
-                        //Log.d("REGISTER ACTIVITY2", "Value: " + (username));
                     } else {
                         progressBar.setAlpha(0);
                         Log.e(getClass().getSimpleName(), "The last input was invalid");
@@ -141,6 +134,5 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
 }

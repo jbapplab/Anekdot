@@ -35,14 +35,10 @@ public class LinksFragment extends Fragment {
         final TextView link1 = getView().findViewById(R.id.tvLink1);
         final TextView link2 = getView().findViewById(R.id.tvLink2);
         final TextView link3 = getView().findViewById(R.id.tvLink3);
-        //final TextView link4 = getView().findViewById(R.id.tvLink4);
-        //final TextView link5 = getView().findViewById(R.id.tvLink5);
 
         link1.setMovementMethod(LinkMovementMethod.getInstance());
         link2.setMovementMethod(LinkMovementMethod.getInstance());
         link3.setMovementMethod(LinkMovementMethod.getInstance());
-        //link4.setMovementMethod(LinkMovementMethod.getInstance());
-        //link5.setMovementMethod(LinkMovementMethod.getInstance());
 
     }
 }

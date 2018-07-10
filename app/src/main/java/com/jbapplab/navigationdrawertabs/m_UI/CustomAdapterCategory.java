@@ -122,7 +122,6 @@ public class CustomAdapterCategory extends BaseAdapter {
                         context.startActivity(intentRetrieveCategory);
                 }
 
-                //Toast.makeText(context, category.getCategoryName(), Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -469,13 +469,6 @@ public class RetrieveStoriesCRUDActivity extends AppCompatActivity {
                         }).create().show();
                 return true;
 
-                /*
-                case R.id.menu_item_share:
-                //TODO User chose the "Share" action WE PUT CONTEXT SPECIFIC SHARE
-                Toast.makeText(RetrieveStoriesCRUDActivity.this, "If you want to share a story look at it more closely!", Toast.LENGTH_SHORT).show();
-                return true;
-                */
-
             default:
                 // If we got here, the user's action was not recognized.
                 // Invoke the superclass to handle it.

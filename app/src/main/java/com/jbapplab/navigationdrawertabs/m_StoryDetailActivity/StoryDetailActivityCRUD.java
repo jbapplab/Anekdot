@@ -232,22 +232,9 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
 
         mDrawerToggle.syncState();
 
-
-        //retrieveStoryIdDetail = findViewById(R.id.retrieveStoryIdDetail);
         retrieveStoryTitleDetail = findViewById(R.id.retrieveStoryTitleDetail);
         retrieveStoryCategoryDetail = findViewById(R.id.retrieveStoryCategoryDetail);
         retrieveIfOtherSpecifyDetail = findViewById(R.id.retrieveIfOtherSpecifyDetail);
-        //retrieveAuthorIdDetail = findViewById(R.id.retrieveAuthorIdDetail);
-        //retrieveStoryDescriptionDetail = findViewById(R.id.retrieveStoryDescriptionDetail);
-        //retrieveStoryEventsDetail = findViewById(R.id.retrieveStoryEventsDetail);
-        //retrieveOrientationDetail = findViewById(R.id.retrieveOrientationDetail);
-        //retrieveComplicatedActionDetail = findViewById(R.id.retrieveComplicatedActionDetail);
-        //retrieveEvaluationDetail = findViewById(R.id.retrieveEvaluationDetail);
-        //retrieveResolutionDetail = findViewById(R.id.retrieveResolutionDetail);
-        //retrieveMessageDetail = findViewById(R.id.retrieveMessageDetail);
-        //retrieveStoryMetaDetail = findViewById(R.id.retrieveStoryMetaDetail);
-        //retrieveContextRelatedDetail = findViewById(R.id.retrieveContextRelatedDetail);
-        //retrieveStageRelatedDetail = findViewById(R.id.retrieveStageRelatedDetail);
         retrieveStoryFullDetail = findViewById(R.id.retrieveStoryFullDetail);
         retrieveAudienceStageDetail = findViewById(R.id.retrieveAudienceStageDetail);
         retrieveStoryImageDetail = findViewById(R.id.retrieveStoryImageDetail);
@@ -280,21 +267,9 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
         final String imageUrl = intent.getExtras().getString("IMAGE_URL_KEY");
 
         //BIND
-        //retrieveStoryIdDetail.setText(storyId);
         retrieveStoryTitleDetail.setText(storyTitle);
         retrieveStoryCategoryDetail.setText(storyCategory);
         retrieveIfOtherSpecifyDetail.setText(ifOtherSpecify);
-        //retrieveAuthorIdDetail.setText(authorId);
-        //retrieveStoryDescriptionDetail.setText(storyDescription);
-        //retrieveStoryEventsDetail.setText(storyEvents);
-        //retrieveOrientationDetail.setText(orientation);
-        //retrieveComplicatedActionDetail.setText(complicatedAction);
-        //retrieveEvaluationDetail.setText(evaluation);
-        //retrieveResolutionDetail.setText(resolution);
-        //retrieveMessageDetail.setText(message);
-        //retrieveStoryMetaDetail.setText(storyMeta);
-        //retrieveStageRelatedDetail.setText(stageRelated);
-        //retrieveContextRelatedDetail.setText(contextRelated);
         retrieveStoryFullDetail.setText(imageUrl);
 
         switch (audienceStage){
@@ -319,8 +294,6 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
         //Rename title
         mainToolbar.setTitle(storyTitle);
 
-        //Log.i("USER_ID", userId);
-        //Log.i("AUTHOR_ID", authorId);
         if(authorId.equals(userId)){
             buttonUpdate.setEnabled(true);
             buttonDelete.setEnabled(true);
@@ -344,23 +317,8 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
                             public void onClick(DialogInterface arg0, int arg1) {
                             new MySQLClientCRUD(StoryDetailActivityCRUD.this, userId, firstName, lastName, username, password, email).favourite(Integer.parseInt(storyId), Integer.parseInt(userId));
 
-                                /* Do not move to the new screen
-
-                                Intent intentFavouriteStory = new Intent(StoryDetailActivityCRUD.this, MyFavouritesActivity.class);
-                                intentFavouriteStory.putExtra("userId_KEY", userId);
-                                intentFavouriteStory.putExtra("firstName_KEY", firstName);
-                                intentFavouriteStory.putExtra("lastName_KEY", lastName);
-                                intentFavouriteStory.putExtra("username_KEY", username);
-                                intentFavouriteStory.putExtra("password_KEY", password);
-                                intentFavouriteStory.putExtra("email_KEY", email);
-                                StoryDetailActivityCRUD.this.startActivity(intentFavouriteStory);
-
-                                */
-
                             }
                         }).create().show();
-                //Toast.makeText(StoryDetailActivityCRUD.this, "Story saved in favourites second?.", Toast.LENGTH_SHORT).show();
-
 
             }
         });
@@ -391,17 +349,6 @@ public class StoryDetailActivityCRUD extends AppCompatActivity {
 
                             public void onClick(DialogInterface arg0, int arg1) {
                                 new MySQLClientCRUD(StoryDetailActivityCRUD.this, userId, firstName, lastName, username, password, email).delete(Integer.parseInt(storyId));
-
-                                /*
-                                Intent intentDeleteStory = new Intent(StoryDetailActivityCRUD.this, MyStoriesActivity.class);
-                                intentDeleteStory.putExtra("userId_KEY", userId);
-                                intentDeleteStory.putExtra("firstName_KEY", firstName);
-                                intentDeleteStory.putExtra("lastName_KEY", lastName);
-                                intentDeleteStory.putExtra("username_KEY", username);
-                                intentDeleteStory.putExtra("password_KEY", password);
-                                intentDeleteStory.putExtra("email_KEY", email);
-                                StoryDetailActivityCRUD.this.startActivity(intentDeleteStory);
-                                */
 
                             }
                         }).create().show();

@@ -59,8 +59,6 @@ public class PrimaryFragment extends Fragment {
 
         final TextView tvWelcomeMessage = getView().findViewById(R.id.tvWelcomeMessage);
 
-        //Log.i("UserId-UserArea: ", userId);
-
         String message = "Hi "+ firstName + ", how are you going to influence the word today?";
         tvWelcomeMessage.setText(message);
 
@@ -116,10 +114,5 @@ public class PrimaryFragment extends Fragment {
                 getActivity().startActivity(favouritesIntent);
             }
         });
-
-        //etUsername.setText(username);
-        //etEmail.setText(email);
-        //The empty quote is going to convert the age int to a string because we cannot display an int in a textview directly.
-        //etAge.setText(age+"");
     }
 }

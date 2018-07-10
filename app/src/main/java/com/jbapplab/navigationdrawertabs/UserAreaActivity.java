@@ -59,8 +59,6 @@ public class UserAreaActivity extends AppCompatActivity {
         username = intent.getStringExtra("username_KEY");
         password = intent.getStringExtra("password_KEY");
         email = intent.getStringExtra("email_KEY");
-        //for int you need a default value in case it was not passed (-1)
-        //int age = intent.getIntExtra("age", -1);
 
         //Set the toolbar as an action bar to later change the label
         Toolbar mainToolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -259,13 +257,6 @@ public class UserAreaActivity extends AppCompatActivity {
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
                         public void onClick(DialogInterface arg0, int arg1) {
-
-                            /*
-                            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            intent.putExtra("EXIT", true);
-                            startActivity(intent);
-                            */
                             ExitActivity.exitApplication(UserAreaActivity.this);
                         }
                     }).create().show();
@@ -339,8 +330,6 @@ public class UserAreaActivity extends AppCompatActivity {
                 return true;
 
             case R.id.menu_item_share_details:
-                //TODO User chose the "Share" action WE PUT CONTEXT SPECIFIC SHARE
-                //Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
                 sendIntent.putExtra(Intent.EXTRA_TEXT, "Anecdote user: "+firstName+" "+lastName+" - Username: "+username+" - Email: "+email);

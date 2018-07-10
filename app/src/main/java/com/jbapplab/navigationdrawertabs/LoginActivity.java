@@ -36,14 +36,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        /* To exit when back pressed in user area
-
-        if (getIntent().getExtras() != null && getIntent().getExtras().getBoolean("EXIT", false)) {
-            LoginActivity.this.finishAndRemoveTask();
-        }
-
-        */
-
         final EditText etUsername = findViewById(R.id.etUsername);
         final EditText etPassword = findViewById(R.id.etPassword);
         final Button bLogin = findViewById(R.id.bLogin);
@@ -99,7 +91,6 @@ public class LoginActivity extends AppCompatActivity {
                         /*
                           We need to convert the response to a JSON object so we can work with it.
                          Like before we have a success that shows us if the response has been successful or not.
-
                          */
                         try {
                             JSONObject jsonResponse = new JSONObject(response);
@@ -120,7 +111,6 @@ public class LoginActivity extends AppCompatActivity {
                                 String username = jsonResponse.getString("username");
                                 String password = jsonResponse.getString("password");
                                 String email = jsonResponse.getString("email");
-                                //int age = jsonResponse.getInt("age");
 
                                 Intent intent = new Intent(LoginActivity.this, UserAreaActivity.class);
                                 intent.putExtra("userId_KEY", Integer.toString(userId));
@@ -129,7 +119,6 @@ public class LoginActivity extends AppCompatActivity {
                                 intent.putExtra("username_KEY", username);
                                 intent.putExtra("password_KEY", password);
                                 intent.putExtra("email_KEY", email);
-                                //intent.putExtra("age", age);
 
                                 LoginActivity.this.startActivity(intent);
 

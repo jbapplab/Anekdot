@@ -39,28 +39,6 @@ public class StageFragment extends Fragment {
     RelativeLayout relativeLayout3;
     RelativeLayout relativeLayoutDefault;
 
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        //Log.i("onSaveInstanceState", ": STAGE");
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        //Log.i("onAttach", ": STAGE");
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        //Log.i("onCreate", ": STAGE");
-
-        if (savedInstanceState != null){
-            //Log.i("On Create STAGE: ", "SAVEDINSTANCE");
-        }
-    }
-
     //Subscribers to the events - The method is called when a EventBus event is posted
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onStageSelected(EventBusStageSelected eventBusStageSelected){
@@ -89,7 +67,6 @@ public class StageFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        //Log.i("onCreateView", ": STAGE");
         /*
         UNPACK THE DATA FROM THE BUNDLE
         */
@@ -104,7 +81,6 @@ public class StageFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        //Log.i("onViewCreated", ": STAGE");
                 relativeLayout0 = view.findViewById(R.id.stage0);
                 relativeLayout1 = view.findViewById(R.id.stage1);
                 relativeLayout2 = view.findViewById(R.id.stage2);
@@ -153,58 +129,14 @@ public class StageFragment extends Fragment {
    }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        //Log.i("onActivityCreated", ": STAGE");
-    }
-
-    @Override
-    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
-        super.onViewStateRestored(savedInstanceState);
-        //Log.i("onViewStateRestored", ": STAGE");
-    }
-
-    @Override
     public void onStart() {
         super.onStart();
         EventBus.getDefault().register(this);
-        //Log.i("onStart", ": STAGE");
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        //Log.i("onResume", ": STAGE");
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        //Log.i("onPause", ": STAGE");
     }
 
     @Override
     public void onStop() {
         super.onStop();
         EventBus.getDefault().unregister(this);
-        //Log.i("onStop", ": STAGE");
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        //Log.i("onDestroyView", ": STAGE");
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        //Log.i("onDestroy", ": STAGE");
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        //Log.i("onDetach", ": STAGE");
     }
 }

@@ -53,22 +53,10 @@ public class CustomAdapterCRUD extends RecyclerView.Adapter<MyViewHolderCRUD> {
 
         final StoryCRUD story = stories.get(position);
 
-        //holder.storyId.setText(Integer.toString(story.getStoryId()));
         holder.storyTitle.setText(story.getStoryTitle());
         holder.storyCategory.setText(story.getStoryCategory());
         holder.ifOtherSpecify.setText(story.getIfOtherSpecify());
-        //holder.authorId.setText(Integer.toString(story.getAuthorId()));
         holder.storyDescription.setText(story.getStoryDescription());
-        //holder.storyEvents.setText(story.getStoryEvents());
-        //holder.orientation.setText(story.getOrientation());
-        //holder.complicatedAction.setText(story.getComplicatedAction());
-        //holder.evaluation.setText(story.getEvaluation());
-        //holder.resolution.setText(story.getResolution());
-        //holder.message.setText(story.getMessage());
-        //holder.storyMeta.setText(story.getStoryMeta());
-        //holder.stageRelated.setText(story.getStageRelated());
-        //holder.contextRelated.setText(story.getContextRelated());
-        //holder.storyFull.setText(story.getStoryFull());
 
         switch (story.getAudienceStage()){
             case "Precontemplation":

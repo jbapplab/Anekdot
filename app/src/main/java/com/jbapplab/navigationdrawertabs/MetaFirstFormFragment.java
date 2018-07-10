@@ -1363,5 +1363,4 @@ public class MetaFirstFormFragment extends Fragment {
                 Log.i("MetaFirstFormFragment", "Event Bus Error");
         }
     }
-
 }

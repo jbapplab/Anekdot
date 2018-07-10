@@ -45,9 +45,6 @@ public class RegisterRequest extends StringRequest {
         params.put("username",username);
         params.put("email",email);
         params.put("password",password);
-        //age+ '''' basically converts it from an integer to a string
-        //params.put("age",age + "");
-        //Log.d("REGISTER REQUEST", "Value: " + (username));
     }
     //Now that we have put the data in the params volley needs to access them
     @Override

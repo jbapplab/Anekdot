@@ -51,10 +51,6 @@ import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
 
 public class StoryCoreFragment extends Fragment {
 
-    //public static TabLayout tabLayout;
-    //public static ViewPager viewPager;
-    //public static int int_items = 3;
-
     String userIdString, firstNameString, lastNameString, usernameString, passwordString, emailString;
     String actionString, storyIdString, storyTitle, ifOtherSpecify, authorIdString, storyDescription, orientation, complicatedAction, evaluation, resolution, message, stageRelated, contextRelated, imageUrl, storyCategory, audienceStage, version;
 
@@ -71,12 +67,6 @@ public class StoryCoreFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Log.i("onCreate", ": CONTAINER");
-
-        if (savedInstanceState != null){
-            //Log.i("On Create CONTAINER: ", "SAVEDINSTANCE");
-        }
-
         EventBus.getDefault().register(this);
     }
 
@@ -155,25 +145,6 @@ public class StoryCoreFragment extends Fragment {
 
         return view;
     }
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        //Log.i("onViewCreated", ": CONTAINER");
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        //Log.i("onActivityCreated", ": CONTAINER");
-    }
-
-    @Override
-    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
-        super.onViewStateRestored(savedInstanceState);
-        //Log.i("onViewStateRestored", ": CONTAINER");
-    }
-
 
     //ADD FRAGMENTS TO Tabs
     private void setupViewPager(ViewPager viewPager){
@@ -257,7 +228,7 @@ public class StoryCoreFragment extends Fragment {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onStageSelected(EventBusStageSelected eventBusStageSelected){
         stageSelection = eventBusStageSelected.message;
-        //Toast.makeText(getActivity(), stageSelection, Toast.LENGTH_SHORT).show();
+
         String stage;
         switch (stageSelection){
             case "Stage 1: The audience is unaware of the problem or issue you are describing.":
@@ -281,7 +252,6 @@ public class StoryCoreFragment extends Fragment {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onCategorySelected(EventBusCategorySelected eventBusCategorySelected){
         categorySelection = eventBusCategorySelected.message;
-        //Toast.makeText(getActivity(), categorySelection, Toast.LENGTH_SHORT).show();
 
         String category;
         switch (categorySelection){

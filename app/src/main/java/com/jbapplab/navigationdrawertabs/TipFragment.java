@@ -34,7 +34,6 @@ public class TipFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        //TextView introTOTD = getView().findViewById(R.id.tvIntroTipOTD);
         final TextView tipOTD = getView().findViewById(R.id.tvTipOTD);
 
         final String[] tipArray = getContext().getResources().getStringArray(R.array.string_array_TipOTD);

@@ -235,36 +235,6 @@ public class SettingsActivity extends AppCompatActivity {
 
         mDrawerToggle.syncState();
 
-        /*
-        // prepare intent which is triggered if the notification is selected
-        Intent intentNotification = new Intent(this, MetaFirstActivity.class);
-        intentNotification.putExtra("userId_KEY", userId);
-        intentNotification.putExtra("firstName_KEY", firstName);
-        intentNotification.putExtra("lastName_KEY", lastName);
-        intentNotification.putExtra("username_KEY", username);
-        intentNotification.putExtra("password_KEY", password);
-        intentNotification.putExtra("email_KEY", email);
-
-        // use System.currentTimeMillis() to have a unique ID for the pending intent
-        PendingIntent pIntent = PendingIntent.getActivity(this, (int) System.currentTimeMillis(), intentNotification, 0);
-
-        // build notification the addAction re-use the same intent to keep the example short
-        Notification n  = new Notification.Builder(this)
-                .setContentTitle("New mail from " + "test@gmail.com")
-                .setContentText("Subject")
-                .setSmallIcon(R.drawable.ic_stat_write_story)
-                .setContentIntent(pIntent)
-                .setAutoCancel(true)
-                .addAction(R.drawable.create_audience, "Write story!", pIntent).build();
-
-
-        NotificationManager notificationManager =
-                (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-
-        assert notificationManager != null;
-        notificationManager.notify(0, n);
-        */
-
         //Notification Handling
         localData = new LocalData(getApplicationContext());
 
@@ -415,12 +385,6 @@ public class SettingsActivity extends AppCompatActivity {
                             }
                         }).create().show();
                 return true;
-
-                /*
-                case R.id.menu_item_share:
-                Toast.makeText(SettingsActivity.this, "There is nothing but settings here, move along!", Toast.LENGTH_SHORT).show();
-                return true;
-                */
 
             default:
                 // If we got here, the user's action was not recognized.
