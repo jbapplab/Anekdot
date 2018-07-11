@@ -199,11 +199,11 @@ public class MySQLClientCRUD {
                             for (int i=response.length()-1;i>-1;i--){
                                 jsonObject = response.getJSONObject(i);
 
-                                int storyId = (int) parseInt(jsonObject.getString("story_id"));
+                                int storyId = parseInt(jsonObject.getString("story_id"));
                                 String storyTitle = jsonObject.getString("story_title");
                                 String storyCategory = jsonObject.getString("story_category");
                                 String ifOtherSpecify = jsonObject.getString("if_other_specify");
-                                int authorId = (int) parseInt(jsonObject.getString("author_id"));
+                                int authorId = parseInt(jsonObject.getString("author_id"));
                                 String storyDescription = jsonObject.getString("story_description");
                                 String storyEvents = jsonObject.getString("story_events");
                                 String orientation = jsonObject.getString("orientation");
@@ -557,11 +557,11 @@ public class MySQLClientCRUD {
                             for (int i=response.length()-1;i>-1;i--){
                                 jsonObject = response.getJSONObject(i);
 
-                                int storyId = (int) parseInt(jsonObject.getString("story_id"));
+                                int storyId = parseInt(jsonObject.getString("story_id"));
                                 String storyTitle = jsonObject.getString("story_title");
                                 String storyCategory = jsonObject.getString("story_category");
                                 String ifOtherSpecify = jsonObject.getString("if_other_specify");
-                                int authorId = (int) parseInt(jsonObject.getString("author_id"));
+                                int authorId = parseInt(jsonObject.getString("author_id"));
                                 String storyDescription = jsonObject.getString("story_description");
                                 String storyEvents = jsonObject.getString("story_events");
                                 String orientation = jsonObject.getString("orientation");
@@ -656,11 +656,11 @@ public class MySQLClientCRUD {
                             for (int i=response.length()-1;i>-1;i--){
                                 jsonObject = response.getJSONObject(i);
 
-                                int storyId = (int) parseInt(jsonObject.getString("story_id"));
+                                int storyId = parseInt(jsonObject.getString("story_id"));
                                 String storyTitle = jsonObject.getString("story_title");
                                 String storyCategory = jsonObject.getString("story_category");
                                 String ifOtherSpecify = jsonObject.getString("if_other_specify");
-                                int authorId = (int) parseInt(jsonObject.getString("author_id"));
+                                int authorId = parseInt(jsonObject.getString("author_id"));
                                 String storyDescription = jsonObject.getString("story_description");
                                 String storyEvents = jsonObject.getString("story_events");
                                 String orientation = jsonObject.getString("orientation");

@@ -56,14 +56,14 @@ public class RetrieveStoriesCRUDActivity extends AppCompatActivity {
         email = intentGet.getStringExtra("email_KEY");
 
         //Set the toolbar as an action bar to later change the label
-        final Toolbar mainToolbar = (Toolbar) findViewById(R.id.toolbar);
+        final Toolbar mainToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(mainToolbar);
 
         /**
          *Setup the DrawerLayout and NavigationView
          */
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        mNavigationView = (NavigationView) findViewById(R.id.navigation_stuff);
+        mDrawerLayout = findViewById(R.id.drawerLayout);
+        mNavigationView = findViewById(R.id.navigation_stuff);
 
         /**
          * Setup click events on the Navigation View Items.

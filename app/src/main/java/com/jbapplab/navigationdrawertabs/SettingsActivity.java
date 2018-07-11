@@ -78,14 +78,14 @@ public class SettingsActivity extends AppCompatActivity {
         email = intent.getStringExtra("email_KEY");
 
         //Set the toolbar as an action bar to later change the label
-        Toolbar mainToolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar mainToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(mainToolbar);
 
         /**
          *Setup the DrawerLayout and NavigationView
          */
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        mNavigationView = (NavigationView) findViewById(R.id.navigation_stuff);
+        mDrawerLayout = findViewById(R.id.drawerLayout);
+        mNavigationView = findViewById(R.id.navigation_stuff);
 
         /**
          * Setup click events on the Navigation View Items.
@@ -240,11 +240,11 @@ public class SettingsActivity extends AppCompatActivity {
 
         myClipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
 
-        ll_set_time = (LinearLayout) findViewById(R.id.ll_set_time);
+        ll_set_time = findViewById(R.id.ll_set_time);
 
-        tvTime = (TextView) findViewById(R.id.tv_reminder_time_desc);
+        tvTime = findViewById(R.id.tv_reminder_time_desc);
 
-        reminderSwitch = (SwitchCompat) findViewById(R.id.timerSwitch);
+        reminderSwitch = findViewById(R.id.timerSwitch);
 
         hour = localData.get_hour();
         min = localData.get_min();

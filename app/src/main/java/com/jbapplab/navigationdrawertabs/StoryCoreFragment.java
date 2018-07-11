@@ -79,7 +79,7 @@ public class StoryCoreFragment extends Fragment {
          */
         View view = inflater.inflate(R.layout.story_core_layout,null);
         //Set up viewPager
-        ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewpagerStoryCore);
+        ViewPager viewPager = view.findViewById(R.id.viewpagerStoryCore);
         setupViewPager(viewPager);
         viewPager.setOffscreenPageLimit(2);
         tabs = view.findViewById(R.id.tabsStoryCore);

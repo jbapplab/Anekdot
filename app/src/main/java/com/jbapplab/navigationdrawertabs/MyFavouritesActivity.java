@@ -58,7 +58,7 @@ public class MyFavouritesActivity extends AppCompatActivity {
         email = intent.getStringExtra("email_KEY");
 
         //Set the toolbar as an action bar to later change the label
-        Toolbar mainToolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar mainToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(mainToolbar);
 
         /*

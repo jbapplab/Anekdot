@@ -36,9 +36,9 @@ public class PopupAlertDialogFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.popup_window, container);
-        editText = (EditText) view.findViewById(R.id.popup_edit_text);
-        buttonBack = (Button) view.findViewById(R.id.popup_button_back);
-        buttonConfirm = (Button) view.findViewById(R.id.popup_button_confirm);
+        editText = view.findViewById(R.id.popup_edit_text);
+        buttonBack = view.findViewById(R.id.popup_button_back);
+        buttonConfirm = view.findViewById(R.id.popup_button_confirm);
 
         return view;
     }

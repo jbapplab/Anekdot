@@ -321,10 +321,10 @@ public class MetaFirstFormFragment extends Fragment {
 
                                         popUpDialog.setView(customPopupView);
 
-                                        TextView popupTitle = (TextView) customPopupView.findViewById(R.id.popupTitle);
-                                        TextView popupStoryTitle = (TextView) customPopupView.findViewById(R.id.storyTitle);
-                                        TextView popupStoryDescription = (TextView) customPopupView.findViewById(R.id.storyDescription);
-                                        final TextView popupStoryMain = (TextView) customPopupView.findViewById(R.id.storyMain);
+                                        TextView popupTitle = customPopupView.findViewById(R.id.popupTitle);
+                                        TextView popupStoryTitle = customPopupView.findViewById(R.id.storyTitle);
+                                        TextView popupStoryDescription = customPopupView.findViewById(R.id.storyDescription);
+                                        final TextView popupStoryMain = customPopupView.findViewById(R.id.storyMain);
 
                                         popupTitle.setText("Preview and Update");
                                         popupStoryTitle.setText(storyTitle);
@@ -442,10 +442,10 @@ public class MetaFirstFormFragment extends Fragment {
 
                                         popUpDialog.setView(customPopupView);
 
-                                        TextView popupTitle = (TextView) customPopupView.findViewById(R.id.popupTitle);
-                                        TextView popupStoryTitle = (TextView) customPopupView.findViewById(R.id.storyTitle);
-                                        TextView popupStoryDescription = (TextView) customPopupView.findViewById(R.id.storyDescription);
-                                        final TextView popupStoryMain = (TextView) customPopupView.findViewById(R.id.storyMain);
+                                        TextView popupTitle = customPopupView.findViewById(R.id.popupTitle);
+                                        TextView popupStoryTitle = customPopupView.findViewById(R.id.storyTitle);
+                                        TextView popupStoryDescription = customPopupView.findViewById(R.id.storyDescription);
+                                        final TextView popupStoryMain = customPopupView.findViewById(R.id.storyMain);
 
                                         popupTitle.setText("Preview and Update");
                                         popupStoryTitle.setText(storyTitle);
@@ -755,10 +755,10 @@ public class MetaFirstFormFragment extends Fragment {
 
                             popUpDialog.setView(customPopupView);
 
-                            TextView popupTitle = (TextView) customPopupView.findViewById(R.id.popupTitle);
-                            TextView popupStoryTitle = (TextView) customPopupView.findViewById(R.id.storyTitle);
-                            TextView popupStoryDescription = (TextView) customPopupView.findViewById(R.id.storyDescription);
-                            final TextView popupStoryMain = (TextView) customPopupView.findViewById(R.id.storyMain);
+                            TextView popupTitle = customPopupView.findViewById(R.id.popupTitle);
+                            TextView popupStoryTitle = customPopupView.findViewById(R.id.storyTitle);
+                            TextView popupStoryDescription = customPopupView.findViewById(R.id.storyDescription);
+                            final TextView popupStoryMain = customPopupView.findViewById(R.id.storyMain);
 
                             popupTitle.setText("Preview and Post Online");
                             popupStoryTitle.setText(storyTitle);
@@ -875,8 +875,8 @@ public class MetaFirstFormFragment extends Fragment {
     */
 
     void initialiseExpandButtonsAdd() {
-        final ExpandableTextView expandableTextView1 = (ExpandableTextView) getActivity().findViewById(R.id.tvWelcomeMessageMetaFirst);
-        final ImageButton buttonToggle1 = (ImageButton) getActivity().findViewById(R.id.button_tvWelcomeMessageMetaFirst);
+        final ExpandableTextView expandableTextView1 = getActivity().findViewById(R.id.tvWelcomeMessageMetaFirst);
+        final ImageButton buttonToggle1 = getActivity().findViewById(R.id.button_tvWelcomeMessageMetaFirst);
         buttonToggle1.setBackgroundResource(R.drawable.expand_more);
         expandableTextView1.setAnimationDuration(750L);
         expandableTextView1.setInterpolator(new OvershootInterpolator());
@@ -888,8 +888,8 @@ public class MetaFirstFormFragment extends Fragment {
             }
         });
 
-        final ExpandableTextView expandableTextView2 = (ExpandableTextView) getActivity().findViewById(R.id.tvSwipeRight);
-        final ImageButton buttonToggle2 = (ImageButton) getActivity().findViewById(R.id.button_tvSwipeRight);
+        final ExpandableTextView expandableTextView2 = getActivity().findViewById(R.id.tvSwipeRight);
+        final ImageButton buttonToggle2 = getActivity().findViewById(R.id.button_tvSwipeRight);
         buttonToggle2.setBackgroundResource(R.drawable.expand_more);
         expandableTextView2.setAnimationDuration(750L);
         expandableTextView2.setInterpolator(new OvershootInterpolator());
@@ -901,8 +901,8 @@ public class MetaFirstFormFragment extends Fragment {
             }
         });
 
-        final ExpandableTextView expandableTextView3 = (ExpandableTextView) getActivity().findViewById(R.id.tvContextRelated_add);
-        final ImageButton buttonToggle3 = (ImageButton) getActivity().findViewById(R.id.button_tvContextRelated_add);
+        final ExpandableTextView expandableTextView3 = getActivity().findViewById(R.id.tvContextRelated_add);
+        final ImageButton buttonToggle3 = getActivity().findViewById(R.id.button_tvContextRelated_add);
         buttonToggle3.setBackgroundResource(R.drawable.expand_more);
         expandableTextView3.setAnimationDuration(750L);
         expandableTextView3.setInterpolator(new OvershootInterpolator());
@@ -914,8 +914,8 @@ public class MetaFirstFormFragment extends Fragment {
             }
         });
 
-        final ExpandableTextView expandableTextView4 = (ExpandableTextView) getActivity().findViewById(R.id.tvStageRelated_add);
-        final ImageButton buttonToggle4 = (ImageButton) getActivity().findViewById(R.id.button_tvStageRelated_add);
+        final ExpandableTextView expandableTextView4 = getActivity().findViewById(R.id.tvStageRelated_add);
+        final ImageButton buttonToggle4 = getActivity().findViewById(R.id.button_tvStageRelated_add);
         buttonToggle4.setBackgroundResource(R.drawable.expand_more);
         expandableTextView4.setAnimationDuration(750L);
         expandableTextView4.setInterpolator(new OvershootInterpolator());
@@ -927,8 +927,8 @@ public class MetaFirstFormFragment extends Fragment {
             }
         });
 
-        final ExpandableTextView expandableTextView5 = (ExpandableTextView) getActivity().findViewById(R.id.tvBeforeOrientation_add);
-        final ImageButton buttonToggle5 = (ImageButton) getActivity().findViewById(R.id.button_tvBeforeOrientation_add);
+        final ExpandableTextView expandableTextView5 = getActivity().findViewById(R.id.tvBeforeOrientation_add);
+        final ImageButton buttonToggle5 = getActivity().findViewById(R.id.button_tvBeforeOrientation_add);
         buttonToggle5.setBackgroundResource(R.drawable.expand_more);
         expandableTextView5.setAnimationDuration(750L);
         expandableTextView5.setInterpolator(new OvershootInterpolator());
@@ -940,8 +940,8 @@ public class MetaFirstFormFragment extends Fragment {
             }
         });
 
-        final ExpandableTextView expandableTextView6 = (ExpandableTextView) getActivity().findViewById(R.id.tvBeforeComplicatedAction_add);
-        final ImageButton buttonToggle6 = (ImageButton) getActivity().findViewById(R.id.button_tvBeforeComplicatedAction_add);
+        final ExpandableTextView expandableTextView6 = getActivity().findViewById(R.id.tvBeforeComplicatedAction_add);
+        final ImageButton buttonToggle6 = getActivity().findViewById(R.id.button_tvBeforeComplicatedAction_add);
         buttonToggle6.setBackgroundResource(R.drawable.expand_more);
         expandableTextView6.setAnimationDuration(750L);
         expandableTextView6.setInterpolator(new OvershootInterpolator());
@@ -953,8 +953,8 @@ public class MetaFirstFormFragment extends Fragment {
             }
         });
 
-        final ExpandableTextView expandableTextView7 = (ExpandableTextView) getActivity().findViewById(R.id.tvBeforeEvaluation_add);
-        final ImageButton buttonToggle7 = (ImageButton) getActivity().findViewById(R.id.button_tvBeforeEvaluation_add);
+        final ExpandableTextView expandableTextView7 = getActivity().findViewById(R.id.tvBeforeEvaluation_add);
+        final ImageButton buttonToggle7 = getActivity().findViewById(R.id.button_tvBeforeEvaluation_add);
         buttonToggle7.setBackgroundResource(R.drawable.expand_more);
         expandableTextView7.setAnimationDuration(750L);
         expandableTextView7.setInterpolator(new OvershootInterpolator());
@@ -966,8 +966,8 @@ public class MetaFirstFormFragment extends Fragment {
             }
         });
 
-        final ExpandableTextView expandableTextView8 = (ExpandableTextView) getActivity().findViewById(R.id.tvBeforeResolution_add);
-        final ImageButton buttonToggle8 = (ImageButton) getActivity().findViewById(R.id.button_tvBeforeResolution_add);
+        final ExpandableTextView expandableTextView8 = getActivity().findViewById(R.id.tvBeforeResolution_add);
+        final ImageButton buttonToggle8 = getActivity().findViewById(R.id.button_tvBeforeResolution_add);
         buttonToggle8.setBackgroundResource(R.drawable.expand_more);
         expandableTextView8.setAnimationDuration(750L);
         expandableTextView8.setInterpolator(new OvershootInterpolator());
@@ -979,8 +979,8 @@ public class MetaFirstFormFragment extends Fragment {
             }
         });
 
-        final ExpandableTextView expandableTextView9 = (ExpandableTextView) getActivity().findViewById(R.id.tvBeforeMessage_add);
-        final ImageButton buttonToggle9 = (ImageButton) getActivity().findViewById(R.id.button_tvBeforeMessage_add);
+        final ExpandableTextView expandableTextView9 = getActivity().findViewById(R.id.tvBeforeMessage_add);
+        final ImageButton buttonToggle9 = getActivity().findViewById(R.id.button_tvBeforeMessage_add);
         buttonToggle9.setBackgroundResource(R.drawable.expand_more);
         expandableTextView9.setAnimationDuration(750L);
         expandableTextView9.setInterpolator(new OvershootInterpolator());
@@ -992,8 +992,8 @@ public class MetaFirstFormFragment extends Fragment {
             }
         });
 
-        final ExpandableTextView expandableTextView10 = (ExpandableTextView) getActivity().findViewById(R.id.tvBeforeURL_add);
-        final ImageButton buttonToggle10 = (ImageButton) getActivity().findViewById(R.id.button_tvBeforeURL_add);
+        final ExpandableTextView expandableTextView10 = getActivity().findViewById(R.id.tvBeforeURL_add);
+        final ImageButton buttonToggle10 = getActivity().findViewById(R.id.button_tvBeforeURL_add);
         buttonToggle10.setBackgroundResource(R.drawable.expand_more);
         expandableTextView10.setAnimationDuration(750L);
         expandableTextView10.setInterpolator(new OvershootInterpolator());
@@ -1007,8 +1007,8 @@ public class MetaFirstFormFragment extends Fragment {
     }
 
     void initialiseExpandButtonsUpdate() {
-        final ExpandableTextView expandableTextView1 = (ExpandableTextView) getActivity().findViewById(R.id.tvWelcomeMessageMetaFirst);
-        final ImageButton buttonToggle1 = (ImageButton) getActivity().findViewById(R.id.button_tvWelcomeMessageMetaFirst);
+        final ExpandableTextView expandableTextView1 = getActivity().findViewById(R.id.tvWelcomeMessageMetaFirst);
+        final ImageButton buttonToggle1 = getActivity().findViewById(R.id.button_tvWelcomeMessageMetaFirst);
         buttonToggle1.setBackgroundResource(R.drawable.expand_more);
         expandableTextView1.setAnimationDuration(750L);
         expandableTextView1.setInterpolator(new OvershootInterpolator());
@@ -1020,8 +1020,8 @@ public class MetaFirstFormFragment extends Fragment {
             }
         });
 
-        final ExpandableTextView expandableTextView2 = (ExpandableTextView) getActivity().findViewById(R.id.tvSwipeRight);
-        final ImageButton buttonToggle2 = (ImageButton) getActivity().findViewById(R.id.button_tvSwipeRight);
+        final ExpandableTextView expandableTextView2 = getActivity().findViewById(R.id.tvSwipeRight);
+        final ImageButton buttonToggle2 = getActivity().findViewById(R.id.button_tvSwipeRight);
         buttonToggle2.setBackgroundResource(R.drawable.expand_more);
         expandableTextView2.setAnimationDuration(750L);
         expandableTextView2.setInterpolator(new OvershootInterpolator());
@@ -1033,8 +1033,8 @@ public class MetaFirstFormFragment extends Fragment {
             }
         });
 
-        final ExpandableTextView expandableTextView3 = (ExpandableTextView) getActivity().findViewById(R.id.tvContextRelated);
-        final ImageButton buttonToggle3 = (ImageButton) getActivity().findViewById(R.id.button_tvContextRelated);
+        final ExpandableTextView expandableTextView3 = getActivity().findViewById(R.id.tvContextRelated);
+        final ImageButton buttonToggle3 = getActivity().findViewById(R.id.button_tvContextRelated);
         buttonToggle3.setBackgroundResource(R.drawable.expand_more);
         expandableTextView3.setAnimationDuration(750L);
         expandableTextView3.setInterpolator(new OvershootInterpolator());
@@ -1046,8 +1046,8 @@ public class MetaFirstFormFragment extends Fragment {
             }
         });
 
-        final ExpandableTextView expandableTextView4 = (ExpandableTextView) getActivity().findViewById(R.id.tvStageRelated);
-        final ImageButton buttonToggle4 = (ImageButton) getActivity().findViewById(R.id.button_tvStageRelated);
+        final ExpandableTextView expandableTextView4 = getActivity().findViewById(R.id.tvStageRelated);
+        final ImageButton buttonToggle4 = getActivity().findViewById(R.id.button_tvStageRelated);
         buttonToggle4.setBackgroundResource(R.drawable.expand_more);
         expandableTextView4.setAnimationDuration(750L);
         expandableTextView4.setInterpolator(new OvershootInterpolator());
@@ -1059,8 +1059,8 @@ public class MetaFirstFormFragment extends Fragment {
             }
         });
 
-        final ExpandableTextView expandableTextView5 = (ExpandableTextView) getActivity().findViewById(R.id.tvBeforeOrientation);
-        final ImageButton buttonToggle5 = (ImageButton) getActivity().findViewById(R.id.button_tvBeforeOrientation);
+        final ExpandableTextView expandableTextView5 = getActivity().findViewById(R.id.tvBeforeOrientation);
+        final ImageButton buttonToggle5 = getActivity().findViewById(R.id.button_tvBeforeOrientation);
         buttonToggle5.setBackgroundResource(R.drawable.expand_more);
         expandableTextView5.setAnimationDuration(750L);
         expandableTextView5.setInterpolator(new OvershootInterpolator());
@@ -1072,8 +1072,8 @@ public class MetaFirstFormFragment extends Fragment {
             }
         });
 
-        final ExpandableTextView expandableTextView6 = (ExpandableTextView) getActivity().findViewById(R.id.tvBeforeComplicatedAction);
-        final ImageButton buttonToggle6 = (ImageButton) getActivity().findViewById(R.id.button_tvBeforeComplicatedAction);
+        final ExpandableTextView expandableTextView6 = getActivity().findViewById(R.id.tvBeforeComplicatedAction);
+        final ImageButton buttonToggle6 = getActivity().findViewById(R.id.button_tvBeforeComplicatedAction);
         buttonToggle6.setBackgroundResource(R.drawable.expand_more);
         expandableTextView6.setAnimationDuration(750L);
         expandableTextView6.setInterpolator(new OvershootInterpolator());
@@ -1085,8 +1085,8 @@ public class MetaFirstFormFragment extends Fragment {
             }
         });
 
-        final ExpandableTextView expandableTextView7 = (ExpandableTextView) getActivity().findViewById(R.id.tvBeforeEvaluation);
-        final ImageButton buttonToggle7 = (ImageButton) getActivity().findViewById(R.id.button_tvBeforeEvaluation);
+        final ExpandableTextView expandableTextView7 = getActivity().findViewById(R.id.tvBeforeEvaluation);
+        final ImageButton buttonToggle7 = getActivity().findViewById(R.id.button_tvBeforeEvaluation);
         buttonToggle7.setBackgroundResource(R.drawable.expand_more);
         expandableTextView7.setAnimationDuration(750L);
         expandableTextView7.setInterpolator(new OvershootInterpolator());
@@ -1098,8 +1098,8 @@ public class MetaFirstFormFragment extends Fragment {
             }
         });
 
-        final ExpandableTextView expandableTextView8 = (ExpandableTextView) getActivity().findViewById(R.id.tvBeforeResolution);
-        final ImageButton buttonToggle8 = (ImageButton) getActivity().findViewById(R.id.button_tvBeforeResolution);
+        final ExpandableTextView expandableTextView8 = getActivity().findViewById(R.id.tvBeforeResolution);
+        final ImageButton buttonToggle8 = getActivity().findViewById(R.id.button_tvBeforeResolution);
         buttonToggle8.setBackgroundResource(R.drawable.expand_more);
         expandableTextView8.setAnimationDuration(750L);
         expandableTextView8.setInterpolator(new OvershootInterpolator());
@@ -1111,8 +1111,8 @@ public class MetaFirstFormFragment extends Fragment {
             }
         });
 
-        final ExpandableTextView expandableTextView9 = (ExpandableTextView) getActivity().findViewById(R.id.tvBeforeMessage);
-        final ImageButton buttonToggle9 = (ImageButton) getActivity().findViewById(R.id.button_tvBeforeMessage);
+        final ExpandableTextView expandableTextView9 = getActivity().findViewById(R.id.tvBeforeMessage);
+        final ImageButton buttonToggle9 = getActivity().findViewById(R.id.button_tvBeforeMessage);
         buttonToggle9.setBackgroundResource(R.drawable.expand_more);
         expandableTextView9.setAnimationDuration(750L);
         expandableTextView9.setInterpolator(new OvershootInterpolator());
@@ -1124,8 +1124,8 @@ public class MetaFirstFormFragment extends Fragment {
             }
         });
 
-        final ExpandableTextView expandableTextView10 = (ExpandableTextView) getActivity().findViewById(R.id.tvBeforeURL);
-        final ImageButton buttonToggle10 = (ImageButton) getActivity().findViewById(R.id.button_tvBeforeURL);
+        final ExpandableTextView expandableTextView10 = getActivity().findViewById(R.id.tvBeforeURL);
+        final ImageButton buttonToggle10 = getActivity().findViewById(R.id.button_tvBeforeURL);
         buttonToggle10.setBackgroundResource(R.drawable.expand_more);
         expandableTextView10.setAnimationDuration(750L);
         expandableTextView10.setInterpolator(new OvershootInterpolator());
